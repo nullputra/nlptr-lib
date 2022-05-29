@@ -1,0 +1,146 @@
+// Available variables:
+// https://code.visualstudio.com/docs/editor/variables-reference
+{
+    "tasks": [
+        {
+            "label": "ctrl_shift_t",
+            "type": "shell",
+            "group": "test",
+            "command": "./cptest.sh",
+            "args": [
+                "${file}"
+            ]
+        },
+        {
+            "label": "alt_a",
+            "type": "shell",
+            "group": "test",
+            "command": "./cptest.sh",
+            "args": [
+                "a",
+                "${file}",
+            ]
+        },
+        {
+            "label": "alt_d",
+            "type": "shell",
+            "group": "test",
+            "command": "./cptest.sh",
+            "args": [
+                "d",
+                "${file}",
+            ]
+        },
+        {
+            "label": "alt_f",
+            "type": "shell",
+            "group": "test",
+            "command": "./cptest.sh",
+            "args": [
+                "f",
+                "${file}",
+            ]
+        },
+        {
+            "label": "alt_g",
+            "type": "shell",
+            "group": "test",
+            "command": "./cptest.sh",
+            "args": [
+                "g",
+                "${file}",
+            ]
+        },
+        {
+            "label": "alt_h",
+            "type": "shell",
+            "group": "test",
+            "command": "./cptest.sh",
+            "args": [
+                "-h",
+            ]
+        },
+        {
+            "label": "alt_p",
+            "type": "shell",
+            "group": "test",
+            "command": "./cptest.sh",
+            "args": [
+                "p",
+            ]
+        },
+        {
+            "label": "alt_r",
+            "type": "shell",
+            "group": "test",
+            "command": "./cptest.sh",
+            "args": [
+                "r",
+                "${file}",
+            ]
+        },
+        {
+            "label": "alt_s",
+            "type": "shell",
+            "group": "test",
+            "command": "./cptest.sh",
+            "args": [
+                "s",
+                "${file}",
+            ]
+        },
+        {
+            "label": "alt_shift_s",
+            "type": "shell",
+            "group": "test",
+            "command": "./cptest.sh",
+            "args": [
+                "s",
+                "-y",
+                "${file}",
+            ]
+        },
+        {
+            "label": "alt_t",
+            "type": "shell",
+            "group": "test",
+            "command": "./cptest.sh",
+            "args": [
+                "t",
+                "${file}",
+            ]
+        },
+        {
+            "label": "alt_shift_t",
+            "type": "shell",
+            "group": "test",
+            "command": "./cptest.sh",
+            "args": [
+                "t",
+                "--system",
+                "${file}",
+            ]
+        },
+        {
+            "label": "alt_v",
+            "type": "shell",
+            "group": "test",
+            "command": "./cptest.sh",
+            "args": [
+                "v",
+                "${file}",
+            ]
+        },
+        { // f5
+            "label": "f5",
+            "type": "shell",
+            "group": "build",
+            "command": "./cptest.sh",
+            "args": [
+                "dbg",
+                "${file}"
+            ]
+        }
+    ],
+    "version": "2.0.0"
+}

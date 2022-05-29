@@ -1,0 +1,64 @@
+name: verify
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      # 1. Setup
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+      - run: pip3 install -U online-judge-verify-helper toml
+      - name: Set up Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: nightly
+          override: true
+      - name: Set up mdBook
+        uses: peaceiris/actions-mdbook@v1
+        with:
+          mdbook-version: 'latest'
+
+      # 2-1. Verify C++ library
+      - name: (C++) Run tests
+        run: tests/cpp/verify.sh
+      - name: (C++) Generate book/cpp
+        run: python3 lib/mdbook.py -l cpp -s hpp -S cpp
+
+      # 2-2. Verify C# library
+      - name: (C#) Set up .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 6.0.x
+      - name: (C#) Restore dependencies
+        run: dotnet restore
+      - name: (C#) Run tests
+        run: tests/CSharp/verify.sh
+      - name: (C#) Generate book/CSharp
+        run: python3 lib/mdbook.py -l CSharp -s cs -S cs
+
+      # 2-3. Verify Rust library
+      - name: (Rust) Run tests
+        run: tests/rust/verify.sh
+      - name: (Rust) Generate book/rust
+        run: python3 lib/mdbook.py -l rust -s rs -S rs
+
+      # 3. Deploy
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./book

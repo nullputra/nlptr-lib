@@ -1,0 +1,45 @@
+{
+    "configurations": [
+        {
+            "name": "C++",
+            "type": "cppdbg",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "program": "${workspaceFolder}/bin/out/${fileBasenameNoExtension}.dbg",
+            "args": [
+                "<",
+                "./input.txt"
+            ],
+            "stopAtEntry": false,
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "miDebuggerPath": "/usr/bin/gdb",
+            "setupCommands": [
+                {
+                    "description": "Enables gdb reformatting.",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "f5"
+        },
+        {
+            // You need to toggle the pull-down menu
+            // in the "Debug and Run" tab of the sidebar.
+            "name": "Python3",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "args": [
+                "<",
+                "./input.txt"
+            ],
+            "stopOnEntry": false,
+            "autoReload": {
+                "enable": true
+            },
+            "console": "integratedTerminal"
+        },
+    ],
+    "version": "0.2.0"
+}

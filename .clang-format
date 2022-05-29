@@ -1,0 +1,10 @@
+Language: Cpp
+BasedOnStyle: Google
+
+AlignTrailingComments: false
+AllowShortBlocksOnASingleLine: Always
+ColumnLimit: 0
+DerivePointerAlignment: false
+IncludeBlocks: Merge
+IndentWidth: 4
+PointerAlignment: Right

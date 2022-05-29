@@ -1,0 +1,41 @@
+# Directory
+__pycache__
+atcoder
+AtCoder
+
+/bin
+/book
+/book_src/**
+!/book_src/404.md
+/codingame
+/node_modules
+/obj
+/heuristics
+/src/**
+!/src/_abc198.rs
+!/src/_abc207.cpp
+!/src/_abc247.py
+!/src/_virtual.cpp
+!/src/_Virtual.cs
+!/src/_virtual.py
+!/src/_virtual.rs
+/src_go/**
+!/src_go/_**
+/src_old
+/target
+
+# File
+*.log
+*.Identifier
+password
+tokens
+
+# Cargo.toml: GH Actions のために必要。
+# /Cargo.toml
+/Cargo.lock
+/generate.py
+/go.sum
+/input.txt
+/judge.py
+/output.txt
+/scraping.py
