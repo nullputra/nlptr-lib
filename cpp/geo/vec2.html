@@ -1,0 +1,383 @@
+<!DOCTYPE HTML>
+<html lang="jp" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Vec2 (幾何) - nlptr-lib (lib/cpp/)</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../theme/custom.css">
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">README</a></li><li class="chapter-item expanded affix "><a href="../setup.html">setup</a></li><li class="chapter-item expanded affix "><li class="part-title">lib/cpp/</li><li class="chapter-item expanded "><a href="../algebra.html"><strong aria-hidden="true">1.</strong> algebra</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../algebra/chinese-remainder-theorem.html"><strong aria-hidden="true">1.1.</strong> Chinese Remainder Theorem (中国剰余定理)</a></li><li class="chapter-item expanded "><a href="../algebra/factorial.html"><strong aria-hidden="true">1.2.</strong> Factorial (階乗、組み合わせ)</a></li><li class="chapter-item expanded "><a href="../algebra/formal-power-series.html"><strong aria-hidden="true">1.3.</strong> Formal Power Series (形式的冪級数)</a></li><li class="chapter-item expanded "><a href="../algebra/golden-section-search.html"><strong aria-hidden="true">1.4.</strong> Golden Section Search (黄金分割探索)</a></li><li class="chapter-item expanded "><a href="../algebra/lagrange-interpolation.html"><strong aria-hidden="true">1.5.</strong> Lagrange Interpolation (ラグランジュ多項式補間)</a></li><li class="chapter-item expanded "><a href="../algebra/linear-sieve.html"><strong aria-hidden="true">1.6.</strong> Linear Sieve (線形篩、添え字 gcd 畳み込み)</a></li><li class="chapter-item expanded "><a href="../algebra/modular.html"><strong aria-hidden="true">1.7.</strong> Modular (剰余環上の型)</a></li><li class="chapter-item expanded "><a href="../algebra/rational.html"><strong aria-hidden="true">1.8.</strong> Rational (有理数型)</a></li><li class="chapter-item expanded "><a href="../algebra/slide.html"><strong aria-hidden="true">1.9.</strong> Slide (スライド最小値・最大値)</a></li><li class="chapter-item expanded "><a href="../algebra/square-matrix.html"><strong aria-hidden="true">1.10.</strong> Square Matrix (正方行列の累乗)</a></li></ol></li><li class="chapter-item expanded "><a href="../conv.html"><strong aria-hidden="true">2.</strong> conv</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../conv/fast-fourier-transform.html"><strong aria-hidden="true">2.1.</strong> Fast Fourier Transform (FFT、高速フーリエ変換)</a></li><li class="chapter-item expanded "><a href="../conv/number-theoretic-transform.html"><strong aria-hidden="true">2.2.</strong> Number Theoretic Transform (NTT、数論変換)</a></li></ol></li><li class="chapter-item expanded "><a href="../data-structures.html"><strong aria-hidden="true">3.</strong> data-structures</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../data-structures/binary-indexed-tree.html"><strong aria-hidden="true">3.1.</strong> Binary Indexed Tree (BIT)</a></li><li class="chapter-item expanded "><a href="../data-structures/convex-hull-trick.html"><strong aria-hidden="true">3.2.</strong> Convex Hull Trick</a></li><li class="chapter-item expanded "><a href="../data-structures/cumulative-sum-2d.html"><strong aria-hidden="true">3.3.</strong> Cumulative Sum 2d (二次元累積和)</a></li><li class="chapter-item expanded "><a href="../data-structures/swag.html"><strong aria-hidden="true">3.4.</strong> SWAG (Sliding Window Aggregation)</a></li><li class="chapter-item expanded "><a href="../data-structures/segment-tree.html"><strong aria-hidden="true">3.5.</strong> Segment Tree (遅延評価セグメント木)</a></li><li class="chapter-item expanded "><a href="../data-structures/slope-trick.html"><strong aria-hidden="true">3.6.</strong> Slope Trick</a></li><li class="chapter-item expanded "><a href="../data-structures/sparse-table.html"><strong aria-hidden="true">3.7.</strong> Sparse Table</a></li><li class="chapter-item expanded "><a href="../data-structures/union-find.html"><strong aria-hidden="true">3.8.</strong> Union Find</a></li><li class="chapter-item expanded "><a href="../data-structures/weighted-union-find.html"><strong aria-hidden="true">3.9.</strong> Weighted Union Find</a></li><li class="chapter-item expanded "><a href="../data-structures/zip.html"><strong aria-hidden="true">3.10.</strong> Zip (座圧)</a></li></ol></li><li class="chapter-item expanded "><a href="../dp.html"><strong aria-hidden="true">4.</strong> dp</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../dp/traveling-salesman-problem.html"><strong aria-hidden="true">4.1.</strong> Traveling Salesman Problem (巡回セールスマン問題)</a></li></ol></li><li class="chapter-item expanded "><a href="../geo.html"><strong aria-hidden="true">5.</strong> geo</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../geo/vec2.html" class="active"><strong aria-hidden="true">5.1.</strong> Vec2 (幾何)</a></li></ol></li><li class="chapter-item expanded "><a href="../graphs.html"><strong aria-hidden="true">6.</strong> graphs</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../graphs/bellman-ford.html"><strong aria-hidden="true">6.1.</strong> Bellman Ford</a></li><li class="chapter-item expanded "><a href="../graphs/dijkstra.html"><strong aria-hidden="true">6.2.</strong> Dijkstra</a></li><li class="chapter-item expanded "><a href="../graphs/dinic.html"><strong aria-hidden="true">6.3.</strong> Dinic (最大流)</a></li><li class="chapter-item expanded "><a href="../graphs/kruskal.html"><strong aria-hidden="true">6.4.</strong> Kruskal</a></li><li class="chapter-item expanded "><a href="../graphs/prim.html"><strong aria-hidden="true">6.5.</strong> Prim</a></li><li class="chapter-item expanded "><a href="../graphs/topological-sort.html"><strong aria-hidden="true">6.6.</strong> Topological Sort</a></li></ol></li><li class="chapter-item expanded "><a href="../others.html"><strong aria-hidden="true">7.</strong> others</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../others/fast-iostream.html"><strong aria-hidden="true">7.1.</strong> Fast IOStream</a></li><li class="chapter-item expanded "><a href="../others/policy-based-data-structures.html"><strong aria-hidden="true">7.2.</strong> Policy Based Data Structures (g++ 拡張)</a></li><li class="chapter-item expanded "><a href="../others/debug.html"><strong aria-hidden="true">7.3.</strong> debug.hpp</a></li></ol></li><li class="chapter-item expanded "><a href="../strings.html"><strong aria-hidden="true">8.</strong> strings</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../strings/manacher.html"><strong aria-hidden="true">8.1.</strong> Manacher</a></li><li class="chapter-item expanded "><a href="../strings/morris-pratt.html"><strong aria-hidden="true">8.2.</strong> Morris Pratt (MP 法)</a></li><li class="chapter-item expanded "><a href="../strings/rolling-hash.html"><strong aria-hidden="true">8.3.</strong> Rolling Hash</a></li><li class="chapter-item expanded "><a href="../strings/sa-is.html"><strong aria-hidden="true">8.4.</strong> SA-IS (Suffix Array)</a></li><li class="chapter-item expanded "><a href="../strings/trie.html"><strong aria-hidden="true">8.5.</strong> Trie (トライ木)</a></li><li class="chapter-item expanded "><a href="../strings/z-algorithm.html"><strong aria-hidden="true">8.6.</strong> Z Algorithm (最長共通接頭辞)</a></li></ol></li><li class="chapter-item expanded "><a href="../trees.html"><strong aria-hidden="true">9.</strong> trees</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../trees/diameter.html"><strong aria-hidden="true">9.1.</strong> Diameter (木の直径)</a></li><li class="chapter-item expanded "><a href="../trees/rerooting-edge.html"><strong aria-hidden="true">9.2.</strong> Rerooting[op_edge] (全方位木 dp)</a></li><li class="chapter-item expanded "><a href="../trees/rerooting-node.html"><strong aria-hidden="true">9.3.</strong> Rerooting[op_node] (全方位木 dp)</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">nlptr-lib (lib/cpp/)</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/nullputra/nlptr-lib" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="vec2-幾何"><a class="header" href="#vec2-幾何">Vec2 (幾何)</a></h1>
+<p>幾何ライブラリです。事前に <code>using V2 = Vec2&lt;double&gt;;</code> や <code>using V2 = Vec2&lt;int&gt;;</code> をして使ってください。</p>
+<ul>
+<li><code>manhattan_dis(v1, v2)</code></li>
+<li><code>inter_seg_pt(a1, a2, b)</code>:
+3 点の位置関係を返す関数。(<code>A</code> \(\neq\) <code>B</code> であることが必要)
+<ul>
+<li><code>AB</code> から見て <code>BC</code> は右に曲がる (つまり 右回り): \(-1\)</li>
+<li><code>AB</code> から見て <code>BC</code> は左に曲がる (つまり 左回り): \(+1\)</li>
+<li><code>CAB</code> の順番で一直線上に並ぶ: <code>-2</code></li>
+<li><code>ABC</code> の順番で一直線上に並ぶ: <code>+2</code></li>
+<li><code>BCA</code> の順番で一直線上に並ぶ: <code>0</code></li>
+</ul>
+</li>
+<li><code>angle(a, b, c)</code>: 角 <code>ABC</code> を返す。</li>
+<li><code>angle_type(a, b, c)</code>: 角 <code>ABC</code> が鋭角なら \(-1\)、直角なら \(0\)、鈍角なら \(1\) を返す。</li>
+<li><code>intersect_type(a1, a2, b1, b2)</code>: 並行なら \(0\)、交わっていれば \(1\)、一致で \(2\). <code>A</code>、<code>B</code>: 直線.</li>
+<li><code>is_intersect_seg(a1, a2, b1, b2)</code>: <code>A</code>、<code>B</code>: 線分。</li>
+<li><code>is_intersect_seg_ray(a1, a2, b, b_arg)</code>: <code>A</code>: 線分、<code>B</code>: 半直線(ray)。</li>
+<li><code>intersection(a1, a2, b1, b2)</code>: 交点の座標を求める。<code>A</code>, <code>B</code>: 直線。</li>
+<li><code>dis(a, b, p)</code>: 直線 <code>AB</code> と点 <code>P</code> の距離。</li>
+<li><code>area_triangle(a, b)</code>: 三角形 OAB の面積を求める (<code>O</code>: 原点)。正号: <code>O</code>、<code>A</code>、<code>B</code> が左回り、負号: <code>O</code>、<code>A</code>、<code>B</code> が右回り。</li>
+<li><code>area_polygon(p)</code>: 正号: <code>O</code>、<code>A</code>、<code>B</code>、 \(\cdots\) が左回り, 負号: <code>O</code>、<code>A</code>、<code>B</code>、 \(\cdots\) が右回り。</li>
+<li><code>center_of_grav_polygon(p)</code>: 重心の座標。</li>
+<li><code>convex_hull</code>: 凸包を形成する頂点の配列を返す。すなわち、外から輪ゴムを付けたとき、輪ゴムと接する頂点の配列を返す。 \(O(n \log n)\)</li>
+</ul>
+<h2 id="refs"><a class="header" href="#refs">Refs</a></h2>
+<ul>
+<li><a href="https://qiita.com/Reputeless/items/96226cfe1282a014b147">Vec2 クラスを作る（モダンな C++ クラスデザインのためのチュートリアル）</a>, Ryo Suzuki</li>
+<li><a href="https://sen-comp.hatenablog.com/entry/2020/03/12/145742">２．計算幾何のインフラ整備　　　シリーズ：「基礎的計算幾何ライブラリの作り方」</a>, Sen</li>
+<li><a href="https://www.ioi-jp.org/camp/2017/2017-sp_camp-hide.pdf">プログラミングコンテストにおける計算幾何入門</a>, 秀 郁未</li>
+</ul>
+<h2 id="impl"><a class="header" href="#impl">Impl</a></h2>
+<pre><code class="language-cpp">constexpr double EPS = 1e-10;
+template &lt;class T&gt;
+enable_if_t&lt;is_integral_v&lt;T&gt;, int&gt; sgn(T a) { return (a &gt; 0) - (a &lt; 0); }
+template &lt;class T&gt;
+enable_if_t&lt;is_floating_point_v&lt;T&gt;, int&gt; sgn(T a) { return (a &gt; EPS) - (a &lt; -EPS); }
+template &lt;class T&gt;
+struct Vec2 {
+    T x, y;
+    Vec2(){};
+    Vec2(T _x, T _y) : x(_x), y(_y) {}
+    Vec2 operator+() const { return *this; }
+    Vec2 operator-() const { return {-x, -y}; }
+    Vec2 operator+(const Vec2 &amp;v) const { return {x + v.x, y + v.y}; }
+    Vec2 operator-(const Vec2 &amp;v) const { return {x - v.x, y - v.y}; }
+    Vec2 operator*(T s) const { return {x * s, y * s}; }
+    Vec2 operator/(T s) const {
+        assert(s != 0);
+        return {x / s, y / s};
+    }
+    Vec2 &amp;operator+=(const Vec2 &amp;v) {
+        x += v.x, y += v.y;
+        return *this;
+    }
+    Vec2 &amp;operator-=(const Vec2 &amp;v) {
+        x -= v.x, y -= v.y;
+        return *this;
+    }
+    Vec2 &amp;operator*=(T s) {
+        x *= s, y *= s;
+        return *this;
+    }
+    bool operator==(const Vec2 &amp;v) { return sgn(x - v.x) == 0 &amp;&amp; sgn(y - v.y) == 0; }
+    bool operator!=(const Vec2 &amp;v) { return !(*this == v); }
+    bool operator&lt;(const Vec2 &amp;v) { return sgn(x - v.x) ? sgn(x - v.x) &lt; 0 : sgn(y - v.y) &lt; 0; }
+    double len() const { return sqrt(len_sq()); }
+    T len_sq() const { return x * x + y * y; }
+    T dot(const Vec2 &amp;v) const { return x * v.x + y * v.y; }
+    T cross(const Vec2 &amp;v) const { return x * v.y - y * v.x; }
+    Vec2 rotate(double arg) const {
+        assert(is_floating_point_v&lt;T&gt;);
+        double cs = cos(arg), sn = sin(arg);
+        return {x * cs - y * sn, x * sn + y * cs};
+    }
+    double angle() const { return atan2(y, x); }
+    Vec2 normalized() const {
+        assert(is_floating_point_v&lt;T&gt;);
+        return *this / len();
+    }
+    Vec2 normal_unitized() const {
+        assert(is_floating_point_v&lt;T&gt;);
+        return {-normalized().y, normalized().x};
+    }
+    friend Vec2 operator*(T s, const Vec2 &amp;v) { return {s * v.x, s * v.y}; }
+    friend istream &amp;operator&gt;&gt;(istream &amp;is, Vec2 &amp;v) { return is &gt;&gt; v.x &gt;&gt; v.y; }
+    friend ostream &amp;operator&lt;&lt;(ostream &amp;os, const Vec2 &amp;v) { return os &lt;&lt; v.x &lt;&lt; ' ' &lt;&lt; v.y; }
+};
+template &lt;class T&gt;
+T manhattan_dis(Vec2&lt;T&gt; &amp;v1, Vec2&lt;T&gt; &amp;v2) {
+    Vec2&lt;T&gt; diff = v1 - v2;
+    return abs(diff.x) + abs(diff.y);
+}
+template &lt;class T&gt;
+int inter_seg_pt(const Vec2&lt;T&gt; &amp;a1, const Vec2&lt;T&gt; &amp;a2, const Vec2&lt;T&gt; &amp;b) {
+    int f = sgn((a2 - a1).cross(b - a1));
+    if (f) return f;
+    if (sgn((a2 - a1).dot(b - a1)) &lt; 0) return -2;
+    if (sgn((a1 - a2).dot(b - a2)) &lt; 0) return 2;
+    return 0;
+}
+template &lt;class T&gt;
+long double angle(const Vec2&lt;T&gt; &amp;a, const Vec2&lt;T&gt; &amp;b, const Vec2&lt;T&gt; &amp;c) {
+    long double ang = (c - b).angle() - (a - b).angle();
+    return ang &lt; 0 ? ang + M_PI * 2 : ang;
+}
+template &lt;class T&gt;
+int angle_type(const Vec2&lt;T&gt; &amp;a, const Vec2&lt;T&gt; &amp;b, const Vec2&lt;T&gt; &amp;c) { return -sgn((a - b).dot(c - b)); }
+template &lt;class T&gt;
+int intersect_type(const Vec2&lt;T&gt; &amp;a1, const Vec2&lt;T&gt; &amp;a2, const Vec2&lt;T&gt; &amp;b1, const Vec2&lt;T&gt; &amp;b2) {
+    if ((a2 - a1).cross(b2 - b1) &gt; EPS) return 1;
+    return ((a2 - a1).cross(b1 - a1) &gt; EPS) ? 0 : 2;
+}
+template &lt;class T&gt;
+bool is_intersect_seg(const Vec2&lt;T&gt; &amp;a1, const Vec2&lt;T&gt; &amp;a2, const Vec2&lt;T&gt; &amp;b1, const Vec2&lt;T&gt; &amp;b2) {
+    return inter_seg_pt(a1, a2, b1) * inter_seg_pt(a1, a2, b2) &lt;= 0 &amp;&amp; inter_seg_pt(b1, b2, a1) * inter_seg_pt(b1, b2, a2) &lt;= 0;
+}
+template &lt;class T&gt;
+bool is_intersect_seg_ray(const Vec2&lt;T&gt; &amp;a1, const Vec2&lt;T&gt; &amp;a2, const Vec2&lt;T&gt; &amp;b, const double b_arg) {
+    return angle(a1, b, a2) &gt; b_arg;
+}
+template &lt;class T&gt;
+Vec2&lt;T&gt; intersection(const Vec2&lt;T&gt; &amp;a1, const Vec2&lt;T&gt; &amp;a2, const Vec2&lt;T&gt; &amp;b1, const Vec2&lt;T&gt; &amp;b2) {
+    static constexpr Vec2&lt;T&gt; error_val = {-2022, -2022};
+    if (intersect_type(a1, a2, b1, b2) != 1) return error_val;
+    return a1 + (a2 - a1) * (b1 - a1).cross(b2 - b1) / (a2 - a1).cross(b2 - b1);
+}
+template &lt;class T&gt;
+double dis(const Vec2&lt;T&gt; &amp;a, const Vec2&lt;T&gt; &amp;b, const Vec2&lt;T&gt; &amp;p) {
+    return abs((p - a).cross(b - a) / (b - a).len());
+}
+template &lt;class T&gt;
+double area_triangle(const Vec2&lt;T&gt; &amp;a, const Vec2&lt;T&gt; &amp;b) { return a.cross(b) / 2; }
+template &lt;class T&gt;
+long double area_polygon(const vector&lt;Vec2&lt;T&gt;&gt; &amp;p) {
+    long double area = 0;
+    int sz = p.size();
+    for (int i = 0; i &lt; sz; i++) area += (long double)p[i].cross(p[(i + 1) % sz]) / 2;
+    return area;
+}
+template &lt;class T&gt;
+Vec2&lt;T&gt; center_of_grav_polygon(const vector&lt;Vec2&lt;T&gt;&gt; &amp;p) {
+    int n = p.size();
+    Vec2&lt;T&gt; grav(0, 0);
+    for (int i = 0; i &lt; n; i++) {
+        int j = (i + 1) % n;
+        grav += (p[i] + p[j]) * p[i].cross(p[j]);
+    }
+    return grav / (area_polygon(p) * 3);
+}
+template &lt;class T&gt;
+vector&lt;Vec2&lt;T&gt;&gt; convex_hull(vector&lt;Vec2&lt;T&gt;&gt; &amp;pts) {
+    int n = pts.size();
+    sort(pts.begin(), pts.end());
+    stack&lt;pair&lt;int, int&gt;&gt; conv_idx;
+    conv_idx.emplace(0, 1);
+    for (int i = 2; i &lt; n; i++) {
+        int i1, i2;
+        while (true) {
+            i1 = conv_idx.top().first, i2 = conv_idx.top().second;
+            if (inter_seg_pt(pts[i1], pts[i2], pts[i]) != 1) break;
+            conv_idx.pop();
+            if (conv_idx.empty()) {
+                i2 = i1;
+                break;
+            }
+        }
+        conv_idx.emplace(i2, i);
+    }
+    for (int i = n - 2; i &gt;= 0; i--) {
+        int i1, i2;
+        while (true) {
+            i1 = conv_idx.top().first, i2 = conv_idx.top().second;
+            if (inter_seg_pt(pts[i1], pts[i2], pts[i]) != 1) break;
+            conv_idx.pop();
+            if (conv_idx.empty()) {
+                i2 = i1;
+                break;
+            }
+        }
+        conv_idx.emplace(i2, i);
+    }
+    int i = 0;
+    vector&lt;Vec2&lt;T&gt;&gt; conv(conv_idx.size());
+    while (conv_idx.size()) {
+        conv[i++] = pts[conv_idx.top().first];
+        conv_idx.pop();
+    }
+    return conv;
+}
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../geo.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../graphs.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../geo.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../graphs.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_line_numbers = true;
+        </script>
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../ace.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../editor.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mode-rust.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../theme-dawn.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../theme-tomorrow_night.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        <script type="text/javascript" src="../theme/custom.js"></script>
+    </body>
+</html>

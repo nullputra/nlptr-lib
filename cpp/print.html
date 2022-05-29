@@ -1,0 +1,3485 @@
+<!DOCTYPE HTML>
+<html lang="jp" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>nlptr-lib (lib/cpp/)</title>
+        <meta name="robots" content="noindex" />
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="theme/custom.css">
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">README</a></li><li class="chapter-item expanded affix "><a href="setup.html">setup</a></li><li class="chapter-item expanded affix "><li class="part-title">lib/cpp/</li><li class="chapter-item expanded "><a href="algebra.html"><strong aria-hidden="true">1.</strong> algebra</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="algebra/chinese-remainder-theorem.html"><strong aria-hidden="true">1.1.</strong> Chinese Remainder Theorem (中国剰余定理)</a></li><li class="chapter-item expanded "><a href="algebra/factorial.html"><strong aria-hidden="true">1.2.</strong> Factorial (階乗、組み合わせ)</a></li><li class="chapter-item expanded "><a href="algebra/formal-power-series.html"><strong aria-hidden="true">1.3.</strong> Formal Power Series (形式的冪級数)</a></li><li class="chapter-item expanded "><a href="algebra/golden-section-search.html"><strong aria-hidden="true">1.4.</strong> Golden Section Search (黄金分割探索)</a></li><li class="chapter-item expanded "><a href="algebra/lagrange-interpolation.html"><strong aria-hidden="true">1.5.</strong> Lagrange Interpolation (ラグランジュ多項式補間)</a></li><li class="chapter-item expanded "><a href="algebra/linear-sieve.html"><strong aria-hidden="true">1.6.</strong> Linear Sieve (線形篩、添え字 gcd 畳み込み)</a></li><li class="chapter-item expanded "><a href="algebra/modular.html"><strong aria-hidden="true">1.7.</strong> Modular (剰余環上の型)</a></li><li class="chapter-item expanded "><a href="algebra/rational.html"><strong aria-hidden="true">1.8.</strong> Rational (有理数型)</a></li><li class="chapter-item expanded "><a href="algebra/slide.html"><strong aria-hidden="true">1.9.</strong> Slide (スライド最小値・最大値)</a></li><li class="chapter-item expanded "><a href="algebra/square-matrix.html"><strong aria-hidden="true">1.10.</strong> Square Matrix (正方行列の累乗)</a></li></ol></li><li class="chapter-item expanded "><a href="conv.html"><strong aria-hidden="true">2.</strong> conv</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="conv/fast-fourier-transform.html"><strong aria-hidden="true">2.1.</strong> Fast Fourier Transform (FFT、高速フーリエ変換)</a></li><li class="chapter-item expanded "><a href="conv/number-theoretic-transform.html"><strong aria-hidden="true">2.2.</strong> Number Theoretic Transform (NTT、数論変換)</a></li></ol></li><li class="chapter-item expanded "><a href="data-structures.html"><strong aria-hidden="true">3.</strong> data-structures</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="data-structures/binary-indexed-tree.html"><strong aria-hidden="true">3.1.</strong> Binary Indexed Tree (BIT)</a></li><li class="chapter-item expanded "><a href="data-structures/convex-hull-trick.html"><strong aria-hidden="true">3.2.</strong> Convex Hull Trick</a></li><li class="chapter-item expanded "><a href="data-structures/cumulative-sum-2d.html"><strong aria-hidden="true">3.3.</strong> Cumulative Sum 2d (二次元累積和)</a></li><li class="chapter-item expanded "><a href="data-structures/swag.html"><strong aria-hidden="true">3.4.</strong> SWAG (Sliding Window Aggregation)</a></li><li class="chapter-item expanded "><a href="data-structures/segment-tree.html"><strong aria-hidden="true">3.5.</strong> Segment Tree (遅延評価セグメント木)</a></li><li class="chapter-item expanded "><a href="data-structures/slope-trick.html"><strong aria-hidden="true">3.6.</strong> Slope Trick</a></li><li class="chapter-item expanded "><a href="data-structures/sparse-table.html"><strong aria-hidden="true">3.7.</strong> Sparse Table</a></li><li class="chapter-item expanded "><a href="data-structures/union-find.html"><strong aria-hidden="true">3.8.</strong> Union Find</a></li><li class="chapter-item expanded "><a href="data-structures/weighted-union-find.html"><strong aria-hidden="true">3.9.</strong> Weighted Union Find</a></li><li class="chapter-item expanded "><a href="data-structures/zip.html"><strong aria-hidden="true">3.10.</strong> Zip (座圧)</a></li></ol></li><li class="chapter-item expanded "><a href="dp.html"><strong aria-hidden="true">4.</strong> dp</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="dp/traveling-salesman-problem.html"><strong aria-hidden="true">4.1.</strong> Traveling Salesman Problem (巡回セールスマン問題)</a></li></ol></li><li class="chapter-item expanded "><a href="geo.html"><strong aria-hidden="true">5.</strong> geo</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="geo/vec2.html"><strong aria-hidden="true">5.1.</strong> Vec2 (幾何)</a></li></ol></li><li class="chapter-item expanded "><a href="graphs.html"><strong aria-hidden="true">6.</strong> graphs</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="graphs/bellman-ford.html"><strong aria-hidden="true">6.1.</strong> Bellman Ford</a></li><li class="chapter-item expanded "><a href="graphs/dijkstra.html"><strong aria-hidden="true">6.2.</strong> Dijkstra</a></li><li class="chapter-item expanded "><a href="graphs/dinic.html"><strong aria-hidden="true">6.3.</strong> Dinic (最大流)</a></li><li class="chapter-item expanded "><a href="graphs/kruskal.html"><strong aria-hidden="true">6.4.</strong> Kruskal</a></li><li class="chapter-item expanded "><a href="graphs/prim.html"><strong aria-hidden="true">6.5.</strong> Prim</a></li><li class="chapter-item expanded "><a href="graphs/topological-sort.html"><strong aria-hidden="true">6.6.</strong> Topological Sort</a></li></ol></li><li class="chapter-item expanded "><a href="others.html"><strong aria-hidden="true">7.</strong> others</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="others/fast-iostream.html"><strong aria-hidden="true">7.1.</strong> Fast IOStream</a></li><li class="chapter-item expanded "><a href="others/policy-based-data-structures.html"><strong aria-hidden="true">7.2.</strong> Policy Based Data Structures (g++ 拡張)</a></li><li class="chapter-item expanded "><a href="others/debug.html"><strong aria-hidden="true">7.3.</strong> debug.hpp</a></li></ol></li><li class="chapter-item expanded "><a href="strings.html"><strong aria-hidden="true">8.</strong> strings</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="strings/manacher.html"><strong aria-hidden="true">8.1.</strong> Manacher</a></li><li class="chapter-item expanded "><a href="strings/morris-pratt.html"><strong aria-hidden="true">8.2.</strong> Morris Pratt (MP 法)</a></li><li class="chapter-item expanded "><a href="strings/rolling-hash.html"><strong aria-hidden="true">8.3.</strong> Rolling Hash</a></li><li class="chapter-item expanded "><a href="strings/sa-is.html"><strong aria-hidden="true">8.4.</strong> SA-IS (Suffix Array)</a></li><li class="chapter-item expanded "><a href="strings/trie.html"><strong aria-hidden="true">8.5.</strong> Trie (トライ木)</a></li><li class="chapter-item expanded "><a href="strings/z-algorithm.html"><strong aria-hidden="true">8.6.</strong> Z Algorithm (最長共通接頭辞)</a></li></ol></li><li class="chapter-item expanded "><a href="trees.html"><strong aria-hidden="true">9.</strong> trees</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="trees/diameter.html"><strong aria-hidden="true">9.1.</strong> Diameter (木の直径)</a></li><li class="chapter-item expanded "><a href="trees/rerooting-edge.html"><strong aria-hidden="true">9.2.</strong> Rerooting[op_edge] (全方位木 dp)</a></li><li class="chapter-item expanded "><a href="trees/rerooting-node.html"><strong aria-hidden="true">9.3.</strong> Rerooting[op_node] (全方位木 dp)</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">nlptr-lib (lib/cpp/)</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/nullputra/nlptr-lib" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="-nlptr-lib"><a class="header" href="#-nlptr-lib">⛄ nlptr-lib</a></h1>
+<p><a href="https://nullputra.github.io/nlptr-lib/"><img src="https://img.shields.io/static/v1?label=GitHub+Pages&amp;message=+&amp;color=brightgreen&amp;logo=github" alt="gh-pages" /></a>
+<a href="https://github.com/nullputra/nlptr-lib/actions/workflows/verify.yml"><img src="https://github.com/nullputra/nlptr-lib/actions/workflows/verify.yml/badge.svg" alt="verify" /></a>
+<a href="https://github.com/nullputra/nlptr-lib/commits/master"><img src="https://img.shields.io/github/last-commit/nullputra/nlptr-lib" alt="last-commit" /></a>
+<a href="https://github.com/nullputra/nlptr-lib/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-CC0--1.0-blue" alt="license" /></a>
+<a href="https://atcoder.jp/users/nlptr"><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fatcoder-badges.now.sh%2Fapi%2Fatcoder%2Fjson%2Fnlptr" alt="atcoder" /></a></p>
+<p>C++17 / C# .NET Core 3.1 / Rust 1.59 の競プロ用ライブラリです。バグ報告は <a href="https://github.com/nullputra/nlptr-lib/issues">Issues</a> か <a href="https://github.com/nullputra/nlptr-lib/pulls">Pull requests</a> へどうぞ。</p>
+<h2 id="license"><a class="header" href="#license">License</a></h2>
+<p>ほとんどのライセンスは <a href="https://creativecommons.org/publicdomain/zero/1.0/deed.ja">CC0-1.0</a> です (クレジット表記不要)。<a href="https://creativecommons.org/publicdomain/zero/1.0/deed.ja">CC0-1.0</a> 以外のライセンスの場合は、ファイルの先頭にそのライセンスが記載されています。</p>
+<h2 id="links"><a class="header" href="#links">Links</a></h2>
+<ul>
+<li><a href="https://nullputra.github.io/nlptr-lib">lib/</a></li>
+<li><a href="https://nullputra.github.io/nlptr-lib/cpp">lib/cpp/</a></li>
+<li><a href="https://nullputra.github.io/nlptr-lib/CSharp">lib/CSharp/</a></li>
+<li><a href="https://nullputra.github.io/nlptr-lib/rust">lib/rust/</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="-c-の環境構築"><a class="header" href="#-c-の環境構築">🍇 C++ の環境構築</a></h1>
+<h2 id="1-wsl-build-essential-を入れます"><a class="header" href="#1-wsl-build-essential-を入れます">1. WSL, build-essential を入れます</a></h2>
+<ul>
+<li>参考: <a href="https://nullputra.github.io/nlptr-lib/set-up-wsl.html">lib/set-up-wsl</a></li>
+</ul>
+<h2 id="2-oj-bundle-のインストール"><a class="header" href="#2-oj-bundle-のインストール">2. <code>oj-bundle</code> のインストール</a></h2>
+<p>ライブラリ展開コマンド <code>oj-bundle</code> は、<code>online-judge-verify-helper</code> (別名 <a href="https://github.com/online-judge-tools/verification-helper">verification-helper</a>) の中に入っています。</p>
+<p>まず <code>python3</code>、<code>pip3</code> をインストールしてから、<code>online-judge-verify-helper</code> をインストールします。</p>
+<pre><code class="language-sh">sudo apt install python3
+
+# pip / pip3 のインストールには universe レポジトリを検索対象に含める必要がある
+apt -y install software-properties-common
+add-apt-repository universe
+
+# pip / pip3 のインストール
+apt install python3-pip
+
+# online-judge-verify-helper のインストール
+pip3 install online-judge-verify-helper
+</code></pre>
+<h2 id="3-実際にバンドルを実行する方法"><a class="header" href="#3-実際にバンドルを実行する方法">3. 実際にバンドルを実行する方法</a></h2>
+<p><code>oj-bundle</code> でバンドルされる様子は以下のようになります。</p>
+<h4 id="用意するもの-1-srcmaincpp"><a class="header" href="#用意するもの-1-srcmaincpp">用意するもの (1): src/main.cpp</a></h4>
+<pre><code class="language-cpp">#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+#define PROBLEM &quot;https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_12_A&quot;
+#include &quot;graphs/prim.hpp&quot;
+// 環境設定によっては、以下のようにしないとエラーが出る
+// #include &quot;../lib/cpp/graphs/prim.hpp&quot;
+
+int main() {
+    cin.tie(nullptr);
+    ios::sync_with_stdio(false);
+    int n;
+    cin &gt;&gt; n;
+    vector&lt;vector&lt;int&gt;&gt; adja(n, vector&lt;int&gt;(n));
+    for (int i = 0; i &lt; n; i++) {
+        for (int j = 0; j &lt; n; j++) {
+            cin &gt;&gt; adja[i][j];
+        }
+    }
+    Prim pr(adja);
+    cout &lt;&lt; pr.cost_tot &lt;&lt; '\n';
+}
+</code></pre>
+<h4 id="用意するもの-2-libcppgraphsprimhpp"><a class="header" href="#用意するもの-2-libcppgraphsprimhpp">用意するもの (2): lib/cpp/graphs/prim.hpp</a></h4>
+<pre><code class="language-cpp">template &lt;class T&gt;
+struct Prim {
+    T cost_tot = 0;
+    static constexpr T TINF = numeric_limits&lt;T&gt;::max();
+    Prim(vector&lt;vector&lt;T&gt;&gt; &amp;adja) {
+        int n = adja.size();
+        vector&lt;T&gt; min_cost(n, TINF);
+        min_cost[0] = 0;
+        vector&lt;bool&gt; vis(n);
+        while (true) {
+            int from = -1;
+            for (int u = 0; u &lt; n; u++) {
+                if (!vis[u] &amp;&amp; (from == -1 || min_cost[u] &lt; min_cost[from])) from = u;
+            }
+            if (from == -1) break;
+            vis[from] = true;
+            cost_tot += min_cost[from];
+            for (int to = 0; to &lt; n; to++) {
+                if (adja[from][to] != -1) min_cost[to] = min(min_cost[to], adja[from][to]);
+            }
+        }
+    }
+};
+</code></pre>
+<p>以上を用意して、ターミナルで下のコマンドを実行します。</p>
+<h4 id="ターミナル"><a class="header" href="#ターミナル">ターミナル</a></h4>
+<pre><code class="language-sh">oj-bundle -I./lib/cpp src/main.cpp | sed '/PROBLEM/d' | sed '/line/d' &gt; src/main-bundled.cpp
+</code></pre>
+<h4 id="生成されるもの-srcmain-bundledcpp"><a class="header" href="#生成されるもの-srcmain-bundledcpp">生成されるもの: src/main-bundled.cpp</a></h4>
+<pre><code class="language-cpp">#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+template &lt;class T&gt;
+struct Prim {
+    T cost_tot = 0;
+    static constexpr T TINF = numeric_limits&lt;T&gt;::max();
+    Prim(vector&lt;vector&lt;T&gt;&gt; &amp;adja) {
+        int n = adja.size();
+        vector&lt;T&gt; min_cost(n, TINF);
+        min_cost[0] = 0;
+        vector&lt;bool&gt; vis(n);
+        while (true) {
+            int from = -1;
+            for (int u = 0; u &lt; n; u++) {
+                if (!vis[u] &amp;&amp; (from == -1 || min_cost[u] &lt; min_cost[from])) from = u;
+            }
+            if (from == -1) break;
+            vis[from] = true;
+            cost_tot += min_cost[from];
+            for (int to = 0; to &lt; n; to++) {
+                if (adja[from][to] != -1) min_cost[to] = min(min_cost[to], adja[from][to]);
+            }
+        }
+    }
+};
+
+int main() {
+    cin.tie(nullptr);
+    ios::sync_with_stdio(false);
+    int n;
+    cin &gt;&gt; n;
+    vector&lt;vector&lt;int&gt;&gt; adja(n, vector&lt;int&gt;(n));
+    for (int i = 0; i &lt; n; i++) {
+        for (int j = 0; j &lt; n; j++) {
+            cin &gt;&gt; adja[i][j];
+        }
+    }
+    Prim pr(adja);
+    cout &lt;&lt; pr.cost_tot &lt;&lt; '\n';
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><p>GitHub: <a href="https://github.com/nullputra/nlptr-lib/tree/master/lib/cpp/algebra">lib/cpp/algebra</a></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="chinese-remainder-theorem-中国剰余定理"><a class="header" href="#chinese-remainder-theorem-中国剰余定理">Chinese Remainder Theorem (中国剰余定理)</a></h1>
+<ul>
+<li>
+<p><code>ext_gcd(a, b, x, y)</code>: 拡張ユークリッドの互除法。</p>
+</li>
+<li>
+<p><code>crt_2d(b1, m1, b2, m2)</code>: 2 次の中国剰余定理。</p>
+</li>
+<li>
+<p><code>crt(b, m)</code>: n 次の中国剰余定理。</p>
+</li>
+<li>
+<p><a href="https://qiita.com/drken/items/ae02240cd1f8edfc86fd">中国剰余定理 (CRT) の解説と、それを用いる問題のまとめ</a>, drken</p>
+</li>
+</ul>
+<h2 id="impl"><a class="header" href="#impl">Impl</a></h2>
+<pre><code class="language-cpp">namespace chinese_remainder_theorem {
+using ll = long long;
+constexpr pair&lt;ll, ll&gt; no_sol = {0, -1};
+ll mod(ll x, ll y) { return x %= y, x &lt; 0 ? x + y : x; }
+ll ext_gcd(ll a, ll b, ll &amp;x, ll &amp;y) {
+    if (!b) return x = 1, y = 0, a;
+    ll g = ext_gcd(b, a % b, y, x);
+    y -= a / b * x;
+    return g;
+}
+pair&lt;ll, ll&gt; crt_2d(ll b1, ll m1, ll b2, ll m2) {
+    ll p, q, g = ext_gcd(m1, m2, p, q);
+    if ((b2 - b1) % g) return no_sol;
+    ll lcm_m = m1 * (m2 / g);
+    ll mul = (b2 - b1) / g * p % (m2 / g);
+    ll r = mod(b1 + m1 * mul, lcm_m);
+    return {r, lcm_m};
+}
+pair&lt;ll, ll&gt; crt(vector&lt;ll&gt; &amp;b, vector&lt;ll&gt; &amp;m) {
+    assert(b.size() == m.size());
+    ll r = 0, lcm_m = 1;
+    for (int i = 0; i &lt; (int)b.size(); i++) {
+        ll p, q, g = ext_gcd(lcm_m, m[i], p, q);
+        if ((b[i] - r) % g) return no_sol;
+        ll mul = (b[i] - r) / g * p % (m[i] / g);
+        r += lcm_m * mul;
+        lcm_m *= m[i] / g;
+    }
+    return {mod(r, lcm_m), lcm_m};
+}
+}  // namespace chinese_remainder_theorem
+using namespace chinese_remainder_theorem;
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="factorial-階乗組み合わせ"><a class="header" href="#factorial-階乗組み合わせ">Factorial (階乗、組み合わせ)</a></h1>
+<p>階乗系列の関数。階乗などの配列の用意すべきサイズの指定が不要で、必要に応じ自動で増築されます。</p>
+<ul>
+<li>
+<p><code>fact(n)</code>: \(n!\) を返す。ならし \(\Theta(1)\)</p>
+</li>
+<li>
+<p><code>inv_fact(n)</code>: \(\frac{1}{n!}\) を返す。ならし \(\Theta(1)\)</p>
+</li>
+<li>
+<p><code>comb(n, r)</code>: \(_nC_r\) を返す。ならし \(\Theta(1)\)</p>
+</li>
+<li>
+<p><code>perm(n, r)</code>: \(_nP_r\) を返す。ならし \(\Theta(1)\)</p>
+</li>
+<li>
+<p><code>homo(n, r)</code>: \(_nH_r\) を返す。ならし \(\Theta(1)\)</p>
+</li>
+<li>
+<p><code>catalan(n)</code>: カタラン数 \(c_n = \frac{_{2n}C_n}{n+1}\) を返す。ならし \(\Theta(1)\)<br>
+e.g. \(n=0,1,2, ...\) に対して \(c_n\) は \(1, 1, 2, 5, 14, 42, 132, 429, 1430, 4862, 16796, 58786, \cdots\) となる。</p>
+<ul>
+<li>カタラン数の表現。
+<ol>
+<li>漸化式 \(c_0 = 1, c_{n+1} = \sum_{i=0}^{n} c_i c_{n-i}\) を満たす数列 \(c_n\)</li>
+<li>縦横 \(n\) マスの格子において左下から右上まで対角線をまたがずに行く（踏むのは ok）最短経路の数 \(c_n\)</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>
+<p><code>inv(n, r)</code>: \(\frac{1}{n}\) を返す。ならし \(\Theta(1)\)</p>
+</li>
+<li>
+<p><code>0_M</code> で <code>mint(0)</code> を表現できます (<code>std::accumulate</code> の第三引数などで使う)。</p>
+</li>
+</ul>
+<h2 id="refs"><a class="header" href="#refs">Refs</a></h2>
+<ul>
+<li><a href="https://github.com/yosupo06/yosupo-library/blob/master/yosupo/comb.hpp">https://github.com/yosupo06/yosupo-library/blob/master/yosupo/comb.hpp</a>, yosupo</li>
+<li><a href="https://github.com/tatyam-prime/kyopro_library/blob/master/Modint.cpp">https://github.com/tatyam-prime/kyopro_library/blob/master/Modint.cpp</a>, tatyam</li>
+<li><a href="https://manabitimes.jp/math/657">カタラン数の意味と漸化式 - 高校数学の美しい物語</a>, マスオ</li>
+</ul>
+<h2 id="impl-1"><a class="header" href="#impl-1">Impl</a></h2>
+<pre><code class="language-cpp">#ifndef FACTORIAL_HPP
+#define FACTORIAL_HPP
+
+#include &quot;algebra/modular.hpp&quot;
+
+struct Factorial {
+    int fact_size = 1, inv_size = 2;
+    vector&lt;mint&gt; fact{1}, inv_fact{1}, inv{0, 1};
+    void expand_fact(int mx) {
+        while (fact_size &lt;= mx) {
+            fact.resize(2 * fact_size);
+            inv_fact.resize(2 * fact_size);
+            for (int i = fact_size; i &lt; 2 * fact_size; i++) fact[i] = fact[i - 1] * i;
+            inv_fact[2 * fact_size - 1] = fact[2 * fact_size - 1].inv();
+            for (int i = 2 * fact_size - 1; i &gt;= fact_size + 1; i--) inv_fact[i - 1] = inv_fact[i] * i;
+            fact_size *= 2;
+        }
+    }
+    void expand_inv(int mx) {
+        while (inv_size &lt;= mx) {
+            inv.resize(2 * inv_size);
+            for (int i = inv_size; i &lt; 2 * inv_size; i++) {
+                inv[i] = (mint::mod() - mint::mod() / i) * inv[mint::mod() % i];
+            }
+            inv_size *= 2;
+        }
+    }
+} _ft;
+mint fact(int n) {
+    assert(n &gt;= 0);
+    internal::_ft.expand_fact(n);
+    return internal::_ft.fact[n];
+}
+mint inv_fact(int n) {
+    assert(n &gt;= 0);
+    internal::_ft.expand_fact(n);
+    return internal::_ft.inv_fact[n];
+}
+mint comb(int n, int r) {
+    assert(n &gt;= 0 &amp;&amp; r &gt;= 0);
+    return n &lt; r ? 0 : fact(n) * inv_fact(r) * inv_fact(n - r);
+}
+mint perm(int n, int r) {
+    assert(n &gt;= 0 &amp;&amp; r &gt;= 0);
+    return n &lt; r ? 0 : fact(n) * inv_fact(n - r);
+}
+mint homo(int n, int r) {
+    return comb(n + r - 1, r);
+}
+mint catalan(int n) {
+    return fact(n * 2) * inv_fact(n) * inv_fact(n + 1);
+}
+mint inv(int n) {
+    assert(n &gt; 0);
+    internal::_ft.expand_inv(n);
+    return internal::_ft.inv[n];
+}
+
+#endif  // FACTORIAL_HPP
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="formal-power-series-形式的冪級数"><a class="header" href="#formal-power-series-形式的冪級数">Formal Power Series (形式的冪級数)</a></h1>
+<ul>
+<li>constructor <code>FPS(v)</code>: <code>v</code> で初期化。</li>
+<li>constructor <code>FPS(list)</code>: <code>list</code> で初期化。</li>
+<li><code>integral()</code>: \(\int f(x)\) を返す (表している関数を \(f\) とした)。</li>
+<li><code>eval(x)</code>: \(f(x)\) を返す。</li>
+</ul>
+<h2 id="usage"><a class="header" href="#usage">Usage</a></h2>
+<pre><code class="language-cpp">const int MOD = 1e9 + 7;
+#include &quot;algebra/formal-power-series.hpp&quot;
+vector&lt;mint&gt; a(n, 2);
+FPS f(a);
+f *= FPS{2};
+</code></pre>
+<h2 id="refs-1"><a class="header" href="#refs-1">Refs</a></h2>
+<ul>
+<li><a href="https://github.com/yosupo06/yosupo-library/blob/master/yosupo/fps.hpp">https://github.com/yosupo06/yosupo-library/blob/master/yosupo/fps.hpp</a>, yosupo</li>
+<li>(<a href="https://opt-cp.com/fps-fast-algorithms/">形式的冪級数（FPS）の inv，log，exp，pow の定数倍の軽いアルゴリズム</a>, opt)</li>
+</ul>
+<h2 id="impl-2"><a class="header" href="#impl-2">Impl</a></h2>
+<pre><code class="language-cpp">#include &quot;conv/number-theoretic-transform.hpp&quot;
+
+template &lt;class T&gt;
+struct FormalPowerSeries : public vector&lt;T&gt; {
+   public:
+    using vector&lt;T&gt;::operator=;
+    using FPS = FormalPowerSeries;
+    FormalPowerSeries() {}
+    FormalPowerSeries(vector&lt;T&gt; &amp;v) : vector&lt;T&gt;(v) { shrink(); }
+    FormalPowerSeries(initializer_list&lt;T&gt; list) : vector&lt;T&gt;(list) { shrink(); }
+    FPS &amp;operator+=(const FPS &amp;rhs) {
+        if (size() &lt; rhs.size()) this-&gt;resize(rhs.size());
+        for (int i = 0; i &lt; rhs.size(); i++) (*this)[i] += rhs.freq(i);
+        return shrink();
+    }
+    FPS &amp;operator-=(const FPS &amp;rhs) {
+        if (size() &lt; rhs.size()) this-&gt;resize(rhs.size());
+        for (int i = 0; i &lt; rhs.size(); i++) (*this)[i] -= rhs[i];
+        return shrink();
+    }
+    FPS &amp;operator*=(const FPS &amp;rhs) {
+        *this = NTT.conv(*this, rhs);
+        return shrink();
+    }
+    FPS &amp;operator*=(const T &amp;r) {
+        for (int i = 0; i &lt; size(); i++) (*this)[i] *= r;
+        return shrink();
+    }
+    FPS &amp;operator&lt;&lt;=(int s) {
+        this-&gt;insert(this-&gt;begin(), s, T(0));
+        return shrink();
+    }
+    FPS &amp;operator&gt;&gt;=(int s) {
+        if (size() &lt;= s) return FPS();
+        this-&gt;erase(this-&gt;begin(), this-&gt;begin() + s);
+        return shrink();
+    }
+    mint &amp;operator[](int p) {
+        if (size() &lt; p) this-&gt;resize(p + 1);
+        return vector&lt;T&gt;::operator[](p);
+    }
+    friend FPS operator+(const FPS &amp;lhs, const FPS &amp;rhs) { return FPS(lhs) += rhs; }
+    friend FPS operator-(const FPS &amp;lhs, const FPS &amp;rhs) { return FPS(lhs) -= rhs; }
+    friend FPS operator*(const FPS &amp;lhs, const FPS &amp;rhs) { return FPS(lhs) *= rhs; }
+    friend FPS operator&lt;&lt;(const FPS &amp;lhs, const int s) { return FPS(lhs) &lt;&lt;= s; }
+    friend FPS operator&gt;&gt;(const FPS &amp;lhs, const int s) { return FPS(lhs) &gt;&gt;= s; }
+    FPS integral() const {
+        vector&lt;T&gt; res(size() + 1);
+        for (int i = 0; i &lt; size(); i++) res[i + 1] = (*this)[i] / (i + 1);
+        return res;
+    }
+    T eval(T x) const {
+        T sum = 0, base = 1;
+        for (int i = 0; i &lt; size(); i++) sum += base * (*this)[i], base *= x;
+        return sum;
+    }
+    int size() const { return vector&lt;T&gt;::size(); }
+    friend ostream &amp;operator&lt;&lt;(ostream &amp;os, const FPS &amp;pol) {
+#ifdef _DEBUG
+        if (!pol.size()) return os &lt;&lt; '0';
+        for (int i = 0; i &lt; pol.size(); i++) {
+            if (pol[i].val()) {
+                os &lt;&lt; pol[i].val() &lt;&lt; &quot;x^&quot; &lt;&lt; i;
+                if (i != pol.size() - 1) os &lt;&lt; '+';
+            }
+        }
+#endif
+        return os;
+    }
+
+   private:
+    T freq(int p) const {
+        return size() &lt; p ? 0 : vector&lt;T&gt;::operator[](p);
+    }
+    FPS &amp;shrink() {
+        while (size() &amp;&amp; this-&gt;back() == 0) this-&gt;pop_back();
+        return *this;
+    }
+};
+using FPS = FormalPowerSeries&lt;mint&gt;;
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="golden-section-search-黄金分割探索"><a class="header" href="#golden-section-search-黄金分割探索">Golden Section Search (黄金分割探索)</a></h1>
+<p>黄金分割探索 (三分探索の一つ)。単峰関数の大域最大値 (大域最小値) を求める。二分探索はライブラリ化するまでもないが、(黄金分割探索も含めて) 三分探索は <code>is_convex_upward</code> が <code>true</code> か否かにより実装が少し変わるのでライブラリ化しておくと便利。</p>
+<ul>
+<li><code>golden_section_search(l_lim, r_lim, f, is_convex_upward)</code>: 関数 \(y = f(x)\) において大域最大値 (大域最小値) を取るような \(x\) を求め、\({x, f(x)}\) を返す。<code>is_convex_upward</code> については \(f\) が上に凸なら <code>true</code>、下に凸なら <code>false</code> を指定。</li>
+</ul>
+<h2 id="refs-2"><a class="header" href="#refs-2">Refs</a></h2>
+<ul>
+<li><a href="https://naoyat.hatenablog.jp/entry/2012/01/04/231801">三分探索と黄金分割探索</a>, naoya_t</li>
+</ul>
+<h2 id="impl-3"><a class="header" href="#impl-3">Impl</a></h2>
+<pre><code class="language-cpp">template &lt;class T&gt;
+pair&lt;T, T&gt; golden_section_search(T l_lim, T r_lim, const function&lt;T(T)&gt; &amp;f, bool is_convex_upward) {
+    assert(is_floating_point_v&lt;T&gt;);
+    static constexpr T phi = (1 + sqrtl(5)) / 2, TINF = numeric_limits&lt;T&gt;::max();
+    T l = l_lim, l2 = TINF, r2 = TINF, r = r_lim, f_l2 = TINF, f_r2 = TINF;
+    using Comp = function&lt;bool(T, T)&gt;;
+    const Comp comp = is_convex_upward ? (Comp)less&lt;T&gt;() : (Comp)greater&lt;T&gt;();
+    while (l + 1e-10 &lt; r) {
+        if (l2 == TINF) l2 = (l * phi + r) / (phi + 1), f_l2 = f(l2);
+        if (r2 == TINF) r2 = (l + r * phi) / (phi + 1), f_r2 = f(r2);
+        if (comp(f_l2, f_r2)) {
+            l = l2, l2 = r2, r2 = TINF, f_l2 = f_r2;
+        } else {
+            r = r2, r2 = l2, l2 = TINF, f_r2 = f_l2;
+        }
+    }
+    if (f_r2 == TINF) f_r2 = f(r);
+    return {r, f_r2};
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="lagrange-interpolation-ラグランジュ多項式補間"><a class="header" href="#lagrange-interpolation-ラグランジュ多項式補間">Lagrange Interpolation (ラグランジュ多項式補間)</a></h1>
+<p>ラグランジュ多項式補間。</p>
+<ul>
+<li>constructor <code>LagrangeInterpolation(v)</code>: 配列 <code>v</code> で初期化。 \(\Theta(d)\)</li>
+<li><code>operator()</code>: \(\Theta(d)\)</li>
+</ul>
+<h2 id="refs-3"><a class="header" href="#refs-3">Refs</a></h2>
+<ul>
+<li><a href="https://youtu.be/FhQVDtJyM6o&amp;t=9277s">AtCoder Beginner Contest 208</a>, AtCoder Live, snuke</li>
+</ul>
+<h2 id="impl-4"><a class="header" href="#impl-4">Impl</a></h2>
+<pre><code class="language-cpp">#include &quot;algebra/modular.hpp&quot;
+
+struct LagrangeInterpolation {
+    int d;
+    vector&lt;mint&gt; a;
+    LagrangeInterpolation(vector&lt;mint&gt; &amp;v) : d(v.size() - 1), a(d + 1) {
+        vector&lt;mint&gt; f(d + 1, 1);
+        for (int i = 1; i &lt; d + 1; i++) f[i] = f[i - 1] * i;
+        for (int i = 0; i &lt;= d; i++) {
+            a[i] = v[i] / (f[i] * f[d - i]);
+            if ((d - i) &amp; 1) a[i] *= -1;
+        }
+    }
+    mint operator()(mint x) {
+        vector&lt;mint&gt; r(d + 1, 1);
+        for (int i = d - 1; i &gt;= 0; i--) r[i] = r[i + 1] * (x - i - 1);
+        mint l = 1, res;
+        for (int i = 0; i &lt;= d; i++) res += a[i] * l * r[i], l *= x - i;
+        return res;
+    }
+};
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="linear-sieve-線形篩添え字-gcd-畳み込み"><a class="header" href="#linear-sieve-線形篩添え字-gcd-畳み込み">Linear Sieve (線形篩、添え字 gcd 畳み込み)</a></h1>
+<p>線形篩・最小素因数(<code>min_factors</code>)・GCD 畳み込みの相性がいいことを見つけたので作りました。できることは以下の二つです。</p>
+<ul>
+<li>前計算による高速素因数分解 \(O(d(x))\)</li>
+<li>GCD 畳み込み \(O(\pi(x))\)</li>
+</ul>
+<p>また、計算量表記において、</p>
+<ul>
+<li>\(d(x) := (x の持つ約数の個数) = O(\sqrt{x})\)</li>
+<li>\(\pi(x) := (x 以下である素数の個数) = O(\frac{x}{\log x})\)</li>
+</ul>
+<p>を用います。</p>
+<ul>
+<li>constructor <code>LinearSieve(n, calcs_mob)</code>: 素因数分解する自然数の最大値を <code>n</code>、メビウス関数値の配列 <code>mob</code> を構築するかを <code>calcs_mob</code> として指定。線形篩により <code>min_factors</code>、<code>primes</code> を構築する。なお、<code>min_factors[x]</code> \(:= (整数 x の持つ最小の素因数)\) です。 \(\Theta(n)\)</li>
+<li><code>factorize(x)</code>: 線形篩で前計算した <code>min_factors</code> を用いた自然数 <code>x</code> の素因数分解の結果を返す。int でオーバーフローしない範囲のみ対応。 \(O(d(x))\)<br />
+e.g. <code>7007 -&gt; [(7, 2), (11, 1), (13, 1)]</code></li>
+<li><code>divisors(x, sorted)</code>: <code>factorize(x)</code> を用いて求めた自然数 <code>x</code> の約数の配列を返す。<code>sorted</code> が false のときは未ソートで返す。 \(O(d(x))\)</li>
+<li><code>f1(F)</code>: <code>mob</code> を用いて計算して <code>mobius(F)[1]</code> を返す。 \(O(m)\) (ただし \(m := |F|\))</li>
+<li><code>zeta(f)</code>: <code>primes</code> を用いて、約数系の高速 zeta 変換を行う。 \(O(\pi(m))\) (ただし \(m := |f|\))</li>
+<li><code>mobius(F)</code>: <code>primes</code> を用いて、約数系の高速 mobius 変換を行う。 \(O(\pi(m))\) (ただし \(m := |F|\))</li>
+<li><code>gcd_conv(f, g)</code>: 関数 <code>f</code>、<code>g</code> を添え字 GCD 畳み込みして得た <code>h</code> を返す。 \(O(\pi(m))\) (ただし \(m := max(|f|, |g|)\))<br />
+e.g. <code>f: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]、g: [0, 1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23]</code> のとき<br />
+<code>h: [0, 6336, 1670, 915, 684, 230, 336, 91, 120, 153, 190, 231, 276]</code> となる。</li>
+</ul>
+<h2 id="refs-4"><a class="header" href="#refs-4">Refs</a></h2>
+<h3 id="線形篩"><a class="header" href="#線形篩">線形篩</a></h3>
+<ul>
+<li><a href="https://kanpurin.hatenablog.com/entry/2021/08/14/115825">【競プロ】数学メモ</a>, kanpurin</li>
+</ul>
+<h3 id="添え字-gcd-畳み込み"><a class="header" href="#添え字-gcd-畳み込み">添え字 gcd 畳み込み</a></h3>
+<ul>
+<li><a href="https://drken1215.hatenablog.com/entry/2020/11/06/031600">AtCoder AGC 038 C - LCMs (黄色, 700 点)</a>, drken</li>
+<li><a href="https://noshi91.hatenablog.com/entry/2019/09/23/002445">添え字 gcd での畳み込みで AGC038-C を解く</a>, noshi91</li>
+</ul>
+<h3 id="素数の個数の上からの評価"><a class="header" href="#素数の個数の上からの評価">素数の個数の上からの評価</a></h3>
+<ul>
+<li><a href="https://maspypy.com/%E7%B4%A0%E6%95%B0%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8B%E4%B8%8A%E3%81%8B%E3%82%89%E3%81%AE%E8%A9%95%E4%BE%A1%EF%BC%88%E5%88%9D%E7%AD%89%E7%9A%84%E3%81%AA%E8%A8%BC%E6%98%8E%EF%BC%89">素数に関する上からの評価（初等的な証明）</a>, maspy</li>
+</ul>
+<h2 id="impl-5"><a class="header" href="#impl-5">Impl</a></h2>
+<pre><code class="language-cpp">struct LinearSieve {
+    int _n;
+    vector&lt;int&gt; min_factors, primes, mob;
+    LinearSieve(int n, bool calcs_mob = false) : _n(n), min_factors(_n + 1) {
+        iota(min_factors.begin(), min_factors.end(), 0);
+        if (calcs_mob) mob.assign(_n + 1, -1), mob[1] = 1;
+        for (int i = 2; i &lt;= _n; i++) {
+            if (min_factors[i] == i) primes.push_back(i);
+            int p_lim = min(min_factors[i], _n / i);
+            for (auto &amp;p : primes) {
+                if (p &gt; p_lim) break;
+                min_factors[i * p] = p;
+                if (calcs_mob) mob[i * p] = min_factors[i] == p ? 0 : -mob[i];
+            }
+        }
+    }
+    vector&lt;pair&lt;int, int&gt;&gt; factorize(int x) {
+        assert(0 &lt; x &amp;&amp; x &lt;= _n);
+        vector&lt;pair&lt;int, int&gt;&gt; factors;
+        for (int cur = min_factors[x], ex = 0;; ex++, x /= min_factors[x]) {
+            if (cur != min_factors[x]) {
+                factors.emplace_back(cur, ex);
+                if (x == 1) break;
+                cur = min_factors[x], ex = 0;
+            }
+        }
+        return factors;
+    }
+    vector&lt;int&gt; divisors(int x, bool sorted = false) {
+        vector&lt;int&gt; divs{1};
+        vector&lt;pair&lt;int, int&gt;&gt; factors = factorize(x);
+        for (auto &amp;[b, ex] : factors) {
+            int sz = divs.size();
+            for (int i = 0; i &lt; sz; i++) {
+                int mul = divs[i];
+                for (int j = 0; j &lt; ex; j++) divs.push_back(mul *= b);
+            }
+        }
+        if (sorted) sort(divs.begin(), divs.end());
+        return divs;
+    }
+    template &lt;class T&gt;
+    T f1(vector&lt;T&gt; &amp;F) {
+        int sz = F.size();
+        assert(sz - 1 &lt;= _n &amp;&amp; !mob.empty());
+        T res = 0;
+        for (int i = 0; i &lt; sz; i++) res += F[i] * mob[i];
+        return res;
+    }
+    template &lt;class T&gt;
+    void zeta(vector&lt;T&gt; &amp;f) {
+        int sz = f.size();
+        assert(sz - 1 &lt;= _n);
+        for (auto &amp;p : primes) {
+            if (p &gt;= sz) break;
+            for (int i = (sz - 1) / p; i &gt;= 1; i--) f[i] += f[i * p];
+        }
+    }
+    template &lt;class T&gt;
+    void mobius(vector&lt;T&gt; &amp;F) {
+        int sz = F.size();
+        assert(sz - 1 &lt;= _n);
+        for (auto &amp;p : primes) {
+            if (p &gt;= sz) break;
+            for (int i = 1; i * p &lt; sz; i++) F[i] -= F[i * p];
+        }
+    }
+    template &lt;class T&gt;
+    vector&lt;T&gt; gcd_conv(vector&lt;T&gt; f, vector&lt;T&gt; g, bool is_square = false) {
+        int sz = max(f.size(), g.size());
+        f.resize(sz, 0), g.resize(sz, 0);
+        zeta(f);
+        is_square ? void(g = f) : zeta(g);
+        vector&lt;T&gt; H(sz);
+        for (int i = 1; i &lt; sz; i++) H[i] = f[i] * g[i];
+        mobius(H);
+        return H;
+    }
+};
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="modular-剰余環上の型"><a class="header" href="#modular-剰余環上の型">Modular (剰余環上の型)</a></h1>
+<p>自動で mod を取る構造体。</p>
+<h2 id="usage-1"><a class="header" href="#usage-1">Usage</a></h2>
+<pre><code class="language-cpp">// #include の上に const int MOD = 1e9 + 7; や
+// const int MOD = 998244353; を書いてから使ってください。
+const int MOD = 1e9 + 7;
+#include &quot;algebra/modular.hpp&quot;
+int main() {
+    mint ans = 0;
+    // (中略)
+    return 0;
+}
+</code></pre>
+<h2 id="complexity"><a class="header" href="#complexity">Complexity</a></h2>
+<ul>
+<li>演算:
+<ul>
+<li>割り算: \(O(\log n)\)</li>
+<li>割り算以外: \(O(1)\)</li>
+</ul>
+</li>
+<li><code>mod()</code>: \(O(1)\)</li>
+<li><code>val()</code>: \(O(1)\)</li>
+<li><code>pow(n)</code>: \(O(\log n)\)</li>
+<li><code>inv()</code>: \(O(\log MOD)\)</li>
+</ul>
+<h2 id="refs-5"><a class="header" href="#refs-5">Refs</a></h2>
+<ul>
+<li><a href="https://github.com/atcoder/ac-library/blob/master/atcoder/modint.hpp">https://github.com/atcoder/ac-library/blob/master/atcoder/modint.hpp</a></li>
+</ul>
+<h2 id="impl-6"><a class="header" href="#impl-6">Impl</a></h2>
+<pre><code class="language-cpp">#ifndef MODULAR_HPP
+#define MODULAR_HPP
+
+template &lt;int m&gt;
+struct Modular {
+   private:
+    uint _v;
+    using mint = Modular;
+
+   public:
+    constexpr Modular() : _v(0) {}
+    constexpr Modular(long long v) {
+        v %= 1ll * m;
+        _v = v &lt; 0 ? v + m : v;
+    };
+    mint &amp;operator++() {
+        if (++_v == umod()) _v = 0;
+        return *this;
+    }
+    mint &amp;operator--() {
+        if (_v == 0) _v = umod();
+        return _v--, *this;
+    }
+    mint operator++(int) {
+        mint res = *this;
+        return ++*this, res;
+    }
+    mint operator--(int) {
+        mint res = *this;
+        return --*this, res;
+    }
+    constexpr mint operator-() { return mint() - *this; }
+    mint operator+(const mint &amp;rhs) { return mint(*this) += rhs; }
+    mint operator-(const mint &amp;rhs) { return mint(*this) -= rhs; }
+    mint operator*(const mint &amp;rhs) { return mint(*this) *= rhs; }
+    mint operator/(const mint &amp;rhs) { return mint(*this) /= rhs; }
+    mint &amp;operator+=(const mint &amp;rhs) {
+        _v += rhs._v;
+        if (_v &gt;= umod()) _v -= umod();
+        return *this;
+    }
+    mint &amp;operator-=(const mint &amp;rhs) {
+        _v -= rhs._v;
+        if (_v &gt;= umod()) _v += umod();
+        return *this;
+    }
+    mint &amp;operator*=(const mint &amp;rhs) {
+        _v = 1ll * _v * rhs._v % umod();
+        return *this;
+    }
+    mint &amp;operator/=(const mint &amp;rhs) { return *this = *this * rhs.inv(); }
+    friend mint operator+(const mint &amp;lhs, const mint &amp;rhs) { return mint(lhs) += rhs; }
+    friend mint operator-(const mint &amp;lhs, const mint &amp;rhs) { return mint(lhs) -= rhs; }
+    friend mint operator*(const mint &amp;lhs, const mint &amp;rhs) { return mint(lhs) *= rhs; }
+    friend mint operator/(const mint &amp;lhs, const mint &amp;rhs) { return mint(lhs) /= rhs; }
+    bool operator==(const mint &amp;rhs) { return this-&gt;_v == rhs._v; }
+    bool operator!=(const mint &amp;rhs) { return this-&gt;_v != rhs._v; }
+    static constexpr int mod() { return m; }
+    constexpr uint val() const { return _v; }
+    mint pow(long long n) const {
+        mint x = *this, res = 1;
+        while (n) {
+            if (n &amp; 1) res *= x;
+            x *= x, n /= 2;
+        }
+        return res;
+    }
+    mint inv() const { return pow(umod() - 2); }
+    friend istream &amp;operator&gt;&gt;(istream &amp;is, mint &amp;x) {
+        long long _v;
+        return is &gt;&gt; _v, x = _v, is;
+    }
+    friend ostream&amp; operator&lt;&lt;(ostream&amp; os, const mint&amp; x) { return os &lt;&lt; x.val(); }
+
+   private:
+    static constexpr uint umod() { return m; }
+};
+using mint = Modular&lt;MOD&gt;;
+constexpr mint operator&quot;&quot;_M(unsigned long long x) { return mint(x); }
+
+#endif  // MODULAR_HPP
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="rational-有理数型"><a class="header" href="#rational-有理数型">Rational (有理数型)</a></h1>
+<h2 id="refs-6"><a class="header" href="#refs-6">Refs</a></h2>
+<ul>
+<li><a href="https://ei1333.github.io/library/math/rational/rational.hpp">https://ei1333.github.io/library/math/rational/rational.hpp</a>, ei1333</li>
+</ul>
+<h2 id="impl-7"><a class="header" href="#impl-7">Impl</a></h2>
+<pre><code class="language-cpp">template &lt;class T&gt;
+struct Rational {
+   public:
+//    private:
+    T _nume, _deno;
+
+//    public:
+    Rational(T n = 0, T d = 1) : _nume(n), _deno(d) { normalize(); }
+    Rational &amp;operator=(T n) { return assign(n, 1); }
+    Rational &amp;assign(T n = 0, T d = 1) { return _nume = n, _deno = d, normalize(), *this; }
+    T nume() const { return _nume; }
+    T deno() const { return _deno; }
+    Rational &amp;operator+=(Rational &amp;r) {
+        T g = gcd(_deno, r._deno);
+        _deno /= g, _nume = _nume * (r._deno / g) + r._nume * _deno;
+        g = gcd(_nume, g), _nume /= g, _deno *= r._deno / g;
+        return *this;
+    }
+    Rational &amp;operator-=(const Rational &amp;r) {
+        T g = gcd(_deno, r._deno);
+        _deno /= g, _nume = _nume * (r._deno / g) - r._nume * _deno;
+        g = gcd(_nume, g), _nume /= g, _deno *= r._deno / g;
+        return *this;
+    }
+    Rational &amp;operator*=(const Rational &amp;r) {
+        T g1 = gcd(_nume, r._deno), g2 = gcd(_deno, r._nume);
+        _nume = (_nume / g1) * (r._nume / g2), _deno = (_deno / g2) * (r._deno / g1);
+        return *this;
+    }
+    Rational &amp;operator/=(const Rational &amp;r) {
+        T g1 = gcd(_nume, r._nume), g2 = gcd(_deno, r._deno);
+        _nume = (_nume / g1) * (r._deno / g2), _deno = (_deno / g2) * (r._nume / g1);
+        if (_deno &lt; 0) _nume = -_nume, _deno = -_deno;
+        return *this;
+    }
+    Rational &amp;operator+=(const T &amp;i) { return (*this) += Rational{i}; }
+    Rational &amp;operator-=(const T &amp;i) { return (*this) -= Rational{i}; }
+    Rational &amp;operator*=(const T &amp;i) { return (*this) *= Rational{i}; }
+    Rational &amp;operator/=(const T &amp;i) { return (*this) /= Rational{i}; }
+    Rational operator+(const Rational &amp;r) const { return Rational(*this) += r; }
+    Rational operator-(const Rational &amp;r) const { return Rational(*this) -= r; }
+    Rational operator*(const Rational &amp;r) const { return Rational(*this) *= r; }
+    Rational operator/(const Rational &amp;r) const { return Rational(*this) /= r; }
+    Rational operator+(const T &amp;i) const { return Rational(*this) += i; }
+    Rational operator-(const T &amp;i) const { return Rational(*this) -= i; }
+    Rational operator*(const T &amp;i) const { return Rational(*this) *= i; }
+    Rational operator/(const T &amp;i) const { return Rational(*this) /= i; }
+    Rational operator-() const { return Rational{-_nume, _deno}; }
+    Rational &amp;operator++() { return _nume += _deno, *this; }
+    Rational &amp;operator--() { return _nume -= _deno, *this; }
+    bool operator==(const Rational &amp;r) const { return _nume * r._deno == r._nume * _deno; }
+    bool operator!=(const Rational &amp;r) const { return _nume * r._deno != r._nume * _deno; }
+    bool operator&lt;(const Rational &amp;r) const { return _nume * r._deno &lt; r._nume * _deno; }
+    bool operator&gt;(const Rational &amp;r) const { return _nume * r._deno &gt; r._nume * _deno; }
+    bool operator&lt;=(const Rational &amp;r) const { return _nume * r._deno &lt;= r._nume * _deno; }
+    bool operator&gt;=(const Rational &amp;r) const { return _nume * r._deno &gt;= r._nume * _deno; }
+    template &lt;class Real = double&gt;
+    Real to_double() const { return Real(_nume) / _deno; }
+    Rational abs() const { return Rational{_nume &gt; 0 ? _nume : -_nume, _deno}; }
+    friend ostream &amp;operator&lt;&lt;(ostream &amp;os, const Rational &amp;r) {
+        return os &lt;&lt; r._nume &lt;&lt; '/' &lt;&lt; r._deno, os;
+    }
+
+   private:
+    static T gcd(T a, T b) { return __gcd(a &gt; 0 ? a : a, b &gt; 0 ? b : b); }
+    void normalize() {
+        if (_nume == 0) return _deno = 1, void();
+        if (_nume == 1 || _deno == 1) return;
+        T g = gcd(_nume, _deno);
+        _nume /= g, _deno /= g;
+        if (_deno &lt; 0) _nume = -_nume, _deno = -_deno;
+    }
+};
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="slide-スライド最小値最大値"><a class="header" href="#slide-スライド最小値最大値">Slide (スライド最小値・最大値)</a></h1>
+<ul>
+<li><code>slide(v, k, is_mn)</code>: <code>v</code> に含まれる幅 <code>k</code> の各区間に対する最小値・最大値を格納した配列を返す。<code>is_mn</code> が <code>true</code> ならスライド最小値、<code>false</code> ならスライド最大値。</li>
+</ul>
+<h2 id="refs-7"><a class="header" href="#refs-7">Refs</a></h2>
+<ul>
+<li><a href="https://ei1333.github.io/luzhiled/snippets/dp/slide-min.html">https://ei1333.github.io/luzhiled/snippets/dp/slide-min.html</a>, ei1333</li>
+</ul>
+<h2 id="impl-8"><a class="header" href="#impl-8">Impl</a></h2>
+<pre><code class="language-cpp">template &lt;class T&gt;
+vector&lt;T&gt; slide(const vector&lt;T&gt; &amp;v, int k, bool is_mn) {
+    int n = v.size();
+    assert(n &gt;= k);
+    deque&lt;int&gt; q;
+    vector&lt;T&gt; res;
+    res.reserve(n - k + 1);
+    using Comp = function&lt;bool(T, T)&gt;;
+    Comp comp = is_mn ? Comp(greater_equal&lt;T&gt;()) : Comp(less_equal&lt;T&gt;());
+    for (int i = 0; i &lt; n; i++) {
+        while (!q.empty() &amp;&amp; comp(v[q.back()], v[i])) q.pop_back();
+        q.push_back(i);
+        if (i &gt;= k - 1) {
+            res.push_back(v[q.front()]);
+            if (q.front() == i - k + 1) q.pop_front();
+        }
+    }
+    return res;
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="square-matrix-正方行列の累乗"><a class="header" href="#square-matrix-正方行列の累乗">Square Matrix (正方行列の累乗)</a></h1>
+<p>正方行列の累乗。</p>
+<ul>
+<li>constructor <code>SquareMatrix(n)</code>: <code>n</code> 行 <code>n</code> 列の行列を作り、全要素を \(0\) で初期化。 \(\Theta(n^2)\)</li>
+<li><code>pow(x)</code>: 行列累乗。 \(\Theta(n^3 \log x)\)</li>
+<li><code>print()</code>: デバッグ用。 \(\Theta(n^2)\)</li>
+</ul>
+<h2 id="refs-8"><a class="header" href="#refs-8">Refs</a></h2>
+<ul>
+<li><a href="https://ei1333.github.io/library/math/matrix/square-matrix.cpp">https://ei1333.github.io/library/math/matrix/square-matrix.cpp</a></li>
+</ul>
+<h2 id="impl-9"><a class="header" href="#impl-9">Impl</a></h2>
+<pre><code class="language-cpp">template &lt;class T&gt;
+struct SquareMatrix {
+   private:
+    int _n;
+    T **mat;
+
+   public:
+    SquareMatrix() {}
+    SquareMatrix(int n) : _n(n) {
+        mat = new T *[_n];
+        for (int i = 0; i &lt; _n; i++) {
+            mat[i] = new T[_n];
+            for (int j = 0; j &lt; _n; j++) mat[i][j] = 0;
+        }
+    }
+    T &amp;operator()(int i, int j) const {
+        assert(0 &lt;= i &amp;&amp; i &lt; _n &amp;&amp; 0 &lt;= j &amp;&amp; j &lt; _n);
+        return mat[i][j];
+    }
+    SquareMatrix &amp;operator*=(const SquareMatrix &amp;a) {
+        SquareMatrix mul(_n);
+        for (int i = 0; i &lt; _n; i++) {
+            for (int j = 0; j &lt; a._n; j++) {
+                for (int k = 0; k &lt; _n; k++) mul(i, j) = (mul(i, j) + mat[i][k] * a(k, j));
+            }
+        }
+        swap(mat, mul.mat);
+        return *this;
+    }
+    SquareMatrix operator*(const SquareMatrix &amp;a) const { return SquareMatrix(*this) *= a; }
+    static SquareMatrix id_mat(int m) {
+        SquareMatrix id(m);
+        for (int i = 0; i &lt; m; i++) id(i, i) = 1;
+        return id;
+    }
+    SquareMatrix pow(long long x) {
+        SquareMatrix a(*this), res(SquareMatrix::id_mat(_n));
+        while (x) {
+            if (x &amp; 1) res *= a;
+            a *= a, x /= 2;
+        }
+        return res;
+    }
+    void print() {
+#ifdef _DEBUG
+        for (int i = 0; i &lt; _n; i++) {
+            cout &lt;&lt; '[';
+            for (int j = 0; j &lt; _n; j++) {
+                if (j) cout &lt;&lt; &quot;, &quot;;
+                cout &lt;&lt; (*this)(i, j).val();
+            }
+            cout &lt;&lt; &quot;]\n&quot;;
+        }
+#endif
+    }
+};
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><p>GitHub: <a href="https://github.com/nullputra/nlptr-lib/tree/master/lib/cpp/conv">lib/cpp/conv</a></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="fast-fourier-transform-fft高速フーリエ変換"><a class="header" href="#fast-fourier-transform-fft高速フーリエ変換">Fast Fourier Transform (FFT、高速フーリエ変換)</a></h1>
+<ul>
+<li>struct <code>Angles</code>: <code>ang[i] = (360° / 2^(i+1))</code> としています。</li>
+<li><code>fft(f, is_inverse)</code>: <code>is_inverse</code> が <code>true</code> なら \(f \to F\)、そうでないなら \(F \to f\)。</li>
+<li><code>conv(f, g, is_square)</code>: 関数 <code>f</code>、<code>g</code> を畳み込んで得た <code>h</code> を返す。<code>f</code> == <code>g</code> なら <code>is_square</code> に <code>true</code> を指定することで高速化できる。<code>i</code> 円の主菜と副菜で <code>k</code> 円定食を作る作り方。</li>
+</ul>
+<h2 id="refs-9"><a class="header" href="#refs-9">Refs</a></h2>
+<ul>
+<li><a href="https://ei1333.github.io/library/math/fft/fast-fourier-transform.cpp">https://ei1333.github.io/library/math/fft/fast-fourier-transform.cpp</a>, ei1333</li>
+<li><a href="https://qiita.com/ageprocpp/items/0d63d4ed80de4a35fe79">FFT（高速フーリエ変換）を完全に理解する話</a>, kaage</li>
+</ul>
+<h2 id="impl-10"><a class="header" href="#impl-10">Impl</a></h2>
+<pre><code class="language-cpp">struct Com {
+    double re, im;
+    constexpr Com() : re(), im() {}
+    constexpr Com(double _re, double _im) : re(_re), im(_im) {}
+    double real() { return re; }
+    double imag() { return im; }
+    Com operator+(Com &amp;c) { return {re + c.re, im + c.im}; }
+    Com operator-(Com &amp;c) { return {re - c.re, im - c.im}; }
+    Com operator*(Com &amp;c) { return {re * c.re - im * c.im, re * c.im + im * c.re}; }
+    Com operator/(double d) { return {re / d, im / d}; }
+    Com &amp;operator*=(Com &amp;c) { return *this = (*this) * c; }
+    Com &amp;operator/=(double d) { return *this = (*this) / d; }
+    friend Com conj(Com c) { return {c.re, -c.im}; }
+};
+struct Angles {
+    static constexpr int I_MAX = 30;
+    Com z[I_MAX];
+    constexpr Angles() : z() {
+        for (int i = 0; i &lt; I_MAX; i++) {
+            double ang = 2 * M_PI / (1 &lt;&lt; (i + 1));
+            z[i] = {cos(ang), sin(ang)};
+        }
+    }
+    Com operator[](int i) const {
+        assert(0 &lt;= i &amp;&amp; i &lt; I_MAX);
+        return z[i];
+    }
+};
+constexpr Angles ang;
+void fft(vector&lt;Com&gt; &amp;f, bool is_inverse) {
+    int n = f.size();
+    for (int i = 0, j = 1; j &lt; n; j++) {
+        for (int k = n &gt;&gt; 1; k &gt; (i ^= k); k &gt;&gt;= 1) {}
+        if (i &gt; j) swap(f[i], f[j]);
+    }
+    for (int k = 0, t = 1; t &lt; n; ++k, t &lt;&lt;= 1) {
+        Com bw = is_inverse ? conj(ang[k]) : ang[k];
+        for (int i = 0; i &lt; n; i += t * 2) {
+            Com w(1, 0);
+            for (int j = 0; j &lt; t; j++) {
+                int l = i + j, r = i + j + t;
+                Com c = f[l], d = f[r] * w;
+                f[l] = c + d, f[r] = c - d, w *= bw;
+            }
+        }
+    }
+    if (is_inverse) {
+        for (int i = 0; i &lt; n; i++) f[i] /= n;
+    }
+}
+template &lt;class T&gt;
+vector&lt;T&gt; conv(const vector&lt;T&gt; &amp;f, const vector&lt;T&gt; &amp;g, bool is_square = false) {
+    int f_deg = f.size(), g_deg = g.size(), n = 1;
+    while (n &lt; f_deg + g_deg) n &lt;&lt;= 1;
+    vector&lt;Com&gt; _f(n, Com(0, 0)), _g(n, Com(0, 0));
+    for (int i = 0; i &lt; f_deg; i++) _f[i] = {(double)f[i], 0};
+    for (int i = 0; i &lt; g_deg; i++) _g[i] = {(double)g[i], 0};
+    fft(_f, false);
+    is_square ? void(_g = _f) : fft(_g, false);
+    for (int i = 0; i &lt; n; i++) _f[i] *= _g[i];
+    fft(_f, true);
+    int h_deg = f_deg + g_deg - 1;
+    vector&lt;T&gt; h(h_deg);
+    for (int i = 0; i &lt; h_deg; i++) h[i] = (T)round(_f[i].real());
+    return h;
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="number-theoretic-transform-ntt数論変換"><a class="header" href="#number-theoretic-transform-ntt数論変換">Number Theoretic Transform (NTT、数論変換)</a></h1>
+<p>数論変換。</p>
+<ul>
+<li><code>NumberTheoreticTransform&lt;m&gt;()</code>: 法を <code>m</code> とする。
+有効な素数 <code>m</code> の候補を 3 つ挙げれば、
+<ul>
+<li>\(924844033 = 2^{21} \times 3^2 \times 7^2 + 1\)</li>
+<li>\(998244353 = 2^{23} \times 119 + 1\)</li>
+<li>\(1012924417 = 2^{21} \times 3 \times 7 \times 23 + 1\)</li>
+</ul>
+</li>
+<li><code>ntt(f)</code>: \(f \to F\) 。</li>
+<li><code>conv(f, g, is_square)</code>: 関数 <code>f</code>、<code>g</code> を畳み込んで得た <code>h</code> を返す。<code>f</code> == <code>g</code> なら <code>is_square</code> で高速化できる。<code>i</code> 円の主菜と副菜で <code>k</code> 円定食を作る作り方。</li>
+</ul>
+<h2 id="refs-10"><a class="header" href="#refs-10">Refs</a></h2>
+<ul>
+<li><a href="https://ei1333.github.io/library/math/fft/number-theoretic-transform.cpp">https://ei1333.github.io/library/math/fft/number-theoretic-transform.cpp</a>, ei1333</li>
+<li><a href="https://qiita.com/peria/items/f6912f6d91db409ca87a">FFTとNTTとFMTと</a>, Peria</li>
+<li><a href="https://qiita.com/Sen_comp/items/9401382df736e51564c1">NTT(数論変換)のやさしい解説</a>, Sen_comp</li>
+</ul>
+<h2 id="impl-11"><a class="header" href="#impl-11">Impl</a></h2>
+<pre><code class="language-cpp">#include &quot;algebra/modular.hpp&quot;
+
+template &lt;int m&gt;
+struct NumberTheoreticTransform {
+   private:
+    vector&lt;int&gt; rev{0, 1};
+    vector&lt;mint&gt; rts{0_M, 1_M};
+    // vector&lt;mint&gt; rts;
+    int base = 1, max_base = 0;
+    mint root = 2;
+
+   public:
+    constexpr NumberTheoreticTransform() {
+        // rts.push_back(0);
+        // rts.push_back(1);
+        assert(m &gt;= 3 &amp;&amp; m % 2 == 1);
+        int tmp = m - 1;
+        while (tmp % 2 == 0) tmp &gt;&gt;= 1, max_base++;
+        while (root.pow((m - 1) &gt;&gt; 1) == 1_M) root++;
+        assert(root.pow(m - 1) == 1_M);
+        root = root.pow((m - 1) &gt;&gt; max_base);
+    }
+    void ntt(vector&lt;mint&gt; &amp;f) {
+        int n = f.size(), zeros = __builtin_ctz(n), shift = base - zeros;
+        assert((n &amp; (n - 1)) == 0);
+        ensure_base(zeros);
+        for (int i = 0; i &lt; n; i++) {
+            if (i &lt; (rev[i] &gt;&gt; shift)) swap(f[i], f[rev[i] &gt;&gt; shift]);
+        }
+        for (int k = 1; k &lt; n; k &lt;&lt;= 1) {
+            for (int i = 0; i &lt; n; i += 2 * k) {
+                for (int j = 0; j &lt; k; ++j) {
+                    mint z = f[i + j + k] * rts[j + k];
+                    f[i + j + k] = f[i + j] + m - z;
+                    f[i + j] = f[i + j] + z;
+                }
+            }
+        }
+    }
+    vector&lt;mint&gt; conv(vector&lt;mint&gt; f, vector&lt;mint&gt; g, bool is_square = false) {
+        int h_deg = f.size() + g.size() - 1, n_base = 1;
+        while ((1 &lt;&lt; n_base) &lt; h_deg) n_base++;
+        ensure_base(n_base);
+        int sz = 1 &lt;&lt; n_base;
+        f.resize(sz, 0), g.resize(sz, 0);
+        ntt(f);
+        is_square ? void(g = f) : ntt(g);
+        mint sz_inv = mint(sz).inv();
+        for (int i = 0; i &lt; sz; i++) f[i] *= g[i] * sz_inv;
+        reverse(f.begin() + 1, f.end());
+        ntt(f);
+        f.resize(h_deg);
+        return f;
+    }
+
+   private:
+    void ensure_base(int n_base) {
+        if (n_base &lt;= base) return;
+        rev.resize(1 &lt;&lt; n_base), rts.resize(1 &lt;&lt; n_base);
+        for (int i = 0; i &lt; (1 &lt;&lt; n_base); i++) {
+            rev[i] = (rev[i &gt;&gt; 1] &gt;&gt; 1) + ((i &amp; 1) &lt;&lt; (n_base - 1));
+        }
+        assert(n_base &lt;= max_base);
+        while (base &lt; n_base) {
+            mint z = root.pow(1 &lt;&lt; (max_base - 1 - base));
+            for (int i = 1 &lt;&lt; (base - 1); i &lt; (1 &lt;&lt; base); i++) {
+                rts[i &lt;&lt; 1] = rts[i];
+                rts[(i &lt;&lt; 1) + 1] = rts[i] * z;
+            }
+            base++;
+        }
+    }
+};
+NumberTheoreticTransform&lt;MOD&gt; NTT;
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><p>GitHub: <a href="https://github.com/nullputra/nlptr-lib/tree/master/lib/cpp/data-structures">lib/cpp/data-structures</a></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="binary-indexed-tree-bit"><a class="header" href="#binary-indexed-tree-bit">Binary Indexed Tree (BIT)</a></h1>
+<p>以下で <code>i</code>、<code>l</code>、<code>r</code> は全て 1-indexed です。<br />
+0-indexed で実装したい方は <a href="https://github.com/atcoder/ac-library/blob/master/atcoder/dsu.hpp">atcoder/dsu</a> を見てください。</p>
+<ul>
+<li>constructor <code>BinaryIndexedTree&lt;T&gt;(n)</code>: 配列サイズ <code>n</code> で初期化。 \(\Theta(1)\)</li>
+<li><code>add(x, l, r = -1)</code>: 区間 \([l,r)\) 内の \(i\) に対し <code>v[i] += x</code> をする (区間加算)。ただし \(r\) を未指定だと <code>v[l] += x</code> をする (一点加算)。一点加算と統合したため、変則的だが引数を <code>x</code>、<code>l</code>、<code>r</code> の順としている。 \(O(\log n)\)</li>
+<li><code>sum(i)</code>: \(\sum_{k=1}^{i} v[k]\) を返す。実装の都合上、閉区間なので注意。 \(O(\log n)\)</li>
+<li><code>range_sum(l, r)</code>: \(\sum_{i=l}^{r-1} v[i]\) を返す。 \(O(\log n)\)</li>
+<li><code>operator[](i)</code>: \(v[i]\) を返す。 \(O(\log n)\)</li>
+<li><code>print()</code>: デバッグ用。 \(O(n \log n)\)</li>
+</ul>
+<h2 id="refs-11"><a class="header" href="#refs-11">Refs</a></h2>
+<ul>
+<li><a href="https://algo-logic.info/binary-indexed-tree/">Binary Indexed Tree (BIT) 総まとめ！区間加算や二次元BITまで</a>, 634kami</li>
+</ul>
+<h2 id="impl-12"><a class="header" href="#impl-12">Impl</a></h2>
+<pre><code class="language-cpp">template &lt;class T&gt;
+struct BinaryIndexedTree {
+   private:
+    int _n;
+    vector&lt;vector&lt;T&gt;&gt; v;
+    bool uses_raq = false;
+
+   public:
+    BinaryIndexedTree(int n) : _n(n + 1), v(2, vector&lt;T&gt;(_n)) {}
+    void add(T x, int l, int r = -1) {
+        if (r == -1) {
+            assert(1 &lt;= l &amp;&amp; l &lt;= _n);
+            _add(false, l, x);
+            return;
+        }
+        uses_raq = true;
+        assert(1 &lt;= l &amp;&amp; l &lt;= r &amp;&amp; r &lt;= _n);
+        _add(false, l, -x * (l - 1));
+        _add(false, r, x * (r - 1));
+        _add(true, l, x);
+        _add(true, r, -x);
+    }
+    T sum(int i) {
+        assert(1 &lt;= i &amp;&amp; i &lt;= _n);
+        if (--i == 0) return 0;
+        return uses_raq ? _sum(false, i) + _sum(true, i) * i : _sum(false, i);
+    }
+    T range_sum(int l, int r) {
+        assert(1 &lt;= l &amp;&amp; l &lt;= _n &amp;&amp; 1 &lt;= r &amp;&amp; r &lt;= _n);
+        return sum(r) - sum(l);
+    }
+    T operator[](int i) {
+        assert(1 &lt;= i &amp;&amp; i &lt;= _n);
+        return range_sum(i, i + 1);
+    }
+    void print() {
+#ifdef _DEBUG
+        for (int i = 1; i &lt; _n; i++) cout &lt;&lt; (*this)[i] &lt;&lt; ' ';
+        cout &lt;&lt; '\n';
+#endif
+    }
+
+   private:
+    void _add(bool is_raq, int i, T x) {
+        for (; i &lt; _n; i += i &amp; -i) v[is_raq][i] += x;
+    }
+    T _sum(bool is_raq, int i) {
+        T tot = 0;
+        for (; i &gt; 0; i -= i &amp; -i) tot += v[is_raq][i];
+        return tot;
+    }
+};
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="convex-hull-trick"><a class="header" href="#convex-hull-trick">Convex Hull Trick</a></h1>
+<p>直線 (一次関数) 群の y の最小値を求める。dp の漸化式を整理したときなどに、\(\min(a_i x + b_i)\) の形の式になるとき Convex Hull Trick を使えることがある。add query にて、a が単調非増加 (減少) の状況でのみ使える。</p>
+<ul>
+<li>constructor <code>ConvexHullTrick&lt;T&gt;(a_incr)</code>: <code>a</code> が昇順となるように add query していくなら <code>true</code>、降順で add query するなら <code>false</code> を指定。</li>
+<li><code>add(a, b)</code>: 直線 \(y = ax + b\) を追加。</li>
+<li><code>get(x)</code>: 単調性のため二分探索できる。 \(O((n+q) \log n)\)</li>
+<li><code>get_x_incr(x)</code>: get query の <code>x</code> までも単調なら使える。 \(O(n+q)\)</li>
+<li>(参考) private <code>necessary(p1, p2, p3)</code>:<br>
+交点の x 座標の比較により、直線 \(P_3\) が必要かどうかを評価する。<br />
+\((P_1, P_2 の交点の x 座標) &lt; (P_2, P_3 の交点の x 座標) \Leftrightarrow \frac{b_2 - b_1}{a_1 - a_2} &lt; \frac{b_3 - b_2}{a_2 - a_3}\)</li>
+</ul>
+<h2 id="refs-12"><a class="header" href="#refs-12">Refs</a></h2>
+<ul>
+<li><a href="https://satanic0258.hatenablog.com/entry/2016/08/16/181331">Convex-Hull Trick - sataniC++</a>, satanic0258</li>
+<li><a href="https://ei1333.github.io/library/structure/convex-hull-trick/convex-hull-trick-add-monotone.cpp">https://ei1333.github.io/library/structure/convex-hull-trick/convex-hull-trick-add-monotone.cpp</a>, ei1333</li>
+</ul>
+<h2 id="impl-13"><a class="header" href="#impl-13">Impl</a></h2>
+<pre><code class="language-cpp">template &lt;class T&gt;
+class ConvexHullTrick {
+    deque&lt;pair&lt;T, T&gt;&gt; q;
+    T prev_a;
+    using Comp = function&lt;bool(T, T)&gt;;
+    Comp comp;
+
+   public:
+    ConvexHullTrick(bool a_incr)
+        : comp(a_incr ? Comp(less_equal&lt;T&gt;()) : Comp(greater_equal&lt;T&gt;())),
+          prev_a(a_incr ? numeric_limits&lt;T&gt;::min() : numeric_limits&lt;T&gt;::max()) {}
+    void add(T a, T b) {
+        assert(comp(prev_a, a));
+        prev_a = a;
+        pair&lt;T, T&gt; t(a, b);
+        while (q.size() &gt; 1 &amp;&amp; !necessary(q[q.size() - 2], q[q.size() - 1], t)) q.pop_back();
+        q.push_back(t);
+    }
+    T get(T x) {
+        assert(!q.empty());
+        int ng = -1, ok = q.size() - 1;
+        while (ng + 1 &lt; ok) {
+            int mid = (ng + ok) / 2;
+            (comp(f(mid, x), f(mid + 1, x)) ? ng : ok) = mid;
+        }
+        return f(ok, x);
+    }
+    T get_x_incr(T x) {
+        assert(!q.empty());
+        while (q.size() &gt; 1 &amp;&amp; comp(f(0, x), f(1, x))) q.pop_front();
+        return f(0, x);
+    }
+
+   private:
+    bool necessary(pair&lt;T, T&gt; &amp;p1, pair&lt;T, T&gt; &amp;p2, pair&lt;T, T&gt; &amp;p3) {
+        return (__int128_t)(p2.second - p1.second) * (p2.first - p3.first) &lt;
+               (__int128_t)(p3.second - p2.second) * (p1.first - p2.first);
+    }
+    T f(int i, T &amp;x) { return q[i].first * x + q[i].second; }
+};
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="cumulative-sum-2d-二次元累積和"><a class="header" href="#cumulative-sum-2d-二次元累積和">Cumulative Sum 2d (二次元累積和)</a></h1>
+<ul>
+<li>constructor <code>CumulativeSum2d&lt;T, is_rect_addition&gt;(h, w)</code>: <code>is_rect_addition</code> が <code>true</code> なら矩形加算・点取得、<code>false</code> なら点加算・矩形和取得。</li>
+<li><code>is_rect_addition</code> == <code>true</code> のとき。
+<ul>
+<li><code>add(y1, x1, y2, x2, a)</code>: 矩形 \([y_1, y_2) \times [x_1, x_2)\) に \(a\) を加算。</li>
+<li><code>get(y, x)</code>: 点 \((y, x)\) の値を返す。</li>
+</ul>
+</li>
+<li><code>is_rect_addition</code> == <code>false</code> のとき。
+<ul>
+<li><code>add(y, x, a)</code>: 点 \((y, x)\) に \(a\) を加算。</li>
+<li><code>get(y1, x1, y2, x2)</code>: 矩形 \([y_1, x_1) \times [y_2, x_2)\) の総和を返す。</li>
+</ul>
+</li>
+<li><code>print(prints_prev)</code>: デバッグ用。</li>
+</ul>
+<h2 id="refs-13"><a class="header" href="#refs-13">Refs</a></h2>
+<ul>
+<li><a href="https://ei1333.github.io/luzhiled/snippets/dp/slide-min.html">https://ei1333.github.io/luzhiled/snippets/dp/slide-min.html</a>, ei1333</li>
+</ul>
+<h2 id="impl-14"><a class="header" href="#impl-14">Impl</a></h2>
+<pre><code class="language-cpp">template &lt;class T, bool is_rect_addition&gt;
+struct CumulativeSum2d {
+   private:
+    int _h, _w;
+    vector&lt;vector&lt;T&gt;&gt; v;
+    bool built = false;
+
+   public:
+    CumulativeSum2d(int h, int w) : _h(h + 1), _w(w + 1) { init(); }
+    void init() { v = vector(_h, vector&lt;T&gt;(_w)); }
+    void add(int y1, int x1, int y2, int x2, T a) {
+        assert(is_rect_addition &amp;&amp; !built &amp;&amp; 0 &lt;= y1 &amp;&amp; y1 &lt;= y2 &amp;&amp; y2 &lt; _h &amp;&amp; 0 &lt;= x1 &amp;&amp; x1 &lt;= x2 &amp;&amp; x2 &lt; _w);
+        y1++, x1++, y2++, x2++;
+        v[y1][x1] += a, v[y1][x2] -= a, v[y2][x1] -= a, v[y2][x2] += a;
+    }
+    T get(int y, int x) {
+        assert(is_rect_addition &amp;&amp; 0 &lt;= y &amp;&amp; y &lt; _h &amp;&amp; 0 &lt;= x &amp;&amp; x &lt; _w);
+        build();
+        return v[y + 1][x + 1];
+    }
+    void add(int y, int x, T a) {
+        assert(!is_rect_addition &amp;&amp; !built &amp;&amp; 0 &lt;= y &amp;&amp; y &lt; _h &amp;&amp; 0 &lt;= x &amp;&amp; x &lt; _w);
+        v[y + 1][x + 1] += a;
+    }
+    T get(int y1, int x1, int y2, int x2) {
+        assert(!is_rect_addition &amp;&amp; 0 &lt;= y1 &amp;&amp; y1 &lt;= y2 &amp;&amp; y2 &lt; _h &amp;&amp; 0 &lt;= x1 &amp;&amp; x1 &lt;= x2 &amp;&amp; x2 &lt; _w);
+        build();
+        return v[y2][x2] - v[y1][x2] - v[y2][x1] + v[y1][x1];
+    }
+#ifdef _DEBUG
+    void print(bool prints_prev = true) {
+        auto _print = [&amp;]() {
+            for (int i = 1; i &lt; _h; i++) {
+                for (int j = 1; j &lt; _w; j++) {
+                    if (j &gt; 1) cout &lt;&lt; ' ';
+                    cout &lt;&lt; v[i][j];
+                }
+                cout &lt;&lt; '\n';
+            }
+            cout &lt;&lt; '\n';
+        };
+        if (!built &amp;&amp; prints_prev) _print();
+        build();
+        _print();
+    }
+#else
+    void print(bool = true) {}
+#endif
+
+   private:
+    void build() {
+        if (built) return;
+        built = true;
+        for (int i = 1; i &lt; _h; i++) {
+            for (int j = 1; j &lt; _w; j++) v[i][j] += v[i - 1][j];
+        }
+        for (int i = 1; i &lt; _h; i++) {
+            for (int j = 1; j &lt; _w; j++) v[i][j] += v[i][j - 1];
+        }
+    }
+};
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="swag-sliding-window-aggregation"><a class="header" href="#swag-sliding-window-aggregation">SWAG (Sliding Window Aggregation)</a></h1>
+<p>半群の元からなる列 \(\boldsymbol a = a_0, a_1, \cdots, a_{n-1}\) を扱う。Sparse Table は SWAG で置き換えられることがある。</p>
+<ul>
+<li>constructor <code>SWAG&lt;T&gt;(op, id)</code>: 型 \(T\)、演算 \(op\)、単位元 \(id\) で初期化。 \(\Theta(1)\)</li>
+<li><code>push(x)</code>: \(\boldsymbol a\) の末尾に要素 \(x\) を追加する。 \(\Theta(1)\)</li>
+<li><code>pop()</code>: \(\boldsymbol a\) の先頭にある要素 \(a_0\) を削除する。<code>fold()</code> を返す。 \(\Theta(1)\)</li>
+<li><code>fold()</code>: \(\boldsymbol a\) の要素の総積 \(a_0 \cdot a_1 \cdot \: \cdots \: \cdot a_{n-1}\) を返す。ならし \(\Theta(1)\)</li>
+</ul>
+<h2 id="usage-2"><a class="header" href="#usage-2">Usage</a></h2>
+<pre><code class="language-cpp">#include &quot;data-structures/swag.hpp&quot;
+using ll = long long;
+ll op(ll x, ll y) { return max(x, y); };
+int main() {
+    const ll id = -1e18;
+    using SW = SWAG&lt;ll, op, id&gt;;
+    SW sw;
+}
+</code></pre>
+<h2 id="refs-14"><a class="header" href="#refs-14">Refs</a></h2>
+<ul>
+<li><a href="https://github.com/tatyam-prime/kyopro_library/blob/master/SWAG.cpp">https://github.com/tatyam-prime/kyopro_library/blob/master/SWAG.cpp</a>, tatyam</li>
+<li><a href="https://motsu-xe.hatenablog.com/entry/2021/05/13/224016">SWAG(Sliding Window Aggregation)再考</a>, Motsu_xe</li>
+</ul>
+<h2 id="impl-15"><a class="header" href="#impl-15">Impl</a></h2>
+<pre><code class="language-cpp">template &lt;class T, T (*op)(T, T), T id&gt;
+struct SWAG {
+   private:
+    int sz = 0;
+    vector&lt;T&gt; fold_l, r;
+    T fold_r = id;
+
+   public:
+    SWAG() { assert(op(id, id) == id); }
+    void push(T x) {
+        fold_r = op(fold_r, x);
+        r.push_back(x);
+        sz++;
+    }
+    T pop() {
+        assert(sz &gt; 0);
+        T res = fold();
+        if (fold_l.empty()) {
+            for (int i = sz - 1; i &gt;= 0; i--) fold_l.push_back(r[i]);
+            r.clear();
+            fold_r = id;
+            for (int i = 1; i &lt; sz; i++) fold_l[i] = op(fold_l[i], fold_l[i - 1]);
+        }
+        fold_l.pop_back();
+        sz--;
+        return res;
+    }
+    T fold() {
+        return fold_l.empty() ? fold_r : op(fold_l.back(), fold_r);
+    }
+};
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="segment-tree-遅延評価セグメント木"><a class="header" href="#segment-tree-遅延評価セグメント木">Segment Tree (遅延評価セグメント木)</a></h1>
+<ul>
+<li>constructor <code>SegmentTree&lt;V, T&gt;(vals, _ev, _fv, _et, _ft, _fm)</code>: <code>init(vals)</code> を呼ぶ。</li>
+<li><code>init(vals)</code>: 初期化。</li>
+<li><code>apply(t, l, r = -1)</code>: \([l,r)\) に <code>t</code> を作用する。</li>
+<li><code>leftmost(l, f)</code>: \(val[l:]\) において境界の最左位置。</li>
+<li><code>rightmost(r, f)</code>: \(val[:r]\) において境界の最右位置。</li>
+<li><code>prod(l, r)</code>: \(f[l,r)\) を返す。</li>
+</ul>
+<h2 id="refs-15"><a class="header" href="#refs-15">Refs</a></h2>
+<ul>
+<li><a href="https://betrue12.hateblo.jp/entry/2020/09/23/005940">AtCoder LibraryのLazy Segtreeのチートシート</a>, betrue12</li>
+<li><a href="https://github.com/atcoder/ac-library/blob/master/atcoder/lazysegtree.hpp">https://github.com/atcoder/ac-library/blob/master/atcoder/lazysegtree.hpp</a>, yosupo</li>
+</ul>
+<h2 id="impl-16"><a class="header" href="#impl-16">Impl</a></h2>
+<pre><code class="language-cpp">template &lt;class V, class T&gt;
+struct SegmentTree {
+   private:
+    int n0, n, logn;
+    vector&lt;V&gt; _vals;
+    V _ev;
+    using FV = function&lt;V(V &amp;, V &amp;)&gt;;
+    FV &amp;_fv;
+    vector&lt;T&gt; tag;
+    T _et;
+    using FT = function&lt;T(T &amp;, T &amp;)&gt;;
+    FT &amp;_ft;
+    using FM = function&lt;V(T &amp;, V &amp;)&gt;;
+    FM &amp;_fm;
+
+   public:
+    SegmentTree(vector&lt;V&gt; &amp;vals, V &amp;ev, FV fv, T &amp;et, FT ft, FM fm)
+        : n0(vals.size()), _ev(ev), _fv(fv), _et(et), _ft(ft), _fm(fm) {
+        logn = 31 - __builtin_clz(2 * n0 - 1);
+        n = 1 &lt;&lt; logn;
+        init(vals);
+    }
+    void init(vector&lt;V&gt; &amp;vals) {
+        assert(n0 == (int)vals.size());
+        _vals = vector&lt;V&gt;(n * 2, _ev), tag = vector&lt;T&gt;(n, _et);
+        copy(vals.begin(), vals.end(), _vals.begin() + n);
+        for (int k = n - 1; k &gt; 0; k--) fv_val(k);
+    }
+    void apply(T t, int l, int r = -1) {
+        if (r == -1) {
+            assert(0 &lt;= l &amp;&amp; l &lt; n0);
+            eval(l += n);
+            add_tag(l, t);
+            for (int k = 1; k &lt;= logn; k++) fv_val(l &gt;&gt; k);
+            return;
+        }
+        assert(0 &lt;= l &amp;&amp; l &lt;= r &amp;&amp; r &lt;= n0);
+        if (l == r) return;
+        eval(l += n, r += n);
+        for (int L = l, R = r; L &lt; R; L &gt;&gt;= 1, R &gt;&gt;= 1) {
+            if (L &amp; 1) add_tag(L++, t);
+            if (R &amp; 1) add_tag(--R, t);
+        }
+        for (int k = 1; k &lt;= logn; k++) {
+            if ((l &gt;&gt; k &lt;&lt; k) != l) fv_val(l &gt;&gt; k);
+            if ((r &gt;&gt; k &lt;&lt; k) != r) fv_val((r - 1) &gt;&gt; k);
+        }
+    }
+    template &lt;class F&gt;
+    int leftmost(int l, F &amp;f) {
+        assert(0 &lt;= l &amp;&amp; l &lt;= n0);
+        if (l == n0) return n0 + 1;
+        l += n;
+        eval(l);
+        V cur = _ev;
+        do {
+            l &gt;&gt;= __builtin_ctz(l);
+            if (f(_fv(cur, _vals[l]))) {
+                while (l &lt; n) {
+                    push_tag(l);
+                    l &lt;&lt;= 1;
+                    if (V tmp = _fv(cur, _vals[l]); !f(tmp)) cur = tmp, l++;
+                }
+                return l - n + 1;
+            }
+            cur = _fv(cur, _vals[l++]);
+        } while ((l &amp; -l) != l);
+        return n0 + 1;
+    }
+    template &lt;class F&gt;
+    int rightmost(int r, F &amp;f) {
+        assert(0 &lt;= r &amp;&amp; r &lt;= n0);
+        if (r == 0) return -1;
+        r += n;
+        eval(r - 1);
+        V cur = _ev;
+        do {
+            r &gt;&gt;= __builtin_ctz(r);
+            if (r) r--;
+            if (f(_fv(_vals[r], cur))) {
+                while (r &lt; n) {
+                    push_tag(r);
+                    r = r * 2 + 1;
+                    if (V tmp = _fv(_vals[r], cur); !f(tmp)) cur = tmp, r--;
+                }
+                return r - n;
+            }
+            cur = _fv(_vals[r], cur);
+        } while ((r &amp; -r) != r);
+        return -1;
+    }
+    V prod(int l, int r) {
+        assert(0 &lt;= l &amp;&amp; l &lt;= r &amp;&amp; r &lt;= n0);
+        if (l == r) return _ev;
+        eval(l += n, r += n);
+        V L = _ev, R = _ev;
+        for (; l &lt; r; l &gt;&gt;= 1, r &gt;&gt;= 1) {
+            if (l &amp; 1) L = _fv(L, _vals[l++]);
+            if (r &amp; 1) R = _fv(_vals[--r], R);
+        }
+        return _fv(L, R);
+    }
+    V operator[](int i) {
+        assert(0 &lt;= i &amp;&amp; i &lt;= n0);
+        eval(i += n);
+        return _vals[i];
+    }
+    void print() {
+        cout &lt;&lt; &quot;seg: [&quot;;
+        for (int i = 0; i &lt; n0; i++) {
+            if (i) cout &lt;&lt; &quot;, &quot;;
+            cout &lt;&lt; (*this)[i];
+        }
+        cout &lt;&lt; &quot;]\n&quot;;
+    }
+
+   private:
+    void fv_val(int k) { _vals[k] = _fv(_vals[k &lt;&lt; 1], _vals[k &lt;&lt; 1 | 1]); }
+    void add_tag(int i2, T &amp;tag1) {
+        _vals[i2] = _fm(tag1, _vals[i2]);
+        if (i2 &lt; n) tag[i2] = _ft(tag1, tag[i2]);
+    }
+    void push_tag(int i1) {
+        add_tag(i1 &lt;&lt; 1, tag[i1]);
+        add_tag(i1 &lt;&lt; 1 | 1, tag[i1]);
+        tag[i1] = _et;
+    }
+    void eval(int i) {
+        for (int k = logn; k &gt;= 1; k--) push_tag(i &gt;&gt; k);
+    }
+    void eval(int l, int r) {
+        for (int k = logn; k &gt;= 1; k--) {
+            if ((l &gt;&gt; k &lt;&lt; k) != l) push_tag(l &gt;&gt; k);
+            if ((r &gt;&gt; k &lt;&lt; k) != r) push_tag((r - 1) &gt;&gt; k);
+        }
+    }
+};
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="slope-trick"><a class="header" href="#slope-trick">Slope Trick</a></h1>
+<p>どの傾きも整数である区分線形凸関数 \(f(x)\) を効率的に扱う。以下 \(n = (関数 f の傾きの変化点の個数)\) とする。</p>
+<ol>
+<li>内部実装について。</li>
+</ol>
+<ul>
+<li><code>priority_queue&lt;T&gt; ql;</code>: <code>x &lt; get_min_x()</code> なる \(x\) の max。</li>
+<li><code>priority_queue&lt;T, vector&lt;T&gt;, greater&lt;T&gt;&gt; qr;</code>: <code>x &gt; get_min_x()</code> なる \(x\) の min。</li>
+</ul>
+<ol start="2">
+<li>public な constructor・関数について。</li>
+</ol>
+<ul>
+<li>constructor <code>SlopeTrick&lt;T&gt;()</code></li>
+<li><code>clear_l()</code>: <code>ql</code> を全削除。右側累積 min をする。</li>
+<li><code>clear_r()</code>: <code>qr</code> を全削除。左側累積 min をする。</li>
+<li><code>add_a_minus_x(a)</code>: \(f(x) += a-x\) とする。</li>
+<li><code>add_x_minus_a(a)</code>: \(f(x) += x-a\) とする。</li>
+<li><code>add_ab_x_minus_a(a)</code>: \(f(x) += |x-a|\) とする。</li>
+<li><code>shift_x(x)</code>: \(x += a\) (i.e. \(f(x) \to f(x - a)\) ) とする。</li>
+<li><code>shift_y(y)</code>: \(f(x) += a\) とする。</li>
+<li><code>shift_l(l)</code>: スライド最小値関数。左側のみ <code>shift_x(l)</code> する。</li>
+<li><code>shift_r(r)</code>: スライド最小値関数。右側のみ <code>shift_x(r)</code> する。</li>
+<li><code>get_min_y()</code>: \(min(f(x))\) を返す。</li>
+<li><code>get_min_x()</code>: \(f(x)\) が最小値を取るような \(x\) を返す。</li>
+<li><code>get_fx(x)</code>: \(f(x)\) を返す。副作用: <code>ql</code>、<code>qr</code> を破壊する。</li>
+<li><code>merge(st)</code>: 副作用: <code>st</code> を破壊する。</li>
+</ul>
+<h2 id="refs-16"><a class="header" href="#refs-16">Refs</a></h2>
+<ul>
+<li><a href="https://ei1333.github.io/library/structure/others/slope-trick.cpp">https://ei1333.github.io/library/structure/others/slope-trick.cpp</a>, ei1333</li>
+<li><a href="https://maspypy.com/slope-trick-1-%E8%A7%A3%E8%AA%AC%E7%B7%A8">slope trick (1) 解説編</a>, maspy</li>
+</ul>
+<h2 id="impl-17"><a class="header" href="#impl-17">Impl</a></h2>
+<pre><code class="language-cpp">template &lt;class T&gt;
+struct SlopeTrick {
+   public:
+    static constexpr T TINF = numeric_limits&lt;T&gt;::max() / 3;
+
+   private:
+    T min_y = 0, add_l = 0, add_r = 0;
+    priority_queue&lt;T&gt; ql;
+    priority_queue&lt;T, vector&lt;T&gt;, greater&lt;T&gt;&gt; qr;
+
+   public:
+    void clear_l() {
+        while (!ql.empty()) ql.pop();
+    }
+    void clear_r() {
+        while (!qr.empty()) qr.pop();
+    }
+    void add_a_minus_x(T a) {
+        min_y += max&lt;T&gt;(0, a - top_r());
+        push_r(a);
+        push_l(pop_r());
+    }
+    void add_x_minus_a(T a) {
+        min_y += max&lt;T&gt;(0, top_l() - a);
+        push_l(a);
+        push_r(pop_l());
+    }
+    void add_abs_x_minus_a(T a) {
+        add_a_minus_x(a);
+        add_x_minus_a(a);
+    }
+    void shift_x(T x) { add_l += x, add_r += x; }
+    void shift_y(T y) { min_y += y; }
+    void shift_l(T l) { add_l += l; }
+    void shift_r(T r) { add_r += r; }
+    T get_min_y() { return min_y; }
+    T get_min_x() { return ql.empty() ? qr.empty() ? 0 : top_r() : top_l(); }
+    T get_fx(T x) {
+        T res = min_y;
+        while (!ql.empty()) res += max&lt;T&gt;(0, pop_l() - x);
+        while (!qr.empty()) res += max&lt;T&gt;(0, x - pop_r());
+        return res;
+    }
+    void merge(SlopeTrick &amp;st) {
+        if (st.size() &gt; size()) {
+            swap(st.min_y, min_y);
+            swap(st.add_l, add_l);
+            swap(st.add_r, add_r);
+            swap(st.ql, ql);
+            swap(st.qr, qr);
+        }
+        while (!st.qr.empty()) add_x_minus_a(st.pop_r());
+        while (!st.ql.empty()) add_a_minus_x(st.pop_l());
+        min_y += st.min_y;
+    }
+    int size() { return ql.size() + qr.size(); }
+
+   private:
+    void push_l(T a) { ql.push(a - add_l); }
+    T top_l() { return ql.empty() ? -TINF : ql.top() + add_l; }
+    T pop_l() {
+        T top = top_l();
+        if (!ql.empty()) ql.pop();
+        return top;
+    }
+    void push_r(T a) { qr.push(a - add_r); }
+    T top_r() { return qr.empty() ? TINF : qr.top() + add_r; }
+    T pop_r() {
+        T top = top_r();
+        if (!qr.empty()) qr.pop();
+        return top;
+    }
+};
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="sparse-table"><a class="header" href="#sparse-table">Sparse Table</a></h1>
+<p>更新がない場合に使える。区間の最大値・最小値を求める。演算は min、max の他に gcd、lcm も使える。なお、全てのクエリについて 「<code>l</code>、<code>r</code> の少なくとも一方が区間の端」のときは, 左右からの累積 min、max、gcd か lcm の方が高速 (\(\Theta(n)\))。</p>
+<ul>
+<li>constructor <code>SparseTable(v, f)</code>: 配列 <code>v</code>, 演算関数 \(f\) を用いて初期化。なお \(v[i][j] := (区間 [j,j+2^i) に演算 f を適用した結果)\) です。 \(\Theta(n \log n)\)</li>
+<li><code>get(l, r)</code>: 区間 \([l, r)\) に対し演算 \(f\) を適用した結果を返す。機構としては \(f[l,r) = f{ f[l,l+i), f[r-i,r) }\) です。 \(\Theta(1)\)</li>
+<li><code>print()</code>: デバッグ用。 \(\Theta(n \log n)\)</li>
+</ul>
+<h2 id="refs-17"><a class="header" href="#refs-17">Refs</a></h2>
+<ul>
+<li><a href="https://ei1333.github.io/library/structure/others/sparse-table.cpp">https://ei1333.github.io/library/structure/others/sparse-table.cpp</a>, ei1333</li>
+<li><a href="https://ikatakos.com/pot/programming_algorithm/data_structure/sparse_table">Sparse Table いかたこのたこつぼ</a>, ikatakos</li>
+</ul>
+<h2 id="impl-18"><a class="header" href="#impl-18">Impl</a></h2>
+<pre><code class="language-cpp">template &lt;class T&gt;
+struct SparseTable {
+    int n, logn;
+    vector&lt;vector&lt;T&gt;&gt; _v;
+    using F = function&lt;T(T, T)&gt;;
+    F _f;
+    SparseTable(vector&lt;T&gt; &amp;v, const F &amp;f)
+        : n(v.size()), logn(log2(n) + 1), _v(logn), _f(f) {
+        _v[0].resize(n);
+        for (int j = 0; j &lt; n; j++) _v[0][j] = v[j];
+        for (int i = 1; i &lt; logn; i++) {
+            int i_max = n + 1 - (1 &lt;&lt; i);
+            _v[i].resize(i_max);
+            for (int j = 0; j &lt; i_max; j++) {
+                _v[i][j] = _f(_v[i - 1][j], _v[i - 1][j + (1 &lt;&lt; (i - 1))]);
+            }
+        }
+    }
+    T get(int l, int r) {
+        assert(0 &lt;= l &amp;&amp; l &lt; r &amp;&amp; r &lt;= n);
+        int i = log2(r - l);
+        return _f(_v[i][l], _v[i][r - (1 &lt;&lt; i)]);
+    }
+    void print() {
+#ifdef _DEBUG
+        for (int i = 0; i &lt; logn; i++) {
+            for (int j = 0; j &lt; (n + 1 - (1 &lt;&lt; i)); j++) {
+                string sj = to_string(j);
+                if (sj.size() == 1) sj = ' ' + sj;
+                cout &lt;&lt; &quot;_v[&quot; &lt;&lt; i &lt;&lt; &quot;][&quot; &lt;&lt; sj &lt;&lt; &quot;] = _f[&quot; &lt;&lt; sj &lt;&lt; &quot;,&quot; &lt;&lt; sj &lt;&lt; &quot; + 1&lt;&lt;&quot; &lt;&lt; i &lt;&lt; &quot;) = &quot; &lt;&lt; _v[i][j] &lt;&lt; '\n';
+            }
+        }
+#endif
+    }
+};
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="union-find"><a class="header" href="#union-find">Union Find</a></h1>
+<p>集合を扱うデータ構造 (「Union Find 木」とかかれている文献もあるが、Union Find は木ではない)。集合同士の合併 (<code>merge</code>)、ある要素がどの集合に属しているか (<code>find</code>) をならし \(O(\alpha(n))\) 時間で処理できる (\(\alpha\) はアッカーマンの逆関数)。無向グラフ上の dfs の代用として使えることがある。</p>
+<ul>
+<li>constructor <code>UnionFind(n)</code>: 集合の要素数の最大を <code>n</code> とする。</li>
+<li><code>merge(x, y)</code>: 要素 <code>x</code>、<code>y</code> の属する集合を合併する。<code>merge</code> が必要だったかを返す。 \(O(n)\)</li>
+<li><code>find(x)</code>: 要素 <code>x</code> が属する集合の根 (代表要素) を返す。ならし \(O(\alpha(n))\)</li>
+<li><code>same(x, y)</code>: 要素 <code>x</code>、<code>y</code> が同じ集合に属するかを返す。ならし \(O(\alpha(n))\)</li>
+<li><code>size(x)</code>: 要素 <code>x</code> が属する集合の要素数を返す。ならし \(O(\alpha(n))\)</li>
+<li><code>groups()</code>: 「各集合に含まれる要素の配列」の配列を返す。 \(O(n)\)</li>
+</ul>
+<h2 id="refs-18"><a class="header" href="#refs-18">Refs</a></h2>
+<ul>
+<li><a href="https://pyteyon.hatenablog.com/entry/2019/03/11/200000">競プロ覚書：Union-Find まとめ</a>, pyteyon</li>
+</ul>
+<h2 id="impl-19"><a class="header" href="#impl-19">Impl</a></h2>
+<pre><code class="language-cpp">struct UnionFind {
+   private:
+    int _n;
+    vector&lt;int&gt; par;
+
+   public:
+    UnionFind(int n) : _n(n), par(_n, -1) {}
+    bool merge(int x, int y) {
+        assert(0 &lt;= x &amp;&amp; x &lt; _n &amp;&amp; 0 &lt;= y &amp;&amp; y &lt; _n);
+        x = find(x), y = find(y);
+        if (x == y) return false;
+        if (par[x] &gt; par[y]) swap(x, y);
+        par[x] += par[y], par[y] = x;
+        return true;
+    }
+    int find(int x) {
+        assert(0 &lt;= x &amp;&amp; x &lt; _n);
+        return par[x] &lt; 0 ? x : par[x] = find(par[x]);
+    }
+    bool same(int x, int y) {
+        assert(0 &lt;= x &amp;&amp; x &lt; _n &amp;&amp; 0 &lt;= y &amp;&amp; y &lt; _n);
+        return find(x) == find(y);
+    }
+    int size(int x) {
+        assert(0 &lt;= x &amp;&amp; x &lt; _n);
+        return -par[find(x)];
+    }
+    vector&lt;vector&lt;int&gt;&gt; groups() {
+        vector&lt;int&gt; _find(_n), _size(_n);
+        for (int i = 0; i &lt; _n; i++) _find[i] = find(i), _size[_find[i]]++;
+        vector&lt;vector&lt;int&gt;&gt; res(_n);
+        for (int i = 0; i &lt; _n; i++) res[i].reserve(_size[i]);
+        for (int i = 0; i &lt; _n; i++) res[_find[i]].push_back(i);
+        res.erase(remove_if(res.begin(), res.end(), [](vector&lt;int&gt; &amp;v) { return v.empty(); }), res.end());
+        return res;
+    }
+};
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="weighted-union-find"><a class="header" href="#weighted-union-find">Weighted Union Find</a></h1>
+<p>集合同士の重みの差分の情報を持つデータ構造。集合同士の合併 (<code>merge</code>)、ある要素がどの集合に属しているか (<code>find</code>)、集合同士の重さの差の取得 (<code>diff</code>) をならし \(O(\alpha(n))\) 時間で処理できる (\(\alpha\) はアッカーマンの逆関数)。差分制約系の問題 (<a href="https://tjkendev.github.io/procon-library/python/graph/difference-constraints-ushi.html">牛ゲー</a>など) に用いる。</p>
+<ul>
+<li>constructor <code>WeightedUnionFind(n, id)</code>: 集合の要素数の最大を <code>n</code>、加算と減算の定義された型 (アーベル群という) <code>T</code> の単位元 (大抵は <code>0</code>) を <code>id</code> で初期化。</li>
+<li><code>merge(x, y, w)</code>: 要素 <code>x</code>、<code>y</code> に対し <code>wts[y] - wts[x] == w</code> が成り立つように合併する。<code>merge</code> が必要だったかを返す。 \(O(n)\)</li>
+<li><code>find(x)</code>: 要素 <code>x</code> が属する集合の根 (代表要素) を返す。ならし \(O(\alpha(n))\)</li>
+<li><code>weight(x)</code>: 要素 <code>x</code> が属する集合の重さの総和 <code>wts[x]</code> を返す。ならし \(O(\alpha(n))\)</li>
+<li><code>diff(x, y)</code>: 要素 <code>x</code>、<code>y</code> が属する集合の重さの差 <code>wts[y] - wts[x]</code> を返す。符合付きなので注意。ならし \(O(\alpha(n))\)</li>
+<li><code>same(x, y)</code>: 要素 <code>x</code>、<code>y</code> が同じ集合に属するかを返す。ならし \(O(\alpha(n))\)</li>
+<li><code>size(x)</code>: 要素 <code>x</code> が属する集合の要素の数を返す。ならし \(O(\alpha(n))\)</li>
+</ul>
+<h2 id="refs-19"><a class="header" href="#refs-19">Refs</a></h2>
+<ul>
+<li><a href="https://ei1333.github.io/library/structure/union-find/weighted-union-find.cpp">https://ei1333.github.io/library/structure/union-find/weighted-union-find.cpp</a>, ei1333</li>
+<li><a href="https://qiita.com/drken/items/cce6fc5c579051e64fab">重み付き Union-Find 木とそれが使える問題のまとめ、および、牛ゲーについて</a>, drken</li>
+</ul>
+<h2 id="impl-20"><a class="header" href="#impl-20">Impl</a></h2>
+<pre><code class="language-cpp">template &lt;class T&gt;
+struct WeightedUnionFind {
+   private:
+    int _n;
+    vector&lt;int&gt; par;
+    vector&lt;T&gt; wts;
+
+   public:
+    WeightedUnionFind(int n, T id = 0) : _n(n), par(_n, -1), wts(_n, id) {}
+    bool merge(int x, int y, T w) {
+        assert(0 &lt;= x &amp;&amp; x &lt; _n &amp;&amp; 0 &lt;= y &amp;&amp; y &lt; _n);
+        w += weight(x) - weight(y);
+        x = find(x), y = find(y);
+        if (x == y) return false;
+        if (par[x] &gt; par[y]) swap(x, y), w = -w;
+        par[x] += par[y], par[y] = x, wts[y] += w;
+        return true;
+    }
+    int find(int x) {
+        assert(0 &lt;= x &amp;&amp; x &lt; _n);
+        if (par[x] &lt; 0) return x;
+        int par_x = find(par[x]);
+        wts[x] += wts[par[x]];
+        return par[x] = par_x;
+    }
+    T weight(int x) {
+        assert(0 &lt;= x &amp;&amp; x &lt; _n);
+        find(x);
+        return wts[x];
+    }
+    T diff(int x, int y) {
+        assert(0 &lt;= x &amp;&amp; x &lt; _n &amp;&amp; 0 &lt;= y &amp;&amp; y &lt; _n);
+        return weight(y) - weight(x);
+    }
+    bool same(int x, int y) {
+        assert(0 &lt;= x &amp;&amp; x &lt; _n &amp;&amp; 0 &lt;= y &amp;&amp; y &lt; _n);
+        return find(x) == find(y);
+    }
+    int size(int x) {
+        assert(0 &lt;= x &amp;&amp; x &lt; _n);
+        return -par[find(x)];
+    }
+};
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="zip-座圧"><a class="header" href="#zip-座圧">Zip (座圧)</a></h1>
+<ul>
+<li>constructor <code>Zip(n)</code>: 配列サイズ <code>n</code> で初期化。 \(\Theta(n \log n)\)</li>
+<li><code>operator[]</code>: 座圧前は値の代入用で、座圧後は値の取得用。 \(\Theta(1)\)<br>
+e.g. <code>[8, 100, 33, 33, 33, 12, 6, 1211] -&gt; [1, 4, 3, 3, 3, 2, 0, 5]</code></li>
+</ul>
+<h2 id="refs-20"><a class="header" href="#refs-20">Refs</a></h2>
+<ul>
+<li><a href="https://drken1215.hatenablog.com/entry/2021/08/09/235400">座標圧縮 (座圧)</a>, drken</li>
+</ul>
+<h2 id="impl-21"><a class="header" href="#impl-21">Impl</a></h2>
+<pre><code class="language-cpp">template &lt;class T&gt;
+struct Zip : vector&lt;T&gt; {
+   public:
+    vector&lt;T&gt; uniq;
+
+   private:
+    int _n;
+    bool built = false;
+
+   public:
+    Zip() : _n(0) {}
+    Zip(int n) : _n(n) { this-&gt;resize(_n); }
+    void build() {
+        if (built) return;
+        built = true;
+        uniq = *this;
+        sort(uniq.begin(), uniq.end());
+        uniq.erase(unique(uniq.begin(), uniq.end()), uniq.end());
+        for (int i = 0; i &lt; _n; i++) {
+            (*this)[i] = lower_bound(uniq.begin(), uniq.end(), (*this)[i]) - uniq.begin();
+        }
+    }
+    void push_back(T x) { assert(!built), this-&gt;push_back(x), _n++; }
+    int val_to_ind(T x) { return build(), lower_bound(uniq.begin(), uniq.end(), x) - uniq.begin(); }
+    int size() { return build(), uniq.size(); }
+    void print() {
+        build();
+        cout &lt;&lt; &quot;z: [&quot;;
+        for (int i = 0; i &lt; _n; i++) {
+            if (i) cout &lt;&lt; &quot;, &quot;;
+            cout &lt;&lt; &quot;(&quot; &lt;&lt; (*this)[i] &lt;&lt; &quot;, &quot; &lt;&lt; uniq[(*this)[i]] &lt;&lt; &quot;)&quot;;
+        }
+        cout &lt;&lt; &quot;]\n&quot;;
+    }
+};
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><p>GitHub: <a href="https://github.com/nullputra/nlptr-lib/tree/master/lib/cpp/dp">lib/cpp/dp</a></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="traveling-salesman-problem-巡回セールスマン問題"><a class="header" href="#traveling-salesman-problem-巡回セールスマン問題">Traveling Salesman Problem (巡回セールスマン問題)</a></h1>
+<ul>
+<li><code>traveling_salesman_problem(dists)</code>: 隣接行列 <code>dists</code> から巡回セールスマン問題を解く。すなわち、重み付き有向グラフ <code>dists</code> において、ある始点から全頂点をちょうど 1 回ずつ訪問する最小コストを返す。 \(O(n 2^n)\)</li>
+</ul>
+<h2 id="refs-21"><a class="header" href="#refs-21">Refs</a></h2>
+<ul>
+<li><a href="https://qiita.com/drken/items/7c6ff2aa4d8fce1c9361#11-bit-dp">ビット演算 (bit 演算) の使い方を総特集！ 〜 マスクビットから bit DP まで 〜</a>, drken</li>
+</ul>
+<h2 id="impl-22"><a class="header" href="#impl-22">Impl</a></h2>
+<pre><code class="language-cpp">template &lt;class T&gt;
+T traveling_salesman_problem(const vector&lt;vector&lt;T&gt;&gt; &amp;dist) {
+    constexpr T TINF = numeric_limits&lt;T&gt;::max() / 3;
+    int n = dist.size(), all_bit = (1 &lt;&lt; n) - 1;
+    assert(1 &lt;= n &amp;&amp; n &lt;= 30);
+    vector dp(1 &lt;&lt; n, vector(n, TINF));
+    for (int v = 0; v &lt; n; v++) dp[1 &lt;&lt; v][v] = 0;
+    auto rec = [&amp;](auto self, int s1, int v1) -&gt; T {
+        if (dp[s1][v1] != TINF) return dp[s1][v1];
+        int s0 = s1 ^ (1 &lt;&lt; v1);
+        for (int v0 = 0; v0 &lt; n; v0++) {
+            if (s0 &amp; (1 &lt;&lt; v0) &amp;&amp; dist[v0][v1] &lt; TINF) dp[s1][v1] = min(dp[s1][v1], self(self, s0, v0) + dist[v0][v1]);
+        }
+        if (dp[s1][v1] &gt; TINF) dp[s1][v1] = TINF;
+        return dp[s1][v1];
+    };
+    T res = TINF;
+    for (int v1 = 0; v1 &lt; n; v1++) res = min(res, rec(rec, all_bit, v1));
+    return res;
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><p>GitHub: <a href="https://github.com/nullputra/nlptr-lib/tree/master/lib/cpp/geo">lib/cpp/geo</a></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="vec2-幾何"><a class="header" href="#vec2-幾何">Vec2 (幾何)</a></h1>
+<p>幾何ライブラリです。事前に <code>using V2 = Vec2&lt;double&gt;;</code> や <code>using V2 = Vec2&lt;int&gt;;</code> をして使ってください。</p>
+<ul>
+<li><code>manhattan_dis(v1, v2)</code></li>
+<li><code>inter_seg_pt(a1, a2, b)</code>:
+3 点の位置関係を返す関数。(<code>A</code> \(\neq\) <code>B</code> であることが必要)
+<ul>
+<li><code>AB</code> から見て <code>BC</code> は右に曲がる (つまり 右回り): \(-1\)</li>
+<li><code>AB</code> から見て <code>BC</code> は左に曲がる (つまり 左回り): \(+1\)</li>
+<li><code>CAB</code> の順番で一直線上に並ぶ: <code>-2</code></li>
+<li><code>ABC</code> の順番で一直線上に並ぶ: <code>+2</code></li>
+<li><code>BCA</code> の順番で一直線上に並ぶ: <code>0</code></li>
+</ul>
+</li>
+<li><code>angle(a, b, c)</code>: 角 <code>ABC</code> を返す。</li>
+<li><code>angle_type(a, b, c)</code>: 角 <code>ABC</code> が鋭角なら \(-1\)、直角なら \(0\)、鈍角なら \(1\) を返す。</li>
+<li><code>intersect_type(a1, a2, b1, b2)</code>: 並行なら \(0\)、交わっていれば \(1\)、一致で \(2\). <code>A</code>、<code>B</code>: 直線.</li>
+<li><code>is_intersect_seg(a1, a2, b1, b2)</code>: <code>A</code>、<code>B</code>: 線分。</li>
+<li><code>is_intersect_seg_ray(a1, a2, b, b_arg)</code>: <code>A</code>: 線分、<code>B</code>: 半直線(ray)。</li>
+<li><code>intersection(a1, a2, b1, b2)</code>: 交点の座標を求める。<code>A</code>, <code>B</code>: 直線。</li>
+<li><code>dis(a, b, p)</code>: 直線 <code>AB</code> と点 <code>P</code> の距離。</li>
+<li><code>area_triangle(a, b)</code>: 三角形 OAB の面積を求める (<code>O</code>: 原点)。正号: <code>O</code>、<code>A</code>、<code>B</code> が左回り、負号: <code>O</code>、<code>A</code>、<code>B</code> が右回り。</li>
+<li><code>area_polygon(p)</code>: 正号: <code>O</code>、<code>A</code>、<code>B</code>、 \(\cdots\) が左回り, 負号: <code>O</code>、<code>A</code>、<code>B</code>、 \(\cdots\) が右回り。</li>
+<li><code>center_of_grav_polygon(p)</code>: 重心の座標。</li>
+<li><code>convex_hull</code>: 凸包を形成する頂点の配列を返す。すなわち、外から輪ゴムを付けたとき、輪ゴムと接する頂点の配列を返す。 \(O(n \log n)\)</li>
+</ul>
+<h2 id="refs-22"><a class="header" href="#refs-22">Refs</a></h2>
+<ul>
+<li><a href="https://qiita.com/Reputeless/items/96226cfe1282a014b147">Vec2 クラスを作る（モダンな C++ クラスデザインのためのチュートリアル）</a>, Ryo Suzuki</li>
+<li><a href="https://sen-comp.hatenablog.com/entry/2020/03/12/145742">２．計算幾何のインフラ整備　　　シリーズ：「基礎的計算幾何ライブラリの作り方」</a>, Sen</li>
+<li><a href="https://www.ioi-jp.org/camp/2017/2017-sp_camp-hide.pdf">プログラミングコンテストにおける計算幾何入門</a>, 秀 郁未</li>
+</ul>
+<h2 id="impl-23"><a class="header" href="#impl-23">Impl</a></h2>
+<pre><code class="language-cpp">constexpr double EPS = 1e-10;
+template &lt;class T&gt;
+enable_if_t&lt;is_integral_v&lt;T&gt;, int&gt; sgn(T a) { return (a &gt; 0) - (a &lt; 0); }
+template &lt;class T&gt;
+enable_if_t&lt;is_floating_point_v&lt;T&gt;, int&gt; sgn(T a) { return (a &gt; EPS) - (a &lt; -EPS); }
+template &lt;class T&gt;
+struct Vec2 {
+    T x, y;
+    Vec2(){};
+    Vec2(T _x, T _y) : x(_x), y(_y) {}
+    Vec2 operator+() const { return *this; }
+    Vec2 operator-() const { return {-x, -y}; }
+    Vec2 operator+(const Vec2 &amp;v) const { return {x + v.x, y + v.y}; }
+    Vec2 operator-(const Vec2 &amp;v) const { return {x - v.x, y - v.y}; }
+    Vec2 operator*(T s) const { return {x * s, y * s}; }
+    Vec2 operator/(T s) const {
+        assert(s != 0);
+        return {x / s, y / s};
+    }
+    Vec2 &amp;operator+=(const Vec2 &amp;v) {
+        x += v.x, y += v.y;
+        return *this;
+    }
+    Vec2 &amp;operator-=(const Vec2 &amp;v) {
+        x -= v.x, y -= v.y;
+        return *this;
+    }
+    Vec2 &amp;operator*=(T s) {
+        x *= s, y *= s;
+        return *this;
+    }
+    bool operator==(const Vec2 &amp;v) { return sgn(x - v.x) == 0 &amp;&amp; sgn(y - v.y) == 0; }
+    bool operator!=(const Vec2 &amp;v) { return !(*this == v); }
+    bool operator&lt;(const Vec2 &amp;v) { return sgn(x - v.x) ? sgn(x - v.x) &lt; 0 : sgn(y - v.y) &lt; 0; }
+    double len() const { return sqrt(len_sq()); }
+    T len_sq() const { return x * x + y * y; }
+    T dot(const Vec2 &amp;v) const { return x * v.x + y * v.y; }
+    T cross(const Vec2 &amp;v) const { return x * v.y - y * v.x; }
+    Vec2 rotate(double arg) const {
+        assert(is_floating_point_v&lt;T&gt;);
+        double cs = cos(arg), sn = sin(arg);
+        return {x * cs - y * sn, x * sn + y * cs};
+    }
+    double angle() const { return atan2(y, x); }
+    Vec2 normalized() const {
+        assert(is_floating_point_v&lt;T&gt;);
+        return *this / len();
+    }
+    Vec2 normal_unitized() const {
+        assert(is_floating_point_v&lt;T&gt;);
+        return {-normalized().y, normalized().x};
+    }
+    friend Vec2 operator*(T s, const Vec2 &amp;v) { return {s * v.x, s * v.y}; }
+    friend istream &amp;operator&gt;&gt;(istream &amp;is, Vec2 &amp;v) { return is &gt;&gt; v.x &gt;&gt; v.y; }
+    friend ostream &amp;operator&lt;&lt;(ostream &amp;os, const Vec2 &amp;v) { return os &lt;&lt; v.x &lt;&lt; ' ' &lt;&lt; v.y; }
+};
+template &lt;class T&gt;
+T manhattan_dis(Vec2&lt;T&gt; &amp;v1, Vec2&lt;T&gt; &amp;v2) {
+    Vec2&lt;T&gt; diff = v1 - v2;
+    return abs(diff.x) + abs(diff.y);
+}
+template &lt;class T&gt;
+int inter_seg_pt(const Vec2&lt;T&gt; &amp;a1, const Vec2&lt;T&gt; &amp;a2, const Vec2&lt;T&gt; &amp;b) {
+    int f = sgn((a2 - a1).cross(b - a1));
+    if (f) return f;
+    if (sgn((a2 - a1).dot(b - a1)) &lt; 0) return -2;
+    if (sgn((a1 - a2).dot(b - a2)) &lt; 0) return 2;
+    return 0;
+}
+template &lt;class T&gt;
+long double angle(const Vec2&lt;T&gt; &amp;a, const Vec2&lt;T&gt; &amp;b, const Vec2&lt;T&gt; &amp;c) {
+    long double ang = (c - b).angle() - (a - b).angle();
+    return ang &lt; 0 ? ang + M_PI * 2 : ang;
+}
+template &lt;class T&gt;
+int angle_type(const Vec2&lt;T&gt; &amp;a, const Vec2&lt;T&gt; &amp;b, const Vec2&lt;T&gt; &amp;c) { return -sgn((a - b).dot(c - b)); }
+template &lt;class T&gt;
+int intersect_type(const Vec2&lt;T&gt; &amp;a1, const Vec2&lt;T&gt; &amp;a2, const Vec2&lt;T&gt; &amp;b1, const Vec2&lt;T&gt; &amp;b2) {
+    if ((a2 - a1).cross(b2 - b1) &gt; EPS) return 1;
+    return ((a2 - a1).cross(b1 - a1) &gt; EPS) ? 0 : 2;
+}
+template &lt;class T&gt;
+bool is_intersect_seg(const Vec2&lt;T&gt; &amp;a1, const Vec2&lt;T&gt; &amp;a2, const Vec2&lt;T&gt; &amp;b1, const Vec2&lt;T&gt; &amp;b2) {
+    return inter_seg_pt(a1, a2, b1) * inter_seg_pt(a1, a2, b2) &lt;= 0 &amp;&amp; inter_seg_pt(b1, b2, a1) * inter_seg_pt(b1, b2, a2) &lt;= 0;
+}
+template &lt;class T&gt;
+bool is_intersect_seg_ray(const Vec2&lt;T&gt; &amp;a1, const Vec2&lt;T&gt; &amp;a2, const Vec2&lt;T&gt; &amp;b, const double b_arg) {
+    return angle(a1, b, a2) &gt; b_arg;
+}
+template &lt;class T&gt;
+Vec2&lt;T&gt; intersection(const Vec2&lt;T&gt; &amp;a1, const Vec2&lt;T&gt; &amp;a2, const Vec2&lt;T&gt; &amp;b1, const Vec2&lt;T&gt; &amp;b2) {
+    static constexpr Vec2&lt;T&gt; error_val = {-2022, -2022};
+    if (intersect_type(a1, a2, b1, b2) != 1) return error_val;
+    return a1 + (a2 - a1) * (b1 - a1).cross(b2 - b1) / (a2 - a1).cross(b2 - b1);
+}
+template &lt;class T&gt;
+double dis(const Vec2&lt;T&gt; &amp;a, const Vec2&lt;T&gt; &amp;b, const Vec2&lt;T&gt; &amp;p) {
+    return abs((p - a).cross(b - a) / (b - a).len());
+}
+template &lt;class T&gt;
+double area_triangle(const Vec2&lt;T&gt; &amp;a, const Vec2&lt;T&gt; &amp;b) { return a.cross(b) / 2; }
+template &lt;class T&gt;
+long double area_polygon(const vector&lt;Vec2&lt;T&gt;&gt; &amp;p) {
+    long double area = 0;
+    int sz = p.size();
+    for (int i = 0; i &lt; sz; i++) area += (long double)p[i].cross(p[(i + 1) % sz]) / 2;
+    return area;
+}
+template &lt;class T&gt;
+Vec2&lt;T&gt; center_of_grav_polygon(const vector&lt;Vec2&lt;T&gt;&gt; &amp;p) {
+    int n = p.size();
+    Vec2&lt;T&gt; grav(0, 0);
+    for (int i = 0; i &lt; n; i++) {
+        int j = (i + 1) % n;
+        grav += (p[i] + p[j]) * p[i].cross(p[j]);
+    }
+    return grav / (area_polygon(p) * 3);
+}
+template &lt;class T&gt;
+vector&lt;Vec2&lt;T&gt;&gt; convex_hull(vector&lt;Vec2&lt;T&gt;&gt; &amp;pts) {
+    int n = pts.size();
+    sort(pts.begin(), pts.end());
+    stack&lt;pair&lt;int, int&gt;&gt; conv_idx;
+    conv_idx.emplace(0, 1);
+    for (int i = 2; i &lt; n; i++) {
+        int i1, i2;
+        while (true) {
+            i1 = conv_idx.top().first, i2 = conv_idx.top().second;
+            if (inter_seg_pt(pts[i1], pts[i2], pts[i]) != 1) break;
+            conv_idx.pop();
+            if (conv_idx.empty()) {
+                i2 = i1;
+                break;
+            }
+        }
+        conv_idx.emplace(i2, i);
+    }
+    for (int i = n - 2; i &gt;= 0; i--) {
+        int i1, i2;
+        while (true) {
+            i1 = conv_idx.top().first, i2 = conv_idx.top().second;
+            if (inter_seg_pt(pts[i1], pts[i2], pts[i]) != 1) break;
+            conv_idx.pop();
+            if (conv_idx.empty()) {
+                i2 = i1;
+                break;
+            }
+        }
+        conv_idx.emplace(i2, i);
+    }
+    int i = 0;
+    vector&lt;Vec2&lt;T&gt;&gt; conv(conv_idx.size());
+    while (conv_idx.size()) {
+        conv[i++] = pts[conv_idx.top().first];
+        conv_idx.pop();
+    }
+    return conv;
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><p>GitHub: <a href="https://github.com/nullputra/nlptr-lib/tree/master/lib/cpp/graphs">lib/cpp/graphs</a></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="bellman-ford"><a class="header" href="#bellman-ford">Bellman Ford</a></h1>
+<p>Bellman Ford 法。有向グラフに対し、ある始点から他の頂点への最短距離の配列を求める。負閉路も検出できる。</p>
+<ul>
+<li>constructor <code>BellmanFord(n, m)</code>: 頂点数 <code>n</code>、辺数 <code>m</code> で初期化。<code>m</code> は vector の reserve に使うだけなので \(0\) でもよい。\(\Theta(1)\)</li>
+<li><code>add_edge(from, to, dist)</code>: 頂点 <code>from</code> から <code>to</code> に距離 <code>dist</code> の有向辺を張る。 \(\Theta(1)\)</li>
+<li><code>dists(s = -1, g = -1)</code>: 他の頂点への最短距離の配列を返す。\(O(nm)\)
+<ul>
+<li>
+<ol>
+<li><code>s == -1, g == -1</code> のとき: ただし、始点は任意とし、負閉路があれば代わりに空の配列を返す。</li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li><code>s != -1, g == -1</code> のとき: ただし、始点 <code>s</code> から到達可能である負閉路があれば、代わりに空の配列を返す。</li>
+</ol>
+</li>
+<li>
+<ol start="3">
+<li><code>s != -1, g != -1</code> のとき: ただし、始点 <code>s</code> から終点 <code>g</code> に至るまでに負閉路があれば、代わりに空の配列を返す。(<a href="https://atcoder.jp/contests/abc061/tasks/abc061_d">ABC061 D</a> に特化しています)<br />
+(以下参考)</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>
+<ol start="2">
+<li><code>g == -1</code> のとき: 最短経路の長さは最大 \(n-1\) なので \(n\) 重のループを回している。</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>
+<ol start="3">
+<li><code>s != -1, g != -1</code> のとき: 負閉路の長さは最大 \(n\)、最短経路の長さは最大 \(n-1\) なので、計 \(2 n-1\) 重のループを回す必要がある。(Refs に載せた editorial.pdf も参照してください)</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><code>print()</code>: デバッグ用。これまでに入力した <code>edges</code> を cout する。 \(\Theta(m)\)</li>
+</ul>
+<h2 id="refs-23"><a class="header" href="#refs-23">Refs</a></h2>
+<ul>
+<li>[<a href="https://atcoder.jp/contests/abc061/tasks/abc061_d">ABC061 D</a> editorial.pdf](https://img.atcoder.jp/abc061/editorial.pdf#page=3)</li>
+<li><a href="https://mhrb-minase.hatenablog.com/entry/2019/08/20/003915">ベルマンフォード法について ～負閉路の扱い～</a>, mhrb</li>
+<li><a href="https://algo-logic.info/bellman-ford/">ベルマンフォード法による単一始点最短経路を求めるアルゴリズム</a>, 634kami</li>
+</ul>
+<h2 id="impl-24"><a class="header" href="#impl-24">Impl</a></h2>
+<pre><code class="language-cpp">template &lt;class T&gt;
+struct BellmanFord {
+   public:
+    static constexpr T TINF = numeric_limits&lt;T&gt;::max();
+
+   private:
+    struct Edge {
+        int from, to;
+        T dist;
+    };
+    int _n;
+    vector&lt;Edge&gt; edges;
+
+   public:
+    BellmanFord(int n, int m) : _n(n) { edges.reserve(m); }
+    void add_edge(int from, int to, T dist) {
+        edges.push_back({from, to, dist});
+    }
+    vector&lt;T&gt; dists(int s = -1, int g = -1) {
+        assert(-1 &lt;= s &amp;&amp; s &lt; _n &amp;&amp; -1 &lt;= g &amp;&amp; g &lt; _n);
+        vector&lt;T&gt; dists;
+        if (s == -1) {
+            dists.assign(_n, 0);
+        } else {
+            dists.assign(_n, TINF);
+            dists[s] = 0;
+        }
+        int g_cnt = 0, lp_lim = g == -1 ? _n : _n * 2 - 1;
+        for (int lp = 0; lp &lt; lp_lim; lp++) {
+            bool upd = false;
+            for (auto &amp;[from, to, dist] : edges) {
+                if (dists[from] == TINF) continue;
+                if (dists[to] &gt; dists[from] + dist) {
+                    dists[to] = dists[from] + dist, upd = true;
+                    if (to == g &amp;&amp; ++g_cnt &gt;= 2) return {};
+                }
+            }
+            if (!upd) return dists;
+        }
+        return g == -1 ? vector&lt;T&gt;{} : dists;
+    }
+    void print() {
+#ifdef _DEBUG
+        for (auto &amp;[from, to, dist] : edges) {
+            cout &lt;&lt; &quot;from, to, dist: &quot; &lt;&lt; from &lt;&lt; &quot;, &quot; &lt;&lt; to &lt;&lt; &quot;, &quot; &lt;&lt; dist &lt;&lt; '\n';
+        }
+#endif
+    }
+};
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="dijkstra"><a class="header" href="#dijkstra">Dijkstra</a></h1>
+<p>Dijkstra 法。正の辺のみからなる有向グラフに対し、ある始点から他の頂点への最短距離の配列を求める。</p>
+<ul>
+<li>constructor <code>Dijkstra(n、m)</code>: 頂点数 <code>n</code>、辺数 <code>m</code> で初期化。<code>m</code> は vector の reserve に使うだけなので \(0\) でもよい。 \(\Theta(1)\)</li>
+<li><code>add_edge(from, to, cost)</code>: 頂点 <code>from</code> から <code>to</code> に重み <code>cost</code> の有向辺を張る。 \(\Theta(1)\)</li>
+<li><code>dists(s = 0)</code>: 始点 <code>s</code> から他の頂点への最短距離の配列を返す。 \(O(n \log m)\)</li>
+</ul>
+<h2 id="impl-25"><a class="header" href="#impl-25">Impl</a></h2>
+<pre><code class="language-cpp">template &lt;class Cost&gt;
+class Dijkstra {
+   private:
+    int _n;
+    bool _directed;
+
+   public:
+    struct Edge {
+        int to;
+        Cost cost;
+    };
+    vector&lt;vector&lt;Edge&gt;&gt; edges;
+    vector&lt;Cost&gt; _dists;
+    const Cost COST_INF = numeric_limits&lt;Cost&gt;::max();
+    Dijkstra(int n, bool directed = false) : _n(n), _directed(directed), edges(_n) {}
+    void add_edge(int from, int to, Cost cost) {
+        edges[from].push_back({to, cost});
+        if (!_directed) edges[to].push_back({from, cost});
+    }
+    vector&lt;Cost&gt; dists(int s = 0) {
+        _dists.assign(_n, COST_INF);
+        _dists[s] = 0;
+        priority_queue&lt;pair&lt;Cost, int&gt;, vector&lt;pair&lt;Cost, int&gt;&gt;, greater&lt;pair&lt;Cost, int&gt;&gt;&gt; q;
+        q.emplace(_dists[s], s);
+        while (!q.empty()) {
+            auto [prev_d, v] = q.top();
+            q.pop();
+            if (prev_d &gt; _dists[v]) continue;
+            for (auto &amp;e : edges[v]) {
+                Cost nxt_dis = _dists[v] + e.cost;
+                if (_dists[e.to] &gt; nxt_dis) {
+                    _dists[e.to] = nxt_dis;
+                    q.emplace(_dists[e.to], e.to);
+                }
+            }
+        }
+        return _dists;
+    }
+};
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="dinic-最大流"><a class="header" href="#dinic-最大流">Dinic (最大流)</a></h1>
+<p>Dinic 法。最大流問題を解く。以下、 \(m = (辺数)\) とする。</p>
+<ul>
+<li><code>dinic(n)</code>: 頂点数 <code>n</code> を指定。 \(\Theta(1)\)</li>
+<li><code>add_edge(from, to, cap)</code>: <code>from</code> から <code>to</code> へ最大容量 <code>cap</code> の辺を追加。 \(\Theta(1)\)</li>
+<li><code>get_edge(i)</code>: i 番目に追加した辺を返す。 \(\Theta(1)\)</li>
+<li><code>get_edges()</code>: 全ての辺の配列を返す。 \(\Theta(m)\)</li>
+<li><code>for_each_path(f)</code>: それぞれの path に対し関数 f を作用する。 \(\Theta(m)\) (関数 <code>f</code> が \(\Theta(1)\) のとき)</li>
+<li><code>change_edge(new_cap, new_flow)</code>: i 番目に追加した辺の容量, 流量を <code>new_cap</code>, <code>new_flow</code> に変更する。 \(\Theta(1)\)</li>
+<li><code>flow(s, t, f_lim)</code>: 頂点 <code>s</code> から <code>t</code> へ流量が <code>f_lim</code> 以下の範囲でできる限り流し, 流した量を返す。 計算量は \(O(n^2 m)\) だが, worst case となることは殆どない。</li>
+<li><code>min_cut(s)</code>: 頂点 <code>s</code> から <code>i</code> への残余グラフで到達可能かどうかの配列を返す。 \(O(n+m)\)</li>
+</ul>
+<h2 id="refs-24"><a class="header" href="#refs-24">Refs</a></h2>
+<ul>
+<li><a href="https://github.com/atcoder/ac-library/blob/master/atcoder/maxflow.hpp">https://github.com/atcoder/ac-library/blob/master/atcoder/maxflow.hpp</a>, yosupo</li>
+</ul>
+<h2 id="impl-26"><a class="header" href="#impl-26">Impl</a></h2>
+<pre><code class="language-cpp">template &lt;class T&gt;
+struct Dinic {
+   private:
+    int _n;
+    struct _Edge {
+        int to, rev_idx;
+        T cap;
+    };
+    vector&lt;pair&lt;int, int&gt;&gt; pos;
+    vector&lt;vector&lt;_Edge&gt;&gt; edges;
+    static constexpr T TINF = numeric_limits&lt;T&gt;::max();
+
+   public:
+    struct Edge {
+        int from, to;
+        T cap, flow;
+    };
+    Dinic(int n) : _n(n), edges(_n) {}
+    void add_edge(int from, int to, T cap = 1) {
+        int from_idx = edges[from].size(), to_idx = edges[to].size();
+        pos.emplace_back(from, from_idx);
+        if (from == to) to_idx++;
+        edges[from].push_back({to, to_idx, cap});
+        edges[to].push_back({from, from_idx, 0});
+    }
+    Edge get_edge(int i) {
+        auto &amp;e = edges[pos[i].first][pos[i].second], &amp;re = edges[e.to][e.rev_idx];
+        return Edge{pos[i].first, e.to, e.cap + re.cap, re.cap};
+    }
+    vector&lt;Edge&gt; get_edges() {
+        int m = pos.size();
+        vector&lt;Edge&gt; res;
+        for (int i = 0; i &lt; m; i++) res.push_back(get_edge(i));
+        return res;
+    }
+    void for_each_path(const function&lt;void(int, int, T)&gt; &amp;f) {
+        for (auto &amp;[from, rev_idx] : pos) {
+            auto &amp;e = edges[from][rev_idx];
+            f(from, e.to, edges[e.to][e.rev_idx].cap);
+        }
+    }
+    void change_edge(int i, T new_cap, T new_flow) {
+        auto &amp;e = edges[pos[i].first][pos[i].second], &amp;re = edges[e.to][e.rev_idx];
+        e.cap = new_cap - new_flow, re.cap = new_flow;
+    }
+    T flow(int s, int t, T f_lim = -1) {
+        if (f_lim == -1) f_lim = TINF;
+        vector&lt;int&gt; level(_n), cur_iter(_n);
+        auto set_level = [&amp;]() {
+            fill(level.begin(), level.end(), -1);
+            level[s] = 0;
+            queue&lt;int&gt; q;
+            q.push(s);
+            while (!q.empty()) {
+                int from = q.front();
+                q.pop();
+                for (auto &amp;e : edges[from]) {
+                    if (e.cap == 0 || level[e.to] &gt;= 0) continue;
+                    level[e.to] = level[from] + 1;
+                    if (e.to == t) return;
+                    q.push(e.to);
+                }
+            }
+        };
+        auto try_to_flow = [&amp;](auto self, int v, T f_in) {
+            if (v == s) return f_in;
+            T f_out = 0;
+            for (int &amp;i = cur_iter[v]; i &lt; (int)edges[v].size(); i++) {
+                auto &amp;e = edges[v][i];
+                if (level[v] &lt;= level[e.to] || edges[e.to][e.rev_idx].cap == 0) continue;
+                T f_part = self(self, e.to, min(f_in - f_out, edges[e.to][e.rev_idx].cap));
+                if (f_part &lt;= 0) continue;
+                edges[v][i].cap += f_part, edges[e.to][e.rev_idx].cap -= f_part, f_out += f_part;
+                if (f_out == f_in) break;
+            }
+            return f_out;
+        };
+        T f_res = 0;
+        while (f_res &lt; f_lim) {
+            set_level();
+            if (level[t] == -1) break;
+            fill(cur_iter.begin(), cur_iter.end(), 0);
+            while (f_res &lt; f_lim) {
+                T f_part = try_to_flow(try_to_flow, t, f_lim - f_res);
+                if (!f_part) break;
+                f_res += f_part;
+            }
+        }
+        return f_res;
+    }
+    vector&lt;bool&gt; get_min_cut(int s) {
+        vector&lt;bool&gt; reachable(_n);
+        queue&lt;int&gt; q;
+        q.push(s);
+        while (!q.empty()) {
+            int p = q.front();
+            q.pop();
+            reachable[p] = true;
+            for (auto &amp;e : edges[p]) {
+                if (e.cap &amp;&amp; !reachable[e.to]) {
+                    reachable[e.to] = true;
+                    q.push(e.to);
+                }
+            }
+        }
+        return reachable;
+    }
+    void print() {
+#ifdef _DEBUG
+        for (auto &amp;[from, rev_idx] : pos) {
+            auto &amp;e = edges[from][rev_idx], &amp;rev_e = edges[e.to][e.rev_idx];
+            cout &lt;&lt; from &lt;&lt; &quot;-&gt;&quot; &lt;&lt; e.to &lt;&lt; &quot; (flowed: &quot; &lt;&lt; rev_e.cap &lt;&lt; &quot;/&quot; &lt;&lt; e.cap + rev_e.cap &lt;&lt; &quot;)\n&quot;;
+        }
+#endif
+    }
+};
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="kruskal"><a class="header" href="#kruskal">Kruskal</a></h1>
+<p>Kruskal 法。無向グラフに対し、全域を包囲できる木の最小コストを取得する。この時に作られる木を最小全域木という。</p>
+<ul>
+<li>constructor <code>Kruskal(n, m)</code>: 頂点数 <code>n</code>, 辺数 <code>m</code> で初期化。<code>m</code> は vector の reserve に使うだけなので <code>0</code> でも問題ないです。 \(\Theta(1)\)</li>
+<li><code>add_edge(u, v, c)</code>: 頂点 <code>u</code>、<code>v</code> の間にコスト <code>c</code> の辺を張る。 \(\Theta(1)\)</li>
+<li><code>build(builds_mst)</code>: MST の頂点数を返す (全域を包囲できたら <code>n</code> に一致)。<code>builds_mst</code> が <code>true</code> なら MST を構築する。 \(O(m \log m)\)</li>
+</ul>
+<h2 id="refs-25"><a class="header" href="#refs-25">Refs</a></h2>
+<ul>
+<li><a href="https://algo-logic.info/kruskal-mst/">クラスカル法による最小全域木を求めるアルゴリズム</a>, 634kami</li>
+</ul>
+<h2 id="impl-27"><a class="header" href="#impl-27">Impl</a></h2>
+<pre><code class="language-cpp">#include &quot;data-structures/union-find.hpp&quot;
+template &lt;class T&gt;
+struct Kruskal {
+   public:
+    struct Edge {
+        int u, v;
+        T cost;
+        bool operator&lt;(const Edge &amp;rhs) { return cost &lt; rhs.cost; }
+    };
+    vector&lt;Edge&gt; mst;
+    T cost_tot = 0;
+
+   private:
+    int _n;
+    vector&lt;Edge&gt; edges;
+
+   public:
+    Kruskal(int n, int m) : _n(n) { edges.reserve(m); }
+    void add_edge(int u, int v, T c) { edges.push_back({u, v, c}); }
+    int build(bool builds_mst = false) {
+        sort(edges.begin(), edges.end());
+        UnionFind uf(_n);
+        for (auto &amp;e : edges) {
+            if (!uf.same(e.u, e.v)) {
+                uf.merge(e.u, e.v);
+                if (builds_mst) mst.push_back(e);
+                cost_tot += e.cost;
+            }
+        }
+        return uf.size(edges[0].u);
+    }
+};
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="prim"><a class="header" href="#prim">Prim</a></h1>
+<p>Prim 法ですが隣接リストではなく隣接行列を受け取ります。無向グラフに対し、全域を包囲できる木の最小コストを取得する。この時に作られる木を最小全域木という。</p>
+<ul>
+<li>constructor <code>Prim(adja)</code>: 頂点間に結ばれるコストを表す隣接行列 <code>adja</code> を受け取り、最小全域木を構成する辺のコストの総和を返す。 \(\Theta(n^2)\) (ただし \(n = (頂点数)\))</li>
+</ul>
+<h3 id="note"><a class="header" href="#note">Note</a></h3>
+<p>MST 構築は作っていません。 (Kruskal を使えばいいため)</p>
+<h2 id="refs-26"><a class="header" href="#refs-26">Refs</a></h2>
+<ul>
+<li><a href="https://algo-logic.info/prim-mst/">プリム法による最小全域木を求めるアルゴリズム</a>, 634kami</li>
+</ul>
+<h2 id="impl-28"><a class="header" href="#impl-28">Impl</a></h2>
+<pre><code class="language-cpp">template &lt;class T&gt;
+struct Prim {
+    T cost_tot = 0;
+    static constexpr T TINF = numeric_limits&lt;T&gt;::max();
+    Prim(vector&lt;vector&lt;T&gt;&gt; &amp;adja) {
+        int n = adja.size();
+        vector&lt;T&gt; min_cost(n, TINF);
+        min_cost[0] = 0;
+        vector&lt;bool&gt; vis(n);
+        while (true) {
+            int from = -1;
+            for (int u = 0; u &lt; n; u++) {
+                if (!vis[u] &amp;&amp; (from == -1 || min_cost[u] &lt; min_cost[from])) from = u;
+            }
+            if (from == -1) break;
+            vis[from] = true;
+            cost_tot += min_cost[from];
+            for (int to = 0; to &lt; n; to++) {
+                if (adja[from][to] != -1) min_cost[to] = min(min_cost[to], adja[from][to]);
+            }
+        }
+    }
+};
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="topological-sort"><a class="header" href="#topological-sort">Topological Sort</a></h1>
+<p>DAG (directed acyclic graph、有向非巡回グラフ) の各ノードを順序付けして、どのノードもその出力辺の先のノードより前に来るように並べる。DAG であることと topological sort 出来ることは同値。閉路検出機能は作っていません。</p>
+<ul>
+<li><code>topological_sort(edges)</code>: topological sort された頂点の配列を返す。入力された <code>edges</code> が DAG でないなら空の配列を返す。 \(O(n+m)\) (ただし、 \(n = (頂点数)、m = (辺数)\))</li>
+</ul>
+<h2 id="refs-27"><a class="header" href="#refs-27">Refs</a></h2>
+<ul>
+<li><a href="https://algo-logic.info/topological-sort/">トポロジカルソートのアルゴリズム（閉路のない有向グラフDAGのソート）</a>, 634kami</li>
+</ul>
+<h2 id="impl-29"><a class="header" href="#impl-29">Impl</a></h2>
+<pre><code class="language-cpp">vector&lt;int&gt; topological_sort(vector&lt;vector&lt;int&gt;&gt; &amp;edges) {
+    int n = edges.size();
+    vector&lt;int&gt; cnt(n);
+    for (int v1 = 0; v1 &lt; n; v1++) {
+        for (auto &amp;v2 : edges[v1]) cnt[v2]++;
+    }
+    queue&lt;int&gt; q;
+    for (int v = 0; v &lt; n; v++) {
+        if (cnt[v] == 0) q.push(v);
+    }
+    vector&lt;int&gt; sorted;
+    sorted.reserve(n);
+    while (!q.empty()) {
+        int v1 = q.front();
+        q.pop();
+        sorted.push_back(v1);
+        if ((int)sorted.size() == n) return sorted;
+        for (auto &amp;v2 : edges[v1]) {
+            if (--cnt[v2] == 0) q.push(v2);
+        }
+    }
+    return {};
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><p>GitHub: <a href="https://github.com/nullputra/nlptr-lib/tree/master/lib/cpp/others">lib/cpp/others</a></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="fast-iostream"><a class="header" href="#fast-iostream">Fast IOStream</a></h1>
+<p>高速入出力します。整数型のみ対応。</p>
+<h2 id="impl-30"><a class="header" href="#impl-30">Impl</a></h2>
+<pre><code class="language-cpp">struct FastIstream {
+    FastIstream() { cin.tie(nullptr), ios::sync_with_stdio(false); }
+    void tie(ostream *) {}
+    template &lt;class T&gt;
+    friend enable_if_t&lt;is_integral_v&lt;T&gt;, FastIstream&gt; &amp;operator&gt;&gt;(FastIstream &amp;os, T &amp;x) {
+        bool f = false;
+        int c = getchar();
+        while (isspace(c)) c = getchar();
+        if (c == '-') f = true, c = getchar();
+        x = 0;
+        for (; isdigit(c); c = getchar()) x = x * 10 + (c - '0');
+        if (f) x = -x;
+        return os;
+    }
+    template &lt;class T&gt;
+    friend enable_if_t&lt;!is_integral_v&lt;T&gt;, FastIstream&gt; &amp;operator&gt;&gt;(FastIstream &amp;os, T &amp;x) {
+        cin &gt;&gt; x;
+        return os;
+    }
+} _cin;
+#define cin _cin
+struct FastOstream {
+    template &lt;class T&gt;
+    friend enable_if_t&lt;is_integral_v&lt;T&gt;, FastOstream&gt; &amp;operator&lt;&lt;(FastOstream &amp;os, T x) {
+        static char buf[20];
+        if (x &lt; 0) putchar('-'), x = -x;
+        int len = 0;
+        for (; !len || x; x /= 10) buf[len++] = x % 10 + '0';
+        while (len) putchar(buf[--len]);
+        return os;
+    }
+    friend FastOstream &amp;operator&lt;&lt;(FastOstream &amp;os, char x) {
+        putchar(x);
+        return os;
+    }
+    template &lt;class T&gt;
+    friend enable_if_t&lt;!is_integral_v&lt;T&gt;, FastOstream&gt; &amp;operator&lt;&lt;(FastOstream &amp;os, const T &amp;x) {
+        cout &lt;&lt; x;
+        return os;
+    }
+} _cout;
+#define cout _cout
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="policy-based-data-structures-g-拡張"><a class="header" href="#policy-based-data-structures-g-拡張">Policy Based Data Structures (g++ 拡張)</a></h1>
+<ul>
+<li>使い方:
+<ul>
+<li><code>rb_set&lt;T, Comp = less&lt;T&gt;&gt;</code>: <code>std::set</code> に当たる。</li>
+<li><code>hash_table&lt;T, U&gt;</code>: <code>std::unordered_map</code> に当たる。</li>
+</ul>
+</li>
+</ul>
+<h2 id="refs-28"><a class="header" href="#refs-28">Refs</a></h2>
+<ul>
+<li><a href="https://xuzijian629.hatenablog.com/entry/2018/12/01/000010">Policy Based Data Structures</a>, xuzijian629</li>
+<li><a href="https://codeforces.com/blog/entry/62393">Blowing up unordered_map, and how to stop getting hacked on it</a>, neal</li>
+</ul>
+<h2 id="impl-31"><a class="header" href="#impl-31">Impl</a></h2>
+<pre><code class="language-cpp">#include &lt;ext/pb_ds/assoc_container.hpp&gt;
+#include &lt;ext/pb_ds/tree_policy.hpp&gt;
+
+using namespace __gnu_pbds;
+
+template &lt;class T, class Comp = less&lt;T&gt;&gt;
+using rb_set = tree&lt;T, null_type, Comp, rb_tree_tag, tree_order_statistics_node_update&gt;;
+
+struct custom_hash {
+    static ulong splitmix64(ulong x) {
+        x += 0x9e3779b97f4a7c15;
+        x = (x ^ (x &gt;&gt; 30)) * 0xbf58476d1ce4e5b9;
+        x = (x ^ (x &gt;&gt; 27)) * 0x94d049bb133111eb;
+        return x ^ (x &gt;&gt; 31);
+    }
+    size_t operator()(ulong x) const {
+        static const ulong FIXED_RANDOM = chrono::steady_clock::now().time_since_epoch().count();
+        return splitmix64(x + FIXED_RANDOM);
+    }
+    size_t operator()(pair&lt;int, int&gt; x) const {
+        return operator()(ulong(x.first) &lt;&lt; 32 | x.second);
+    }
+};
+template &lt;class T, class U&gt;
+using hash_table = gp_hash_table&lt;T, U, custom_hash&gt;;
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="debughpp"><a class="header" href="#debughpp">debug.hpp</a></h1>
+<h2 id="impl-32"><a class="header" href="#impl-32">Impl</a></h2>
+<pre><code class="language-cpp">#ifndef DEBUG_HPP
+#define DEBUG_HPP
+
+#include &lt;assert.h&gt;
+#include &lt;math.h&gt;
+#include &lt;atcoder/modint&gt;
+#include &lt;chrono&gt;
+#include &lt;iostream&gt;
+#include &lt;map&gt;
+#include &lt;queue&gt;
+#include &lt;set&gt;
+#include &lt;sstream&gt;
+#include &lt;stack&gt;
+#include &lt;string&gt;
+#include &lt;tuple&gt;
+#include &lt;unordered_map&gt;
+#include &lt;vector&gt;
+
+// [isdbg]
+#ifdef _DEBUG
+const bool isdbg = true;
+#else
+const bool isdbg = false;
+#endif
+
+// [to_string extender]
+namespace std {
+
+// std::string, const char*, char
+template &lt;class T&gt;
+string to_string(T x) {
+    stringstream ss;
+    ss &lt;&lt; x;
+    string res;
+    getline(ss, res);
+    return &quot;\033[1;33m&quot; + res + &quot;\033[m&quot;;
+}
+
+// atcoder::static_modint&lt;m&gt;
+template &lt;int m&gt;
+string to_string(atcoder::static_modint&lt;m&gt; x) {
+    return to_string(x.val());
+}
+
+// __int128_t
+string to_string(__int128_t x) {
+    static const string digs = &quot;0123456789&quot;;
+    string s;
+    __uint128_t _x = x &lt; 0 ? -x : x;
+    do {
+        s = digs[_x % 10] + s;
+    } while (_x /= 10);
+    if (x &lt; 0) s = &quot;-&quot; + s;
+    return s;
+}
+
+// internal_brackets_parse()
+template &lt;class T&gt;
+string to_string(vector&lt;T&gt; v) { return internal_brackets_parse(v, &quot;[]&quot;); }
+template &lt;class T, ulong n&gt;
+string to_string(array&lt;T, n&gt; a) { return internal_brackets_parse(a); }
+template &lt;class T&gt;
+string to_string(set&lt;T&gt; st) { return internal_brackets_parse(st); }
+template &lt;class K, class V&gt;
+string to_string(map&lt;K, V&gt; mp) { return internal_brackets_parse(mp); }
+template &lt;class K, class V&gt;
+string to_string(unordered_map&lt;K, V&gt; mp) { return internal_brackets_parse(mp); }
+template &lt;class T&gt;
+string to_string(deque&lt;T&gt; q) { return internal_brackets_parse(q); }
+
+template &lt;class A&gt;
+string internal_brackets_parse(A v, string brs = &quot;{}&quot;) {
+    assert(v.size() &lt; 4096);  // avoid segfault
+    string res;
+    for (auto x : v) res += to_string(x) + &quot;, &quot;;
+    return brs[0] + res.substr(0, res.size() - 2) + brs[1];
+}
+
+// std::priority_queue, std::queue, std::stack
+template &lt;class T, class Comp&gt;
+string to_string(priority_queue&lt;T, vector&lt;T&gt;, Comp&gt; q) {
+    string res;
+    while (!q.empty()) res = to_string(q.top()) + &quot;, &quot; + res, q.pop();
+    return &quot;heapq(&quot; + res.substr(0, res.size() - 2) + &quot;)&quot;;
+}
+template &lt;class T&gt;
+string to_string(queue&lt;T&gt; q) {
+    string res;
+    while (!q.empty()) res = to_string(q.front()) + &quot;, &quot; + res, q.pop();
+    return &quot;queue(&quot; + res.substr(0, res.size() - 2) + &quot;)&quot;;
+}
+template &lt;class T&gt;
+string to_string(stack&lt;T&gt; st) {
+    string res;
+    while (!st.empty()) res = to_string(st.top()) + &quot;, &quot; + res, st.pop();
+    return &quot;stack(&quot; + res.substr(0, res.size() - 2) + &quot;)&quot;;
+}
+
+// std::pair
+template &lt;class S, class T&gt;
+string to_string(pair&lt;S, T&gt; p) {
+    return &quot;(&quot; + to_string(p.first) + &quot;, &quot; + to_string(p.second) + &quot;)&quot;;
+}
+
+// std::tuple
+// Ref: https://theolizer.com/cpp-school2/cpp-school2-20/
+template &lt;class Tuple, size_t... I&gt;
+string internal_tuple_parse(Tuple t, index_sequence&lt;I...&gt;) {
+    string res;
+    using swallow = int[];
+    (void)swallow{(res += to_string(get&lt;I&gt;(t)) + &quot;, &quot;, 0)...};
+    return &quot;(&quot; + res.substr(0, res.size() - 2) + &quot;)&quot;;
+}
+template &lt;class... Args&gt;
+string to_string(tuple&lt;Args...&gt; t) {
+    constexpr size_t n = tuple_size&lt;tuple&lt;Args...&gt;&gt;::value;
+    return internal_tuple_parse(t, make_index_sequence&lt;n&gt;{});
+}
+
+}  // namespace std
+
+template &lt;class T&gt;
+std::vector&lt;T&gt; internal_make_v(T *a, int n) {
+    std::vector&lt;T&gt; res(n);
+    for (int i = 0; i &lt; n; i++) res[i] = a[i];
+    return res;
+}
+#define make_v(a) internal_make_v(a, sizeof(a) / sizeof(a[0]))
+
+template &lt;class T&gt;
+std::vector&lt;std::vector&lt;T&gt;&gt; internal_make_vv(T *a, int h, int w) {
+    std::vector&lt;std::vector&lt;T&gt;&gt; res(h, std::vector&lt;T&gt;(w));
+    for (int i = 0; i &lt; h; i++) {
+        for (int j = 0; j &lt; w; j++) res[i][j] = a[i * w + j];
+    }
+    return res;
+}
+#define make_vv(a) internal_make_vv(*a, sizeof(a) / sizeof(a[0]), sizeof(a[0]) / sizeof(a[0][0]))
+
+// [dbg]
+namespace dbg {
+
+// dout
+// Ref: https://ez-net.jp/article/0B/ydQ-Mn1E/uoSm36x6y4XR/
+struct DbgOstream {
+   private:
+    bool is_first_arg;
+    int trim_comma_max, trimed_comma_num;
+
+   public:
+    DbgOstream() { init(); }
+
+    template &lt;class T&gt;
+    friend DbgOstream &amp;operator&lt;&lt;(DbgOstream &amp;os, T x) {
+        os.print_info();
+        std::cerr &lt;&lt; std::to_string(x);
+        return os;
+    }
+    // dbg::endl
+    // Ref: std::basic_ostream
+    DbgOstream &amp;operator&lt;&lt;(DbgOstream &amp;(*pf)(DbgOstream &amp;)) {
+        return pf(*this);
+    }
+
+    void init() {
+        is_first_arg = true;
+        trim_comma_max = 1;
+        trimed_comma_num = 0;
+    }
+
+   private:
+    void print_info() {
+        if (is_first_arg) {
+            is_first_arg = false;
+        } else {
+            if (trimed_comma_num &gt;= trim_comma_max) {
+                std::cerr &lt;&lt; &quot;, &quot;;
+            } else {
+                trimed_comma_num++;
+            }
+        }
+    }
+};
+// dbg::endl
+DbgOstream &amp;endl(DbgOstream &amp;os) {
+    std::cerr &lt;&lt; std::endl;
+    os.init();
+    return os;
+}
+DbgOstream _dout;
+
+}  // namespace dbg
+
+// dbg::_dout
+#ifdef _DEBUG
+#define dout std::cerr &lt;&lt; &quot;(\033[1;34m&quot; &lt;&lt; __LINE__ &lt;&lt; &quot;\033[m) &quot;, dbg::_dout
+#else
+#define dout assert(std::string(__FILE__).find(&quot;.test&quot;) == std::string::npos), \
+             std::cerr &lt;&lt; &quot;(\033[1;34m&quot; &lt;&lt; __LINE__ &lt;&lt; &quot;\033[m) &quot;, dbg::_dout
+#endif
+
+// [tests]
+struct TestsFortmatVerifier {
+    TestsFortmatVerifier() {
+        assert((std::string(__FILE__).find(&quot;.test&quot;) == std::string::npos) ^
+               (std::string(__FILE__).find(&quot;tests/&quot;) != std::string::npos));
+    }
+} _TestsFortmatVerifier;
+
+// [chrono]
+// flag: 0. nano(ns), 1. micro(micros), 2. milli(ms)
+// is_acc: 0. 1ms 2ms 3ms 4ms... , 1. 1ms 1ms 1ms 1ms...
+void chro(int flag = -1, bool is_acc = true) {
+    using namespace std::chrono;
+    static int _flag = -1;
+    static bool _is_acc = true;  // (_is_acc ? 累積差 : 経過時間) として表示する
+    static system_clock::time_point prev_cnt;
+
+    system_clock::time_point cnt = system_clock::now();
+    if (!is_acc) _is_acc = is_acc;
+    if (flag != -1) {
+        _flag = flag;
+    } else {  // 0.nano[ns] 1.micro[micros] 2.milli[ms]
+        double time;
+        switch (_flag) {
+            case 0:
+                time = duration_cast&lt;nanoseconds&gt;(cnt - prev_cnt).count();
+                dout &lt;&lt; time &lt;&lt; &quot; ns&quot; &lt;&lt; dbg::endl;
+                break;
+            case 1:
+                time = duration_cast&lt;microseconds&gt;(cnt - prev_cnt).count();
+                dout &lt;&lt; time &lt;&lt; &quot; mcrs&quot; &lt;&lt; dbg::endl;
+                break;
+            case 2:
+                time = duration_cast&lt;milliseconds&gt;(cnt - prev_cnt).count();
+                dout &lt;&lt; time &lt;&lt; &quot; ms&quot; &lt;&lt; dbg::endl;
+                break;
+        }
+    }
+    if (flag != -1 || _is_acc) prev_cnt = cnt;
+}
+
+#endif  // DEBUG_HPP
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><p>GitHub: <a href="https://github.com/nullputra/nlptr-lib/tree/master/lib/cpp/strings">lib/cpp/strings</a></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="manacher"><a class="header" href="#manacher">Manacher</a></h1>
+<p>最長回文。snuke さんによれば「このままでは奇数長の回文しか検出できませんが、「a$b$a$a$b」みたいにダミー文字を間に挟むと偶数長のものも検出できるようにできます。」とのことです。<br />
+実装に関しては、<code>reused_len</code> \(:= (再利用する文字列長) + 1\) であり、<code>r[i-reused_len,i-1] -&gt; r[i+1,i+reused_len]</code> のように再利用します。</p>
+<ul>
+<li><code>manacher(s)</code>: <code>r[i]</code> \(:= (s[i] を中心とする最長の回文の半径)\) 。半径というのは、\(\frac{(全長)+1}{2}\) のことです。 \(\Theta(n)\) (ただし \(n := \left|s\right|\) )</li>
+</ul>
+<h2 id="refs-29"><a class="header" href="#refs-29">Refs</a></h2>
+<ul>
+<li><a href="https://snuke.hatenablog.com/entry/2014/12/02/235837">文字列の頭良い感じの線形アルゴリズムたち２ - Manacher</a>, snuke</li>
+</ul>
+<h2 id="impl-33"><a class="header" href="#impl-33">Impl</a></h2>
+<pre><code class="language-cpp">vector&lt;int&gt; manacher(const string &amp;s) {
+    int n = s.size(), i = 0, len = 0;
+    vector&lt;int&gt; r(n);
+    while (i &lt; n) {
+        while (i - len &gt;= 0 &amp;&amp; i + len &lt; n &amp;&amp; s[i - len] == s[i + len]) len++;
+        r[i] = len;
+        int reused_len = 1;
+        while (i - reused_len &gt;= 0 &amp;&amp; reused_len + r[i - reused_len] &lt; len) {
+            r[i + reused_len] = r[i - reused_len], reused_len++;
+        }
+        i += reused_len, len -= reused_len;
+    }
+    return r;
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="morris-pratt-mp-法"><a class="header" href="#morris-pratt-mp-法">Morris Pratt (MP 法)</a></h1>
+<ul>
+<li><code>morris_pratt(s, is_knuth)</code>: \(b[i] := (s[0,i) の最長 border)\) (ただし \(b[0] = -1\) )。border というのは prefix かつ suffix なる文字列のことです。 \(b[n]\) だけ求まればよい場合は <code>is_knuth</code> を <code>true</code> にしてよく、定数倍高速です。 \(\Theta(n)\) (ただし \(n := |s|\) )<br />
+e.g. <code>is_knuth == true</code>: <code>s = &quot;aabaabaaa&quot; -&gt; [-1, 0, 1, 0, 1, 2, 3, 4, 5, 2]</code><br />
+<code>is_knuth == false</code>: <code>s = &quot;aabaabaaa&quot; -&gt; [-1, -1, 1, -1, -1, 1, -1, -1, 5, 2]</code></li>
+</ul>
+<h2 id="refs-30"><a class="header" href="#refs-30">Refs</a></h2>
+<ul>
+<li><a href="https://snuke.hatenablog.com/entry/2014/12/01/235807">文字列の頭良い感じの線形アルゴリズムたち - KMP</a>, snuke</li>
+</ul>
+<h2 id="impl-34"><a class="header" href="#impl-34">Impl</a></h2>
+<pre><code class="language-cpp">vector&lt;int&gt; morris_pratt(const string &amp;s, bool is_knuth = false) {
+    int n = s.size(), j = -1;
+    vector&lt;int&gt; b(n + 1);
+    b[0] = -1;
+    for (int i = 0; i &lt; n; i++) {
+        while (j &gt;= 0 &amp;&amp; s[i] != s[j]) j = b[j];
+        b[i + 1] = is_knuth ? (s[i + 1] == s[++j] ? b[j] : j) : ++j;
+    }
+    return b;
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="rolling-hash"><a class="header" href="#rolling-hash">Rolling Hash</a></h1>
+<p>メルセンヌ素数 \(2^{61}-1\) を利用した Rolling Hash。</p>
+<ul>
+<li><code>RollingHash(s, randomizes)</code>: 文字列 <code>s</code> で初期化。<code>randomizes</code> が <code>false</code> のときの計算量は \(\Theta(n)\) です。(ただし \(n := \left|s\right|\) )</li>
+<li><code>slice(l, r)</code>: <code>s[l:r]</code> のハッシュを返す。(ただし, <code>s[l:r]</code> \(:= (s のうち区間 [l,r) の部分)\) .) \(\Theta(1)\)</li>
+<li><code>get_lcp(a, b)</code>: <code>s[a:]</code> と <code>s[b:]</code> の一致文字数を返す。 \(O(\log n)\)</li>
+<li><code>get_lcp(a, rh, b)</code>: <code>s[a:]</code> と <code>rh.s[b:]</code> の一致文字数を返す。 \(O(\log (min(n,m)))\) (ただし \(m := \left|rh.s\right|\) )</li>
+</ul>
+<h2 id="refs-31"><a class="header" href="#refs-31">Refs</a></h2>
+<ul>
+<li><a href="https://qiita.com/keymoon/items/11fac5627672a6d6a9f6">安全で爆速なRollingHashの話</a>, keymoon</li>
+</ul>
+<h2 id="impl-35"><a class="header" href="#impl-35">Impl</a></h2>
+<pre><code class="language-cpp">using ull = unsigned long long;
+struct RollingHash {
+   private:
+    int n;
+    ull base = 127;
+    vector&lt;ull&gt; hash, pw;
+    static constexpr ull M30 = (1ull &lt;&lt; 30) - 1, M31 = (1ull &lt;&lt; 31) - 1, M61 = (1ull &lt;&lt; 61) - 1;
+
+   public:
+    RollingHash() {}
+    RollingHash(string &amp;s, bool randomizes = false) : n(s.size()), hash(n + 1), pw(n + 1, 1) {
+        if (randomizes) randomize_base();
+        for (int i = 0; i &lt; n; i++) {
+            hash[i + 1] = mod(mul(hash[i], base) + s[i]), pw[i + 1] = mod(mul(pw[i], base));
+        }
+    }
+    ull slice(int l, int r) {
+        assert(0 &lt;= l &amp;&amp; l &lt;= r &amp;&amp; r &lt;= n);
+        return mod(hash[r] + M61 * 4 - mul(hash[l], pw[r - l]));
+    }
+    int get_lcp(int a, int b) {
+        int ok = 0, ng = n - max(a, b);
+        while (ng - ok &gt; 1) {
+            int mid = (ok + ng) / 2;
+            (slice(a, a + mid) == slice(b, b + mid) ? ok : ng) = mid;
+        }
+        return ok;
+    }
+    int get_lcp(int a, RollingHash &amp;rh, int b) {
+        int ok = 0, ng = min(n - a, rh.n - b);
+        while (ng - ok &gt; 1) {
+            int mid = (ok + ng) / 2;
+            (slice(a, a + mid) == rh.slice(b, b + mid) ? ok : ng) = mid;
+        }
+        return ok;
+    }
+
+   private:
+    void randomize_base() {
+        random_device rnd;
+        int k = int(rnd()) % 2022 + 128;
+        base = [&amp;](ull x, int m) {
+            ull res = 1;
+            while (m) {
+                if (m &amp; 1) res = mod(mul(res, x));
+                x = mod(mul(x, x)), m /= 2;
+            }
+            return res;
+        }(3, k);
+        while (gcd(M61 - 1, k++) &gt; 1) base = mod(mul(base, 3));
+    }
+    ull mod(ull x) { return x = (x &gt;&gt; 61) + (x &amp; M61), x &gt;= M61 ? x - M61 : x; }
+    ull mul(ull a, ull b) {
+        ull a0 = a &gt;&gt; 31, a1 = a &amp; M31, b0 = b &gt;&gt; 31, b1 = b &amp; M31, mid = a1 * b0 + a0 * b1;
+        return a0 * b0 * 2 + (mid &gt;&gt; 30) + ((mid &amp; M30) &lt;&lt; 31) + a1 * b1;
+    }
+};
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="sa-is-suffix-array"><a class="header" href="#sa-is-suffix-array">SA-IS (Suffix Array)</a></h1>
+<p>suffix array を \(\Theta(n)\) で構築する (ただし \(n := \left|s\right|\) )。</p>
+<ul>
+<li>constructor <code>SA_IS(s, low_ch = '0', high_ch = 'z')</code>: 文字列 <code>s</code> において ASCII 値の最小を <code>low_ch</code>, 最大を <code>high_ch</code> で指定。
+\(\Theta(1)\)</li>
+<li><code>get_sa()</code>: <code>s</code> の suffix array を返す。 \(\Theta(n)\)</li>
+<li><code>contains(t, is_prefix_match)</code>: <code>s</code> が <code>t</code> を含むかどうかを返す。<code>is_prefix_match</code> が <code>true</code> なら部分一致、<code>false</code> なら完全一致。実装は二分探索。 \(O(\log n)\)</li>
+<li><code>print()</code>: デバッグ用。 \(\Theta(n)\)</li>
+</ul>
+<h2 id="refs-32"><a class="header" href="#refs-32">Refs</a></h2>
+<ul>
+<li><a href="https://mametter.hatenablog.com/entry/20180130/p1">SA-IS 法のメモ</a>, ku-ma-me</li>
+<li><a href="https://github.com/atcoder/ac-library/blob/master/atcoder/string.hpp">https://github.com/atcoder/ac-library/blob/master/atcoder/string.hpp</a>, yosupo</li>
+</ul>
+<h2 id="impl-36"><a class="header" href="#impl-36">Impl</a></h2>
+<pre><code class="language-cpp">struct SA_IS {
+   private:
+    string _s;
+    int _low_ch, _high_ch;
+    vector&lt;int&gt; sa, cnt;
+
+   public:
+    SA_IS(const string &amp;s, int low_ch = '0', int high_ch = 'z')
+        : _s(s), _low_ch(low_ch), _high_ch(high_ch) {}
+    vector&lt;int&gt; get_sa() {
+        if (sa.size()) return sa;
+        int n = _s.size();
+        vector&lt;int&gt; vs(n);
+        for (int i = 0; i &lt; n; i++) vs[i] = _s[i] - _low_ch;
+        return sa_is(vs, _high_ch - _low_ch + 1);
+    }
+    bool contains(const string &amp;t, bool is_prefix_match = false) {
+        if (sa.empty()) get_sa();
+        int ng = -1, ok = _s.size();
+        while (ok - ng &gt; 1) {
+            int mid = (ok + ng) / 2;
+            (_s.compare(sa[mid], t.size(), t) &gt;= 0 ? ok : ng) = mid;
+        }
+        return is_prefix_match ? true : !_s.compare(sa[ok], t.size(), t);
+    }
+    void print() {
+        int n = _s.size(), dig = log10(n) + 1;
+        for (int i = 0; i &lt;= n; i++) {
+            cout &lt;&lt; &quot;_s[&quot; &lt;&lt; setw(dig) &lt;&lt; sa[i] &lt;&lt; &quot;:] = &quot; &lt;&lt; _s.substr(sa[i]) &lt;&lt; '\n';
+        }
+    }
+
+   private:
+    vector&lt;int&gt; &amp;sa_is(vector&lt;int&gt; s1, int sz) {
+        int n = s1.size();
+        sa.resize(n + 1);
+        if (n == 0) return sa;
+        for (auto &amp;c : s1) c++;
+        s1.push_back(0);
+        sz++;
+        vector&lt;bool&gt; iss(n + 1);
+        vector&lt;int&gt; bin(sz + 1);
+        auto induce = [&amp;](const vector&lt;int&gt; &amp;lms) {
+            sa.assign(n + 1, -1);
+            cnt.assign(sz, 0);
+            for (int i = 0; i &lt; (int)lms.size(); i++) {
+                int sx = s1[lms[i]];
+                sa[bin[sx + 1] - 1 - cnt[sx]++] = lms[i];
+            }
+            cnt.assign(sz, 0);
+            for (int i = 0; i &lt;= n; i++) {
+                int x = sa[i] - 1;
+                if (x &gt;= 0 &amp;&amp; !iss[x]) sa[bin[s1[x]] + cnt[s1[x]]++] = x;
+            }
+            cnt.assign(sz, 0);
+            for (int i = n; i &gt;= 0; i--) {
+                int x = sa[i] - 1;
+                if (x &gt;= 0 &amp;&amp; iss[x]) sa[bin[s1[x] + 1] - 1 - cnt[s1[x]]++] = x;
+            }
+        };
+        vector&lt;int&gt; lms, lms_sz(n + 1, -1);
+        iss[n] = 1, bin[1]++;
+        for (int i = n - 1; i &gt;= 0; i--) {
+            iss[i] = s1[i] == s1[i + 1] ? iss[i + 1] : s1[i] &lt; s1[i + 1];
+            if (!iss[i] &amp;&amp; iss[i + 1]) {
+                lms_sz[i + 1] = lms.size();
+                lms.push_back(i + 1);
+            }
+            bin[s1[i] + 1]++;
+        }
+        for (int i = 0; i &lt; sz; i++) bin[i + 1] += bin[i];
+        induce(lms);
+        if (lms.size() &gt; 1) {
+            int m = lms.size(), li = 0;
+            vector&lt;int&gt; sorted_lms(m);
+            for (auto x : sa) {
+                if (lms_sz[x] != -1) sorted_lms[li++] = x;
+            }
+            int n2 = 1;
+            vector&lt;int&gt; s2(m);
+            s2[m - 1 - lms_sz[sorted_lms[1]]] = 1;
+            for (int i = 2; i &lt; m; i++) {
+                int xl = sorted_lms[i], yl = sorted_lms[i - 1];
+                int xr = lms[lms_sz[xl] - 1], yr = lms[lms_sz[yl] - 1];
+                if (xr - xl != yr - yl) {
+                    n2++;
+                } else {
+                    while (xl &lt;= xr) {
+                        if (s1[xl] != s1[yl]) {
+                            n2++;
+                            break;
+                        }
+                        xl++, yl++;
+                    }
+                }
+                s2[m - 1 - lms_sz[sorted_lms[i]]] = n2;
+            }
+            vector&lt;int&gt; lms_sa = sa_is(move(s2), n2 + 1);
+            li = m;
+            for (int i = 1; i &lt;= m; i++) sorted_lms[--li] = lms[m - 1 - lms_sa[i]];
+            induce(sorted_lms);
+        }
+        return sa;
+    }
+};
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="trie-トライ木"><a class="header" href="#trie-トライ木">Trie (トライ木)</a></h1>
+<ul>
+<li>constructor <code>Trie&lt;W&gt;()</code>: <code>s_w</code> の型を <code>W</code> で初期化. <code>s_w</code> を使わないなら void を入れておく。 \(\Theta(1)\)</li>
+<li><code>insert(s, s_w = -1)</code>: 文字列 <code>s</code> を挿入。 \(\Theta(\left|s\right|)\)</li>
+<li><code>find(t, f, s_l = 0, t_l = 0)</code>: <code>t_r = t_l, t_l+1, ..., n</code> に対し、「いずれかの <code>s[s_l:]</code> の prefix」と「<code>t[t_l:t_r+1]</code>」とが一致するごとに関数 <code>f</code> が呼び出される。 \(O( \left|t\right| )\)</li>
+<li><code>print(cur = 0)</code>: デバッグ用。<code>cur</code> は \(0\) のままで実行してください。 \(O(\sum \left|s\right| )\)</li>
+</ul>
+<h2 id="refs-33"><a class="header" href="#refs-33">Refs</a></h2>
+<ul>
+<li><a href="https://algo-logic.info/trie-tree/">トライ木(Trie木) の解説と実装【接頭辞(prefix) を利用したデータ構造】</a></li>
+<li><a href="https://ei1333.github.io/luzhiled/snippets/structure/trie.html">トライ木(Trie)｜Luzhiled's memo</a></li>
+</ul>
+<h2 id="impl-37"><a class="header" href="#impl-37">Impl</a></h2>
+<pre><code class="language-cpp">template &lt;class W&gt;
+struct Trie {
+   private:
+    struct Node {
+        char ch;
+        W w;
+        int nxt, bro;
+    };
+    vector&lt;Node&gt; nodes;
+
+   public:
+    Trie() : nodes(1, {-1, W(), -1, -1}) {}
+    void insert(string &amp;s, W s_w) {
+        int cur = 0;
+        for (char &amp;ch : s) {
+            bool upd = false;
+            if (nodes[cur].nxt &gt;= 0) {
+                for (int b = cur; b &gt;= 0; b = nodes[b].bro) {
+                    if (ch == nodes[b].ch) {
+                        cur = nodes[b].nxt, upd = true;
+                        break;
+                    }
+                }
+            }
+            if (upd) continue;
+            if (nodes[cur].nxt &gt; 0) {
+                nodes.push_back({ch, W(), (int)nodes.size() + 1, nodes[cur].bro});
+                nodes[cur].bro = nodes.size() - 1;
+            } else {
+                nodes[cur].nxt = nodes.size(), nodes[cur].ch = ch;
+            }
+            cur = nodes.size();
+            nodes.push_back({-1, W(), -1, -1});
+        }
+        nodes[cur].w = s_w;
+    }
+    void find(string &amp;t, const function&lt;void(int t_r, W w)&gt; &amp;f, int s_l = 0, int t_l = 0) {
+        int n = t.size(), cur = s_l;
+        assert(s_l &lt; (int)nodes.size() &amp;&amp; t_l &lt; n);
+        for (int t_r = t_l; t_r &lt; n; t_r++) {
+            bool upd = false;
+            if (nodes[cur].nxt &gt;= 0) {
+                for (int b = cur; b &gt;= 0; b = nodes[b].bro) {
+                    if (t[t_r] == nodes[b].ch) {
+                        cur = nodes[b].nxt, upd = true;
+                        break;
+                    }
+                }
+            }
+            if (!upd) return;
+            if (nodes[cur].ch == -1) f(t_r, nodes[cur].w);
+        }
+    }
+#ifdef _DEBUG
+    void print(int cur = 0) {
+        static string u;
+        if (!cur) cout &lt;&lt; &quot;print():\n&quot;, u.clear();
+        if (nodes[cur].ch == -1) {
+            cout &lt;&lt; setw(4) &lt;&lt; u;
+            if (is_arithmetic_v&lt;W&gt;) cout &lt;&lt; setw(4) &lt;&lt; nodes[cur].w;
+            cout &lt;&lt; '\n';
+        }
+        u.push_back(0);
+        if (nodes[cur].nxt &gt;= 0) {
+            for (int b = cur; b &gt;= 0; b = nodes[b].bro) {
+                u.back() = nodes[b].ch;
+                print(nodes[b].nxt);
+            }
+        }
+        u.pop_back();
+    }
+#else
+    void print() {}
+#endif
+};
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="z-algorithm-最長共通接頭辞"><a class="header" href="#z-algorithm-最長共通接頭辞">Z Algorithm (最長共通接頭辞)</a></h1>
+<ul>
+<li><code>z_algorithm(s, x = 0)</code>: 文字列 <code>s[x:]</code> に対して求めた \(z\) を返す。実装に関しては、<code>reused_len</code> \(:= (再利用する文字列長) + 1\) であり、 <code>z[1:reused_len] -&gt; z[i+1:i+reused_len]</code> のように再利用する。
+\(\Theta(n)\) (\(n = \left|s\right|\) とした)<br />
+e.g. <code>s = &quot;ababa&quot; -&gt; [5, 0, 3, 0, 1]</code></li>
+<li><code>z_search(s, ptn)</code>: <code>z_idx</code> を返す。 \(\Theta(n)\)<br />
+e.g. <code>s = &quot;ababa&quot;, ptn = &quot;aba&quot; -&gt; [0, 2]</code></li>
+</ul>
+<h2 id="refs-34"><a class="header" href="#refs-34">Refs</a></h2>
+<ul>
+<li><a href="https://snuke.hatenablog.com/entry/2014/12/03/214243">文字列の頭良い感じの線形アルゴリズムたち３ - Z algorithm</a>, snuke</li>
+</ul>
+<h2 id="impl-38"><a class="header" href="#impl-38">Impl</a></h2>
+<pre><code class="language-cpp">vector&lt;int&gt; z_algorithm(string &amp;s, int x = 0) {
+    int n = s.size() - x;
+    vector&lt;int&gt; z(n);
+    z[0] = n;
+    for (int i = 1, len = 0; i &lt; n;) {
+        while (i + len &lt; n &amp;&amp; s[x + len] == s[x + i + len]) len++;
+        z[i] = len;
+        if (len == 0) {
+            i++;
+            continue;
+        }
+        int reused_len = 1;
+        while (reused_len + z[reused_len] &lt; len) {
+            z[i + reused_len] = z[reused_len], reused_len++;
+        }
+        i += reused_len, len -= reused_len;
+    }
+    return z;
+}
+vector&lt;int&gt; z_search(const string &amp;s, const string &amp;ptn) {
+    string t = ptn + &quot;$&quot; + s;
+    int nt = s.size(), np = ptn.size();
+    vector&lt;int&gt; z_idx, z = z_algorithm(t);
+    for (int i = np + 1; i &lt; nt + 2; i++) {
+        if (z[i] == np) z_idx.push_back(i - np - 1);
+    }
+    return z_idx;
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><p>GitHub: <a href="https://github.com/nullputra/nlptr-lib/tree/master/lib/cpp/trees">lib/cpp/trees</a></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="diameter-木の直径"><a class="header" href="#diameter-木の直径">Diameter (木の直径)</a></h1>
+<p>木の直径を求める。</p>
+<ul>
+<li><code>farthest(edges, v1, v0 = -1)</code>: 木 <code>edges</code> において、頂点 <code>v1</code> から最遠の頂点を返す。 \(\Theta(n)\) (\(n = (頂点数)\) とした)</li>
+<li><code>diameter(edges)</code>: 木 <code>edges</code> の直径を返す。 \(\Theta(n)\)</li>
+</ul>
+<h2 id="refs-35"><a class="header" href="#refs-35">Refs</a></h2>
+<ul>
+<li><a href="https://algo-logic.info/tree-diameter/">木の直径を求めるアルゴリズム</a>, 634kami</li>
+</ul>
+<h2 id="impl-39"><a class="header" href="#impl-39">Impl</a></h2>
+<pre><code class="language-cpp">template &lt;class T&gt;
+struct Edge {
+    int to;
+    T dist;
+};
+template &lt;class T&gt;
+Edge&lt;T&gt; farthest(vector&lt;vector&lt;Edge&lt;T&gt;&gt;&gt; &amp;edges, int v1, int v0 = -1) {
+    Edge&lt;T&gt; res{v1, 0};
+    for (auto &amp;[v2, dist] : edges[v1]) {
+        if (v0 == v2) continue;
+        auto nxt = farthest(edges, v2, v1);
+        nxt.dist += dist;
+        if (res.dist &lt; nxt.dist) res = nxt;
+    }
+    return res;
+}
+template &lt;class T&gt;
+T diameter(vector&lt;vector&lt;Edge&lt;T&gt;&gt;&gt; &amp;edges) {
+    return farthest(edges, farthest(edges, 0).to).dist;
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="rerootingop_edge-全方位木-dp"><a class="header" href="#rerootingop_edge-全方位木-dp">Rerooting[op_edge] (全方位木 dp)</a></h1>
+<p>全方位木 dp のうち、辺に対して key を乗せて作用させるもの。</p>
+<ul>
+<li><code>RerootingNode(n, id, merge, op_node)</code>: 初期化。 \(\Theta(1)\)</li>
+<li><code>add_edge(u, v, k)</code>: 辺を追加。 \(\Theta(1)\)</li>
+<li><code>add_edge(u, v, k1, k2)</code>: 辺を追加。 \(\Theta(1)\)</li>
+<li><code>vals()</code>: 全方位 dp をして <code>_vals</code> を取得。 \(O(\Theta(n))\)</li>
+</ul>
+<h2 id="refs-36"><a class="header" href="#refs-36">Refs</a></h2>
+<ul>
+<li><a href="https://ei1333.hateblo.jp/entry/2018/12/21/004022">もうひとつの全方位木DP</a>, ei1333</li>
+</ul>
+<h2 id="impl-40"><a class="header" href="#impl-40">Impl</a></h2>
+<pre><code class="language-cpp">template &lt;class Val, class Key&gt;
+struct RerootingEdge {
+    struct Edge {
+        int to;
+        Key key;
+        Val val, n_val;
+    };
+    const Val _id;
+    vector&lt;vector&lt;Edge&gt;&gt; edges;
+    using F = function&lt;Val(Val, Val)&gt;;
+    using G = function&lt;Val(Val, Key)&gt;;
+    const F _merge;
+    const G _op_edge;
+    vector&lt;Val&gt; sub_val, _vals;
+    RerootingEdge(int n, Val id, const F &amp;merge, const G &amp;op_edge)
+        : _id(id), edges(n), _merge(merge), _op_edge(op_edge), sub_val(n, _id), _vals(n, _id) {}
+    void add_edge(int u, int v, Key k) {
+        edges[u].push_back({v, k, _id, _id});
+        edges[v].push_back({u, k, _id, _id});
+    }
+    void add_edge_bi(int u, int v, Key k1, Key k2) {
+        edges[u].push_back({v, k1, _id, _id});
+        edges[v].push_back({u, k2, _id, _id});
+    }
+    vector&lt;Val&gt; vals() {
+        auto dfs_sub = [&amp;](auto self, int idx, int par) -&gt; void {
+            for (auto &amp;e : edges[idx]) {
+                if (e.to == par) continue;
+                self(self, e.to, idx);
+                sub_val[idx] = _merge(sub_val[idx], _op_edge(sub_val[e.to], e.key));
+            }
+        };
+        dfs_sub(dfs_sub, 0, -1);
+        auto dfs_all = [&amp;](auto self, int idx, int par, Val top) -&gt; void {
+            Val buff = _id;
+            for (int i = 0; i &lt; (int)edges[idx].size(); i++) {
+                auto &amp;e = edges[idx][i];
+                e.n_val = buff;
+                e.val = _op_edge(par == e.to ? top : sub_val[e.to], e.key);
+                buff = _merge(buff, e.val);
+            }
+            _vals[idx] = buff;
+            buff = _id;
+            for (int i = edges[idx].size() - 1; i &gt;= 0; i--) {
+                auto &amp;e = edges[idx][i];
+                if (e.to != par) self(self, e.to, idx, _merge(e.n_val, buff));
+                e.n_val = _merge(e.n_val, buff);
+                buff = _merge(buff, e.val);
+            }
+        };
+        dfs_all(dfs_all, 0, -1, _id);
+        return _vals;
+    }
+};
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="rerootingop_node-全方位木-dp"><a class="header" href="#rerootingop_node-全方位木-dp">Rerooting[op_node] (全方位木 dp)</a></h1>
+<p>全方位木 dp のうち、頂点に対して作用するもの。</p>
+<ul>
+<li><code>RerootingNode(n, id, merge, op_node)</code></li>
+<li><code>add_edge(u, v)</code>: 辺を追加する。 \(\Theta(1)\)</li>
+<li><code>vals()</code>: 全方位 dp をして <code>_vals</code> を返す。 \(\Theta(n)\)</li>
+</ul>
+<h2 id="refs-37"><a class="header" href="#refs-37">Refs</a></h2>
+<ul>
+<li><a href="https://qiita.com/keymoon/items/2a52f1b0fb7ef67fb89e">【全方位木DP】明日使える便利な木構造のアルゴリズム</a>, keymoon</li>
+</ul>
+<h2 id="impl-41"><a class="header" href="#impl-41">Impl</a></h2>
+<pre><code class="language-cpp">template &lt;class T&gt;
+struct RerootingNode {
+   private:
+    struct Edge {
+        int to, rev_idx;
+        T val;
+    };
+    int _n, edge_num = 0;
+    T _id;
+    vector&lt;T&gt; _vals;
+    vector&lt;vector&lt;Edge&gt;&gt; edges;
+    using FM = function&lt;T(T, T)&gt;;
+    const FM _merge;
+    using FN = function&lt;T(T, int)&gt;;
+    const FN _op_node;
+
+   public:
+    RerootingNode(int n, T id, const FM &amp;merge, const FN &amp;op_node)
+        : _n(n), _id(id), _vals(_n), edges(_n), _merge(merge), _op_node(op_node) {}
+    void add_edge(int u, int v) {
+        edge_num++;
+        int idx_u = edges[u].size(), idx_v = edges[v].size();
+        edges[u].push_back({v, idx_v, _id});
+        edges[v].push_back({u, idx_u, _id});
+    }
+    const vector&lt;T&gt; &amp;vals() {
+        assert(edge_num == _n - 1);
+        if (_n == 1) return _vals[0] = _op_node(_id, 0), _vals;
+        vector&lt;int&gt; par(_n, -1), ordered;
+        ordered.reserve(_n);
+        auto init_ordered_tree = [&amp;](auto self, int u) -&gt; void {
+            ordered.push_back(u);
+            for (auto &amp;e : edges[u]) {
+                if (e.to == par[u]) continue;
+                par[e.to] = u;
+                self(self, e.to);
+            }
+        };
+        init_ordered_tree(init_ordered_tree, 0);
+        for (int i = _n - 1; i &gt; 0; i--) {
+            int u = ordered[i], edge_idx = -1;
+            T accum_val = _id;
+            for (auto &amp;[to, rev_idx, val] : edges[u]) {
+                if (to == par[u]) {
+                    edge_idx = rev_idx;
+                    continue;
+                }
+                accum_val = _merge(accum_val, val);
+            }
+            edges[par[u]][edge_idx].val = _op_node(accum_val, u);
+        }
+        for (auto &amp;u : ordered) {
+            int sz = edges[u].size();
+            vector&lt;T&gt; rev_accum(sz, _id);
+            T accum_val = _id;
+            for (int j = sz - 2; j &gt;= 0; j--) {
+                rev_accum[j] = _merge(edges[u][j + 1].val, rev_accum[j + 1]);
+            }
+            for (int j = 0; j &lt; sz; j++) {
+                auto &amp;[to, rev_idx, val] = edges[u][j];
+                edges[to][rev_idx].val = _op_node(_merge(accum_val, rev_accum[j]), u);
+                accum_val = _merge(accum_val, val);
+            }
+            _vals[u] = _op_node(accum_val, u);
+        }
+        return _vals;
+    }
+    void print() {
+        cout &lt;&lt; &quot;edges = {&quot;;
+        for (int i = 0; i &lt; _n; i++) {
+            if (i) cout &lt;&lt; &quot;, &quot;;
+            cout &lt;&lt; '{' &lt;&lt; i &lt;&lt; &quot; -&gt; &quot;;
+            for (int j = 0; j &lt; (int)edges[i].size(); j++) {
+                if (j) cout &lt;&lt; &quot;, &quot;;
+                cout &lt;&lt; edges[i][j].to &lt;&lt; &quot;(val:&quot; &lt;&lt; edges[i][j].val &lt;&lt; &quot;)&quot;;
+            }
+            cout &lt;&lt; '}';
+        }
+        cout &lt;&lt; &quot;}\n&quot;;
+    }
+};
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_line_numbers = true;
+        </script>
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="ace.js" type="text/javascript" charset="utf-8"></script>
+        <script src="editor.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mode-rust.js" type="text/javascript" charset="utf-8"></script>
+        <script src="theme-dawn.js" type="text/javascript" charset="utf-8"></script>
+        <script src="theme-tomorrow_night.js" type="text/javascript" charset="utf-8"></script>
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        <script type="text/javascript" src="theme/custom.js"></script>
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            MathJax.Hub.Register.StartupHook('End', function() {
+                window.setTimeout(window.print, 100);
+            });
+        });
+        </script>
+    </body>
+</html>

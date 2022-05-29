@@ -1,0 +1,444 @@
+<!DOCTYPE HTML>
+<html lang="jp" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Set.cs - nlptr-lib (lib/CSharp/)</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../theme/custom.css">
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">README</a></li><li class="chapter-item expanded affix "><a href="../setup.html">setup</a></li><li class="chapter-item expanded affix "><li class="part-title">lib/CSharp/</li><li class="chapter-item expanded "><a href="../Algebra.html"><strong aria-hidden="true">1.</strong> Algebra</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Algebra/GCD.html"><strong aria-hidden="true">1.1.</strong> GCD.cs</a></li><li class="chapter-item expanded "><a href="../Algebra/LinearSieve.html"><strong aria-hidden="true">1.2.</strong> LinearSieve.cs</a></li></ol></li><li class="chapter-item expanded "><a href="../Collections.html"><strong aria-hidden="true">2.</strong> Collections</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Collections/HashMap.html"><strong aria-hidden="true">2.1.</strong> HashMap.cs</a></li><li class="chapter-item expanded "><a href="../Collections/PriorityQueue.html"><strong aria-hidden="true">2.2.</strong> PriorityQueue.cs</a></li><li class="chapter-item expanded "><a href="../Collections/Set.html" class="active"><strong aria-hidden="true">2.3.</strong> Set.cs</a></li><li class="chapter-item expanded "><a href="../Collections/SortedMap.html"><strong aria-hidden="true">2.4.</strong> SortedMap.cs</a></li></ol></li><li class="chapter-item expanded "><a href="../DataStructures.html"><strong aria-hidden="true">3.</strong> DataStructures</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../DataStructures/FenwickTree.html"><strong aria-hidden="true">3.1.</strong> FenwickTree.cs</a></li><li class="chapter-item expanded "><a href="../DataStructures/ModInt.html"><strong aria-hidden="true">3.2.</strong> ModInt.cs</a></li><li class="chapter-item expanded "><a href="../DataStructures/RollbackUnionFind.html"><strong aria-hidden="true">3.3.</strong> RollbackUnionFind.cs</a></li><li class="chapter-item expanded "><a href="../DataStructures/UnionFind.html"><strong aria-hidden="true">3.4.</strong> UnionFind.cs</a></li><li class="chapter-item expanded "><a href="../DataStructures/WeightedUnionFind.html"><strong aria-hidden="true">3.5.</strong> WeightedUnionFind.cs</a></li></ol></li><li class="chapter-item expanded "><a href="../Graphs.html"><strong aria-hidden="true">4.</strong> Graphs</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Graphs/TopologicalSort.html"><strong aria-hidden="true">4.1.</strong> TopologicalSort.cs</a></li></ol></li><li class="chapter-item expanded "><a href="../Misc.html"><strong aria-hidden="true">5.</strong> Misc</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Misc/BinarySearch.html"><strong aria-hidden="true">5.1.</strong> BinarySearch.cs</a></li><li class="chapter-item expanded "><a href="../Misc/Dbg.html"><strong aria-hidden="true">5.2.</strong> Dbg.cs</a></li><li class="chapter-item expanded "><a href="../Misc/IStream.html"><strong aria-hidden="true">5.3.</strong> IStream.cs</a></li><li class="chapter-item expanded "><a href="../Misc/PopCount.html"><strong aria-hidden="true">5.4.</strong> PopCount.cs</a></li></ol></li><li class="chapter-item expanded "><a href="../Strings.html"><strong aria-hidden="true">6.</strong> Strings</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Strings/RollingHash.html"><strong aria-hidden="true">6.1.</strong> RollingHash.cs</a></li><li class="chapter-item expanded "><a href="../Strings/ZAlgo.html"><strong aria-hidden="true">6.2.</strong> ZAlgo.cs</a></li></ol></li><li class="chapter-item expanded "><a href="../Trees.html"><strong aria-hidden="true">7.</strong> Trees</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Trees/Rerooting.html"><strong aria-hidden="true">7.1.</strong> Rerooting.cs</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">nlptr-lib (lib/CSharp/)</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/nullputra/nlptr-lib" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="setcs"><a class="header" href="#setcs">Set.cs</a></h1>
+<h2 id="impl"><a class="header" href="#impl">Impl</a></h2>
+<pre><code class="language-cs">// Ref: https://github.com/camypaper/complib/blob/master/Library/Collections/Set.cs, camypaper
+using System;
+using System.Collections.Generic;
+
+namespace Lib.Set
+{
+    /// &lt;summary&gt;
+    /// 要素の追加、削除、検索、取得が可能な集合を表します．
+    /// &lt;/summary&gt;
+    /// &lt;typeparam name=&quot;T&quot;&gt;優先度付きキュー内の要素の型を指定します．&lt;/typeparam&gt;
+    /// &lt;remarks&gt;内部的にはAVL木によって実装されています．&lt;/remarks&gt;
+    public class Set&lt;T&gt;
+    {
+        Node root;
+        readonly IComparer&lt;T&gt; comparer;
+        readonly Node nil;
+        /// &lt;summary&gt;
+        /// 多重集合かどうかを表します．
+        /// &lt;/summary&gt;
+        public bool IsMultiSet { get; set; }
+        public Set(IComparer&lt;T&gt; comparer)
+        {
+            nil = new Node(default(T));
+            root = nil;
+            this.comparer = comparer;
+        }
+        public Set(Comparison&lt;T&gt; comaprison) : this(Comparer&lt;T&gt;.Create(comaprison)) { }
+        public Set() : this(Comparer&lt;T&gt;.Default) { }
+        /// &lt;summary&gt;
+        /// 要素をコレクションに追加します．
+        /// &lt;/summary&gt;
+        /// &lt;remarks&gt;この操作は計算量 O(log N) で実行されます．&lt;/remarks&gt;
+        public bool Add(T v)
+        {
+            return insert(ref root, v);
+        }
+        /// &lt;summary&gt;
+        /// v が存在するならコレクションから削除します．
+        /// &lt;/summary&gt;
+        /// &lt;remarks&gt;この操作は計算量 O(log N) で実行されます．&lt;/remarks&gt;
+        public bool Remove(T v)
+        {
+            return remove(ref root, v);
+        }
+        /// &lt;summary&gt;
+        /// 0-indexed で index 番目の要素をコレクションから取得します．．
+        /// &lt;/summary&gt;
+        /// &lt;remarks&gt;この操作は計算量 O(log N) で実行されます．&lt;/remarks&gt;
+        public T this[int index] { get { return find(root, index); } }
+        public int Count { get { return root.Count; } }
+        public void RemoveAt(int k)
+        {
+            if (k &lt; 0 || k &gt;= root.Count) throw new ArgumentOutOfRangeException();
+            removeAt(ref root, k);
+        }
+        /// &lt;summary&gt;
+        /// このコレクションに含まれる要素を昇順に並べて返します．
+        /// &lt;/summary&gt;
+        /// &lt;remarks&gt;この操作は計算量 O(N) で実行されます．&lt;/remarks&gt;
+        public T[] Items
+        {
+            get
+            {
+                var ret = new T[root.Count];
+                var k = 0;
+                walk(root, ret, ref k);
+                return ret;
+            }
+        }
+        void walk(Node t, T[] a, ref int k)
+        {
+            if (t.Count == 0) return;
+            walk(t.lst, a, ref k);
+            a[k++] = t.Key;
+            walk(t.rst, a, ref k);
+        }
+        bool insert(ref Node t, T key)
+        {
+            if (t.Count == 0)
+            {
+                t = new Node(key);
+                t.lst = t.rst = nil;
+                t.Update();
+                return true;
+            }
+            var cmp = comparer.Compare(t.Key, key);
+            bool res;
+            if (cmp &gt; 0)
+            {
+                res = insert(ref t.lst, key);
+            }
+            else if (cmp == 0)
+            {
+                if (IsMultiSet) res = insert(ref t.lst, key);
+                else return false;
+            }
+            else res = insert(ref t.rst, key);
+            balance(ref t);
+            return res;
+        }
+        bool remove(ref Node t, T key)
+        {
+            if (t.Count == 0) return false;
+            var cmp = comparer.Compare(key, t.Key);
+            bool ret;
+            if (cmp &lt; 0) ret = remove(ref t.lst, key);
+            else if (cmp &gt; 0) ret = remove(ref t.rst, key);
+            else
+            {
+                ret = true;
+                var k = t.lst.Count;
+                if (k == 0) { t = t.rst; return true; }
+                if (t.rst.Count == 0) { t = t.lst; return true; }
+
+
+                t.Key = find(t.lst, k - 1);
+                removeAt(ref t.lst, k - 1);
+            }
+            balance(ref t);
+            return ret;
+        }
+        void removeAt(ref Node t, int k)
+        {
+            var cnt = t.lst.Count;
+            if (cnt &lt; k) removeAt(ref t.rst, k - cnt - 1);
+            else if (cnt &gt; k) removeAt(ref t.lst, k);
+            else
+            {
+                if (cnt == 0)
+                {
+                    t = t.rst;
+                    return;
+                }
+                if (t.rst.Count == 0)
+                {
+                    t = t.lst;
+                    return;
+                }
+                t.Key = find(t.lst, k - 1);
+                removeAt(ref t.lst, k - 1);
+            }
+            balance(ref t);
+        }
+        void balance(ref Node t)
+        {
+            var balance = t.lst.Height - t.rst.Height;
+            if (balance == -2)
+            {
+                if (t.rst.lst.Height - t.rst.rst.Height &gt; 0) rotR(ref t.rst);
+                rotL(ref t);
+            }
+            else if (balance == 2)
+            {
+                if (t.lst.lst.Height - t.lst.rst.Height &lt; 0) rotL(ref t.lst);
+                rotR(ref t);
+            }
+            else t.Update();
+        }
+        T find(Node t, int k)
+        {
+            if (k &lt; 0 || k &gt; root.Count) throw new ArgumentOutOfRangeException();
+            while (true)
+            {
+                if (k == t.lst.Count) return t.Key;
+                else if (k &lt; t.lst.Count) t = t.lst;
+                else
+                {
+                    k -= t.lst.Count + 1;
+                    t = t.rst;
+                }
+            }
+        }
+        /// &lt;summary&gt;
+        /// コレクションに含まれる要素であって、 v 以上の最小の要素の番号を返します。
+        /// &lt;/summary&gt;
+        /// &lt;remarks&gt;この操作は計算量 O(log N) で実行されます．&lt;/remarks&gt;
+        public int LowerBound(T v)
+        {
+            var k = 0;
+            var t = root;
+            while (true)
+            {
+                if (t.Count == 0) return k;
+                if (comparer.Compare(v, t.Key) &lt;= 0) t = t.lst;
+                else
+                {
+                    k += t.lst.Count + 1;
+                    t = t.rst;
+                }
+            }
+        }
+        /// &lt;summary&gt;
+        /// コレクションに含まれる要素であって、 v より真に大きい、最小の要素の番号を返します。
+        /// &lt;/summary&gt;
+        /// &lt;remarks&gt;この操作は計算量 O(log N) で実行されます．&lt;/remarks&gt;
+        public int UpperBound(T v)
+        {
+            var k = 0;
+            var t = root;
+            while (true)
+            {
+                if (t.Count == 0) return k;
+                if (comparer.Compare(t.Key, v) &lt;= 0)
+                {
+                    k += t.lst.Count + 1;
+                    t = t.rst;
+                }
+                else t = t.lst;
+            }
+        }
+        void rotR(ref Node t)
+        {
+            var l = t.lst;
+            t.lst = l.rst;
+            l.rst = t;
+            t.Update();
+            l.Update();
+            t = l;
+        }
+        void rotL(ref Node t)
+        {
+            var r = t.rst;
+            t.rst = r.lst;
+            r.lst = t;
+            t.Update();
+            r.Update();
+            t = r;
+        }
+        class Node
+        {
+            public Node(T key)
+            {
+                Key = key;
+            }
+            public int Count { get; private set; }
+            public sbyte Height { get; private set; }
+            public T Key { get; set; }
+            public Node lst, rst;
+            public void Update()
+            {
+                Count = 1 + lst.Count + rst.Count;
+                Height = (sbyte)(1 + Math.Max(lst.Height, rst.Height));
+            }
+            public override string ToString()
+            {
+                return string.Format(&quot;Count = {0}, Key = {1}&quot;, Count, Key);
+            }
+        }
+    }
+}
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../Collections/PriorityQueue.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../Collections/SortedMap.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../Collections/PriorityQueue.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../Collections/SortedMap.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_line_numbers = true;
+        </script>
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../ace.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../editor.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mode-rust.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../theme-dawn.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../theme-tomorrow_night.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        <script type="text/javascript" src="../theme/custom.js"></script>
+    </body>
+</html>

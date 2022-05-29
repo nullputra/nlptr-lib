@@ -1,0 +1,2493 @@
+<!DOCTYPE HTML>
+<html lang="jp" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>nlptr-lib (lib/rust/)</title>
+        <meta name="robots" content="noindex" />
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="theme/custom.css">
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">README</a></li><li class="chapter-item expanded affix "><a href="setup.html">setup</a></li><li class="chapter-item expanded affix "><li class="part-title">lib/rust/</li><li class="chapter-item expanded "><a href="algebra.html"><strong aria-hidden="true">1.</strong> algebra</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="algebra/binary_search.html"><strong aria-hidden="true">1.1.</strong> binary_search.rs</a></li><li class="chapter-item expanded "><a href="algebra/ext_gcd.html"><strong aria-hidden="true">1.2.</strong> ext_gcd.rs</a></li><li class="chapter-item expanded "><a href="algebra/factorial.html"><strong aria-hidden="true">1.3.</strong> factorial.rs</a></li><li class="chapter-item expanded "><a href="algebra/factorial_test.html"><strong aria-hidden="true">1.4.</strong> factorial_test.rs</a></li><li class="chapter-item expanded "><a href="algebra/factorize_in_order.html"><strong aria-hidden="true">1.5.</strong> factorize_in_order.rs</a></li><li class="chapter-item expanded "><a href="algebra/factors.html"><strong aria-hidden="true">1.6.</strong> factors.rs</a></li><li class="chapter-item expanded "><a href="algebra/fft.html"><strong aria-hidden="true">1.7.</strong> fft.rs</a></li><li class="chapter-item expanded "><a href="algebra/fft_test.html"><strong aria-hidden="true">1.8.</strong> fft_test.rs</a></li><li class="chapter-item expanded "><a href="algebra/modint.html"><strong aria-hidden="true">1.9.</strong> modint.rs</a></li><li class="chapter-item expanded "><a href="algebra/modint_test.html"><strong aria-hidden="true">1.10.</strong> modint_test.rs</a></li><li class="chapter-item expanded "><a href="algebra/rational.html"><strong aria-hidden="true">1.11.</strong> rational.rs</a></li></ol></li><li class="chapter-item expanded "><a href="data_structures.html"><strong aria-hidden="true">2.</strong> data_structures</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="data_structures/bitset.html"><strong aria-hidden="true">2.1.</strong> bitset.rs</a></li><li class="chapter-item expanded "><a href="data_structures/fenwick_tree.html"><strong aria-hidden="true">2.2.</strong> fenwick_tree.rs</a></li><li class="chapter-item expanded "><a href="data_structures/segment_tree.html"><strong aria-hidden="true">2.3.</strong> segment_tree.rs</a></li><li class="chapter-item expanded "><a href="data_structures/swag.html"><strong aria-hidden="true">2.4.</strong> swag.rs</a></li><li class="chapter-item expanded "><a href="data_structures/union_find.html"><strong aria-hidden="true">2.5.</strong> union_find.rs</a></li></ol></li><li class="chapter-item expanded "><a href="graphs.html"><strong aria-hidden="true">3.</strong> graphs</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="graphs/dijkstra.html"><strong aria-hidden="true">3.1.</strong> dijkstra.rs</a></li><li class="chapter-item expanded "><a href="graphs/dinic.html"><strong aria-hidden="true">3.2.</strong> dinic.rs</a></li></ol></li><li class="chapter-item expanded "><a href="others.html"><strong aria-hidden="true">4.</strong> others</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="others/matmul.html"><strong aria-hidden="true">4.1.</strong> matmul.rs</a></li><li class="chapter-item expanded "><a href="others/permiter.html"><strong aria-hidden="true">4.2.</strong> permiter.rs</a></li><li class="chapter-item expanded "><a href="others/proconio.html"><strong aria-hidden="true">4.3.</strong> proconio.rs</a></li></ol></li><li class="chapter-item expanded "><a href="trees.html"><strong aria-hidden="true">5.</strong> trees</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="trees/rerooting.html"><strong aria-hidden="true">5.1.</strong> rerooting.rs</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">nlptr-lib (lib/rust/)</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/nullputra/nlptr-lib" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="-nlptr-lib"><a class="header" href="#-nlptr-lib">⛄ nlptr-lib</a></h1>
+<p><a href="https://nullputra.github.io/nlptr-lib/"><img src="https://img.shields.io/static/v1?label=GitHub+Pages&amp;message=+&amp;color=brightgreen&amp;logo=github" alt="gh-pages" /></a>
+<a href="https://github.com/nullputra/nlptr-lib/actions/workflows/verify.yml"><img src="https://github.com/nullputra/nlptr-lib/actions/workflows/verify.yml/badge.svg" alt="verify" /></a>
+<a href="https://github.com/nullputra/nlptr-lib/commits/master"><img src="https://img.shields.io/github/last-commit/nullputra/nlptr-lib" alt="last-commit" /></a>
+<a href="https://github.com/nullputra/nlptr-lib/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-CC0--1.0-blue" alt="license" /></a>
+<a href="https://atcoder.jp/users/nlptr"><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fatcoder-badges.now.sh%2Fapi%2Fatcoder%2Fjson%2Fnlptr" alt="atcoder" /></a></p>
+<p>C++17 / C# .NET Core 3.1 / Rust 1.59 の競プロ用ライブラリです。バグ報告は <a href="https://github.com/nullputra/nlptr-lib/issues">Issues</a> か <a href="https://github.com/nullputra/nlptr-lib/pulls">Pull requests</a> へどうぞ。</p>
+<h2 id="license"><a class="header" href="#license">License</a></h2>
+<p>ほとんどのライセンスは <a href="https://creativecommons.org/publicdomain/zero/1.0/deed.ja">CC0-1.0</a> です (クレジット表記不要)。<a href="https://creativecommons.org/publicdomain/zero/1.0/deed.ja">CC0-1.0</a> 以外のライセンスの場合は、ファイルの先頭にそのライセンスが記載されています。</p>
+<h2 id="links"><a class="header" href="#links">Links</a></h2>
+<ul>
+<li><a href="https://nullputra.github.io/nlptr-lib">lib/</a></li>
+<li><a href="https://nullputra.github.io/nlptr-lib/cpp">lib/cpp/</a></li>
+<li><a href="https://nullputra.github.io/nlptr-lib/CSharp">lib/CSharp/</a></li>
+<li><a href="https://nullputra.github.io/nlptr-lib/rust">lib/rust/</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="-rust-の環境構築"><a class="header" href="#-rust-の環境構築">🦀 Rust の環境構築</a></h1>
+<h2 id="1-wsl-を入れます"><a class="header" href="#1-wsl-を入れます">1. WSL を入れます</a></h2>
+<ul>
+<li>参考: <a href="https://nullputra.github.io/nlptr-lib/set-up-wsl.html">lib/set-up-wsl</a></li>
+</ul>
+<h2 id="2-rustup-などのツールのインストール"><a class="header" href="#2-rustup-などのツールのインストール">2. <code>rustup</code> などのツールのインストール</a></h2>
+<p>あなたの OS が UNIX なら以下のコマンドを実行して <code>rustup</code> をインストールしてください。その他の OS なら、<a href="https://www.rust-lang.org/ja/tools/install">Rust をインストール</a> や <a href="https://docs.microsoft.com/ja-jp/windows/dev-environment/rust/setup">Windows で Rust 用の開発環境を設定する</a> を参照してください。</p>
+<h4 id="ターミナル"><a class="header" href="#ターミナル">ターミナル</a></h4>
+<pre><code class="language-sh">curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+# 変更の反映
+source $HOME/.cargo/env
+# 安定版をインストール
+rustup install nightly
+# 最新版にアップデート
+rustup update
+# rustup の便利なコンポーネントをインストール
+rustup component add clippy rls rust-analysis rust-src rust-docs rustfmt
+
+# cargo 用の設定
+echo -e &quot;[net]\ngit-fetch-with-cli = true&quot; &gt; ~/.cargo/config
+# cargo を用いて rustfmt をインストール
+cargo install rustfmt
+</code></pre>
+<h2 id="3-ビルドや実行に必要なファイル群の自動生成"><a class="header" href="#3-ビルドや実行に必要なファイル群の自動生成">3. ビルドや実行に必要なファイル群の自動生成</a></h2>
+<p>以下のコードを実行すると、カレントディレクトリ直下に <code>&lt;PROJECT_NAME&gt;</code> というディレクトリが作られ、<code>./Cargo.toml</code> などのビルドや実行に必要なファイル群が生成されます。</p>
+<h4 id="ターミナル-1"><a class="header" href="#ターミナル-1">ターミナル</a></h4>
+<pre><code class="language-sh">cargo new &lt;PROJECT_NAME&gt;
+cd &lt;PROJECT_NAME&gt;
+</code></pre>
+<h4 id="cargotoml-に追記"><a class="header" href="#cargotoml-に追記"><code>./Cargo.toml</code> に追記</a></h4>
+<p>競プロで使いそうなものを <code>./Cargo.toml</code> の [dependencies] に追記します。</p>
+<pre><code class="language-ini"># Ref: https://github.com/rust-lang-ja/atcoder-rust-base/blob/ja-all-enabled/Cargo.toml
+[dependencies]
+ascii = &quot;1.0.0&quot;
+bitset-fixed = &quot;0.1.0&quot;
+itertools = &quot;0.10.3&quot;
+num = &quot;0.4.0&quot;
+num-traits = &quot;0.2.11&quot;
+modtype = &quot;0.7.0&quot;
+ordered-float = &quot;2.8.0&quot;
+proconio = { version = &quot;0.3.6&quot;, features = [&quot;derive&quot;] }
+rand = { version = &quot;0.7.3&quot;, features = [&quot;small_rng&quot;] }
+rand_pcg = &quot;0.2.1&quot;
+regex = &quot;1.5.4&quot;
+</code></pre>
+<p>また、<code>cargo</code> で rs ファイルを扱う際、 <code>./Cargo.toml</code> に以下のように <code>[[bin]]</code> を追記しなければなりません。作った rs ファイルそれぞれに対し、以下を追記します。なお、<code>&lt;BINARY_NAME&gt;</code> は何でもいいですが、管理の都合上 <code>&lt;FILE_NAME&gt;</code> と同じにしておくのがお薦めです。</p>
+<h4 id="cargotoml-に追記-1"><a class="header" href="#cargotoml-に追記-1">./Cargo.toml に追記</a></h4>
+<pre><code class="language-ini">[[bin]]
+name = &quot;&lt;BINARY_NAME&gt;&quot;
+path = &quot;src/&lt;FILE_NAME&gt;.rs&quot;
+</code></pre>
+<h2 id="4-ビルドと実行"><a class="header" href="#4-ビルドと実行">4. ビルドと実行</a></h2>
+<p>以下のコマンドで全てのファイルをビルドできます。ビルドするとバイナリファイルが <code>./target/debug/&lt;FILE_NAME&gt;</code> に作られます。</p>
+<h4 id="ターミナル-2"><a class="header" href="#ターミナル-2">ターミナル</a></h4>
+<pre><code class="language-sh">cargo build --release --bin &lt;BINARY_NAME&gt;
+</code></pre>
+<p>バイナリファイルを実行するには以下のいずれかのようにします。</p>
+<h4 id="ターミナル-3"><a class="header" href="#ターミナル-3">ターミナル</a></h4>
+<pre><code class="language-sh"># A. バイナリファイルを実行します。入力を手打ちする必要があります。
+./target/debug/&lt;BINARY_NAME&gt;
+
+# B. input.txt を入力として、バイナリファイルを実行します。
+./target/debug/&lt;BINARY_NAME&gt; &lt; ./input.txt
+</code></pre>
+<p><code>cargo run --bin &lt;BINARY_NAME&gt;</code> なら、ビルドと実行を一括で行えます。</p>
+<h4 id="ターミナル-4"><a class="header" href="#ターミナル-4">ターミナル</a></h4>
+<pre><code class="language-sh"># ビルドと実行を別々に行う
+# cargo build
+# ./target/debug/&lt;BINARY_NAME&gt; &lt; ./input.txt
+
+# 上の二行を一括で行えるコマンド
+cargo run
+</code></pre>
+<hr />
+<p>以下、VSCode で rust を使うときのお薦め設定です。</p>
+<h2 id="5-静的解析ツール-clippy-を設定"><a class="header" href="#5-静的解析ツール-clippy-を設定">5. 静的解析ツール clippy を設定</a></h2>
+<p><a href="https://users.rust-lang.org/t/how-to-use-clippy-in-vs-code-with-rust-analyzer/41881/2">How to use Clippy in VS Code with rust-analyzer?</a> に従って設定します。</p>
+<h2 id="6-おすすめ-vscode-拡張機能"><a class="header" href="#6-おすすめ-vscode-拡張機能">6. おすすめ VSCode 拡張機能</a></h2>
+<ul>
+<li><code>bungcip.better-toml</code><br />
+toml のシンタックスハイライト。</li>
+<li><code>serayuzgur.crates</code><br />
+公式によると「Helps Rust developers managing dependencies with Cargo.toml.」とのことです。</li>
+<li><code>matklad.rust-analyzer</code><br />
+<code>rust-lang.rust</code> と同様の機能を持つ拡張機能。</li>
+</ul>
+<h2 id="7-ソースコードにライブラリを-bundle-する"><a class="header" href="#7-ソースコードにライブラリを-bundle-する">7. ソースコードにライブラリを bundle する</a></h2>
+<p>自動でライブラリファイルからバンドルしてくれるコードを書きました: <a href="https://github.com/nullputra/nlptr-lib/blob/master/lib/rust/expander.py">lib/rust/expander.py</a><br />
+使い方を以下の通りです。</p>
+<h4 id="用意するもの-1-srcmaincs"><a class="header" href="#用意するもの-1-srcmaincs">用意するもの (1): src/main.cs</a></h4>
+<pre><code class="language-rs">// https://atcoder.jp/contests/abc120/tasks/abc120_d
+use proconio::input;
+use proconio::marker::*;
+include!(&quot;../lib/rust/data_structures/union_find.rs&quot;);
+fn main() {
+    input! {
+        (n, m): (usize, usize),
+        ab: [(Usize1, Usize1); m],
+    }
+    let mut uf = UnionFind::new(n);
+    let f = |x| x * (x - 1) / 2;
+    let mut cur = f(n);
+    let mut ans = vec![cur; m + 1];
+    for (i, &amp;(a, b)) in ab.iter().rev().enumerate() {
+        if uf.same(a, b) {
+            ans[i + 1] = cur;
+            continue;
+        }
+        let x = uf.size(a);
+        let y = uf.size(b);
+        cur -= f(x + y) - f(x) - f(y);
+        ans[i + 1] = cur;
+        uf.unite(a, b);
+    }
+    let out = std::io::stdout();
+    let mut out = std::io::BufWriter::new(out.lock());
+    use std::io::Write;
+    for i in (0..m).rev() {
+        writeln!(out, &quot;{}&quot;, ans[i]).unwrap();
+    }
+}
+</code></pre>
+<h4 id="用意するもの-2-librustdata_structuresunion_findrs"><a class="header" href="#用意するもの-2-librustdata_structuresunion_findrs">用意するもの (2): lib/rust/data_structures/union_find.rs</a></h4>
+<pre><code class="language-rs">// Union Find
+//
+// # Refs
+// - https://github.com/rust-lang-ja/ac-library-rs/blob/master/src/dsu.rs, rust-lang-ja Developers
+struct UnionFind {
+    n: usize,
+    par: Vec&lt;i32&gt;,
+}
+#[allow(dead_code)]
+impl UnionFind {
+    fn new(n: usize) -&gt; Self {
+        UnionFind {
+            n,
+            par: vec![-1; n],
+        }
+    }
+    fn unite(&amp;mut self, mut x: usize, mut y: usize) -&gt; bool {
+        assert!(x &lt; self.n &amp;&amp; y &lt; self.n);
+        x = self.find(x);
+        y = self.find(y);
+        if x == y {
+            return false;
+        }
+        if self.par[x] &gt; self.par[y] {
+            std::mem::swap(&amp;mut x, &amp;mut y);
+        }
+        self.par[x] += self.par[y];
+        self.par[y] = x as i32;
+        true
+    }
+    fn find(&amp;mut self, x: usize) -&gt; usize {
+        assert!(x &lt; self.n);
+        if self.par[x] &lt; 0 {
+            x
+        } else {
+            self.par[x] = self.find(self.par[x] as usize) as i32;
+            self.par[x] as usize
+        }
+    }
+    fn same(&amp;mut self, x: usize, y: usize) -&gt; bool {
+        assert!(x &lt; self.n &amp;&amp; y &lt; self.n);
+        self.find(x) == self.find(y)
+    }
+    fn groups(&amp;mut self) -&gt; Vec&lt;Vec&lt;usize&gt;&gt; {
+        let mut _find = vec![0; self.n];
+        let mut _size = vec![0; self.n];
+        for i in 0..self.n {
+            _find[i] = self.find(i);
+            _size[_find[i]] += 1;
+        }
+        let mut res = vec![vec![]; self.n];
+        for i in 0..self.n {
+            res[i].reserve(_size[i]);
+        }
+        for i in 0..self.n {
+            res[_find[i]].push(i);
+        }
+        res.into_iter()
+            .filter(|v| !v.is_empty())
+            .collect::&lt;Vec&lt;Vec&lt;usize&gt;&gt;&gt;()
+    }
+    fn size(&amp;mut self, x: usize) -&gt; usize {
+        assert!(x &lt; self.n);
+        let x = self.find(x);
+        -self.par[x] as usize
+    }
+}
+</code></pre>
+<p>以上を用意して、ターミナルで下のコマンドを実行します。</p>
+<h4 id="ターミナル-5"><a class="header" href="#ターミナル-5">ターミナル</a></h4>
+<pre><code class="language-sh">lib/rust/expander.py src/main.cs &gt; src/main_bundled.cs
+</code></pre>
+<h4 id="生成されるもの-srcmain_bundledcs"><a class="header" href="#生成されるもの-srcmain_bundledcs">生成されるもの: src/main_bundled.cs</a></h4>
+<pre><code class="language-rs">use proconio::input;
+use proconio::marker::*;
+struct UnionFind {
+    n: usize,
+    par: Vec&lt;i32&gt;,
+}
+#[allow(dead_code)]
+impl UnionFind {
+    fn new(n: usize) -&gt; Self {
+        UnionFind {
+            n,
+            par: vec![-1; n],
+        }
+    }
+    fn unite(&amp;mut self, mut x: usize, mut y: usize) -&gt; bool {
+        assert!(x &lt; self.n &amp;&amp; y &lt; self.n);
+        x = self.find(x);
+        y = self.find(y);
+        if x == y {
+            return false;
+        }
+        if self.par[x] &gt; self.par[y] {
+            std::mem::swap(&amp;mut x, &amp;mut y);
+        }
+        self.par[x] += self.par[y];
+        self.par[y] = x as i32;
+        true
+    }
+    fn find(&amp;mut self, x: usize) -&gt; usize {
+        assert!(x &lt; self.n);
+        if self.par[x] &lt; 0 {
+            x
+        } else {
+            self.par[x] = self.find(self.par[x] as usize) as i32;
+            self.par[x] as usize
+        }
+    }
+    fn same(&amp;mut self, x: usize, y: usize) -&gt; bool {
+        assert!(x &lt; self.n &amp;&amp; y &lt; self.n);
+        self.find(x) == self.find(y)
+    }
+    fn groups(&amp;mut self) -&gt; Vec&lt;Vec&lt;usize&gt;&gt; {
+        let mut _find = vec![0; self.n];
+        let mut _size = vec![0; self.n];
+        for i in 0..self.n {
+            _find[i] = self.find(i);
+            _size[_find[i]] += 1;
+        }
+        let mut res = vec![vec![]; self.n];
+        for i in 0..self.n {
+            res[i].reserve(_size[i]);
+        }
+        for i in 0..self.n {
+            res[_find[i]].push(i);
+        }
+        res.into_iter()
+            .filter(|v| !v.is_empty())
+            .collect::&lt;Vec&lt;Vec&lt;usize&gt;&gt;&gt;()
+    }
+    fn size(&amp;mut self, x: usize) -&gt; usize {
+        assert!(x &lt; self.n);
+        let x = self.find(x);
+        -self.par[x] as usize
+    }
+}
+fn main() {
+    input! {
+        (n, m): (usize, usize),
+        ab: [(Usize1, Usize1); m],
+    }
+    let mut uf = UnionFind::new(n);
+    let f = |x| x * (x - 1) / 2;
+    let mut cur = f(n);
+    let mut ans = vec![cur; m + 1];
+    for (i, &amp;(a, b)) in ab.iter().rev().enumerate() {
+        if uf.same(a, b) {
+            ans[i + 1] = cur;
+            continue;
+        }
+        let x = uf.size(a);
+        let y = uf.size(b);
+        cur -= f(x + y) - f(x) - f(y);
+        ans[i + 1] = cur;
+        uf.unite(a, b);
+    }
+    let out = std::io::stdout();
+    let mut out = std::io::BufWriter::new(out.lock());
+    use std::io::Write;
+    for i in (0..m).rev() {
+        writeln!(out, &quot;{}&quot;, ans[i]).unwrap();
+    }
+}
+</code></pre>
+<h2 id="8-参考文献"><a class="header" href="#8-参考文献">8. 参考文献</a></h2>
+<ul>
+<li><a href="https://zenn.dev/toga/books/rust-atcoder/viewer/02-environment-setup">RustCoder - 環境構築</a></li>
+<li><a href="https://zenn.dev/link/comments/3199fbe14f9b23">Rust 入門日記 - 標準入力</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><p>GitHub: <a href="https://github.com/nullputra/nlptr-lib/tree/master/lib/rust/algebra">lib/rust/algebra</a></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="binary_searchrs"><a class="header" href="#binary_searchrs">binary_search.rs</a></h1>
+<h2 id="impl"><a class="header" href="#impl">Impl</a></h2>
+<pre><code class="language-rs">// # Refs
+// - https://github.com/hatoo/competitive-rust-snippets/blob/master/src/binary_search.rs
+pub trait BinarySearch&lt;T&gt; {
+    fn lower_bound(&amp;self, x: T) -&gt; usize;
+}
+impl&lt;T: Ord&gt; BinarySearch&lt;T&gt; for [T] {
+    fn lower_bound(&amp;self, x: T) -&gt; usize {
+        let mut ng = -1isize;
+        let mut ok = (self.len() - 1) as isize;
+        while (ok - ng).abs() &gt; 1 {
+            let mid = (ok + ng) / 2;
+            if x &lt;= self[mid as usize] {
+                ok = mid;
+            } else {
+                ng = mid;
+            }
+        }
+        ok as usize
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn lower_bound_works() {
+        let n = 5;
+        let a = vec![1, 5, 3, 2, 4];
+        let mut dp = vec![std::usize::MAX; n];
+        for &amp;a in a.iter() {
+            let idx = dp.lower_bound(a);
+            dp[idx] = a;
+        }
+        let ans = dp.lower_bound(std::usize::MAX);
+        assert_eq!(ans, 3);
+    }
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="ext_gcdrs"><a class="header" href="#ext_gcdrs">ext_gcd.rs</a></h1>
+<h2 id="impl-1"><a class="header" href="#impl-1">Impl</a></h2>
+<pre><code class="language-rs">#[allow(dead_code)]
+fn gcd(mut a: i64, mut b: i64) -&gt; i64 {
+    while b != 0 {
+        // (a, b) = (b, a % b);
+        let c = b;
+        b = a % b;
+        a = c;
+    }
+    a
+}
+#[allow(dead_code)]
+fn lcm(a: i64, b: i64) -&gt; i64 {
+    if a == 0 &amp;&amp; b == 0 {
+        0
+    } else {
+        a / gcd(a, b) * b
+    }
+}
+#[allow(dead_code)]
+fn ext_gcd(a: i64, b: i64, x: &amp;mut i64, y: &amp;mut i64) -&gt; i64 {
+    let mut g = a;
+    if b != 0 {
+        g = ext_gcd(b, a % b, y, x);
+        *y -= a / b * *x;
+    } else {
+        *x = 1;
+        *y = 0;
+    }
+    g
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn gcd_lcm_works() {
+        assert_eq!(gcd(0, 0), 0);
+        assert_eq!(lcm(0, 0), 0);
+        assert_eq!(gcd(6, 15), 3);
+        assert_eq!(lcm(6, 15), 30);
+        for x in 0..100 {
+            assert_eq!(gcd(0, x), x);
+        }
+        for x in 0..100 {
+            for y in 0..100 {
+                assert_eq!(gcd(x, y) * lcm(x, y), x * y);
+            }
+        }
+    }
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="factorialrs"><a class="header" href="#factorialrs">factorial.rs</a></h1>
+<h2 id="impl-2"><a class="header" href="#impl-2">Impl</a></h2>
+<pre><code class="language-rs">// Factorial
+//
+// # Refs
+// - https://github.com/akiradeveloper/rust-comp-snippets/blob/master/src/combination.rs
+// - https://github.com/yosupo06/yosupo-library/blob/master/yosupo/comb.hpp
+include!(&quot;modint.rs&quot;);
+
+struct Factorial {
+    n: usize,
+    fact: Vec&lt;Mint&gt;,
+    inv_fact: Vec&lt;Mint&gt;,
+}
+#[allow(dead_code)]
+impl Factorial {
+    fn new() -&gt; Self {
+        Self {
+            n: 1,
+            fact: vec![Mint::new_unchecked(1)],
+            inv_fact: vec![Mint::new_unchecked(1)],
+        }
+    }
+    fn expand(&amp;mut self, mx: usize) {
+        while self.n &lt;= mx {
+            self.fact.resize(self.n * 2, Mint::new_unchecked(0));
+            for i in self.n..self.n * 2 {
+                self.fact[i] = self.fact[i - 1] * Mint::new(i as i64);
+            }
+            self.inv_fact.resize(self.n * 2, Mint::new_unchecked(0));
+            self.inv_fact[self.n * 2 - 1] = self.fact[self.n * 2 - 1].inv();
+            for i in (self.n + 1..self.n * 2).rev() {
+                self.inv_fact[i - 1] = self.inv_fact[i] * Mint::new(i as i64);
+            }
+            self.n *= 2;
+        }
+    }
+    fn fact(&amp;mut self, n: usize) -&gt; Mint {
+        self.expand(n);
+        self.fact[n]
+    }
+    fn inv_fact(&amp;mut self, n: usize) -&gt; Mint {
+        self.expand(n);
+        self.inv_fact[n]
+    }
+    fn comb(&amp;mut self, n: usize, r: usize) -&gt; Mint {
+        if n &lt; r {
+            Mint::new_unchecked(0)
+        } else {
+            self.fact(n) * self.inv_fact(r) * self.inv_fact(n - r)
+        }
+    }
+    fn perm(&amp;mut self, n: usize, r: usize) -&gt; Mint {
+        if n &lt; r {
+            Mint::new_unchecked(0)
+        } else {
+            self.fact(n) * self.inv_fact(n - r)
+        }
+    }
+    fn homo(&amp;mut self, n: usize, r: usize) -&gt; Mint {
+        self.comb(n + r - 1, r)
+    }
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="factorial_testrs"><a class="header" href="#factorial_testrs">factorial_test.rs</a></h1>
+<h2 id="impl-3"><a class="header" href="#impl-3">Impl</a></h2>
+<pre><code class="language-rs">const MOD: i64 = 998244353;
+include!(&quot;factorial.rs&quot;);
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn factorial_works() {
+        // 階乗 n! として使う最大の n を指定しない.
+        // 足りなくなったらリサイズされる.
+        let mut ft = Factorial::new();
+
+        // (5 * 4) / (2 * 1)
+        assert_eq!(ft.comb(5, 2), mt(10));
+        // 5 * 4 * 3
+        assert_eq!(ft.perm(5, 3), mt(60));
+
+        // Ref: 重複組み合わせ http://yosshy.sansu.org/chofuku.htm, ヨッシーの算数・数学の部屋
+        // homo(3, 3) = comb(3 + 3 - 1, 3)
+        assert_eq!(ft.homo(3, 3), mt(10));
+        // homo(7, 2) = comb(7 + 2 - 1, 2)
+        assert_eq!(ft.homo(7, 2), mt(28));
+    }
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="factorize_in_orderrs"><a class="header" href="#factorize_in_orderrs">factorize_in_order.rs</a></h1>
+<h2 id="impl-4"><a class="header" href="#impl-4">Impl</a></h2>
+<pre><code class="language-rs">struct FactorizeInOrder {
+    n: usize,
+    min_factors: Vec&lt;usize&gt;,
+}
+#[allow(dead_code)]
+impl FactorizeInOrder {
+    fn new(n: usize) -&gt; FactorizeInOrder {
+        let mut min_factors = (0..=n).collect::&lt;Vec&lt;usize&gt;&gt;();
+        for i in 2..=(n as f32).sqrt().ceil() as usize {
+            if min_factors[i] != i {
+                continue;
+            }
+            for j in i..=n / i {
+                if min_factors[i * j] == i * j {
+                    min_factors[i * j] = i;
+                }
+            }
+        }
+        FactorizeInOrder { n, min_factors }
+    }
+    fn factors(&amp;self, x: usize) -&gt; Vec&lt;(usize, usize)&gt; {
+        assert!(0 &lt; x &amp;&amp; x &lt;= self.n);
+        if x == 1 {
+            return vec![];
+        }
+        let mut x = x;
+        let mut facts = vec![];
+        let mut cur = self.min_factors[x];
+        let mut ex = 0;
+        loop {
+            if cur != self.min_factors[x] {
+                facts.push((cur, ex));
+                if x == 1 {
+                    break;
+                }
+                cur = self.min_factors[x];
+                ex = 0;
+            }
+            ex += 1;
+            x /= self.min_factors[x];
+        }
+        facts
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn factors_works() {
+        let sv = FactorizeInOrder::new(96500);
+        assert_eq!(sv.factors(1), []);
+        assert_eq!(sv.factors(57), [(3, 1), (19, 1)]);
+        assert_eq!(sv.factors(2022), [(2, 1), (3, 1), (337, 1)]);
+        assert_eq!(sv.factors(2357), [(2357, 1)]);
+        assert_eq!(sv.factors(96500), [(2, 2), (5, 3), (193, 1)]);
+    }
+    #[test]
+    fn min_factors_works() {
+        let sv = FactorizeInOrder::new(100);
+        assert_eq!(
+            sv.min_factors,
+            [
+                0, 1, 2, 3, 2, 5, 2, 7, 2, 3, 2, 11, 2, 13, 2, 3, 2, 17, 2, 19, 2, 3, 2, 23, 2, 5,
+                2, 3, 2, 29, 2, 31, 2, 3, 2, 5, 2, 37, 2, 3, 2, 41, 2, 43, 2, 3, 2, 47, 2, 7, 2, 3,
+                2, 53, 2, 5, 2, 3, 2, 59, 2, 61, 2, 3, 2, 5, 2, 67, 2, 3, 2, 71, 2, 73, 2, 3, 2, 7,
+                2, 79, 2, 3, 2, 83, 2, 5, 2, 3, 2, 89, 2, 7, 2, 3, 2, 5, 2, 97, 2, 3, 2
+            ]
+        );
+    }
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="factorsrs"><a class="header" href="#factorsrs">factors.rs</a></h1>
+<h2 id="impl-5"><a class="header" href="#impl-5">Impl</a></h2>
+<pre><code class="language-rs">#[allow(dead_code)]
+fn factors(n: i64) -&gt; Vec&lt;(i64, i64)&gt; {
+    let mut n = n;
+    let mut facts = vec![];
+    for a in 2..=(n as f64).sqrt().ceil() as i64 {
+        let mut ex = 0;
+        while n % a == 0 {
+            n /= a;
+            ex += 1;
+        }
+        if ex &gt; 0 {
+            facts.push((a, ex));
+        }
+        if n == 1 {
+            break;
+        }
+    }
+    if n != 1 {
+        facts.push((n, 1));
+    }
+    facts
+}
+#[allow(dead_code)]
+fn divisors(n: i64) -&gt; Vec&lt;i64&gt; {
+    let mut divs = vec![];
+    for i in 1..=(n as f64).sqrt() as i64 {
+        if n % i == 0 {
+            divs.push(i);
+            if i != n / i {
+                divs.push(n / i);
+            }
+        }
+    }
+    divs.sort_unstable();
+    divs
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn factors_works() {
+        assert_eq!(factors(36), [(2, 2), (3, 2)]);
+        assert_eq!(factors(121), [(11, 2)]);
+        assert_eq!(factors(998244353), [(998244353, 1)]);
+    }
+    #[test]
+    fn divisors_works() {
+        assert_eq!(divisors(36), [1, 2, 3, 4, 6, 9, 12, 18, 36]);
+        assert_eq!(divisors(121), [1, 11, 121]);
+        assert_eq!(divisors(998244353), [1, 998244353]);
+    }
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="fftrs"><a class="header" href="#fftrs">fft.rs</a></h1>
+<h2 id="impl-6"><a class="header" href="#impl-6">Impl</a></h2>
+<pre><code class="language-rs">// FFT
+//
+// # Refs
+// - https://atcoder.jp/contests/typical90/submissions/24007424
+include!(&quot;modint.rs&quot;);
+
+#[allow(dead_code)]
+mod fft {
+    use std::ops::*;
+    /// n: 2 冪, zeta: 原始 n 乗根
+    #[inline(always)]
+    pub fn transform&lt;R&gt;(f: &amp;mut [R], zeta: R, one: R)
+    where
+        R: Copy + Add&lt;Output = R&gt; + Sub&lt;Output = R&gt; + Mul&lt;Output = R&gt;,
+    {
+        let n = f.len();
+        assert!(n.is_power_of_two());
+        let mut i = 0;
+        for j in 1..n - 1 {
+            let mut k = n &gt;&gt; 1;
+            loop {
+                i ^= k;
+                if k &lt;= i {
+                    break;
+                }
+                k &gt;&gt;= 1;
+            }
+            if j &lt; i {
+                f.swap(i, j);
+            }
+        }
+        let mut z_pw = {
+            let mut z_pw = Vec::with_capacity(20);
+            let mut m = 1;
+            let mut cur = zeta;
+            while m &lt; n {
+                z_pw.push(cur);
+                cur = cur * cur;
+                m *= 2;
+            }
+            z_pw
+        };
+        let mut m = 1;
+        unsafe {
+            while m &lt; n {
+                let base = z_pw.pop().unwrap();
+                let mut r = 0;
+                while r &lt; n {
+                    let mut w = one;
+                    for s in r..r + m {
+                        let &amp;u = f.get_unchecked(s);
+                        let d = *f.get_unchecked(s + m) * w;
+                        *f.get_unchecked_mut(s) = u + d;
+                        *f.get_unchecked_mut(s + m) = u - d;
+                        w = w * base;
+                    }
+                    r += 2 * m;
+                }
+                m *= 2;
+            }
+        }
+    }
+}
+#[allow(dead_code)]
+fn conv(a: Vec&lt;Mint&gt;, b: Vec&lt;Mint&gt;) -&gt; Vec&lt;Mint&gt; {
+    let n = a.len() - 1;
+    let m = b.len() - 1;
+    let mut p = 1;
+    while p &lt;= n + m {
+        p *= 2;
+    }
+    let mut f = vec![Mint::new_unchecked(0); p];
+    let mut g = vec![Mint::new_unchecked(0); p];
+    f[..=n].clone_from_slice(&amp;a[..=n]);
+    g[..=m].clone_from_slice(&amp;b[..=m]);
+    let fac = Mint::new(p as i64).inv();
+    let zeta = Mint::new(3).pow((Mint::modulus() - 1) / p as i64);
+    fft::transform(&amp;mut f, zeta, Mint::new_unchecked(1));
+    fft::transform(&amp;mut g, zeta, Mint::new_unchecked(1));
+    for i in 0..p {
+        f[i] *= g[i] * fac;
+    }
+    fft::transform(&amp;mut f, zeta.inv(), Mint::new_unchecked(1));
+    f[..n + m + 1].to_vec()
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="fft_testrs"><a class="header" href="#fft_testrs">fft_test.rs</a></h1>
+<h2 id="impl-7"><a class="header" href="#impl-7">Impl</a></h2>
+<pre><code class="language-rs">const MOD: i64 = 998244353;
+include!(&quot;fft.rs&quot;);
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn atc_fft_c() {
+        // https://atcoder.jp/contests/atc001/tasks/fft_c
+        let vmt = |v: Vec&lt;i64&gt;| {
+            let mut res = Vec::&lt;Mint&gt;::new();
+            for &amp;v in v.iter() {
+                res.push(mt(v));
+            }
+            res
+        };
+
+        let a = vmt(vec![1, 2, 3, 4]);
+        let b = vmt(vec![1, 2, 4, 8]);
+
+        // [1, 4, 11, 26, 36, 40, 32]
+        let mut c = conv(a, b);
+        // [0, 1, 4, 11, 26, 36, 40, 32]
+        c.insert(0, mt(0));
+
+        let model_ans = vmt(vec![0, 1, 4, 11, 26, 36, 40, 32]);
+        assert_eq!(c, model_ans);
+    }
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="modintrs"><a class="header" href="#modintrs">modint.rs</a></h1>
+<h2 id="impl-8"><a class="header" href="#impl-8">Impl</a></h2>
+<pre><code class="language-rs">/// Mod Int
+///
+/// # Refs
+/// - https://atcoder.jp/contests/typical90/submissions/24007424, kobae964
+use std::fmt;
+use std::ops::*;
+pub trait Modulus: Copy {
+    fn m() -&gt; i64;
+}
+#[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord, Hash)]
+pub struct ModInt&lt;M&gt; {
+    pub x: i64,
+    phantom: std::marker::PhantomData&lt;M&gt;,
+}
+#[allow(dead_code)]
+impl&lt;M: Modulus&gt; ModInt&lt;M&gt; {
+    pub fn new(mut x: i64) -&gt; Self {
+        x %= M::m();
+        if x &lt; 0 {
+            x += M::m();
+        }
+        ModInt::new_unchecked(x)
+    }
+    fn new_unchecked(x: i64) -&gt; Self {
+        ModInt {
+            x,
+            phantom: std::marker::PhantomData,
+        }
+    }
+    pub fn modulus() -&gt; i64 {
+        M::m()
+    }
+    #[must_use]
+    pub fn pow(self, mut n: i64) -&gt; Self {
+        assert!(n &gt;= 0);
+        let mut res = ModInt::new_unchecked(1);
+        let mut x = self;
+        while n &gt; 0 {
+            if n % 2 != 0 {
+                res *= x;
+            }
+            x *= x;
+            n /= 2;
+        }
+        res
+    }
+    #[must_use]
+    pub fn inv(self) -&gt; Self {
+        self.pow(M::m() - 2)
+    }
+}
+impl&lt;M: Modulus&gt; Neg for ModInt&lt;M&gt; {
+    type Output = Self;
+    fn neg(self) -&gt; Self {
+        ModInt::new_unchecked(0) - self
+    }
+}
+impl&lt;M: Modulus, T: Into&lt;ModInt&lt;M&gt;&gt;&gt; Add&lt;T&gt; for ModInt&lt;M&gt; {
+    type Output = Self;
+    fn add(self, rhs: T) -&gt; Self {
+        let mut sum = self.x + rhs.into().x;
+        if sum &gt;= M::m() {
+            sum -= M::m();
+        }
+        ModInt::new_unchecked(sum)
+    }
+}
+impl&lt;M: Modulus, T: Into&lt;ModInt&lt;M&gt;&gt;&gt; Sub&lt;T&gt; for ModInt&lt;M&gt; {
+    type Output = Self;
+    fn sub(self, rhs: T) -&gt; Self {
+        let mut sum = self.x - rhs.into().x;
+        if sum &lt; 0 {
+            sum += M::m();
+        }
+        ModInt::new_unchecked(sum)
+    }
+}
+impl&lt;M: Modulus, T: Into&lt;ModInt&lt;M&gt;&gt;&gt; Mul&lt;T&gt; for ModInt&lt;M&gt; {
+    type Output = Self;
+    fn mul(self, rhs: T) -&gt; Self {
+        ModInt::new(self.x * rhs.into().x)
+    }
+}
+impl&lt;M: Modulus, T: Into&lt;ModInt&lt;M&gt;&gt;&gt; Div&lt;T&gt; for ModInt&lt;M&gt; {
+    type Output = Self;
+    #[allow(clippy::suspicious_arithmetic_impl)]
+    fn div(self, rhs: T) -&gt; Self {
+        self * rhs.into().inv()
+    }
+}
+impl&lt;M: Modulus, T: Into&lt;ModInt&lt;M&gt;&gt;&gt; AddAssign&lt;T&gt; for ModInt&lt;M&gt; {
+    fn add_assign(&amp;mut self, rhs: T) {
+        *self = *self + rhs;
+    }
+}
+impl&lt;M: Modulus, T: Into&lt;ModInt&lt;M&gt;&gt;&gt; SubAssign&lt;T&gt; for ModInt&lt;M&gt; {
+    fn sub_assign(&amp;mut self, rhs: T) {
+        *self = *self - rhs;
+    }
+}
+impl&lt;M: Modulus, T: Into&lt;ModInt&lt;M&gt;&gt;&gt; MulAssign&lt;T&gt; for ModInt&lt;M&gt; {
+    fn mul_assign(&amp;mut self, rhs: T) {
+        *self = *self * rhs;
+    }
+}
+impl&lt;M: Modulus, T: Into&lt;ModInt&lt;M&gt;&gt;&gt; DivAssign&lt;T&gt; for ModInt&lt;M&gt; {
+    fn div_assign(&amp;mut self, rhs: T) {
+        *self = *self / rhs;
+    }
+}
+impl&lt;M&gt; fmt::Display for ModInt&lt;M&gt; {
+    fn fmt(&amp;self, f: &amp;mut fmt::Formatter) -&gt; fmt::Result {
+        write!(f, &quot;{}&quot;, self.x)
+    }
+}
+impl&lt;M&gt; fmt::Debug for ModInt&lt;M&gt; {
+    fn fmt(&amp;self, f: &amp;mut fmt::Formatter) -&gt; fmt::Result {
+        write!(f, &quot;{}&quot;, self.x)
+    }
+}
+impl&lt;M: Modulus&gt; From&lt;i64&gt; for ModInt&lt;M&gt; {
+    fn from(x: i64) -&gt; Self {
+        Self::new(x)
+    }
+}
+#[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord, Hash)]
+struct P {}
+impl Modulus for P {
+    fn m() -&gt; i64 {
+        MOD
+    }
+}
+type Mint = ModInt&lt;P&gt;;
+#[allow(dead_code)]
+fn mt(x: i64) -&gt; Mint {
+    Mint::new(x)
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="modint_testrs"><a class="header" href="#modint_testrs">modint_test.rs</a></h1>
+<h2 id="impl-9"><a class="header" href="#impl-9">Impl</a></h2>
+<pre><code class="language-rs">const MOD: i64 = 998244353;
+include!(&quot;modint.rs&quot;);
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn modint_998244353_works() {
+        assert_eq!(mt(2).pow(10), mt(1024));
+        assert_eq!(mt(283).pow(346), mt(401906323));
+
+        // Fermat's little theorem
+        for i in 2..100 {
+            assert_eq!(mt(i).pow(MOD - 1), mt(1));
+            // inverse element
+            assert_eq!(mt(i).pow(MOD - 2), mt(1) / i);
+        }
+    }
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="rationalrs"><a class="header" href="#rationalrs">rational.rs</a></h1>
+<h2 id="impl-10"><a class="header" href="#impl-10">Impl</a></h2>
+<pre><code class="language-rs">use std::fmt;
+use std::ops::*;
+#[derive(Eq, PartialEq)]
+struct Rational {
+    n: i64,
+    d: i64,
+}
+impl Rational {
+    fn new(mut n: i64, mut d: i64) -&gt; Self {
+        assert!(d != 0, &quot;Zero is an invalid denominator!&quot;);
+        let g = gcd(n, d);
+        n /= g;
+        d /= g;
+        Self { n, d }
+    }
+}
+impl Add for Rational {
+    type Output = Self;
+    fn add(self, rhs: Self) -&gt; Self {
+        let mut n = self.n;
+        let mut d = self.d;
+        let g = gcd(d, rhs.d);
+        d /= g;
+        n = n * (rhs.d / g) + rhs.n * d;
+        let g = gcd(n, g);
+        Self::new(n / g, d * (rhs.d / g))
+    }
+}
+impl Sub for Rational {
+    type Output = Self;
+    fn sub(self, rhs: Self) -&gt; Self {
+        let mut n = self.n;
+        let mut d = self.d;
+        let g = gcd(d, rhs.d);
+        d /= g;
+        n = n * (rhs.d / g) - rhs.n * d;
+        let g = gcd(n, g);
+        Self::new(n / g, d * (rhs.d / g))
+    }
+}
+impl Mul for Rational {
+    type Output = Self;
+    fn mul(self, rhs: Self) -&gt; Self {
+        Self::new(self.n * rhs.n, self.d * rhs.d)
+    }
+}
+impl Div for Rational {
+    type Output = Self;
+    fn div(self, rhs: Self) -&gt; Self {
+        Self::new(self.n * rhs.d, self.d * rhs.n)
+    }
+}
+impl fmt::Display for Rational {
+    fn fmt(&amp;self, f: &amp;mut fmt::Formatter) -&gt; fmt::Result {
+        write!(f, &quot;{}/{}&quot;, self.n, self.d)
+    }
+}
+impl fmt::Debug for Rational {
+    fn fmt(&amp;self, f: &amp;mut fmt::Formatter) -&gt; fmt::Result {
+        write!(f, &quot;{}/{}&quot;, self.n, self.d)
+    }
+}
+fn gcd(mut a: i64, mut b: i64) -&gt; i64 {
+    while b != 0 {
+        // (a, b) = (b, a % b);
+        let c = b;
+        b = a % b;
+        a = c;
+    }
+    a
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn rational_works() {
+        let rl = Rational::new;
+        assert_eq!(rl(1, 2), rl(2, 4));
+        assert_eq!(rl(1, 2) + rl(1, 3), rl(5, 6));
+        assert_eq!(rl(1, 3) - rl(1, 5), rl(2, 15));
+        assert_eq!(rl(2, 3) * rl(3, 4), rl(1, 2));
+        assert_eq!(rl(2, 3) / rl(3, 4), rl(8, 9));
+
+        // fmt::Display
+        assert_eq!(format!(&quot;{}&quot;, rl(283, 1)), &quot;283/1&quot;);
+        // fmt::Debug
+        assert_eq!(format!(&quot;{:?}&quot;, rl(346, 765)), &quot;346/765&quot;);
+    }
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><p>GitHub: <a href="https://github.com/nullputra/nlptr-lib/tree/master/lib/rust/data_structures">lib/rust/data_structures</a></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="bitsetrs"><a class="header" href="#bitsetrs">bitset.rs</a></h1>
+<h2 id="impl-11"><a class="header" href="#impl-11">Impl</a></h2>
+<pre><code class="language-rs">/// BitSet
+///
+/// # Refs
+/// - https://github.com/hatoo/competitive-rust-snippets/blob/master/src/bitset.rs, hatoo
+#[derive(Clone)]
+struct BitSet {
+    n: usize,
+    buf: Vec&lt;u128&gt;,
+}
+#[allow(dead_code)]
+impl BitSet {
+    fn new(n: usize) -&gt; BitSet {
+        BitSet {
+            n,
+            buf: vec![0; (n + 127) / 128],
+        }
+    }
+    fn set(&amp;mut self, i: usize, b: bool) {
+        assert!(i &lt; self.n);
+        if b {
+            self.buf[i &gt;&gt; 7] |= 1 &lt;&lt; (i &amp; 127);
+        } else {
+            self.buf[i &gt;&gt; 7] &amp;= !(1 &lt;&lt; (i &amp; 127));
+        }
+    }
+    fn count_ones(&amp;self) -&gt; u32 {
+        self.buf.iter().map(|x| x.count_ones()).sum()
+    }
+    fn chomp(&amp;mut self) {
+        let r = self.n &amp; 127;
+        if r != 0 {
+            if let Some(x) = self.buf.last_mut() {
+                let d = 128 - r;
+                *x = (*x &lt;&lt; d) &gt;&gt; d;
+            }
+        }
+    }
+}
+impl std::ops::Index&lt;usize&gt; for BitSet {
+    type Output = bool;
+    fn index(&amp;self, index: usize) -&gt; &amp;bool {
+        if self.buf[index &gt;&gt; 7] &gt;&gt; (index &amp; 127) &amp; 1 == 1 {
+            &amp;true
+        } else {
+            &amp;false
+        }
+    }
+}
+impl std::ops::ShlAssign&lt;usize&gt; for BitSet {
+    fn shl_assign(&amp;mut self, x: usize) {
+        let q = x &gt;&gt; 7;
+        let r = x &amp; 127;
+        if q &gt;= self.buf.len() {
+            for x in &amp;mut self.buf {
+                *x = 0;
+            }
+            return;
+        }
+        if r == 0 {
+            for i in (q..self.buf.len()).rev() {
+                self.buf[i] = self.buf[i - q];
+            }
+        } else {
+            for i in (q + 1..self.buf.len()).rev() {
+                self.buf[i] = (self.buf[i - q] &lt;&lt; r) | (self.buf[i - q - 1] &gt;&gt; (128 - r));
+            }
+            self.buf[q] = self.buf[0] &lt;&lt; r;
+        }
+        for x in &amp;mut self.buf[..q] {
+            *x = 0;
+        }
+        self.chomp();
+    }
+}
+impl std::ops::Shl&lt;usize&gt; for BitSet {
+    type Output = Self;
+    fn shl(mut self, x: usize) -&gt; Self {
+        self &lt;&lt;= x;
+        self
+    }
+}
+impl std::ops::ShrAssign&lt;usize&gt; for BitSet {
+    fn shr_assign(&amp;mut self, x: usize) {
+        let q = x &gt;&gt; 7;
+        let r = x &amp; 127;
+        if q &gt;= self.buf.len() {
+            for x in &amp;mut self.buf {
+                *x = 0;
+            }
+            return;
+        }
+        if r == 0 {
+            for i in 0..self.buf.len() - q {
+                self.buf[i] = self.buf[i + q];
+            }
+        } else {
+            for i in 0..self.buf.len() - q - 1 {
+                self.buf[i] = (self.buf[i + q] &gt;&gt; r) | (self.buf[i + q + 1] &lt;&lt; (128 - r));
+            }
+            let len = self.buf.len();
+            self.buf[len - q - 1] = self.buf[len - 1] &gt;&gt; r;
+        }
+        let len = self.buf.len();
+        for x in &amp;mut self.buf[len - q..] {
+            *x = 0;
+        }
+    }
+}
+impl std::ops::Shr&lt;usize&gt; for BitSet {
+    type Output = Self;
+    fn shr(mut self, x: usize) -&gt; Self {
+        self &gt;&gt;= x;
+        self
+    }
+}
+impl&lt;'a&gt; std::ops::BitAndAssign&lt;&amp;'a BitSet&gt; for BitSet {
+    fn bitand_assign(&amp;mut self, rhs: &amp;'a Self) {
+        for (a, b) in self.buf.iter_mut().zip(rhs.buf.iter()) {
+            *a &amp;= *b;
+        }
+    }
+}
+impl&lt;'a&gt; std::ops::BitAnd&lt;&amp;'a BitSet&gt; for BitSet {
+    type Output = Self;
+    fn bitand(mut self, rhs: &amp;'a Self) -&gt; Self {
+        self &amp;= rhs;
+        self
+    }
+}
+impl&lt;'a&gt; std::ops::BitOrAssign&lt;&amp;'a BitSet&gt; for BitSet {
+    fn bitor_assign(&amp;mut self, rhs: &amp;'a Self) {
+        for (a, b) in self.buf.iter_mut().zip(rhs.buf.iter()) {
+            *a |= *b;
+        }
+        self.chomp();
+    }
+}
+impl&lt;'a&gt; std::ops::BitOr&lt;&amp;'a BitSet&gt; for BitSet {
+    type Output = Self;
+    fn bitor(mut self, rhs: &amp;'a Self) -&gt; Self {
+        self |= rhs;
+        self
+    }
+}
+impl&lt;'a&gt; std::ops::BitXorAssign&lt;&amp;'a BitSet&gt; for BitSet {
+    fn bitxor_assign(&amp;mut self, rhs: &amp;'a Self) {
+        for (a, b) in self.buf.iter_mut().zip(rhs.buf.iter()) {
+            *a ^= *b;
+        }
+        self.chomp();
+    }
+}
+impl&lt;'a&gt; std::ops::BitXor&lt;&amp;'a BitSet&gt; for BitSet {
+    type Output = Self;
+    fn bitxor(mut self, rhs: &amp;'a Self) -&gt; Self {
+        self ^= rhs;
+        self
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn abc204_d() {
+        // ABC204 D - Cooking https://atcoder.jp/contests/abc204/tasks/abc204_d
+        // BitSet による 128 倍高速化
+        let solve = |t: Vec&lt;usize&gt;| {
+            let mut sum = 0;
+            let mut bt = BitSet::new(100020);
+            bt.set(0, true);
+            for &amp;t in t.iter() {
+                bt = bt.clone() | &amp;(bt &lt;&lt; t);
+                sum += t;
+            }
+            let mut ans = sum;
+            for i in (sum + 1) / 2..=sum {
+                if bt[i] {
+                    ans = i;
+                    break;
+                }
+            }
+            ans
+        };
+        assert_eq!(solve(vec![8, 3, 7, 2, 5]), 13);
+        assert_eq!(solve(vec![1000, 1]), 1000);
+        assert_eq!(solve(vec![3, 14, 15, 9, 26, 5, 35, 89, 79]), 138);
+    }
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="fenwick_treers"><a class="header" href="#fenwick_treers">fenwick_tree.rs</a></h1>
+<h2 id="impl-12"><a class="header" href="#impl-12">Impl</a></h2>
+<pre><code class="language-rs">// Ref: https://github.com/rust-lang-ja/ac-library-rs/blob/master/src/fenwicktree.rs
+pub struct FenwickTree {
+    n: usize,
+    bit: Vec&lt;Vec&lt;i64&gt;&gt;,
+    uses_raq: bool,
+}
+impl FenwickTree {
+    pub fn new(n: usize) -&gt; Self {
+        FenwickTree {
+            n,
+            bit: vec![vec![0; n]; 2],
+            uses_raq: false,
+        }
+    }
+    fn accum_sub(&amp;self, is_raq: usize, mut i: usize) -&gt; i64 {
+        let mut sum = 0;
+        while i &gt; 0 {
+            sum += self.bit[is_raq][i - 1];
+            i &amp;= i - 1;
+        }
+        sum
+    }
+    fn add_sub(&amp;mut self, is_raq: usize, mut i: usize, x: i64) {
+        while i &lt;= self.n {
+            self.bit[is_raq][i - 1] += x;
+            i += i &amp; i.wrapping_neg();
+        }
+    }
+    /// performs data[i] += val;
+    pub fn add(&amp;mut self, mut i: usize, x: i64) {
+        assert!(i &lt;= self.n);
+        i += 1;
+        self.add_sub(0, i, x);
+    }
+    /// performs data[l], ..., data[r - 1] += val;
+    pub fn range_add(&amp;mut self, mut l: usize, mut r: usize, x: i64) {
+        assert!(l &lt;= r &amp;&amp; r &lt;= self.n);
+        l += 1;
+        r += 1;
+        self.uses_raq = true;
+        self.add_sub(0, l, -x * (l as i64 - 1));
+        self.add_sub(0, r, x * (r as i64 - 1));
+        self.add_sub(1, l, x);
+        self.add_sub(1, r, -x);
+    }
+    fn accum(&amp;self, i: usize) -&gt; i64 {
+        if self.uses_raq {
+            self.accum_sub(0, i) + self.accum_sub(1, i) * i as i64
+        } else {
+            self.accum_sub(0, i)
+        }
+    }
+    /// Returns data[l] + ... + data[r - 1].
+    pub fn sum(&amp;self, l: usize, r: usize) -&gt; i64 {
+        assert!(l &lt;= r &amp;&amp; r &lt;= self.n);
+        self.accum(r) - self.accum(l)
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn fenwick_tree_works() {
+        let mut ft = FenwickTree::new(5);
+        // [1, 1, 1, 1, 1]
+        ft.range_add(0, 5, 1);
+        for i in 0..5 {
+            assert_eq!(ft.sum(i, i + 1), 1);
+        }
+
+        let mut ft = FenwickTree::new(5);
+        // [1, 2, 3, 4, 5]
+        for i in 0..5 {
+            ft.add(i, i as i64 + 1);
+        }
+        assert_eq!(ft.sum(0, 4), 10);
+        assert_eq!(ft.sum(0, 5), 15);
+        assert_eq!(ft.sum(3, 4), 4);
+        assert_eq!(ft.sum(3, 5), 9);
+    }
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="segment_treers"><a class="header" href="#segment_treers">segment_tree.rs</a></h1>
+<h2 id="impl-13"><a class="header" href="#impl-13">Impl</a></h2>
+<pre><code class="language-rs">// Lazy Segment Tree
+//
+// # Refs
+// - https://atcoder.jp/contests/abc032/submissions/27759184, yokofudori
+struct SegmentTree&lt;S, Op, F, Mapping, Composition&gt; {
+    n0: usize,
+    n: usize,
+    s: S,
+    op: Op,
+    f: F,
+    mapping: Mapping,
+    composition: Composition,
+    data: Vec&lt;S&gt;,
+    lazy: Vec&lt;F&gt;,
+}
+#[allow(dead_code)]
+impl&lt;S, Op, F, Mapping, Composition&gt; SegmentTree&lt;S, Op, F, Mapping, Composition&gt;
+where
+    S: Copy + PartialEq + std::fmt::Debug,
+    Op: Fn(S, S) -&gt; S,
+    F: Copy + PartialEq + std::fmt::Debug,
+    Mapping: Fn(F, S) -&gt; S,
+    Composition: Fn(F, F) -&gt; F,
+{
+    pub fn new(n0: usize, s: S, op: Op, f: F, mapping: Mapping, composition: Composition) -&gt; Self {
+        debug_assert_eq!(op(s, s), s);
+        debug_assert_eq!(mapping(f, s), s);
+        debug_assert_eq!(composition(f, f), f);
+        let n = 1 &lt;&lt; (31 - (2 * n0 as i32 - 1).leading_zeros() as usize);
+        Self {
+            n0,
+            n,
+            s,
+            op,
+            f,
+            mapping,
+            // composition(f1, f2) -&gt; f2(f1(x))
+            composition,
+            data: vec![s; n &lt;&lt; 1],
+            lazy: vec![f; n &lt;&lt; 1],
+        }
+    }
+    pub fn set(&amp;mut self, i: usize, x: S) {
+        assert!(i &lt; self.n0);
+        self.prod(i, i + 1);
+        let mut i = i + self.n;
+        self.data[i] = x;
+        while i &gt; 1 {
+            // i = (i - 1) / 2;
+            i &gt;&gt;= 1;
+            self.data[i] = (self.op)(self.data[i &lt;&lt; 1], self.data[i &lt;&lt; 1 | 1]);
+            self.lazy[i] = self.f;
+        }
+    }
+    #[inline]
+    fn eval(&amp;mut self, k: usize) {
+        if self.lazy[k] == self.f {
+            return;
+        }
+        if k &lt; self.n {
+            self.lazy[k &lt;&lt; 1] = (self.composition)(self.lazy[k &lt;&lt; 1], self.lazy[k]);
+            self.lazy[k &lt;&lt; 1 | 1] = (self.composition)(self.lazy[k &lt;&lt; 1 | 1], self.lazy[k]);
+        }
+        self.data[k] = (self.mapping)(self.lazy[k], self.data[k]);
+        self.lazy[k] = self.f;
+    }
+    fn apply_sub(&amp;mut self, a: usize, b: usize, y: F, k: usize, l: usize, r: usize) -&gt; S {
+        self.eval(k);
+        if r &lt;= a || b &lt;= l {
+            return self.data[k];
+        }
+        if a &lt;= l &amp;&amp; r &lt;= b {
+            self.lazy[k] = (self.composition)(self.lazy[k], y);
+            return (self.mapping)(self.lazy[k], self.data[k]);
+        }
+        let vr = self.apply_sub(a, b, y, k &lt;&lt; 1, l, (l + r) &gt;&gt; 1);
+        let vl = self.apply_sub(a, b, y, k &lt;&lt; 1 | 1, (l + r) &gt;&gt; 1, r);
+        self.data[k] = (self.op)(vr, vl);
+        self.data[k]
+    }
+    pub fn apply(&amp;mut self, a: usize, b: usize, x: F) {
+        assert!(a &lt;= b &amp;&amp; b &lt;= self.n0);
+        self.apply_sub(a, b, x, 1, 0, self.n);
+    }
+    fn prod_sub(&amp;mut self, a: usize, b: usize, k: usize, l: usize, r: usize) -&gt; S {
+        self.eval(k);
+        if r &lt;= a || b &lt;= l {
+            self.s
+        } else if a &lt;= l &amp;&amp; r &lt;= b {
+            self.data[k]
+        } else {
+            let vl = self.prod_sub(a, b, k &lt;&lt; 1, l, (l + r) &gt;&gt; 1);
+            let vr = self.prod_sub(a, b, k &lt;&lt; 1 | 1, (l + r) &gt;&gt; 1, r);
+            (self.op)(vl, vr)
+        }
+    }
+    pub fn prod(&amp;mut self, a: usize, b: usize) -&gt; S {
+        assert!(a &lt;= b &amp;&amp; b &lt;= self.n0);
+        self.prod_sub(a, b, 1, 0, self.n)
+    }
+    pub fn raw(&amp;mut self) -&gt; Vec&lt;S&gt; {
+        let mut res = vec![self.s; self.n0];
+        for i in 0..self.n0 {
+            res[i] = self.prod(i, i + 1);
+        }
+        res
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn raq_rmaxq_works() {
+        let n = 5;
+        // RAQ
+        let s = std::i32::MIN;
+        let op = |s1: i32, s2: i32| s1.max(s2);
+        // RMaxQ
+        let f = 0;
+        let mg = |f1: i32, s1: i32| f1 + s1;
+        let cn = |f1: i32, f2: i32| f1 + f2;
+        // RAQ, RMaxQ
+        let mut st = SegmentTree::new(n, s, op, f, mg, cn);
+
+        st.set(0, 3);
+        st.set(1, 1);
+        st.set(2, 4);
+        st.set(3, 1);
+        st.set(4, 5);
+        assert_eq!(st.raw(), [3, 1, 4, 1, 5]);
+
+        for i in 0..n {
+            // [i, i)
+            assert_eq!(st.prod(i, i), std::i32::MIN);
+        }
+
+        assert_eq!(st.prod(0, 1), 3);
+        assert_eq!(st.prod(0, 2), 3);
+        assert_eq!(st.prod(0, 3), 4);
+        assert_eq!(st.prod(0, 4), 4);
+        assert_eq!(st.prod(0, 5), 5);
+
+        assert_eq!(st.prod(0, 3), 4);
+        assert_eq!(st.prod(1, 3), 4);
+        assert_eq!(st.prod(2, 3), 4);
+
+        st.apply(1, 4, 100);
+        assert_eq!(st.raw(), [3, 101, 104, 101, 5]);
+    }
+    #[test]
+    fn rsq_ruq_works() {
+        let n = 5;
+        // RSQ
+        let s = (0, 0); // (val, size)
+        let op = |s1: (i64, usize), s2: (i64, usize)| (s1.0 + s2.0, s1.1 + s2.1);
+        // RUQ
+        let f = std::i64::MAX;
+        let mg = |f1: i64, mut s1: (i64, usize)| {
+            if f1 != f {
+                s1.0 = f1 * s1.1 as i64;
+            }
+            s1
+        };
+        let cn = |f1: i64, f2: i64| if f1 != f { f1 } else { f2 };
+        // RSQ, RUQ
+        let mut st = SegmentTree::new(n, s, op, f, mg, cn);
+
+        st.set(0, (3, 1));
+        st.set(1, (1, 1));
+        st.set(2, (4, 1));
+        st.set(3, (1, 1));
+        st.set(4, (5, 1));
+        let unpack = |a: Vec&lt;(i64, usize)&gt;| {
+            a.iter().map(|&amp;a| a.0).collect::&lt;Vec&lt;i64&gt;&gt;()
+        };
+        assert_eq!(unpack(st.raw()), [3, 1, 4, 1, 5]);
+
+        assert_eq!(st.prod(0, 1).0, 3);
+        assert_eq!(st.prod(0, 2).0, 4);
+        assert_eq!(st.prod(0, 3).0, 8);
+        assert_eq!(st.prod(0, 4).0, 9);
+        assert_eq!(st.prod(0, 5).0, 14);
+
+        assert_eq!(st.prod(0, 3).0, 8);
+        assert_eq!(st.prod(1, 3).0, 5);
+        assert_eq!(st.prod(2, 3).0, 4);
+
+        st.apply(1, 4, 283);
+        assert_eq!(unpack(st.raw()), [3, 283, 283, 283, 5]);
+    }
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="swagrs"><a class="header" href="#swagrs">swag.rs</a></h1>
+<h2 id="impl-14"><a class="header" href="#impl-14">Impl</a></h2>
+<pre><code class="language-rs">/// F must give a semigroup: it is required that F satisfies associativity.
+/// Commutativity and existence of the identity are not required.
+/// Ref:
+///   https://scrapbox.io/data-structures/Sliding_Window_Aggregation
+///   https://github.com/koba-e964/sliding-window-aggregation/blob/master/src/lib.rs, kobae964
+#[allow(dead_code)]
+struct SWAg&lt;T, F&gt; {
+    back: Vec&lt;T&gt;,
+    back_agg: Vec&lt;T&gt;,
+    front: Vec&lt;T&gt;,
+    front_agg: Vec&lt;T&gt;,
+    f: F,
+}
+#[allow(dead_code)]
+impl&lt;T: Copy + std::default::Default + std::cmp::PartialEq, F: Fn(T, T) -&gt; T&gt; SWAg&lt;T, F&gt; {
+    fn new(f: F) -&gt; Self {
+        let def = Default::default();
+        debug_assert!(f(def, def) == def);
+        SWAg {
+            back: Vec::new(),
+            back_agg: Vec::new(),
+            front: Vec::new(),
+            front_agg: Vec::new(),
+            f,
+        }
+    }
+    fn fold(&amp;self) -&gt; Option&lt;T&gt; {
+        match (self.back_agg.last(), self.front_agg.last()) {
+            (None, None) =&gt; None,
+            (None, x) =&gt; x.cloned(),
+            (x, None) =&gt; x.cloned(),
+            (Some(&amp;x), Some(&amp;y)) =&gt; Some((self.f)(x, y)),
+        }
+    }
+    // push_back
+    fn push(&amp;mut self, x: T) {
+        let last = self.front_agg.last().cloned();
+        self.front.push(x);
+        self.front_agg.push(match last {
+            None =&gt; x,
+            Some(y) =&gt; (self.f)(y, x),
+        });
+    }
+    // pop_front
+    fn pop(&amp;mut self) -&gt; Option&lt;T&gt; {
+        if let Some(x) = self.back.pop() {
+            return Some(x);
+        };
+        std::mem::swap(&amp;mut self.front, &amp;mut self.back);
+        self.back.reverse();
+        let res = self.back.pop();
+        let len = self.back.len();
+        self.back_agg = Vec::with_capacity(self.back.len());
+        if len &gt; 0 {
+            self.back_agg.push(self.back[0]);
+            let mut cur = self.back[0];
+            for i in 1..len {
+                cur = (self.f)(self.back[i], cur);
+                self.back_agg.push(cur);
+            }
+        }
+        self.front = Vec::new();
+        self.front_agg = Vec::new();
+        res
+    }
+}
+use std::fmt;
+impl&lt;T: Copy + std::default::Default + std::cmp::PartialEq + fmt::Debug, F: Fn(T, T) -&gt; T&gt;
+    fmt::Debug for SWAg&lt;T, F&gt;
+{
+    fn fmt(&amp;self, f: &amp;mut fmt::Formatter) -&gt; fmt::Result {
+        let mut a = vec![];
+        for &amp;back in self.back.iter().rev() {
+            a.push(back);
+        }
+        for &amp;front in self.front.iter() {
+            a.push(front);
+        }
+        a.fmt(f)
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn fold_works() {
+        let mut sw = SWAg::&lt;i32, _&gt;::new(|x, y| x + y);
+        sw.push(3);
+        sw.push(4);
+        sw.push(1);
+        assert_eq!(format!(&quot;{:?}&quot;, sw), &quot;[3, 4, 1]&quot;);
+        assert_eq!(sw.fold(), Some(8));
+    }
+    #[test]
+    fn fold_not_commutative_works() {
+        let mut sw = SWAg::&lt;(i32, i32), _&gt;::new(|(x, b), (y, c)| (c * x + y, b * c));
+        sw.push((3, 10));
+        sw.push((4, 10));
+        sw.push((1, 10));
+        assert_eq!(format!(&quot;{:?}&quot;, sw), &quot;[(3, 10), (4, 10), (1, 10)]&quot;);
+        assert_eq!(sw.fold(), Some((341, 1000)));
+    }
+    #[test]
+    fn pop_works() {
+        let mut sw = SWAg::&lt;(i32, i32), _&gt;::new(|(x, b), (y, c)| (c * x + y, b * c));
+        sw.push((3, 10));
+        sw.push((4, 10));
+        sw.push((5, 10));
+        sw.push((6, 10));
+        assert_eq!(format!(&quot;{:?}&quot;, sw), &quot;[(3, 10), (4, 10), (5, 10), (6, 10)]&quot;);
+        assert_eq!(sw.pop(), Some((3, 10)));
+        sw.push((1, 10));
+        assert_eq!(format!(&quot;{:?}&quot;, sw), &quot;[(4, 10), (5, 10), (6, 10), (1, 10)]&quot;);
+        assert_eq!(sw.fold(), Some((4561, 10000)));
+    }
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="union_findrs"><a class="header" href="#union_findrs">union_find.rs</a></h1>
+<h2 id="impl-15"><a class="header" href="#impl-15">Impl</a></h2>
+<pre><code class="language-rs">// Union Find
+//
+// # Refs
+// - https://github.com/rust-lang-ja/ac-library-rs/blob/master/src/dsu.rs, rust-lang-ja Developers
+struct UnionFind {
+    n: usize,
+    par: Vec&lt;i32&gt;,
+}
+#[allow(dead_code)]
+impl UnionFind {
+    fn new(n: usize) -&gt; Self {
+        UnionFind {
+            n,
+            par: vec![-1; n],
+        }
+    }
+    fn unite(&amp;mut self, mut x: usize, mut y: usize) -&gt; bool {
+        assert!(x &lt; self.n &amp;&amp; y &lt; self.n);
+        x = self.find(x);
+        y = self.find(y);
+        if x == y {
+            return false;
+        }
+        if self.par[x] &gt; self.par[y] {
+            std::mem::swap(&amp;mut x, &amp;mut y);
+        }
+        self.par[x] += self.par[y];
+        self.par[y] = x as i32;
+        true
+    }
+    fn find(&amp;mut self, x: usize) -&gt; usize {
+        assert!(x &lt; self.n);
+        if self.par[x] &lt; 0 {
+            x
+        } else {
+            self.par[x] = self.find(self.par[x] as usize) as i32;
+            self.par[x] as usize
+        }
+    }
+    fn same(&amp;mut self, x: usize, y: usize) -&gt; bool {
+        assert!(x &lt; self.n &amp;&amp; y &lt; self.n);
+        self.find(x) == self.find(y)
+    }
+    fn groups(&amp;mut self) -&gt; Vec&lt;Vec&lt;usize&gt;&gt; {
+        let mut _find = vec![0; self.n];
+        let mut _size = vec![0; self.n];
+        for i in 0..self.n {
+            _find[i] = self.find(i);
+            _size[_find[i]] += 1;
+        }
+        let mut res = vec![vec![]; self.n];
+        for i in 0..self.n {
+            res[i].reserve(_size[i]);
+        }
+        for i in 0..self.n {
+            res[_find[i]].push(i);
+        }
+        res.into_iter()
+            .filter(|v| !v.is_empty())
+            .collect::&lt;Vec&lt;Vec&lt;usize&gt;&gt;&gt;()
+    }
+    fn size(&amp;mut self, x: usize) -&gt; usize {
+        assert!(x &lt; self.n);
+        let x = self.find(x);
+        -self.par[x] as usize
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn uf_works() {
+        let mut uf = UnionFind::new(4);
+        uf.unite(0, 1);
+        assert!(uf.same(0, 1));
+        uf.unite(1, 2);
+        assert!(uf.same(0, 2));
+        assert_eq!(uf.size(0), 3);
+        assert!(!uf.same(0, 3));
+        assert_eq!(uf.groups(), vec![vec![0, 1, 2], vec![3]]);
+    }
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><p>GitHub: <a href="https://github.com/nullputra/nlptr-lib/tree/master/lib/rust/graphs">lib/rust/graphs</a></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="dijkstrars"><a class="header" href="#dijkstrars">dijkstra.rs</a></h1>
+<h2 id="impl-16"><a class="header" href="#impl-16">Impl</a></h2>
+<pre><code class="language-rs">/// Dijkstra
+///
+/// 単一始点最短経路問題を解く.
+/// 始点 s と辺に非負の重みの付いた有向グラフを受け取り, 各 t に対する s-t 最短路長を返す.
+#[allow(dead_code)]
+fn dijkstra(s: usize, edges: &amp;[Vec&lt;(usize, i64)&gt;]) -&gt; Vec&lt;i64&gt; {
+    const INF: i64 = std::i64::MAX;
+    let mut dists = vec![INF; edges.len()];
+    dists[s] = 0;
+    use std::collections::BinaryHeap;
+    let mut hp = BinaryHeap::new();
+    hp.push((0, s));
+    while let Some((d1, v1)) = hp.pop() {
+        let d1 = -d1;
+        if dists[v1] &lt; d1 {
+            continue;
+        }
+        for &amp;(v2, d2) in edges[v1].iter() {
+            if dists[v2] &gt; d1 + d2 {
+                dists[v2] = d1 + d2;
+                hp.push((-dists[v2], v2));
+            }
+        }
+    }
+    dists
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn dijkstra_works() {
+        // 重み付き有向辺
+        let uvc = vec![(1, 2, 1), (1, 4, 2), (2, 3, 1), (3, 4, 1), (4, 5, 1)];
+
+        let n = 5;
+        let mut edges = vec![vec![]; n];
+        for &amp;(u, v, c) in uvc.iter() {
+            edges[u - 1].push((v - 1, c));
+        }
+        // 始点 s = 0 で dijkstra
+        let dists = dijkstra(0, &amp;edges);
+        assert_eq!(dists, vec![0, 1, 2, 2, 3]);
+    }
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="dinicrs"><a class="header" href="#dinicrs">dinic.rs</a></h1>
+<h2 id="impl-17"><a class="header" href="#impl-17">Impl</a></h2>
+<pre><code class="language-rs">/// Dinic
+///
+/// # Refs
+/// - https://github.com/rust-lang-ja/ac-library-rs/blob/master/src/maxflow.rs, rust-lang-ja Developers
+use std::cmp::min;
+use std::collections::VecDeque;
+use std::iter;
+use std::{
+    fmt,
+    iter::{Product, Sum},
+    ops::{
+        Add, AddAssign, BitAnd, BitAndAssign, BitOr, BitOrAssign, BitXor, BitXorAssign, Div,
+        DivAssign, Mul, MulAssign, Not, Rem, RemAssign, Shl, ShlAssign, Shr, ShrAssign, Sub,
+        SubAssign,
+    },
+};
+pub trait Integral:
+    'static
+    + Send
+    + Sync
+    + Copy
+    + Ord
+    + Not&lt;Output = Self&gt;
+    + Add&lt;Output = Self&gt;
+    + Sub&lt;Output = Self&gt;
+    + Mul&lt;Output = Self&gt;
+    + Div&lt;Output = Self&gt;
+    + Rem&lt;Output = Self&gt;
+    + AddAssign
+    + SubAssign
+    + MulAssign
+    + DivAssign
+    + RemAssign
+    + Sum
+    + Product
+    + BitOr&lt;Output = Self&gt;
+    + BitAnd&lt;Output = Self&gt;
+    + BitXor&lt;Output = Self&gt;
+    + BitOrAssign
+    + BitAndAssign
+    + BitXorAssign
+    + Shl&lt;Output = Self&gt;
+    + Shr&lt;Output = Self&gt;
+    + ShlAssign
+    + ShrAssign
+    + fmt::Display
+    + fmt::Debug
+    + fmt::Binary
+    + fmt::Octal
+    + Zero
+    + One
+    + BoundedBelow
+    + BoundedAbove
+{
+}
+pub trait Zero {
+    fn zero() -&gt; Self;
+}
+pub trait One {
+    fn one() -&gt; Self;
+}
+pub trait BoundedBelow {
+    fn min_value() -&gt; Self;
+}
+pub trait BoundedAbove {
+    fn max_value() -&gt; Self;
+}
+macro_rules! impl_integral {
+    ($($ty:ty),*) =&gt; {
+        $(
+            impl Zero for $ty {
+                #[inline]
+                fn zero() -&gt; Self {
+                    0
+                }
+            }
+            impl One for $ty {
+                #[inline]
+                fn one() -&gt; Self {
+                    1
+                }
+            }
+            impl BoundedBelow for $ty {
+                #[inline]
+                fn min_value() -&gt; Self {
+                    Self::min_value()
+                }
+            }
+            impl BoundedAbove for $ty {
+                #[inline]
+                fn max_value() -&gt; Self {
+                    Self::max_value()
+                }
+            }
+            impl Integral for $ty {}
+        )*
+    };
+}
+impl_integral!(i8, i16, i32, i64, i128, isize, u8, u16, u32, u64, u128, usize);
+impl&lt;Cap&gt; Dinic&lt;Cap&gt;
+where
+    Cap: Integral,
+{
+    pub fn new(n: usize) -&gt; Dinic&lt;Cap&gt; {
+        Dinic {
+            _n: n,
+            pos: Vec::new(),
+            g: iter::repeat_with(Vec::new).take(n).collect(),
+        }
+    }
+    pub fn add_edge(&amp;mut self, from: usize, to: usize, cap: Cap) -&gt; usize {
+        assert!(from &lt; self._n);
+        assert!(to &lt; self._n);
+        assert!(Cap::zero() &lt;= cap);
+        let m = self.pos.len();
+        self.pos.push((from, self.g[from].len()));
+        let rev = self.g[to].len() + if from == to { 1 } else { 0 };
+        self.g[from].push(_Edge { to, rev, cap });
+        let rev = self.g[from].len() - 1;
+        self.g[to].push(_Edge {
+            to: from,
+            rev,
+            cap: Cap::zero(),
+        });
+        m
+    }
+}
+#[derive(Debug, PartialEq, Eq)]
+pub struct Edge&lt;Cap: Integral&gt; {
+    pub from: usize,
+    pub to: usize,
+    pub cap: Cap,
+    pub flow: Cap,
+}
+impl&lt;Cap&gt; Dinic&lt;Cap&gt;
+where
+    Cap: Integral,
+{
+    pub fn get_edge(&amp;self, i: usize) -&gt; Edge&lt;Cap&gt; {
+        let m = self.pos.len();
+        assert!(i &lt; m);
+        let _e = &amp;self.g[self.pos[i].0][self.pos[i].1];
+        let _re = &amp;self.g[_e.to][_e.rev];
+        Edge {
+            from: self.pos[i].0,
+            to: _e.to,
+            cap: _e.cap + _re.cap,
+            flow: _re.cap,
+        }
+    }
+    pub fn edges(&amp;self) -&gt; Vec&lt;Edge&lt;Cap&gt;&gt; {
+        let m = self.pos.len();
+        (0..m).map(|i| self.get_edge(i)).collect()
+    }
+    pub fn change_edge(&amp;mut self, i: usize, new_cap: Cap, new_flow: Cap) {
+        let m = self.pos.len();
+        assert!(i &lt; m);
+        assert!(Cap::zero() &lt;= new_flow &amp;&amp; new_flow &lt;= new_cap);
+        let (to, rev) = {
+            let _e = &amp;mut self.g[self.pos[i].0][self.pos[i].1];
+            _e.cap = new_cap - new_flow;
+            (_e.to, _e.rev)
+        };
+        let _re = &amp;mut self.g[to][rev];
+        _re.cap = new_flow;
+    }
+    pub fn flow(&amp;mut self, s: usize, t: usize) -&gt; Cap {
+        self.flow_with_capacity(s, t, Cap::max_value())
+    }
+    pub fn flow_with_capacity(&amp;mut self, s: usize, t: usize, flow_limit: Cap) -&gt; Cap {
+        let n_ = self._n;
+        assert!(s &lt; n_);
+        assert!(t &lt; n_);
+        assert_ne!(s, t);
+        assert!(Cap::zero() &lt;= flow_limit);
+        let mut calc = FlowCalculator {
+            graph: self,
+            s,
+            t,
+            level: vec![0; n_],
+            iter: vec![0; n_],
+            que: VecDeque::new(),
+        };
+        let mut flow = Cap::zero();
+        while flow &lt; flow_limit {
+            calc.bfs();
+            if calc.level[t] == -1 {
+                break;
+            }
+            calc.iter.iter_mut().for_each(|e| *e = 0);
+            while flow &lt; flow_limit {
+                let f = calc.dfs(t, flow_limit - flow);
+                if f == Cap::zero() {
+                    break;
+                }
+                flow += f;
+            }
+        }
+        flow
+    }
+    pub fn min_cut(&amp;self, s: usize) -&gt; Vec&lt;bool&gt; {
+        let mut visited = vec![false; self._n];
+        let mut que = VecDeque::new();
+        que.push_back(s);
+        while let Some(p) = que.pop_back() {
+            visited[p] = true;
+            for e in &amp;self.g[p] {
+                if e.cap != Cap::zero() &amp;&amp; !visited[e.to] {
+                    visited[e.to] = true;
+                    que.push_back(e.to);
+                }
+            }
+        }
+        visited
+    }
+}
+struct FlowCalculator&lt;'a, Cap&gt; {
+    graph: &amp;'a mut Dinic&lt;Cap&gt;,
+    s: usize,
+    t: usize,
+    level: Vec&lt;i32&gt;,
+    iter: Vec&lt;usize&gt;,
+    que: VecDeque&lt;usize&gt;,
+}
+impl&lt;Cap&gt; FlowCalculator&lt;'_, Cap&gt;
+where
+    Cap: Integral,
+{
+    fn bfs(&amp;mut self) {
+        self.level.iter_mut().for_each(|e| *e = -1);
+        self.level[self.s] = 0;
+        self.que.clear();
+        self.que.push_back(self.s);
+        while !self.que.is_empty() {
+            let v = *self.que.front().unwrap();
+            self.que.pop_back();
+            for e in &amp;self.graph.g[v] {
+                if e.cap == Cap::zero() || self.level[e.to] &gt;= 0 {
+                    continue;
+                }
+                self.level[e.to] = self.level[v] + 1;
+                if e.to == self.t {
+                    return;
+                }
+                self.que.push_back(e.to);
+            }
+        }
+    }
+    fn dfs(&amp;mut self, v: usize, up: Cap) -&gt; Cap {
+        if v == self.s {
+            return up;
+        }
+        let mut res = Cap::zero();
+        let level_v = self.level[v];
+        for i in self.iter[v]..self.graph.g[v].len() {
+            self.iter[v] = i;
+            let &amp;_Edge {
+                to: e_to,
+                rev: e_rev,
+                ..
+            } = &amp;self.graph.g[v][i];
+            if level_v &lt;= self.level[e_to] || self.graph.g[e_to][e_rev].cap == Cap::zero() {
+                continue;
+            }
+            let d = self.dfs(e_to, min(up - res, self.graph.g[e_to][e_rev].cap));
+            if d &lt;= Cap::zero() {
+                continue;
+            }
+            self.graph.g[v][i].cap += d;
+            self.graph.g[e_to][e_rev].cap -= d;
+            res += d;
+            if res == up {
+                return res;
+            }
+        }
+        self.iter[v] = self.graph.g[v].len();
+        res
+    }
+}
+#[derive(Default)]
+pub struct Dinic&lt;Cap&gt; {
+    _n: usize,
+    pos: Vec&lt;(usize, usize)&gt;,
+    g: Vec&lt;Vec&lt;_Edge&lt;Cap&gt;&gt;&gt;,
+}
+struct _Edge&lt;Cap&gt; {
+    to: usize,
+    rev: usize,
+    cap: Cap,
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><p>GitHub: <a href="https://github.com/nullputra/nlptr-lib/tree/master/lib/rust/others">lib/rust/others</a></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="matmulrs"><a class="header" href="#matmulrs">matmul.rs</a></h1>
+<h2 id="impl-18"><a class="header" href="#impl-18">Impl</a></h2>
+<pre><code class="language-rs">/// Matrix Mul (行列累乗)
+///
+/// # Refs
+/// - http
+fn matmul(a: &amp;Vec&lt;Vec&lt;i64&gt;&gt;, b: &amp;Vec&lt;Vec&lt;i64&gt;&gt;) -&gt; Vec&lt;Vec&lt;i64&gt;&gt; {
+    let mut res = vec![vec![0; b[0].len()]; a.len()];
+    for i in 0..a.len() {
+        for k in 0..b.len() {
+            for j in 0..b[0].len() {
+                res[i][j] += a[i][k] * b[k][j];
+            }
+        }
+    }
+    return res;
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="permiterrs"><a class="header" href="#permiterrs">permiter.rs</a></h1>
+<h2 id="impl-19"><a class="header" href="#impl-19">Impl</a></h2>
+<pre><code class="language-rs">/// Perm Iter
+///
+/// # Refs
+/// - https://blog.tiqwab.com/2021/08/01/permutation-iterator-rust.html, tiqwab
+struct PermIter&lt;T: Ord + Clone&gt; {
+    li: Vec&lt;T&gt;,
+    finished: bool,
+}
+impl&lt;T: Ord + Clone&gt; PermIter&lt;T&gt; {
+    fn new(mut li: Vec&lt;T&gt;) -&gt; PermIter&lt;T&gt; {
+        let finished = li.is_empty();
+        li.sort();
+        PermIter { li, finished }
+    }
+}
+impl&lt;T: Ord + Clone&gt; Iterator for PermIter&lt;T&gt; {
+    type Item = Vec&lt;T&gt;;
+    fn next(&amp;mut self) -&gt; Option&lt;Self::Item&gt; {
+        if self.finished {
+            return None;
+        }
+        if self.li.len() == 1 {
+            self.finished = true;
+            return Some(self.li.clone());
+        }
+        let mut i = self.li.len() - 1;
+        let res = self.li.clone();
+        loop {
+            let ii = i;
+            i -= 1;
+            if self.li[i] &lt; self.li[ii] {
+                let mut j = self.li.len() - 1;
+                while self.li[i] &gt;= self.li[j] {
+                    j -= 1;
+                }
+
+                self.li.swap(i, j);
+                self.li[ii..].reverse();
+                return Some(res);
+            }
+            if i == 0 {
+                self.li.reverse();
+                self.finished = true;
+                return Some(res);
+            }
+        }
+    }
+}
+trait Permutation&lt;T: Ord + Clone&gt; {
+    fn permutation(self) -&gt; PermIter&lt;T&gt;;
+}
+impl&lt;T: Ord + Clone, I: IntoIterator&lt;Item = T&gt;&gt; Permutation&lt;T&gt; for I {
+    fn permutation(self) -&gt; PermIter&lt;T&gt; {
+        PermIter::new(self.into_iter().collect())
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn permiter_works() {
+        let ans = [
+            vec![1, 2, 3],
+            vec![1, 3, 2],
+            vec![2, 1, 3],
+            vec![2, 3, 1],
+            vec![3, 1, 2],
+            vec![3, 2, 1],
+        ];
+        for (i, a) in [1, 2, 3].permutation().enumerate() {
+            assert_eq!(ans[i], a);
+        }
+    }
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="proconiors"><a class="header" href="#proconiors">proconio.rs</a></h1>
+<h2 id="impl-20"><a class="header" href="#impl-20">Impl</a></h2>
+<pre><code class="language-rs">/// Proconio
+///
+/// # Refs
+/// - https://qiita.com/tanakh/items/0ba42c7ca36cd29d0ac8, tanakh
+macro_rules! input {
+    ($($r:tt)*) =&gt; {
+        let stdin = std::io::stdin();
+        let mut bytes = std::io::Read::bytes(std::io::BufReader::new(stdin.lock()));
+        let mut it = move || -&gt; String {
+            bytes.by_ref()
+                .map(|r| r.unwrap() as char)
+                .skip_while(|c| c.is_whitespace())
+                .take_while(|c| !c.is_whitespace())
+                .collect()
+        };
+        inp!{it, $($r)*}
+    };
+}
+macro_rules! inp {
+    ($it:expr) =&gt; {};
+    ($it:expr, ) =&gt; {};
+    ($it:expr, $var:ident : $t:tt $($r:tt)*) =&gt; {
+        let $var = rd!($it, $t);
+        inp!{$it $($r)*}
+    };
+}
+macro_rules! rd {
+    ($it:expr, ( $($t:tt),* )) =&gt; { ( $(rd!($it, $t)),* ) };
+    ($it:expr, [ $t:tt ; $len:expr ]) =&gt; { (0..$len).map(|_| rd!($it, $t)).collect::&lt;Vec&lt;_&gt;&gt;() };
+    ($it:expr, Chars) =&gt; { rd!($it, String).chars().collect::&lt;Vec&lt;char&gt;&gt;() };
+    ($it:expr, Usize1) =&gt; { rd!($it, usize) - 1 };
+    ($it:expr, [ $t:tt ]) =&gt; {{
+        let len = rd!($it, usize);
+        (0..len).map(|_| rd!($it, $t)).collect::&lt;Vec&lt;_&gt;&gt;()
+    }};
+    ($it:expr, $t:ty) =&gt; { $it().parse::&lt;$t&gt;().expect(&quot;Parse error&quot;) };
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><p>GitHub: <a href="https://github.com/nullputra/nlptr-lib/tree/master/lib/rust/trees">lib/rust/trees</a></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="rerootingrs"><a class="header" href="#rerootingrs">rerooting.rs</a></h1>
+<h2 id="impl-21"><a class="header" href="#impl-21">Impl</a></h2>
+<pre><code class="language-rs">/// Rerooting
+///
+/// # Refs
+/// - https://qiita.com/keymoon/items/2a52f1b0fb7ef67fb89e, keymoon, vain0x
+#[allow(dead_code)]
+fn rerooting&lt;
+    T: Clone + PartialEq + std::fmt::Debug + Copy,
+    E: IntoIterator&lt;Item = (usize, usize)&gt;,
+    F: FnMut(T, T) -&gt; T,
+    G: FnMut(T, usize) -&gt; T,
+&gt;(
+    n: usize,
+    edge_paths: E,
+    id: T,
+    mut merge: F,
+    mut op_node: G,
+) -&gt; Vec&lt;T&gt; {
+    assert_eq!(merge(id, id), id);
+    let mut edges = vec![vec![]; n];
+    let mut edge_idx = vec![vec![]; n];
+    for (u, v) in edge_paths {
+        edge_idx[u].push(edges[v].len());
+        edge_idx[v].push(edges[u].len());
+        edges[u].push(v);
+        edges[v].push(u);
+    }
+    if n == 0 {
+        return vec![];
+    } else if n == 1 {
+        return vec![op_node(id, 0)];
+    }
+    // init ordered tree
+    const NO_PAR: usize = std::usize::MAX;
+    let (par, ordered) = {
+        let mut par = vec![0; n];
+        let mut ordered = vec![0; n];
+        let mut idx = 0;
+        let mut st = vec![0];
+        par[0] = NO_PAR;
+        while let Some(u1) = st.pop() {
+            ordered[idx] = u1;
+            idx += 1;
+            for &amp;u2 in edges[u1].iter() {
+                if u2 == par[u1] {
+                    continue;
+                }
+                st.push(u2);
+                par[u2] = u1;
+            }
+        }
+        (par, ordered)
+    };
+    // from leaf
+    let mut dp = (0..n)
+        .map(|i| vec![id; edges[i].len()])
+        .collect::&lt;Vec&lt;_&gt;&gt;();
+    for i in (1..n).rev() {
+        let u = ordered[i];
+        let mut acc = id;
+        let mut par_idx = NO_PAR;
+        for j in 0..edges[u].len() {
+            if edges[u][j] == par[u] {
+                par_idx = j;
+                continue;
+            }
+            acc = merge(acc, dp[u][j]);
+        }
+        dp[par[u]][edge_idx[u][par_idx]] = op_node(acc, u);
+    }
+    // to leaf
+    let mut res = vec![id; n];
+    let mut rev_acc = vec![];
+    for &amp;u in ordered.iter().take(n) {
+        let deg = edges[u].len();
+        let mut acc = id;
+        rev_acc.clear();
+        rev_acc.extend(std::iter::repeat(id).take(deg));
+        for i in (1..deg).rev() {
+            rev_acc[i - 1] = merge(rev_acc[i], dp[u][i]);
+        }
+        for i in 0..deg {
+            dp[edges[u][i]][edge_idx[u][i]] =
+                op_node(merge(acc, rev_acc[i]), u);
+            acc = merge(acc, dp[u][i]);
+        }
+        res[u] = op_node(acc, u);
+    }
+    res
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn merge_max_works() {
+        let n = 12;
+        let edge_paths = vec![
+            (0, 1),
+            (0, 4),
+            (0, 6),
+            (1, 2),
+            (1, 3),
+            (4, 5),
+            (6, 10),
+            (6, 11),
+            (6, 7),
+            (7, 8),
+            (7, 9),
+        ];
+        let merge = std::cmp::max;
+        let op_node = |x, _u| x + 1;
+        let res = rerooting(n, edge_paths, 0, merge, op_node);
+        assert_eq!(res, &amp;[4, 5, 6, 6, 5, 6, 4, 5, 6, 6, 5, 5]);
+    }
+    #[test]
+    fn abc220_f() {
+        // https://atcoder.jp/contests/abc220/tasks/abc220_f
+        // sample input 3
+        let n = 6;
+        let edge_paths = vec![
+            (0, 1),
+            (0, 2),
+            (0, 3),
+            (0, 4),
+            (0, 5),
+        ];
+        // 処理の意味を分かりやすくするために struct で書きましたが,
+        // コンテスト中は tuple で書いた方が楽です.
+        #[derive(PartialEq, Debug, Copy, Clone)]
+        struct T {
+            dist: i64,
+            sub: usize,
+        }
+        impl T {
+            fn new(dist: i64, sub: usize) -&gt; Self {
+                T { dist, sub }
+            }
+        }
+        let merge = |x: T, y: T| T::new(x.dist + y.dist, x.sub + y.sub);
+        let op_node = |x: T, _u| T::new(x.dist + x.sub as i64, x.sub + 1);
+        let res = rerooting(n, edge_paths, T::new(0, 0), merge, op_node);
+        assert_eq!(res.iter().map(|x| x.dist).collect::&lt;Vec&lt;i64&gt;&gt;(), [5, 9, 9, 9, 9, 9]);
+    }
+}
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_line_numbers = true;
+        </script>
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="ace.js" type="text/javascript" charset="utf-8"></script>
+        <script src="editor.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mode-rust.js" type="text/javascript" charset="utf-8"></script>
+        <script src="theme-dawn.js" type="text/javascript" charset="utf-8"></script>
+        <script src="theme-tomorrow_night.js" type="text/javascript" charset="utf-8"></script>
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        <script type="text/javascript" src="theme/custom.js"></script>
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            MathJax.Hub.Register.StartupHook('End', function() {
+                window.setTimeout(window.print, 100);
+            });
+        });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,449 @@
+<!DOCTYPE HTML>
+<html lang="jp" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>setup - nlptr-lib (lib/CSharp/)</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="theme/custom.css">
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">README</a></li><li class="chapter-item expanded affix "><a href="setup.html" class="active">setup</a></li><li class="chapter-item expanded affix "><li class="part-title">lib/CSharp/</li><li class="chapter-item expanded "><a href="Algebra.html"><strong aria-hidden="true">1.</strong> Algebra</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="Algebra/GCD.html"><strong aria-hidden="true">1.1.</strong> GCD.cs</a></li><li class="chapter-item expanded "><a href="Algebra/LinearSieve.html"><strong aria-hidden="true">1.2.</strong> LinearSieve.cs</a></li></ol></li><li class="chapter-item expanded "><a href="Collections.html"><strong aria-hidden="true">2.</strong> Collections</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="Collections/HashMap.html"><strong aria-hidden="true">2.1.</strong> HashMap.cs</a></li><li class="chapter-item expanded "><a href="Collections/PriorityQueue.html"><strong aria-hidden="true">2.2.</strong> PriorityQueue.cs</a></li><li class="chapter-item expanded "><a href="Collections/Set.html"><strong aria-hidden="true">2.3.</strong> Set.cs</a></li><li class="chapter-item expanded "><a href="Collections/SortedMap.html"><strong aria-hidden="true">2.4.</strong> SortedMap.cs</a></li></ol></li><li class="chapter-item expanded "><a href="DataStructures.html"><strong aria-hidden="true">3.</strong> DataStructures</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="DataStructures/FenwickTree.html"><strong aria-hidden="true">3.1.</strong> FenwickTree.cs</a></li><li class="chapter-item expanded "><a href="DataStructures/ModInt.html"><strong aria-hidden="true">3.2.</strong> ModInt.cs</a></li><li class="chapter-item expanded "><a href="DataStructures/RollbackUnionFind.html"><strong aria-hidden="true">3.3.</strong> RollbackUnionFind.cs</a></li><li class="chapter-item expanded "><a href="DataStructures/UnionFind.html"><strong aria-hidden="true">3.4.</strong> UnionFind.cs</a></li><li class="chapter-item expanded "><a href="DataStructures/WeightedUnionFind.html"><strong aria-hidden="true">3.5.</strong> WeightedUnionFind.cs</a></li></ol></li><li class="chapter-item expanded "><a href="Graphs.html"><strong aria-hidden="true">4.</strong> Graphs</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="Graphs/TopologicalSort.html"><strong aria-hidden="true">4.1.</strong> TopologicalSort.cs</a></li></ol></li><li class="chapter-item expanded "><a href="Misc.html"><strong aria-hidden="true">5.</strong> Misc</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="Misc/BinarySearch.html"><strong aria-hidden="true">5.1.</strong> BinarySearch.cs</a></li><li class="chapter-item expanded "><a href="Misc/Dbg.html"><strong aria-hidden="true">5.2.</strong> Dbg.cs</a></li><li class="chapter-item expanded "><a href="Misc/IStream.html"><strong aria-hidden="true">5.3.</strong> IStream.cs</a></li><li class="chapter-item expanded "><a href="Misc/PopCount.html"><strong aria-hidden="true">5.4.</strong> PopCount.cs</a></li></ol></li><li class="chapter-item expanded "><a href="Strings.html"><strong aria-hidden="true">6.</strong> Strings</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="Strings/RollingHash.html"><strong aria-hidden="true">6.1.</strong> RollingHash.cs</a></li><li class="chapter-item expanded "><a href="Strings/ZAlgo.html"><strong aria-hidden="true">6.2.</strong> ZAlgo.cs</a></li></ol></li><li class="chapter-item expanded "><a href="Trees.html"><strong aria-hidden="true">7.</strong> Trees</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="Trees/Rerooting.html"><strong aria-hidden="true">7.1.</strong> Rerooting.cs</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">nlptr-lib (lib/CSharp/)</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/nullputra/nlptr-lib" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="-c-の環境構築"><a class="header" href="#-c-の環境構築">🎯 C# の環境構築</a></h1>
+<h2 id="1-wsl-を入れます"><a class="header" href="#1-wsl-を入れます">1. WSL を入れます</a></h2>
+<ul>
+<li>参考: <a href="https://nullputra.github.io/nlptr-lib/set-up-wsl.html">lib/set-up-wsl</a></li>
+</ul>
+<h2 id="2-初期設定"><a class="header" href="#2-初期設定">2. 初期設定</a></h2>
+<h3 id="a-dotnet-のインストール"><a class="header" href="#a-dotnet-のインストール">A. <code>dotnet</code> のインストール</a></h3>
+<h4 id="ターミナル"><a class="header" href="#ターミナル">ターミナル</a></h4>
+<pre><code class="language-sh">apt install -y dotnet-sdk-3.1
+</code></pre>
+<h3 id="b-ビルドや実行に必要なファイル群の自動生成"><a class="header" href="#b-ビルドや実行に必要なファイル群の自動生成">B. ビルドや実行に必要なファイル群の自動生成</a></h3>
+<p>以下のコードを実行すると、カレントディレクトリ直下に <code>&lt;PROJECT_NAME&gt;</code> というディレクトリが作られ、そのディレクトリの中に <code>./&lt;PROJECT_NAME&gt;/&lt;PROJECT_NAME&gt;.csproj</code> などのビルドや実行に必要なファイル群が生成されます。</p>
+<h4 id="ターミナル-1"><a class="header" href="#ターミナル-1">ターミナル</a></h4>
+<pre><code class="language-sh">dotnet new console -o &lt;PROJECT_NAME&gt;
+</code></pre>
+<h3 id="c-project_nameproject_namecsproj-の設定"><a class="header" href="#c-project_nameproject_namecsproj-の設定">C. <code>&lt;PROJECT_NAME&gt;/&lt;PROJECT_NAME&gt;.csproj</code> の設定</a></h3>
+<p>デフォルトでは、カレントディレクトリでないディレクトリ内の *.cs までも監視対象としていますが <code>&lt;EnableDefaultCompileItems&gt;false&lt;/EnableDefaultCompileItems&gt;</code> で解除できます。<br />
+そして、<code>&lt;Compile Include=&quot;./path/to/your/file/*.cs&quot; /&gt;</code> で解除を解除できます。</p>
+<h4 id="project_nameproject_namecsproj"><a class="header" href="#project_nameproject_namecsproj">&lt;PROJECT_NAME&gt;/&lt;PROJECT_NAME&gt;.csproj</a></h4>
+<pre><code class="language-xml">&lt;Project Sdk=&quot;Microsoft.NET.Sdk&quot;&gt;
+
+  &lt;PropertyGroup&gt;
+    &lt;OutputType&gt;Exe&lt;/OutputType&gt;
+    &lt;TargetFramework&gt;netcoreapp3.1&lt;/TargetFramework&gt;
+    &lt;EnableDefaultCompileItems&gt;false&lt;/EnableDefaultCompileItems&gt;
+  &lt;/PropertyGroup&gt;
+
+  &lt;PropertyGroup Condition=&quot;'$(Configuration)|$(Platform)'=='Debug|AnyCPU'&quot;&gt;
+    &lt;CheckForOverflowUnderflow&gt;true&lt;/CheckForOverflowUnderflow&gt;
+  &lt;/PropertyGroup&gt;
+
+  &lt;ItemGroup&gt;
+    &lt;Compile Include=&quot;./lib/CSharp/**/*.cs&quot; /&gt;
+    &lt;Compile Include=&quot;./src/**/*.cs&quot; /&gt;
+  &lt;/ItemGroup&gt;
+
+&lt;/Project&gt;
+</code></pre>
+<h2 id="3-ソースコードにライブラリを-bundle-する"><a class="header" href="#3-ソースコードにライブラリを-bundle-する">3. ソースコードにライブラリを bundle する</a></h2>
+<p>自動でライブラリファイルからバンドルしてくれるコードを書きました: <a href="https://github.com/nullputra/nlptr-lib/blob/master/lib/CSharp/expander.py">lib/CSharp/expander.py</a><br />
+使い方を以下の通りです。</p>
+<h4 id="用意するもの-1-srcprogramcs"><a class="header" href="#用意するもの-1-srcprogramcs">用意するもの (1): src/Program.cs</a></h4>
+<pre><code class="language-cs">// https://atcoder.jp/contests/abc087/tasks/arc090_b
+using System;
+using System.Linq;
+using Lib.WeightedUnionFind;
+class Program
+{
+    static void Main()
+    {
+        var nm = Console.ReadLine().Split(' ').Select(s =&gt; int.Parse(s)).ToArray();
+        int n = nm[0], m = nm[1];
+        var uf = new WeightedUnionFind&lt;int&gt;(n, (x, y) =&gt; x + y, (x, y) =&gt; x - y, 0);
+        for (int i = 0; i &lt; m; i++)
+        {
+            var lrd = Console.ReadLine().Split(' ').Select(s =&gt; int.Parse(s)).ToArray();
+            int l = lrd[0], r = lrd[1], d = lrd[2];
+            // Console.Error.WriteLine(l.ToString() + &quot; &quot; + r.ToString() + &quot; &quot; + d.ToString());
+            if (!uf.TryUnite(l - 1, r - 1, d))
+            {
+                Console.WriteLine(&quot;No&quot;);
+                return;
+            }
+        }
+        Console.WriteLine(&quot;Yes&quot;);
+    }
+}
+</code></pre>
+<h4 id="用意するもの-2-libcsharpdatastructuresweightedunionfindcs"><a class="header" href="#用意するもの-2-libcsharpdatastructuresweightedunionfindcs">用意するもの (2): lib/CSharp/DataStructures/WeightedUnionFind.cs</a></h4>
+<pre><code class="language-cs">// Ref: https://ei1333.github.io/library/structure/union-find/weighted-union-find.cpp
+using System;
+using System.Diagnostics;
+
+namespace Lib.WeightedUnionFind
+{
+    public class WeightedUnionFind&lt;T&gt; where T : IEquatable&lt;T&gt;
+    {
+        int n;
+        T id;
+        Func&lt;T, T, T&gt; add;
+        Func&lt;T, T, T&gt; sub;
+        int[] par;
+        T[] wts;
+        public WeightedUnionFind(int n, Func&lt;T, T, T&gt; add, Func&lt;T, T, T&gt; sub, T id)
+        {
+            Debug.Assert(add(id, id).Equals(id));
+            Debug.Assert(sub(id, id).Equals(id));
+            this.n = n;
+            this.add = add;
+            this.sub = sub;
+            this.id = id;
+            par = new int[n];
+            for (int i = 0; i &lt; n; i++) par[i] = -1;
+            wts = new T[n];
+            for (int i = 0; i &lt; n; i++) wts[i] = id;
+        }
+        public bool TryUnite(int x, int y, T w)
+        {
+            return Unite(x, y, w) || add(Weight(x), w).Equals(Weight(y));
+        }
+        public bool Unite(int x, int y, T w)
+        {
+            Debug.Assert(0 &lt;= x &amp;&amp; x &lt; n &amp;&amp; 0 &lt;= y &amp;&amp; y &lt; n);
+            w = sub(add(w, Weight(x)), Weight(y));
+            x = Find(x); y = Find(y);
+            if (x == y) return false;
+            if (-par[x] &lt; -par[y])
+            {
+                (x, y) = (y, x);
+                w = sub(id, w);
+            }
+            par[x] += par[y];
+            par[y] = x;
+            wts[y] = add(wts[y], w);
+            return true;
+        }
+        public int Find(int x)
+        {
+            Debug.Assert(0 &lt;= x &amp;&amp; x &lt; n);
+            if (par[x] &lt; 0) return x;
+            int par_x = Find(par[x]);
+            wts[x] = add(wts[x], wts[par[x]]);
+            return par[x] = par_x;
+        }
+        public T Weight(int x)
+        {
+            Debug.Assert(0 &lt;= x &amp;&amp; x &lt; n);
+            int _ = Find(x);
+            return wts[x];
+        }
+        public T Diff(int x, int y)
+        {
+            Debug.Assert(0 &lt;= x &amp;&amp; x &lt; n &amp;&amp; 0 &lt;= y &amp;&amp; y &lt; n);
+            return sub(Weight(x), Weight(y));
+        }
+        public bool Same(int x, int y)
+        {
+            Debug.Assert(0 &lt;= x &amp;&amp; x &lt; n &amp;&amp; 0 &lt;= y &amp;&amp; y &lt; n);
+            return Find(x) == Find(y);
+        }
+        public int Size(int x)
+        {
+            Debug.Assert(0 &lt;= x &amp;&amp; x &lt; n);
+            return -par[Find(x)];
+        }
+    }
+}
+</code></pre>
+<p>以上を用意して、ターミナルで下のコマンドを実行します。</p>
+<h4 id="ターミナル-2"><a class="header" href="#ターミナル-2">ターミナル</a></h4>
+<pre><code class="language-sh">lib/CSharp/expander.py src/Program.cs &gt; src/ProgramBundled.cs
+</code></pre>
+<h4 id="生成されるもの-srcprogrambundledcs"><a class="header" href="#生成されるもの-srcprogrambundledcs">生成されるもの: src/ProgramBundled.cs</a></h4>
+<pre><code class="language-cs">using Lib.WeightedUnionFind;
+using System.Diagnostics;
+using System.Linq;
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        var nm = Console.ReadLine().Split(' ').Select(s =&gt; int.Parse(s)).ToArray();
+        int n = nm[0], m = nm[1];
+        var uf = new WeightedUnionFind&lt;int&gt;(n, (x, y) =&gt; x + y, (x, y) =&gt; x - y, 0);
+        for (int i = 0; i &lt; m; i++)
+        {
+            var lrd = Console.ReadLine().Split(' ').Select(s =&gt; int.Parse(s)).ToArray();
+            int l = lrd[0], r = lrd[1], d = lrd[2];
+            if (!uf.TryUnite(l - 1, r - 1, d))
+            {
+                Console.WriteLine(&quot;No&quot;);
+                return;
+            }
+        }
+        Console.WriteLine(&quot;Yes&quot;);
+    }
+}
+
+namespace Lib.WeightedUnionFind
+{
+    public class WeightedUnionFind&lt;T&gt; where T : IEquatable&lt;T&gt;
+    {
+        int n;
+        T id;
+        Func&lt;T, T, T&gt; add;
+        Func&lt;T, T, T&gt; sub;
+        int[] par;
+        T[] wts;
+        public WeightedUnionFind(int n, Func&lt;T, T, T&gt; add, Func&lt;T, T, T&gt; sub, T id)
+        {
+            Debug.Assert(add(id, id).Equals(id));
+            Debug.Assert(sub(id, id).Equals(id));
+            this.n = n;
+            this.add = add;
+            this.sub = sub;
+            this.id = id;
+            par = new int[n];
+            for (int i = 0; i &lt; n; i++) par[i] = -1;
+            wts = new T[n];
+            for (int i = 0; i &lt; n; i++) wts[i] = id;
+        }
+        public bool TryUnite(int x, int y, T w)
+        {
+            return Unite(x, y, w) || add(Weight(x), w).Equals(Weight(y));
+        }
+        public bool Unite(int x, int y, T w)
+        {
+            Debug.Assert(0 &lt;= x &amp;&amp; x &lt; n &amp;&amp; 0 &lt;= y &amp;&amp; y &lt; n);
+            w = sub(add(w, Weight(x)), Weight(y));
+            x = Find(x); y = Find(y);
+            if (x == y) return false;
+            if (-par[x] &lt; -par[y])
+            {
+                (x, y) = (y, x);
+                w = sub(id, w);
+            }
+            par[x] += par[y];
+            par[y] = x;
+            wts[y] = add(wts[y], w);
+            return true;
+        }
+        public int Find(int x)
+        {
+            Debug.Assert(0 &lt;= x &amp;&amp; x &lt; n);
+            if (par[x] &lt; 0) return x;
+            int par_x = Find(par[x]);
+            wts[x] = add(wts[x], wts[par[x]]);
+            return par[x] = par_x;
+        }
+        public T Weight(int x)
+        {
+            Debug.Assert(0 &lt;= x &amp;&amp; x &lt; n);
+            int _ = Find(x);
+            return wts[x];
+        }
+        public T Diff(int x, int y)
+        {
+            Debug.Assert(0 &lt;= x &amp;&amp; x &lt; n &amp;&amp; 0 &lt;= y &amp;&amp; y &lt; n);
+            return sub(Weight(x), Weight(y));
+        }
+        public bool Same(int x, int y)
+        {
+            Debug.Assert(0 &lt;= x &amp;&amp; x &lt; n &amp;&amp; 0 &lt;= y &amp;&amp; y &lt; n);
+            return Find(x) == Find(y);
+        }
+        public int Size(int x)
+        {
+            Debug.Assert(0 &lt;= x &amp;&amp; x &lt; n);
+            return -par[Find(x)];
+        }
+    }
+}
+</code></pre>
+<h2 id="4-参考文献"><a class="header" href="#4-参考文献">4. 参考文献</a></h2>
+<ul>
+<li><a href="https://qiita.com/kazurego7/items/38aa0afed75b483f199d">C#で競技プログラミング(AtCoder)用のライブラリを作ろう！</a></li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="Algebra.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="Algebra.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_line_numbers = true;
+        </script>
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="ace.js" type="text/javascript" charset="utf-8"></script>
+        <script src="editor.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mode-rust.js" type="text/javascript" charset="utf-8"></script>
+        <script src="theme-dawn.js" type="text/javascript" charset="utf-8"></script>
+        <script src="theme-tomorrow_night.js" type="text/javascript" charset="utf-8"></script>
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        <script type="text/javascript" src="theme/custom.js"></script>
+    </body>
+</html>

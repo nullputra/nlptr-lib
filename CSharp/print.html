@@ -1,0 +1,2021 @@
+<!DOCTYPE HTML>
+<html lang="jp" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>nlptr-lib (lib/CSharp/)</title>
+        <meta name="robots" content="noindex" />
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="theme/custom.css">
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">README</a></li><li class="chapter-item expanded affix "><a href="setup.html">setup</a></li><li class="chapter-item expanded affix "><li class="part-title">lib/CSharp/</li><li class="chapter-item expanded "><a href="Algebra.html"><strong aria-hidden="true">1.</strong> Algebra</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="Algebra/GCD.html"><strong aria-hidden="true">1.1.</strong> GCD.cs</a></li><li class="chapter-item expanded "><a href="Algebra/LinearSieve.html"><strong aria-hidden="true">1.2.</strong> LinearSieve.cs</a></li></ol></li><li class="chapter-item expanded "><a href="Collections.html"><strong aria-hidden="true">2.</strong> Collections</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="Collections/HashMap.html"><strong aria-hidden="true">2.1.</strong> HashMap.cs</a></li><li class="chapter-item expanded "><a href="Collections/PriorityQueue.html"><strong aria-hidden="true">2.2.</strong> PriorityQueue.cs</a></li><li class="chapter-item expanded "><a href="Collections/Set.html"><strong aria-hidden="true">2.3.</strong> Set.cs</a></li><li class="chapter-item expanded "><a href="Collections/SortedMap.html"><strong aria-hidden="true">2.4.</strong> SortedMap.cs</a></li></ol></li><li class="chapter-item expanded "><a href="DataStructures.html"><strong aria-hidden="true">3.</strong> DataStructures</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="DataStructures/FenwickTree.html"><strong aria-hidden="true">3.1.</strong> FenwickTree.cs</a></li><li class="chapter-item expanded "><a href="DataStructures/ModInt.html"><strong aria-hidden="true">3.2.</strong> ModInt.cs</a></li><li class="chapter-item expanded "><a href="DataStructures/RollbackUnionFind.html"><strong aria-hidden="true">3.3.</strong> RollbackUnionFind.cs</a></li><li class="chapter-item expanded "><a href="DataStructures/UnionFind.html"><strong aria-hidden="true">3.4.</strong> UnionFind.cs</a></li><li class="chapter-item expanded "><a href="DataStructures/WeightedUnionFind.html"><strong aria-hidden="true">3.5.</strong> WeightedUnionFind.cs</a></li></ol></li><li class="chapter-item expanded "><a href="Graphs.html"><strong aria-hidden="true">4.</strong> Graphs</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="Graphs/TopologicalSort.html"><strong aria-hidden="true">4.1.</strong> TopologicalSort.cs</a></li></ol></li><li class="chapter-item expanded "><a href="Misc.html"><strong aria-hidden="true">5.</strong> Misc</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="Misc/BinarySearch.html"><strong aria-hidden="true">5.1.</strong> BinarySearch.cs</a></li><li class="chapter-item expanded "><a href="Misc/Dbg.html"><strong aria-hidden="true">5.2.</strong> Dbg.cs</a></li><li class="chapter-item expanded "><a href="Misc/IStream.html"><strong aria-hidden="true">5.3.</strong> IStream.cs</a></li><li class="chapter-item expanded "><a href="Misc/PopCount.html"><strong aria-hidden="true">5.4.</strong> PopCount.cs</a></li></ol></li><li class="chapter-item expanded "><a href="Strings.html"><strong aria-hidden="true">6.</strong> Strings</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="Strings/RollingHash.html"><strong aria-hidden="true">6.1.</strong> RollingHash.cs</a></li><li class="chapter-item expanded "><a href="Strings/ZAlgo.html"><strong aria-hidden="true">6.2.</strong> ZAlgo.cs</a></li></ol></li><li class="chapter-item expanded "><a href="Trees.html"><strong aria-hidden="true">7.</strong> Trees</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="Trees/Rerooting.html"><strong aria-hidden="true">7.1.</strong> Rerooting.cs</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">nlptr-lib (lib/CSharp/)</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/nullputra/nlptr-lib" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="-nlptr-lib"><a class="header" href="#-nlptr-lib">⛄ nlptr-lib</a></h1>
+<p><a href="https://nullputra.github.io/nlptr-lib/"><img src="https://img.shields.io/static/v1?label=GitHub+Pages&amp;message=+&amp;color=brightgreen&amp;logo=github" alt="gh-pages" /></a>
+<a href="https://github.com/nullputra/nlptr-lib/actions/workflows/verify.yml"><img src="https://github.com/nullputra/nlptr-lib/actions/workflows/verify.yml/badge.svg" alt="verify" /></a>
+<a href="https://github.com/nullputra/nlptr-lib/commits/master"><img src="https://img.shields.io/github/last-commit/nullputra/nlptr-lib" alt="last-commit" /></a>
+<a href="https://github.com/nullputra/nlptr-lib/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-CC0--1.0-blue" alt="license" /></a>
+<a href="https://atcoder.jp/users/nlptr"><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fatcoder-badges.now.sh%2Fapi%2Fatcoder%2Fjson%2Fnlptr" alt="atcoder" /></a></p>
+<p>C++17 / C# .NET Core 3.1 / Rust 1.59 の競プロ用ライブラリです。バグ報告は <a href="https://github.com/nullputra/nlptr-lib/issues">Issues</a> か <a href="https://github.com/nullputra/nlptr-lib/pulls">Pull requests</a> へどうぞ。</p>
+<h2 id="license"><a class="header" href="#license">License</a></h2>
+<p>ほとんどのライセンスは <a href="https://creativecommons.org/publicdomain/zero/1.0/deed.ja">CC0-1.0</a> です (クレジット表記不要)。<a href="https://creativecommons.org/publicdomain/zero/1.0/deed.ja">CC0-1.0</a> 以外のライセンスの場合は、ファイルの先頭にそのライセンスが記載されています。</p>
+<h2 id="links"><a class="header" href="#links">Links</a></h2>
+<ul>
+<li><a href="https://nullputra.github.io/nlptr-lib">lib/</a></li>
+<li><a href="https://nullputra.github.io/nlptr-lib/cpp">lib/cpp/</a></li>
+<li><a href="https://nullputra.github.io/nlptr-lib/CSharp">lib/CSharp/</a></li>
+<li><a href="https://nullputra.github.io/nlptr-lib/rust">lib/rust/</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="-c-の環境構築"><a class="header" href="#-c-の環境構築">🎯 C# の環境構築</a></h1>
+<h2 id="1-wsl-を入れます"><a class="header" href="#1-wsl-を入れます">1. WSL を入れます</a></h2>
+<ul>
+<li>参考: <a href="https://nullputra.github.io/nlptr-lib/set-up-wsl.html">lib/set-up-wsl</a></li>
+</ul>
+<h2 id="2-初期設定"><a class="header" href="#2-初期設定">2. 初期設定</a></h2>
+<h3 id="a-dotnet-のインストール"><a class="header" href="#a-dotnet-のインストール">A. <code>dotnet</code> のインストール</a></h3>
+<h4 id="ターミナル"><a class="header" href="#ターミナル">ターミナル</a></h4>
+<pre><code class="language-sh">apt install -y dotnet-sdk-3.1
+</code></pre>
+<h3 id="b-ビルドや実行に必要なファイル群の自動生成"><a class="header" href="#b-ビルドや実行に必要なファイル群の自動生成">B. ビルドや実行に必要なファイル群の自動生成</a></h3>
+<p>以下のコードを実行すると、カレントディレクトリ直下に <code>&lt;PROJECT_NAME&gt;</code> というディレクトリが作られ、そのディレクトリの中に <code>./&lt;PROJECT_NAME&gt;/&lt;PROJECT_NAME&gt;.csproj</code> などのビルドや実行に必要なファイル群が生成されます。</p>
+<h4 id="ターミナル-1"><a class="header" href="#ターミナル-1">ターミナル</a></h4>
+<pre><code class="language-sh">dotnet new console -o &lt;PROJECT_NAME&gt;
+</code></pre>
+<h3 id="c-project_nameproject_namecsproj-の設定"><a class="header" href="#c-project_nameproject_namecsproj-の設定">C. <code>&lt;PROJECT_NAME&gt;/&lt;PROJECT_NAME&gt;.csproj</code> の設定</a></h3>
+<p>デフォルトでは、カレントディレクトリでないディレクトリ内の *.cs までも監視対象としていますが <code>&lt;EnableDefaultCompileItems&gt;false&lt;/EnableDefaultCompileItems&gt;</code> で解除できます。<br />
+そして、<code>&lt;Compile Include=&quot;./path/to/your/file/*.cs&quot; /&gt;</code> で解除を解除できます。</p>
+<h4 id="project_nameproject_namecsproj"><a class="header" href="#project_nameproject_namecsproj">&lt;PROJECT_NAME&gt;/&lt;PROJECT_NAME&gt;.csproj</a></h4>
+<pre><code class="language-xml">&lt;Project Sdk=&quot;Microsoft.NET.Sdk&quot;&gt;
+
+  &lt;PropertyGroup&gt;
+    &lt;OutputType&gt;Exe&lt;/OutputType&gt;
+    &lt;TargetFramework&gt;netcoreapp3.1&lt;/TargetFramework&gt;
+    &lt;EnableDefaultCompileItems&gt;false&lt;/EnableDefaultCompileItems&gt;
+  &lt;/PropertyGroup&gt;
+
+  &lt;PropertyGroup Condition=&quot;'$(Configuration)|$(Platform)'=='Debug|AnyCPU'&quot;&gt;
+    &lt;CheckForOverflowUnderflow&gt;true&lt;/CheckForOverflowUnderflow&gt;
+  &lt;/PropertyGroup&gt;
+
+  &lt;ItemGroup&gt;
+    &lt;Compile Include=&quot;./lib/CSharp/**/*.cs&quot; /&gt;
+    &lt;Compile Include=&quot;./src/**/*.cs&quot; /&gt;
+  &lt;/ItemGroup&gt;
+
+&lt;/Project&gt;
+</code></pre>
+<h2 id="3-ソースコードにライブラリを-bundle-する"><a class="header" href="#3-ソースコードにライブラリを-bundle-する">3. ソースコードにライブラリを bundle する</a></h2>
+<p>自動でライブラリファイルからバンドルしてくれるコードを書きました: <a href="https://github.com/nullputra/nlptr-lib/blob/master/lib/CSharp/expander.py">lib/CSharp/expander.py</a><br />
+使い方を以下の通りです。</p>
+<h4 id="用意するもの-1-srcprogramcs"><a class="header" href="#用意するもの-1-srcprogramcs">用意するもの (1): src/Program.cs</a></h4>
+<pre><code class="language-cs">// https://atcoder.jp/contests/abc087/tasks/arc090_b
+using System;
+using System.Linq;
+using Lib.WeightedUnionFind;
+class Program
+{
+    static void Main()
+    {
+        var nm = Console.ReadLine().Split(' ').Select(s =&gt; int.Parse(s)).ToArray();
+        int n = nm[0], m = nm[1];
+        var uf = new WeightedUnionFind&lt;int&gt;(n, (x, y) =&gt; x + y, (x, y) =&gt; x - y, 0);
+        for (int i = 0; i &lt; m; i++)
+        {
+            var lrd = Console.ReadLine().Split(' ').Select(s =&gt; int.Parse(s)).ToArray();
+            int l = lrd[0], r = lrd[1], d = lrd[2];
+            // Console.Error.WriteLine(l.ToString() + &quot; &quot; + r.ToString() + &quot; &quot; + d.ToString());
+            if (!uf.TryUnite(l - 1, r - 1, d))
+            {
+                Console.WriteLine(&quot;No&quot;);
+                return;
+            }
+        }
+        Console.WriteLine(&quot;Yes&quot;);
+    }
+}
+</code></pre>
+<h4 id="用意するもの-2-libcsharpdatastructuresweightedunionfindcs"><a class="header" href="#用意するもの-2-libcsharpdatastructuresweightedunionfindcs">用意するもの (2): lib/CSharp/DataStructures/WeightedUnionFind.cs</a></h4>
+<pre><code class="language-cs">// Ref: https://ei1333.github.io/library/structure/union-find/weighted-union-find.cpp
+using System;
+using System.Diagnostics;
+
+namespace Lib.WeightedUnionFind
+{
+    public class WeightedUnionFind&lt;T&gt; where T : IEquatable&lt;T&gt;
+    {
+        int n;
+        T id;
+        Func&lt;T, T, T&gt; add;
+        Func&lt;T, T, T&gt; sub;
+        int[] par;
+        T[] wts;
+        public WeightedUnionFind(int n, Func&lt;T, T, T&gt; add, Func&lt;T, T, T&gt; sub, T id)
+        {
+            Debug.Assert(add(id, id).Equals(id));
+            Debug.Assert(sub(id, id).Equals(id));
+            this.n = n;
+            this.add = add;
+            this.sub = sub;
+            this.id = id;
+            par = new int[n];
+            for (int i = 0; i &lt; n; i++) par[i] = -1;
+            wts = new T[n];
+            for (int i = 0; i &lt; n; i++) wts[i] = id;
+        }
+        public bool TryUnite(int x, int y, T w)
+        {
+            return Unite(x, y, w) || add(Weight(x), w).Equals(Weight(y));
+        }
+        public bool Unite(int x, int y, T w)
+        {
+            Debug.Assert(0 &lt;= x &amp;&amp; x &lt; n &amp;&amp; 0 &lt;= y &amp;&amp; y &lt; n);
+            w = sub(add(w, Weight(x)), Weight(y));
+            x = Find(x); y = Find(y);
+            if (x == y) return false;
+            if (-par[x] &lt; -par[y])
+            {
+                (x, y) = (y, x);
+                w = sub(id, w);
+            }
+            par[x] += par[y];
+            par[y] = x;
+            wts[y] = add(wts[y], w);
+            return true;
+        }
+        public int Find(int x)
+        {
+            Debug.Assert(0 &lt;= x &amp;&amp; x &lt; n);
+            if (par[x] &lt; 0) return x;
+            int par_x = Find(par[x]);
+            wts[x] = add(wts[x], wts[par[x]]);
+            return par[x] = par_x;
+        }
+        public T Weight(int x)
+        {
+            Debug.Assert(0 &lt;= x &amp;&amp; x &lt; n);
+            int _ = Find(x);
+            return wts[x];
+        }
+        public T Diff(int x, int y)
+        {
+            Debug.Assert(0 &lt;= x &amp;&amp; x &lt; n &amp;&amp; 0 &lt;= y &amp;&amp; y &lt; n);
+            return sub(Weight(x), Weight(y));
+        }
+        public bool Same(int x, int y)
+        {
+            Debug.Assert(0 &lt;= x &amp;&amp; x &lt; n &amp;&amp; 0 &lt;= y &amp;&amp; y &lt; n);
+            return Find(x) == Find(y);
+        }
+        public int Size(int x)
+        {
+            Debug.Assert(0 &lt;= x &amp;&amp; x &lt; n);
+            return -par[Find(x)];
+        }
+    }
+}
+</code></pre>
+<p>以上を用意して、ターミナルで下のコマンドを実行します。</p>
+<h4 id="ターミナル-2"><a class="header" href="#ターミナル-2">ターミナル</a></h4>
+<pre><code class="language-sh">lib/CSharp/expander.py src/Program.cs &gt; src/ProgramBundled.cs
+</code></pre>
+<h4 id="生成されるもの-srcprogrambundledcs"><a class="header" href="#生成されるもの-srcprogrambundledcs">生成されるもの: src/ProgramBundled.cs</a></h4>
+<pre><code class="language-cs">using Lib.WeightedUnionFind;
+using System.Diagnostics;
+using System.Linq;
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        var nm = Console.ReadLine().Split(' ').Select(s =&gt; int.Parse(s)).ToArray();
+        int n = nm[0], m = nm[1];
+        var uf = new WeightedUnionFind&lt;int&gt;(n, (x, y) =&gt; x + y, (x, y) =&gt; x - y, 0);
+        for (int i = 0; i &lt; m; i++)
+        {
+            var lrd = Console.ReadLine().Split(' ').Select(s =&gt; int.Parse(s)).ToArray();
+            int l = lrd[0], r = lrd[1], d = lrd[2];
+            if (!uf.TryUnite(l - 1, r - 1, d))
+            {
+                Console.WriteLine(&quot;No&quot;);
+                return;
+            }
+        }
+        Console.WriteLine(&quot;Yes&quot;);
+    }
+}
+
+namespace Lib.WeightedUnionFind
+{
+    public class WeightedUnionFind&lt;T&gt; where T : IEquatable&lt;T&gt;
+    {
+        int n;
+        T id;
+        Func&lt;T, T, T&gt; add;
+        Func&lt;T, T, T&gt; sub;
+        int[] par;
+        T[] wts;
+        public WeightedUnionFind(int n, Func&lt;T, T, T&gt; add, Func&lt;T, T, T&gt; sub, T id)
+        {
+            Debug.Assert(add(id, id).Equals(id));
+            Debug.Assert(sub(id, id).Equals(id));
+            this.n = n;
+            this.add = add;
+            this.sub = sub;
+            this.id = id;
+            par = new int[n];
+            for (int i = 0; i &lt; n; i++) par[i] = -1;
+            wts = new T[n];
+            for (int i = 0; i &lt; n; i++) wts[i] = id;
+        }
+        public bool TryUnite(int x, int y, T w)
+        {
+            return Unite(x, y, w) || add(Weight(x), w).Equals(Weight(y));
+        }
+        public bool Unite(int x, int y, T w)
+        {
+            Debug.Assert(0 &lt;= x &amp;&amp; x &lt; n &amp;&amp; 0 &lt;= y &amp;&amp; y &lt; n);
+            w = sub(add(w, Weight(x)), Weight(y));
+            x = Find(x); y = Find(y);
+            if (x == y) return false;
+            if (-par[x] &lt; -par[y])
+            {
+                (x, y) = (y, x);
+                w = sub(id, w);
+            }
+            par[x] += par[y];
+            par[y] = x;
+            wts[y] = add(wts[y], w);
+            return true;
+        }
+        public int Find(int x)
+        {
+            Debug.Assert(0 &lt;= x &amp;&amp; x &lt; n);
+            if (par[x] &lt; 0) return x;
+            int par_x = Find(par[x]);
+            wts[x] = add(wts[x], wts[par[x]]);
+            return par[x] = par_x;
+        }
+        public T Weight(int x)
+        {
+            Debug.Assert(0 &lt;= x &amp;&amp; x &lt; n);
+            int _ = Find(x);
+            return wts[x];
+        }
+        public T Diff(int x, int y)
+        {
+            Debug.Assert(0 &lt;= x &amp;&amp; x &lt; n &amp;&amp; 0 &lt;= y &amp;&amp; y &lt; n);
+            return sub(Weight(x), Weight(y));
+        }
+        public bool Same(int x, int y)
+        {
+            Debug.Assert(0 &lt;= x &amp;&amp; x &lt; n &amp;&amp; 0 &lt;= y &amp;&amp; y &lt; n);
+            return Find(x) == Find(y);
+        }
+        public int Size(int x)
+        {
+            Debug.Assert(0 &lt;= x &amp;&amp; x &lt; n);
+            return -par[Find(x)];
+        }
+    }
+}
+</code></pre>
+<h2 id="4-参考文献"><a class="header" href="#4-参考文献">4. 参考文献</a></h2>
+<ul>
+<li><a href="https://qiita.com/kazurego7/items/38aa0afed75b483f199d">C#で競技プログラミング(AtCoder)用のライブラリを作ろう！</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><p>GitHub: <a href="https://github.com/nullputra/nlptr-lib/tree/master/lib/CSharp/Algebra">lib/CSharp/Algebra</a></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="gcdcs"><a class="header" href="#gcdcs">GCD.cs</a></h1>
+<h2 id="impl"><a class="header" href="#impl">Impl</a></h2>
+<pre><code class="language-cs">using System;
+
+namespace Lib.GCD
+{
+    public static partial class MathEx
+    {
+        /// &lt;summary&gt;
+        /// Calculate &lt;c&gt;GCD(n,m)&lt;/c&gt;. Time complexity: &lt;c&gt;O(log N)&lt;/c&gt;
+        /// &lt;/summary&gt;
+        public static int GCD(int n, int m) { return (int)GCD(n, m); }
+        /// &lt;summary&gt;
+        /// Calculate &lt;c&gt;GCD(n,m)&lt;/c&gt;. Time complexity: &lt;c&gt;O(log N)&lt;/c&gt;
+        /// &lt;/summary&gt;
+        public static long GCD(long n, long m)
+        {
+            n = Math.Abs(n);
+            m = Math.Abs(m);
+            while (n != 0)
+            {
+                m %= n;
+                if (m == 0) return n;
+                n %= m;
+            }
+            return m;
+        }
+        /// &lt;summary&gt;
+        /// Calculate &lt;c&gt;LCM(n,m)&lt;/c&gt;. Time complexity: &lt;c&gt;O(log N)&lt;/c&gt;
+        /// &lt;/summary&gt;
+        public static long LCM(long n, long m) { return (n / GCD(n, m)) * m; }
+        /// &lt;summary&gt;
+        /// Calculate &lt;c&gt;GCD(a,b)&lt;/c&gt;, with &lt;c&gt;(x,y)&lt;/c&gt; such that &lt;c&gt;ax+by=GCD(a,b)&lt;/c&gt;. Time complexity: &lt;c&gt;O(log N)&lt;/c&gt;
+        /// &lt;/summary&gt;
+        static public long ExGCD(long a, long b, out long x, out long y)
+        {
+            a = Math.Abs(a);
+            b = Math.Abs(b);
+            x = 0;
+            var u = y = 1;
+            var v = x = 0;
+            while (a &gt; 0)
+            {
+                var q = b / a;
+                { var t = x - q * u; x = u; u = t; }
+                { var t = y - q * v; y = v; v = t; }
+                { var t = b - q * a; b = a; a = t; }
+            }
+            return b;
+        }
+    }
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="linearsievecs"><a class="header" href="#linearsievecs">LinearSieve.cs</a></h1>
+<h2 id="impl-1"><a class="header" href="#impl-1">Impl</a></h2>
+<pre><code class="language-cs">using System.Collections.Generic;
+
+namespace Lib.LinearSieve {
+	public static partial class MathEx {
+		/// &lt;summary&gt;
+		/// Finding all the prime numbers in &lt;c&gt;[1,n]&lt;/c&gt;. Time complexity: &lt;c&gt;O(N loglog N)&lt;/c&gt;
+		/// &lt;/summary&gt;
+		public static bool[] Sieve(int N) {
+			var ret = new bool[N + 1];
+			for (int i = 2; i &lt; ret.Length; i++) ret[i] = true;
+			for (long i = 2; i * i &lt;= N; i++)
+				if (!ret[i]) continue;
+				else for (long j = i * i; j &lt; ret.Length; j += i) ret[j] = false;
+			return ret;
+		}
+		/// &lt;summary&gt;
+		/// Enumerate all the prime numbers in &lt;c&gt;[1,n]&lt;/c&gt;. Time complexity: &lt;c&gt;O(N loglog N)&lt;/c&gt;
+		/// &lt;/summary&gt;
+		public static List&lt;int&gt; SieveList(int N) {
+			var res = Sieve(N);
+			var ret = new List&lt;int&gt;();
+			for (int i = 0; i &lt; res.Length; i++)
+				if (res[i]) ret.Add(i);
+			return ret;
+		}
+	}
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><p>GitHub: <a href="https://github.com/nullputra/nlptr-lib/tree/master/lib/CSharp/Collections">lib/CSharp/Collections</a></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="hashmapcs"><a class="header" href="#hashmapcs">HashMap.cs</a></h1>
+<h2 id="impl-2"><a class="header" href="#impl-2">Impl</a></h2>
+<pre><code class="language-cs">using System.Collections.Generic;
+
+namespace Lib.HashMap
+{
+    public class HashMap&lt;K, V&gt; : Dictionary&lt;K, V&gt;
+    {
+        public HashMap() : base() { }
+        public HashMap(int cap) : base(cap) { }
+        new public V this[K i]
+        {
+            get
+            {
+                V v;
+                return TryGetValue(i, out v) ? v : base[i] = default(V);
+            }
+            set { base[i] = value; }
+        }
+    }
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="priorityqueuecs"><a class="header" href="#priorityqueuecs">PriorityQueue.cs</a></h1>
+<h2 id="impl-3"><a class="header" href="#impl-3">Impl</a></h2>
+<pre><code class="language-cs">using System;
+using System.Collections.Generic;
+
+namespace Lib.PriorityQueue
+{
+    public class PriorityQueue&lt;T&gt;
+    {
+        readonly List&lt;T&gt; heap = new List&lt;T&gt;() { default(T) };
+        readonly Comparison&lt;T&gt; cmp;
+        public PriorityQueue() { cmp = Comparer&lt;T&gt;.Default.Compare; }
+        public PriorityQueue(int cap) { heap.Capacity = cap; cmp = Comparer&lt;T&gt;.Default.Compare; }
+        public PriorityQueue(Comparison&lt;T&gt; cmp) { this.cmp = cmp; }
+        public PriorityQueue(int cap, Comparison&lt;T&gt; cmp) { heap.Capacity = cap; this.cmp = cmp; }
+        public PriorityQueue(IComparer&lt;T&gt; ic) { cmp = ic.Compare; }
+        public PriorityQueue(int cap, IComparer&lt;T&gt; ic) { heap.Capacity = cap; cmp = ic.Compare; }
+        /// &lt;summary&gt;
+        /// Time complexity: &lt;c&gt;O(log N)&lt;/c&gt;
+        /// &lt;/summary&gt;
+        public void Enqueue(T item)
+        {
+            var pos = heap.Count;
+            heap.Add(item);
+            for (; pos != 1; pos &gt;&gt;= 1)
+            {
+                var par = pos &gt;&gt; 1;
+                if (cmp(heap[par], item) &lt;= 0) break;
+                heap[pos] = heap[par];
+            }
+            heap[pos] = item;
+        }
+        /// &lt;summary&gt;
+        /// Time complexity: &lt;c&gt;O(log N)&lt;/c&gt;
+        /// &lt;/summary&gt;
+        public T Dequeue()
+        {
+            var ret = Peek();
+            var pos = 1;
+            var x = heap[heap.Count - 1];
+            while (pos &lt;&lt; 1 &lt; heap.Count)
+            {
+                var l = pos &lt;&lt; 1;
+                var r = l + 1;
+                if (r &lt; heap.Count &amp;&amp; cmp(heap[r], heap[l]) &lt; 0) l = r;
+                if (cmp(heap[l], x) &gt;= 0) break;
+                heap[pos] = heap[l];
+                pos = l;
+            }
+            heap[pos] = x;
+            heap.RemoveAt(heap.Count - 1);
+            return ret;
+        }
+        /// &lt;summary&gt;
+        /// Time complexity: &lt;c&gt;O(1)&lt;/c&gt;
+        /// &lt;/summary&gt;
+        public T Peek() { return heap[1]; }
+        /// &lt;summary&gt;
+        /// Time complexity: &lt;c&gt;O(1)&lt;/c&gt;
+        /// &lt;/summary&gt;
+        public int Count { get { return heap.Count - 1; } }
+        /// &lt;summary&gt;
+        /// Time complexity: &lt;c&gt;O(1)&lt;/c&gt;
+        /// &lt;/summary&gt;
+        public bool Any() { return Count &gt; 0; }
+        /// &lt;summary&gt;
+        /// Enumerate items. Time complexity: &lt;c&gt;O(N log N)&lt;/c&gt;
+        /// &lt;/summary&gt;
+        public T[] Items
+        {
+            get
+            {
+                var ret = new T[Count];
+                for (int i = 0; i &lt; ret.Length; i++)
+                    ret[i] = heap[i + 1];
+                Array.Sort(ret, cmp);
+                return ret;
+            }
+        }
+    }
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="setcs"><a class="header" href="#setcs">Set.cs</a></h1>
+<h2 id="impl-4"><a class="header" href="#impl-4">Impl</a></h2>
+<pre><code class="language-cs">// Ref: https://github.com/camypaper/complib/blob/master/Library/Collections/Set.cs, camypaper
+using System;
+using System.Collections.Generic;
+
+namespace Lib.Set
+{
+    /// &lt;summary&gt;
+    /// 要素の追加、削除、検索、取得が可能な集合を表します．
+    /// &lt;/summary&gt;
+    /// &lt;typeparam name=&quot;T&quot;&gt;優先度付きキュー内の要素の型を指定します．&lt;/typeparam&gt;
+    /// &lt;remarks&gt;内部的にはAVL木によって実装されています．&lt;/remarks&gt;
+    public class Set&lt;T&gt;
+    {
+        Node root;
+        readonly IComparer&lt;T&gt; comparer;
+        readonly Node nil;
+        /// &lt;summary&gt;
+        /// 多重集合かどうかを表します．
+        /// &lt;/summary&gt;
+        public bool IsMultiSet { get; set; }
+        public Set(IComparer&lt;T&gt; comparer)
+        {
+            nil = new Node(default(T));
+            root = nil;
+            this.comparer = comparer;
+        }
+        public Set(Comparison&lt;T&gt; comaprison) : this(Comparer&lt;T&gt;.Create(comaprison)) { }
+        public Set() : this(Comparer&lt;T&gt;.Default) { }
+        /// &lt;summary&gt;
+        /// 要素をコレクションに追加します．
+        /// &lt;/summary&gt;
+        /// &lt;remarks&gt;この操作は計算量 O(log N) で実行されます．&lt;/remarks&gt;
+        public bool Add(T v)
+        {
+            return insert(ref root, v);
+        }
+        /// &lt;summary&gt;
+        /// v が存在するならコレクションから削除します．
+        /// &lt;/summary&gt;
+        /// &lt;remarks&gt;この操作は計算量 O(log N) で実行されます．&lt;/remarks&gt;
+        public bool Remove(T v)
+        {
+            return remove(ref root, v);
+        }
+        /// &lt;summary&gt;
+        /// 0-indexed で index 番目の要素をコレクションから取得します．．
+        /// &lt;/summary&gt;
+        /// &lt;remarks&gt;この操作は計算量 O(log N) で実行されます．&lt;/remarks&gt;
+        public T this[int index] { get { return find(root, index); } }
+        public int Count { get { return root.Count; } }
+        public void RemoveAt(int k)
+        {
+            if (k &lt; 0 || k &gt;= root.Count) throw new ArgumentOutOfRangeException();
+            removeAt(ref root, k);
+        }
+        /// &lt;summary&gt;
+        /// このコレクションに含まれる要素を昇順に並べて返します．
+        /// &lt;/summary&gt;
+        /// &lt;remarks&gt;この操作は計算量 O(N) で実行されます．&lt;/remarks&gt;
+        public T[] Items
+        {
+            get
+            {
+                var ret = new T[root.Count];
+                var k = 0;
+                walk(root, ret, ref k);
+                return ret;
+            }
+        }
+        void walk(Node t, T[] a, ref int k)
+        {
+            if (t.Count == 0) return;
+            walk(t.lst, a, ref k);
+            a[k++] = t.Key;
+            walk(t.rst, a, ref k);
+        }
+        bool insert(ref Node t, T key)
+        {
+            if (t.Count == 0)
+            {
+                t = new Node(key);
+                t.lst = t.rst = nil;
+                t.Update();
+                return true;
+            }
+            var cmp = comparer.Compare(t.Key, key);
+            bool res;
+            if (cmp &gt; 0)
+            {
+                res = insert(ref t.lst, key);
+            }
+            else if (cmp == 0)
+            {
+                if (IsMultiSet) res = insert(ref t.lst, key);
+                else return false;
+            }
+            else res = insert(ref t.rst, key);
+            balance(ref t);
+            return res;
+        }
+        bool remove(ref Node t, T key)
+        {
+            if (t.Count == 0) return false;
+            var cmp = comparer.Compare(key, t.Key);
+            bool ret;
+            if (cmp &lt; 0) ret = remove(ref t.lst, key);
+            else if (cmp &gt; 0) ret = remove(ref t.rst, key);
+            else
+            {
+                ret = true;
+                var k = t.lst.Count;
+                if (k == 0) { t = t.rst; return true; }
+                if (t.rst.Count == 0) { t = t.lst; return true; }
+
+
+                t.Key = find(t.lst, k - 1);
+                removeAt(ref t.lst, k - 1);
+            }
+            balance(ref t);
+            return ret;
+        }
+        void removeAt(ref Node t, int k)
+        {
+            var cnt = t.lst.Count;
+            if (cnt &lt; k) removeAt(ref t.rst, k - cnt - 1);
+            else if (cnt &gt; k) removeAt(ref t.lst, k);
+            else
+            {
+                if (cnt == 0)
+                {
+                    t = t.rst;
+                    return;
+                }
+                if (t.rst.Count == 0)
+                {
+                    t = t.lst;
+                    return;
+                }
+                t.Key = find(t.lst, k - 1);
+                removeAt(ref t.lst, k - 1);
+            }
+            balance(ref t);
+        }
+        void balance(ref Node t)
+        {
+            var balance = t.lst.Height - t.rst.Height;
+            if (balance == -2)
+            {
+                if (t.rst.lst.Height - t.rst.rst.Height &gt; 0) rotR(ref t.rst);
+                rotL(ref t);
+            }
+            else if (balance == 2)
+            {
+                if (t.lst.lst.Height - t.lst.rst.Height &lt; 0) rotL(ref t.lst);
+                rotR(ref t);
+            }
+            else t.Update();
+        }
+        T find(Node t, int k)
+        {
+            if (k &lt; 0 || k &gt; root.Count) throw new ArgumentOutOfRangeException();
+            while (true)
+            {
+                if (k == t.lst.Count) return t.Key;
+                else if (k &lt; t.lst.Count) t = t.lst;
+                else
+                {
+                    k -= t.lst.Count + 1;
+                    t = t.rst;
+                }
+            }
+        }
+        /// &lt;summary&gt;
+        /// コレクションに含まれる要素であって、 v 以上の最小の要素の番号を返します。
+        /// &lt;/summary&gt;
+        /// &lt;remarks&gt;この操作は計算量 O(log N) で実行されます．&lt;/remarks&gt;
+        public int LowerBound(T v)
+        {
+            var k = 0;
+            var t = root;
+            while (true)
+            {
+                if (t.Count == 0) return k;
+                if (comparer.Compare(v, t.Key) &lt;= 0) t = t.lst;
+                else
+                {
+                    k += t.lst.Count + 1;
+                    t = t.rst;
+                }
+            }
+        }
+        /// &lt;summary&gt;
+        /// コレクションに含まれる要素であって、 v より真に大きい、最小の要素の番号を返します。
+        /// &lt;/summary&gt;
+        /// &lt;remarks&gt;この操作は計算量 O(log N) で実行されます．&lt;/remarks&gt;
+        public int UpperBound(T v)
+        {
+            var k = 0;
+            var t = root;
+            while (true)
+            {
+                if (t.Count == 0) return k;
+                if (comparer.Compare(t.Key, v) &lt;= 0)
+                {
+                    k += t.lst.Count + 1;
+                    t = t.rst;
+                }
+                else t = t.lst;
+            }
+        }
+        void rotR(ref Node t)
+        {
+            var l = t.lst;
+            t.lst = l.rst;
+            l.rst = t;
+            t.Update();
+            l.Update();
+            t = l;
+        }
+        void rotL(ref Node t)
+        {
+            var r = t.rst;
+            t.rst = r.lst;
+            r.lst = t;
+            t.Update();
+            r.Update();
+            t = r;
+        }
+        class Node
+        {
+            public Node(T key)
+            {
+                Key = key;
+            }
+            public int Count { get; private set; }
+            public sbyte Height { get; private set; }
+            public T Key { get; set; }
+            public Node lst, rst;
+            public void Update()
+            {
+                Count = 1 + lst.Count + rst.Count;
+                Height = (sbyte)(1 + Math.Max(lst.Height, rst.Height));
+            }
+            public override string ToString()
+            {
+                return string.Format(&quot;Count = {0}, Key = {1}&quot;, Count, Key);
+            }
+        }
+    }
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="sortedmapcs"><a class="header" href="#sortedmapcs">SortedMap.cs</a></h1>
+<h2 id="impl-5"><a class="header" href="#impl-5">Impl</a></h2>
+<pre><code class="language-cs">using System.Collections.Generic;
+
+namespace Lib.SortedMap
+{
+    public class SortedMap&lt;K, V&gt; : SortedDictionary&lt;K, V&gt;
+    {
+        public SortedMap() : base() { }
+        public SortedMap(IComparer&lt;K&gt; cmp) : base(cmp) { }
+        new public V this[K i]
+        {
+            get
+            {
+                V v;
+                return TryGetValue(i, out v) ? v : base[i] = default(V);
+            }
+            set { base[i] = value; }
+        }
+    }
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><p>GitHub: <a href="https://github.com/nullputra/nlptr-lib/tree/master/lib/CSharp/DataStructures">lib/CSharp/DataStructures</a></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="fenwicktreecs"><a class="header" href="#fenwicktreecs">FenwickTree.cs</a></h1>
+<h2 id="impl-6"><a class="header" href="#impl-6">Impl</a></h2>
+<pre><code class="language-cs">// Ref: https://github.com/camypaper/complib/blob/master/Library/Collections/Fenwick.cs
+using System.Diagnostics;
+
+// i, j は 全て 1-indexed です.
+namespace Lib.FenwickTree
+{
+    public class FenwickTree
+    {
+        int n;
+        long[] bit;
+        int kMax = 1;
+        public FenwickTree(int n)
+        {
+            this.n = n; bit = new long[n + 1];
+            while ((kMax &lt;&lt; 1) &lt;= n) kMax &lt;&lt;= 1;
+        }
+        // Sum of [1, i].
+        public long this[int i]
+        {
+            get
+            {
+                Debug.Assert(0 &lt;= i &amp;&amp; i &lt;= n);
+                if (i == 0) return 0;
+                long sum = 0;
+                for (; i &gt; 0; i -= i &amp; -i) sum += bit[i];
+                return sum;
+            }
+        }
+        public long this[int i, int j]
+        {
+            get
+            {
+                Debug.Assert(0 &lt;= i &amp;&amp; i &lt;= j &amp;&amp; j &lt;= n);
+                return i == 0 ? this[j] : this[j] - this[i - 1];
+            }
+        }
+        public int LowerBound(long w)
+        {
+            if (w &lt;= 0) return 0;
+            int x = 0;
+            for (int k = kMax; k &gt; 0; k &gt;&gt;= 1)
+            {
+                if (x + k &lt;= n &amp;&amp; bit[x + k] &lt; w)
+                {
+                    w -= bit[x + k];
+                    x += k;
+                }
+            }
+            return x + 1;
+        }
+        public void Add(int i, long x)
+        {
+            Debug.Assert(1 &lt;= i &amp;&amp; i &lt;= n);
+            for (; i &lt; bit.Length; i += i &amp; -i) bit[i] += x;
+        }
+        public long[] Items
+        {
+            get
+            {
+                var res = new long[n + 1];
+                for (int i = 0; i &lt; res.Length; i++) res[i] = this[i, i];
+                return res;
+            }
+        }
+    }
+    public class RangeAddFenwickTree
+    {
+        int n;
+        FenwickTree a, b;
+        public RangeAddFenwickTree(int n)
+        {
+            this.n = n;
+            a = new FenwickTree(n + 1);
+            b = new FenwickTree(n + 1);
+        }
+        public void Add(int i, int j, long x)
+        {
+            Debug.Assert(1 &lt;= i &amp;&amp; i &lt;= j &amp;&amp; j &lt;= n);
+            a.Add(i, -(i - 1) * x);
+            a.Add(j + 1, j * x);
+            b.Add(i, x);
+            b.Add(j + 1, -x);
+        }
+        // Sum of [1, i].
+        public long this[int i]
+        {
+            get
+            {
+                Debug.Assert(0 &lt;= i &amp;&amp; i &lt;= n);
+                return i == 0 ? 0 : a[i] + b[i] * i;
+            }
+        }
+        // Sum of [i, j].
+        public long this[int i, int j]
+        {
+            get
+            {
+                Debug.Assert(0 &lt;= i &amp;&amp; i &lt;= j &amp;&amp; j &lt;= n);
+                return i == 0 ? this[j] : this[j] - this[i - 1];
+            }
+        }
+        public long[] Items
+        {
+            get
+            {
+                var res = new long[n + 1];
+                for (int i = 0; i &lt; res.Length; i++) res[i] = this[i, i];
+                return res;
+            }
+        }
+    }
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="modintcs"><a class="header" href="#modintcs">ModInt.cs</a></h1>
+<h2 id="impl-7"><a class="header" href="#impl-7">Impl</a></h2>
+<pre><code class="language-cs">// Ref: https://github.com/key-moon/ac-library-cs/blob/master/AtCoderLibrary/Math/ModInt.cs
+using System.Diagnostics;
+
+namespace Lib
+{
+    /// &lt;summary&gt;
+    /// コンパイル時に決定する mod を表します。
+    /// &lt;/summary&gt;
+    /// &lt;example&gt;
+    /// &lt;code&gt;
+    /// public readonly struct Mod1000000009 : IStaticMod
+    /// {
+    ///     public uint Mod =&gt; 1000000009;
+    ///     public bool IsPrime =&gt; true;
+    /// }
+    /// &lt;/code&gt;
+    /// &lt;/example&gt;
+    public interface IStaticMod
+    {
+        uint Mod { get; }
+        bool IsPrime { get; }
+    }
+    public readonly struct Mod1000000007 : IStaticMod
+    {
+        public uint Mod =&gt; 1000000007;
+        public bool IsPrime =&gt; true;
+    }
+    public readonly struct Mod998244353 : IStaticMod
+    {
+        public uint Mod =&gt; 998244353;
+        public bool IsPrime =&gt; true;
+    }
+    /// &lt;summary&gt;
+    /// 四則演算時に自動で mod を取る整数型。mod の値はコンパイル時に決定している必要があります。
+    /// &lt;/summary&gt;
+    /// &lt;typeparam name=&quot;T&quot;&gt;定数 mod を表す構造体&lt;/typeparam&gt;
+    /// &lt;example&gt;
+    /// &lt;code&gt;
+    /// using ModInt = AtCoder.StaticModInt&amp;lt;AtCoder.Mod1000000007&amp;gt;;
+    ///
+    /// void SomeMethod()
+    /// {
+    ///     var m = new ModInt(1);
+    ///     m -= 2;
+    ///     Console.WriteLine(m);   // 1000000006
+    /// }
+    /// &lt;/code&gt;
+    /// &lt;/example&gt;
+    public readonly struct StaticModInt&lt;T&gt; where T : struct, IStaticMod
+    {
+        private readonly uint _v;
+        public int Value =&gt; (int)_v;
+        public static int Mod =&gt; (int)default(T).Mod;
+        public static StaticModInt&lt;T&gt; Raw(int v)
+        {
+            var u = unchecked((uint)v);
+            Debug.Assert(u &lt; Mod);
+            return new StaticModInt&lt;T&gt;(u);
+        }
+        public StaticModInt(long v) : this(Round(v)) { }
+        private StaticModInt(uint v) =&gt; _v = v;
+        private static uint Round(long v)
+        {
+            var x = v % default(T).Mod;
+            if (x &lt; 0) x += default(T).Mod;
+            return (uint)x;
+        }
+        public static StaticModInt&lt;T&gt; operator ++(StaticModInt&lt;T&gt; value)
+        {
+            var v = value._v + 1;
+            if (v == default(T).Mod) v = 0;
+            return new StaticModInt&lt;T&gt;(v);
+        }
+        public static StaticModInt&lt;T&gt; operator --(StaticModInt&lt;T&gt; value)
+        {
+            var v = value._v;
+            if (v == 0) v = default(T).Mod;
+            return new StaticModInt&lt;T&gt;(v - 1);
+        }
+        public static StaticModInt&lt;T&gt; operator +(StaticModInt&lt;T&gt; lhs, StaticModInt&lt;T&gt; rhs)
+        {
+            var v = lhs._v + rhs._v;
+            if (v &gt;= default(T).Mod) v -= default(T).Mod;
+            return new StaticModInt&lt;T&gt;(v);
+        }
+        public static StaticModInt&lt;T&gt; operator -(StaticModInt&lt;T&gt; lhs, StaticModInt&lt;T&gt; rhs)
+        {
+            unchecked
+            {
+                var v = lhs._v - rhs._v;
+                if (v &gt;= default(T).Mod) v += default(T).Mod;
+                return new StaticModInt&lt;T&gt;(v);
+            }
+        }
+        public static StaticModInt&lt;T&gt; operator *(StaticModInt&lt;T&gt; lhs, StaticModInt&lt;T&gt; rhs)
+        {
+            return new StaticModInt&lt;T&gt;((uint)((ulong)lhs._v * rhs._v % default(T).Mod));
+        }
+        public static StaticModInt&lt;T&gt; operator /(StaticModInt&lt;T&gt; lhs, StaticModInt&lt;T&gt; rhs) =&gt; lhs * rhs.Inv();
+        public static StaticModInt&lt;T&gt; operator +(StaticModInt&lt;T&gt; value) =&gt; value;
+        public static StaticModInt&lt;T&gt; operator -(StaticModInt&lt;T&gt; value) =&gt; new StaticModInt&lt;T&gt;() - value;
+        public static bool operator ==(StaticModInt&lt;T&gt; lhs, StaticModInt&lt;T&gt; rhs) =&gt; lhs._v == rhs._v;
+        public static bool operator !=(StaticModInt&lt;T&gt; lhs, StaticModInt&lt;T&gt; rhs) =&gt; lhs._v != rhs._v;
+        public static implicit operator StaticModInt&lt;T&gt;(int value) =&gt; new StaticModInt&lt;T&gt;(value);
+        public static implicit operator StaticModInt&lt;T&gt;(long value) =&gt; new StaticModInt&lt;T&gt;(value);
+        public StaticModInt&lt;T&gt; Pow(long n)
+        {
+            Debug.Assert(0 &lt;= n);
+            var x = this;
+            var r = new StaticModInt&lt;T&gt;(1u);
+            while (n &gt; 0)
+            {
+                if ((n &amp; 1) &gt; 0) r *= x;
+                x *= x;
+                n &gt;&gt;= 1;
+            }
+            return r;
+        }
+        public StaticModInt&lt;T&gt; Inv()
+        {
+            if (default(T).IsPrime)
+            {
+                Debug.Assert(_v &gt; 0);
+                return Pow(default(T).Mod - 2);
+            }
+            else
+            {
+                var (g, x) = InternalMath.InvGCD(_v, default(T).Mod);
+                Debug.Assert(g == 1);
+                return new StaticModInt&lt;T&gt;(x);
+            }
+        }
+        public override string ToString() =&gt; _v.ToString();
+        public override bool Equals(object obj) =&gt; obj is StaticModInt&lt;T&gt; &amp;&amp; this == (StaticModInt&lt;T&gt;)obj;
+        public override int GetHashCode() =&gt; _v.GetHashCode();
+    }
+    public static partial class InternalMath
+    {
+        public static long SafeMod(long x, long m)
+        {
+            x %= m;
+            if (x &lt; 0) x += m;
+            return x;
+        }
+        public static (long, long) InvGCD(long a, long b)
+        {
+            a = SafeMod(a, b);
+            if (a == 0) return (b, 0);
+            long s = b, t = a;
+            long m0 = 0, m1 = 1;
+            long u;
+            while (true)
+            {
+                if (t == 0)
+                {
+                    if (m0 &lt; 0) m0 += b / s;
+                    return (s, m0);
+                }
+                u = s / t;
+                s -= t * u;
+                m0 -= m1 * u;
+
+                if (s == 0)
+                {
+                    if (m1 &lt; 0) m1 += b / t;
+                    return (t, m1);
+                }
+                u = t / s;
+                t -= s * u;
+                m1 -= m0 * u;
+            }
+        }
+    }
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="rollbackunionfindcs"><a class="header" href="#rollbackunionfindcs">RollbackUnionFind.cs</a></h1>
+<h2 id="impl-8"><a class="header" href="#impl-8">Impl</a></h2>
+<pre><code class="language-cs">// Ref: https://github.com/camypaper/complib/blob/master/Library/Collections/DisjointSet.cs
+using System.Collections.Generic;
+using System.Diagnostics;
+
+namespace Lib.RollbackUnionFind
+{
+    public class RollbackUnionFind
+    {
+        int n;
+        int[] par;
+        Stack&lt;int&gt; his = new Stack&lt;int&gt;();
+        public RollbackUnionFind(int n)
+        {
+            this.n = n;
+            par = new int[n];
+            for (int i = 0; i &lt; n; i++) par[i] = -1;
+        }
+        public RollbackUnionFind(int n, int[] p, byte[] r)
+        {
+            this.n = n;
+            par = new int[2 * n];
+            for (int i = 0; i &lt; n; i++)
+            {
+                par[i] = p[i];
+                par[i + n] = r[i];
+            }
+        }
+        public int this[int x]
+        {
+            get
+            {
+                Debug.Assert(0 &lt;= x &amp;&amp; x &lt; n);
+                return par[x] &lt; 0 ? x : par[x] = this[par[x]];
+            }
+        }
+        public bool Unite(int x, int y)
+        {
+            Debug.Assert(0 &lt;= x &amp;&amp; x &lt; n &amp;&amp; 0 &lt;= y &amp;&amp; y &lt; n);
+            x = this[x]; y = this[y];
+            if (x == y) return false;
+            if (par[x + n] &lt; par[y + n]) { var z = x; x = y; y = z; }
+            his.Push(par[x]);
+            his.Push(x);
+            his.Push(par[y]);
+            his.Push(y);
+            par[x] += par[y];
+            par[y] = x;
+            if (par[x + n] == par[y + n])
+            {
+                his.Push(par[x + n]);
+                his.Push(x + n);
+                par[x + n]++;
+            }
+            return true;
+        }
+        public void Back()
+        {
+            if (his.Count == 0) return;
+            for (int t = his.Peek() &gt;= n ? 3 : 2; t &gt; 0; t--)
+            {
+                var v2 = his.Pop();
+                var v1 = his.Pop();
+                par[v2] = v1;
+            }
+        }
+        public int Size(int x)
+        {
+            Debug.Assert(0 &lt;= x &amp;&amp; x &lt; n);
+            return -par[this[x]];
+        }
+        public bool Same(int x, int y)
+        {
+            Debug.Assert(0 &lt;= x &amp;&amp; x &lt; n &amp;&amp; 0 &lt;= y &amp;&amp; y &lt; n);
+            return this[x] == this[y];
+        }
+
+    }
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="unionfindcs"><a class="header" href="#unionfindcs">UnionFind.cs</a></h1>
+<h2 id="impl-9"><a class="header" href="#impl-9">Impl</a></h2>
+<pre><code class="language-cs">using System.Diagnostics;
+
+namespace Lib.UnionFind
+{
+    public class UnionFind
+    {
+        int n;
+        int[] par;
+        public UnionFind(int n)
+        {
+            this.n = n;
+            par = new int[n];
+            for (int i = 0; i &lt; n; i++) par[i] = -1;
+        }
+        public int this[int x]
+        {
+            get
+            {
+                Debug.Assert(0 &lt;= x &amp;&amp; x &lt; n);
+                return par[x] &lt; 0 ? x : par[x] = this[par[x]];
+            }
+        }
+        public bool Unite(int x, int y)
+        {
+            Debug.Assert(0 &lt;= x &amp;&amp; x &lt; n &amp;&amp; 0 &lt;= y &amp;&amp; y &lt; n);
+            x = this[x]; y = this[y];
+            if (x == y) return false;
+            if (-par[x] &lt; -par[y]) (x, y) = (y, x);
+            par[x] += par[y];
+            par[y] = x;
+            return true;
+        }
+        public int Size(int x)
+        {
+            Debug.Assert(0 &lt;= x &amp;&amp; x &lt; n);
+            return -par[this[x]];
+        }
+        public bool Same(int x, int y)
+        {
+            Debug.Assert(0 &lt;= x &amp;&amp; x &lt; n &amp;&amp; 0 &lt;= y &amp;&amp; y &lt; n);
+            return this[x] == this[y];
+        }
+    }
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="weightedunionfindcs"><a class="header" href="#weightedunionfindcs">WeightedUnionFind.cs</a></h1>
+<h2 id="impl-10"><a class="header" href="#impl-10">Impl</a></h2>
+<pre><code class="language-cs">// Ref: https://ei1333.github.io/library/structure/union-find/weighted-union-find.cpp
+using System;
+using System.Diagnostics;
+
+namespace Lib.WeightedUnionFind
+{
+    public class WeightedUnionFind&lt;T&gt; where T : IEquatable&lt;T&gt;
+    {
+        int n;
+        T id;
+        Func&lt;T, T, T&gt; add;
+        Func&lt;T, T, T&gt; sub;
+        int[] par;
+        T[] wts;
+        public WeightedUnionFind(int n, Func&lt;T, T, T&gt; add, Func&lt;T, T, T&gt; sub, T id)
+        {
+            Debug.Assert(add(id, id).Equals(id));
+            Debug.Assert(sub(id, id).Equals(id));
+            this.n = n;
+            this.add = add;
+            this.sub = sub;
+            this.id = id;
+            par = new int[n];
+            for (int i = 0; i &lt; n; i++) par[i] = -1;
+            wts = new T[n];
+            for (int i = 0; i &lt; n; i++) wts[i] = id;
+        }
+        public bool TryUnite(int x, int y, T w) =&gt;
+            Unite(x, y, w) || add(Weight(x), w).Equals(Weight(y));
+        public bool Unite(int x, int y, T w)
+        {
+            Debug.Assert(0 &lt;= x &amp;&amp; x &lt; n &amp;&amp; 0 &lt;= y &amp;&amp; y &lt; n);
+            w = sub(add(w, Weight(x)), Weight(y));
+            x = Find(x); y = Find(y);
+            if (x == y) return false;
+            if (-par[x] &lt; -par[y])
+            {
+                (x, y) = (y, x);
+                w = sub(id, w);
+            }
+            par[x] += par[y];
+            par[y] = x;
+            wts[y] = add(wts[y], w);
+            return true;
+        }
+        public int Find(int x)
+        {
+            Debug.Assert(0 &lt;= x &amp;&amp; x &lt; n);
+            if (par[x] &lt; 0) return x;
+            int par_x = Find(par[x]);
+            wts[x] = add(wts[x], wts[par[x]]);
+            return par[x] = par_x;
+        }
+        public T Weight(int x)
+        {
+            Debug.Assert(0 &lt;= x &amp;&amp; x &lt; n);
+            int _ = Find(x);
+            return wts[x];
+        }
+        public T Diff(int x, int y)
+        {
+            Debug.Assert(0 &lt;= x &amp;&amp; x &lt; n &amp;&amp; 0 &lt;= y &amp;&amp; y &lt; n);
+            return sub(Weight(x), Weight(y));
+        }
+        public bool Same(int x, int y)
+        {
+            Debug.Assert(0 &lt;= x &amp;&amp; x &lt; n &amp;&amp; 0 &lt;= y &amp;&amp; y &lt; n);
+            return Find(x) == Find(y);
+        }
+        public int Size(int x)
+        {
+            Debug.Assert(0 &lt;= x &amp;&amp; x &lt; n);
+            return -par[Find(x)];
+        }
+    }
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><p>GitHub: <a href="https://github.com/nullputra/nlptr-lib/tree/master/lib/CSharp/Graphs">lib/CSharp/Graphs</a></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="topologicalsortcs"><a class="header" href="#topologicalsortcs">TopologicalSort.cs</a></h1>
+<h2 id="impl-11"><a class="header" href="#impl-11">Impl</a></h2>
+<pre><code class="language-cs">using System.Collections.Generic;
+
+namespace Lib
+{
+    class TopologicalSort
+    {
+        public static int[] TopoSort(List&lt;int&gt;[] edges) {
+            var n = edges.Length;
+            var cnt = new int[n];
+            for (var u1 = 0; u1 &lt; n; u1++)
+            {
+                foreach (var u2 in edges[u1]) cnt[u2]++;
+            }
+            var q = new Queue&lt;int&gt;();
+            for (int v = 0; v &lt; n; v++)
+            {
+                if (cnt[v] == 0) q.Enqueue(v);
+            }
+            var sorted = new int[n];
+            var sortedIdx = 0;
+            var v1 = -1;
+            while (q.TryDequeue(out v1))
+            {
+                sorted[sortedIdx++] = v1;
+                if (sortedIdx == n) return sorted;
+                foreach (var v2 in edges[v1])
+                {
+                    if (--cnt[v2] == 0) q.Enqueue(v2);
+                }
+            }
+            return new int[0];
+        }
+    }
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><p>GitHub: <a href="https://github.com/nullputra/nlptr-lib/tree/master/lib/CSharp/Misc">lib/CSharp/Misc</a></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="binarysearchcs"><a class="header" href="#binarysearchcs">BinarySearch.cs</a></h1>
+<h2 id="impl-12"><a class="header" href="#impl-12">Impl</a></h2>
+<pre><code class="language-cs">using System;
+using System.Collections.Generic;
+namespace Lib.BinarySearch
+{
+    // BinarySearch List&lt;T&gt;
+    static public partial class Algorithm
+    {
+        static int lb&lt;T&gt;(List&lt;T&gt; a, T v, IComparer&lt;T&gt; cmp)
+        {
+            int l = 0, r = a.Count - 1;
+            while (l &lt;= r)
+            {
+                var m = (l + r) &gt;&gt; 1;
+                var res = cmp.Compare(a[m], v);
+                if (res &lt; 0) l = m + 1;
+                else r = m - 1;
+            }
+            return l;
+        }
+        static int ub&lt;T&gt;(List&lt;T&gt; a, T v, IComparer&lt;T&gt; cmp)
+        {
+            int l = 0, r = a.Count - 1;
+            while (l &lt;= r)
+            {
+                var m = (l + r) &gt;&gt; 1;
+                var res = cmp.Compare(a[m], v);
+                if (res &lt;= 0) l = m + 1;
+                else r = m - 1;
+            }
+            return l;
+        }
+        public static int LowerBound&lt;T&gt;(this List&lt;T&gt; a, T v, Comparison&lt;T&gt; f) { return lb(a, v, Comparer&lt;T&gt;.Create(f)); }
+        public static int LowerBound&lt;T&gt;(this List&lt;T&gt; a, T v) { return lb(a, v, Comparer&lt;T&gt;.Default); }
+        public static int UpperBound&lt;T&gt;(this List&lt;T&gt; a, T v, Comparison&lt;T&gt; cmp) { return ub(a, v, Comparer&lt;T&gt;.Create(cmp)); }
+        public static int UpperBound&lt;T&gt;(this List&lt;T&gt; a, T v) { return ub(a, v, Comparer&lt;T&gt;.Default); }
+    }
+    // BinarySearch T[]
+    static public partial class Algorithm
+    {
+        static int lb&lt;T&gt;(T[] a, T v, IComparer&lt;T&gt; cmp)
+        {
+            int l = 0, r = a.Length - 1;
+            while (l &lt;= r)
+            {
+                var m = (l + r) &gt;&gt; 1;
+                var res = cmp.Compare(a[m], v);
+                if (res &lt; 0) l = m + 1;
+                else r = m - 1;
+            }
+            return l;
+        }
+        static int ub&lt;T&gt;(T[] a, T v, IComparer&lt;T&gt; cmp)
+        {
+            int l = 0, r = a.Length - 1;
+            while (l &lt;= r)
+            {
+                var m = (l + r) &gt;&gt; 1;
+                var res = cmp.Compare(a[m], v);
+                if (res &lt;= 0) l = m + 1;
+                else r = m - 1;
+            }
+            return l;
+        }
+        public static int LowerBound&lt;T&gt;(this T[] a, T v, Comparison&lt;T&gt; f) { return lb(a, v, Comparer&lt;T&gt;.Create(f)); }
+        public static int LowerBound&lt;T&gt;(this T[] a, T v) { return lb(a, v, Comparer&lt;T&gt;.Default); }
+        public static int UpperBound&lt;T&gt;(this T[] a, T v, Comparison&lt;T&gt; cmp) { return ub(a, v, Comparer&lt;T&gt;.Create(cmp)); }
+        public static int UpperBound&lt;T&gt;(this T[] a, T v) { return ub(a, v, Comparer&lt;T&gt;.Default); }
+    }
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="dbgcs"><a class="header" href="#dbgcs">Dbg.cs</a></h1>
+<h2 id="impl-13"><a class="header" href="#impl-13">Impl</a></h2>
+<pre><code class="language-cs">// python の print() のように, List&lt;string&gt; や int[n] などの中身をプリントする関数を作りました.
+// デバッグ用です. ご自由にお使いください.
+using System.Collections.Generic;
+using System.Collections;
+using System;
+using Lib;
+
+static partial class Dbg
+{
+    // 2 次元以下の配列に対応
+    public static void Dump(string varName, params object[] prms)
+    {
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.Error.Write($&quot;(dbg) {varName}: &quot;);
+        Console.ResetColor();
+        for (int i = 0; i &lt; prms.Length; i++)
+        {
+            if (i &gt; 0) Console.Error.Write(&quot;, &quot;);
+            // prms[i] が string, char のとき
+            if (prms[i].GetType() == typeof(string) || prms[i].GetType() == typeof(char))
+            {
+                // 文字列は黄色で表示
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.Error.Write(prms[i]);
+                Console.ResetColor();
+                continue;
+            }
+            if (typeof(StaticModInt&lt;Mod998244353&gt;).IsAssignableFrom(prms[i].GetType())
+                || typeof(StaticModInt&lt;Mod1000000007&gt;).IsAssignableFrom(prms[i].GetType()))
+            {
+                // 赤紫色で表示
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Console.Error.Write(prms[i]);
+                Console.ResetColor();
+                continue;
+            }
+            // prms[i] が IEnumerable のとき
+            if (typeof(IEnumerable).IsAssignableFrom(prms[i].GetType()))
+            {
+                string brackets = prms[i].GetType().IsArray ? &quot;[]&quot; : &quot;{}&quot;;
+                Console.Error.Write(brackets[0]);
+                if (typeof(IEnumerable&lt;int&gt;).IsAssignableFrom(prms[i].GetType()))
+                {
+                    Console.Error.Write(String.Join(&quot;, &quot;, (IEnumerable&lt;int&gt;)prms[i]));
+                }
+                else if (typeof(IEnumerable&lt;long&gt;).IsAssignableFrom(prms[i].GetType()))
+                {
+                    Console.Error.Write(String.Join(&quot;, &quot;, (IEnumerable&lt;long&gt;)prms[i]));
+                }
+                else if (typeof(IEnumerable&lt;double&gt;).IsAssignableFrom(prms[i].GetType()))
+                {
+                    Console.Error.Write(String.Join(&quot;, &quot;, (IEnumerable&lt;double&gt;)prms[i]));
+                }
+                else if (typeof(IEnumerable&lt;char&gt;).IsAssignableFrom(prms[i].GetType()))
+                {
+                    Console.Error.Write(String.Join(&quot;, &quot;, (IEnumerable&lt;char&gt;)prms[i]));
+                }
+                else if (typeof(IEnumerable&lt;string&gt;).IsAssignableFrom(prms[i].GetType()))
+                {
+                    Console.Error.Write(String.Join(&quot;, &quot;, (IEnumerable&lt;string&gt;)prms[i]));
+                }
+                else if (typeof(IEnumerable&lt;StaticModInt&lt;Mod998244353&gt;&gt;).IsAssignableFrom(prms[i].GetType()))
+                {
+                    // 赤紫色で表示
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    Console.Error.Write(String.Join(&quot;, &quot;, (IEnumerable&lt;StaticModInt&lt;Mod998244353&gt;&gt;)prms[i]));
+                    Console.ResetColor();
+                }
+                else if (typeof(IEnumerable&lt;StaticModInt&lt;Mod1000000007&gt;&gt;).IsAssignableFrom(prms[i].GetType()))
+                {
+                    // 赤紫色で表示
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    Console.Error.Write(String.Join(&quot;, &quot;, (IEnumerable&lt;StaticModInt&lt;Mod1000000007&gt;&gt;)prms[i]));
+                    Console.ResetColor();
+                }
+                // otherwise
+                else
+                {
+                    Console.Error.Write(&quot;ERR&quot;);
+                }
+                Console.Error.Write(brackets[1]);
+            }
+            // prms[i] が IEnumerable 以外のとき
+            else
+            {
+                Console.Error.Write(prms[i]);
+            }
+        }
+        Console.Error.WriteLine();
+    }
+
+    // // 3 次元以上の配列を表示しようとした残骸 (未完成)
+    // static string Parse(params object[] prms)
+    // {
+    //     bool eq(object p) =&gt; p.GetType() == typeof(char) || p.GetType() == typeof(string)
+    //         || p.GetType() == typeof(StaticModInt&lt;Mod998244353&gt;) || p.GetType() == typeof(StaticModInt&lt;Mod1000000007&gt;);
+    //     string res = &quot;&quot;;
+    //     if (typeof(IEnumerable).IsAssignableFrom(prms.GetType()))
+    //     {
+    //         for (int i = 0; i &lt; prms.Length; i++)
+    //         {
+    //             if (i &gt; 0) res += &quot;, &quot;;
+    //             // prms[i] が IEnumerable のとき
+    //             if (typeof(IEnumerable).IsAssignableFrom(prms[i].GetType()))
+    //             {
+    //                 string brackets = prms[i].GetType().IsArray ? &quot;[]&quot; : &quot;{}&quot;;
+    //                 res += brackets[0];
+    //                 if (typeof(IEnumerable&lt;int&gt;).IsAssignableFrom(prms[i].GetType()))
+    //                 {
+    //                     res += String.Join(&quot;, &quot;, (IEnumerable&lt;int&gt;)prms[i]);
+    //                 }
+    //                 else if (typeof(IEnumerable&lt;long&gt;).IsAssignableFrom(prms[i].GetType()))
+    //                 {
+    //                     res += String.Join(&quot;, &quot;, (IEnumerable&lt;long&gt;)prms[i]);
+    //                 }
+    //                 else if (typeof(IEnumerable&lt;double&gt;).IsAssignableFrom(prms[i].GetType()))
+    //                 {
+    //                     res += String.Join(&quot;, &quot;, (IEnumerable&lt;double&gt;)prms[i]);
+    //                 }
+    //                 else if (typeof(IEnumerable&lt;char&gt;).IsAssignableFrom(prms[i].GetType()))
+    //                 {
+    //                     res += &quot;\0&quot; + String.Join(&quot;, &quot;, (IEnumerable&lt;char&gt;)prms[i]) + &quot;\0&quot;;
+    //                 }
+    //                 else if (typeof(IEnumerable&lt;string&gt;).IsAssignableFrom(prms[i].GetType()))
+    //                 {
+    //                     res += &quot;\0&quot; + String.Join(&quot;, &quot;, (IEnumerable&lt;string&gt;)prms[i]) + &quot;\0&quot;;
+    //                 }
+    //                 else if (typeof(IEnumerable&lt;StaticModInt&lt;Mod998244353&gt;&gt;).IsAssignableFrom(prms[i].GetType()))
+    //                 {
+    //                     res += &quot;\0&quot; + String.Join(&quot;, &quot;, (IEnumerable&lt;StaticModInt&lt;Mod998244353&gt;&gt;)prms[i]) + &quot;\0&quot;;
+    //                 }
+    //                 else if (typeof(IEnumerable&lt;StaticModInt&lt;Mod1000000007&gt;&gt;).IsAssignableFrom(prms[i].GetType()))
+    //                 {
+    //                     res += &quot;\0&quot; + String.Join(&quot;, &quot;, (IEnumerable&lt;StaticModInt&lt;Mod1000000007&gt;&gt;)prms[i]) + &quot;\0&quot;;
+    //                 }
+    //                 else
+    //                 {
+    //                     res += &quot;ERR&quot;;
+    //                 }
+    //                 res += brackets[1];
+    //             }
+    //             // prms[i] が IEnumerable 以外のとき
+    //             else
+    //             {
+    //                 if (eq(prms[i])) res += &quot;\0&quot;;
+    //                 res += prms[i].ToString();
+    //                 if (eq(prms[i])) res += &quot;\0&quot;;
+    //             }
+    //         }
+    //     }
+    //     else
+    //     {
+    //         if (eq(prms)) res += &quot;\0&quot;;
+    //         res = prms.ToString();
+    //         if (eq(prms)) res += &quot;\0&quot;;
+    //     }
+    //     return res;
+    // }
+    // public static void Dump2(string varName, params object[] prms)
+    // {
+    //     Console.ForegroundColor = ConsoleColor.Cyan;
+    //     Console.Error.Write($&quot;(dbg) {varName}: &quot;);
+    //     Console.ResetColor();
+    //     var res = Parse(prms).Split('\0');
+    //     for (int i = 0; i &lt; res.Length; i++)
+    //     {
+    //         if (i % 2 == 1) Console.ForegroundColor = ConsoleColor.Magenta;
+    //         Console.Error.Write(res[i]);
+    //         if (i % 2 == 1) Console.ResetColor();
+    //     }
+    //     Console.Error.WriteLine();
+    // }
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="istreamcs"><a class="header" href="#istreamcs">IStream.cs</a></h1>
+<h2 id="impl-14"><a class="header" href="#impl-14">Impl</a></h2>
+<pre><code class="language-cs">// Ref: https://atcoder.jp/contests/typical90/submissions/23944806, KumaTachiRen
+using System;
+using System.IO;
+using System.Text;
+
+namespace Lib.IStream
+{
+    public class IStream
+    {
+        public IStream() =&gt; sm = Console.OpenStandardInput();
+        readonly Stream sm;
+        readonly byte[] buf = new byte[1024];
+        int len, idx;
+        bool isEof = false;
+        byte Byte()
+        {
+            if (isEof) throw new EndOfStreamException();
+            if (idx &gt;= len)
+            {
+                idx = 0;
+                if ((len = sm.Read(buf, 0, 1024)) &lt;= 0)
+                {
+                    isEof = true;
+                    return 0;
+                }
+            }
+            return buf[idx++];
+        }
+        public char Char()
+        {
+            byte b = 0;
+            while (b &lt; 33 || 126 &lt; b) b = Byte();
+            return (char)b;
+        }
+        public string Str()
+        {
+            var sb = new StringBuilder();
+            for (char c = Char(); c &gt;= 33 &amp;&amp; c &lt;= 126; c = (char)Byte()) sb.Append(c);
+            return sb.ToString();
+        }
+        public long Long()
+        {
+            long x = 0;
+            byte b = 0;
+            bool isPosi = true;
+            while (b != '-' &amp;&amp; (b &lt; '0' || '9' &lt; b)) b = Byte();
+            if (b == '-')
+            {
+                isPosi = false;
+                b = Byte();
+            }
+            for (; true; b = Byte())
+            {
+                if (b &lt; '0' || '9' &lt; b) return isPosi ? x : -x;
+                x = x * 10 + b - '0';
+            }
+        }
+        public int Int() =&gt; (int)Long();
+        public double Double() =&gt; double.Parse(Str());
+        public T[] Arr&lt;T&gt;(int n, Func&lt;T&gt; f)
+        {
+            var a = new T[n];
+            for (int i = 0; i &lt; n; i++) a[i] = f();
+            return a;
+        }
+    }
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="popcountcs"><a class="header" href="#popcountcs">PopCount.cs</a></h1>
+<h2 id="impl-15"><a class="header" href="#impl-15">Impl</a></h2>
+<pre><code class="language-cs">// Ref: https://github.com/key-moon/CSComproLib/blob/master/Library/BitOperation/PopCount.cs
+using System.Runtime.CompilerServices;
+
+namespace Lib.PopCount
+{
+    class BitOperation
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static byte PopCount(ulong n)
+        {
+            unchecked
+            {
+                n = (n &amp; 0x5555555555555555ul) + ((n &gt;&gt; 1) &amp; 0x5555555555555555ul);
+                n = (n &amp; 0x3333333333333333ul) + ((n &gt;&gt; 2) &amp; 0x3333333333333333ul);
+                n = (n &amp; 0x0f0f0f0f0f0f0f0ful) + ((n &gt;&gt; 4) &amp; 0x0f0f0f0f0f0f0f0ful);
+                n = (n &amp; 0x00ff00ff00ff00fful) + ((n &gt;&gt; 8) &amp; 0x00ff00ff00ff00fful);
+                n = (n &amp; 0x0000ffff0000fffful) + ((n &gt;&gt; 16) &amp; 0x0000ffff0000fffful);
+                return (byte)((n &amp; 0x00000000fffffffful) + ((n &gt;&gt; 32) &amp; 0x00000000fffffffful));
+            }
+        }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static byte PopCount(long n) =&gt; n &lt; 0 ? (byte)(PopCount((ulong)(-n)) + 1) : PopCount((ulong)n);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static byte PopCount(uint n)
+        {
+            unchecked
+            {
+                n = (n &amp; 0x55555555u) + ((n &gt;&gt; 1) &amp; 0x55555555u);
+                n = (n &amp; 0x33333333u) + ((n &gt;&gt; 2) &amp; 0x33333333u);
+                n = (n &amp; 0x0f0f0f0fu) + ((n &gt;&gt; 4) &amp; 0x0f0f0f0fu);
+                n = (n &amp; 0x00ff00ffu) + ((n &gt;&gt; 8) &amp; 0x00ff00ffu);
+                return (byte)((n &amp; 0x0000ffffu) + ((n &gt;&gt; 16) &amp; 0x0000ffffu));
+            }
+        }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static byte PopCount(int n) =&gt; n &lt; 0 ? (byte)(PopCount((uint)(-n)) + 1) : PopCount((uint)n);
+    }
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><p>GitHub: <a href="https://github.com/nullputra/nlptr-lib/tree/master/lib/CSharp/Strings">lib/CSharp/Strings</a></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="rollinghashcs"><a class="header" href="#rollinghashcs">RollingHash.cs</a></h1>
+<h2 id="impl-16"><a class="header" href="#impl-16">Impl</a></h2>
+<pre><code class="language-cs">// Ref:
+//   https://qiita.com/keymoon/items/11fac5627672a6d6a9f6
+//   https://github.com/key-moon/Library/blob/master/src/Algorithm/String/rolling%20hash.csx
+using System;
+
+class RollingHash
+{
+    const ulong MASK30 = (1UL &lt;&lt; 30) - 1;
+    const ulong MASK31 = (1UL &lt;&lt; 31) - 1;
+    const ulong MOD = (1UL &lt;&lt; 61) - 1;
+    const ulong POSITIVIZER = MOD * ((1UL &lt;&lt; 3) - 1);
+    static uint Base;
+    const int MAX_LENGTH = 500000;
+    static ulong[] powMemo = new ulong[MAX_LENGTH + 1];
+    static RollingHash()
+    {
+        Base = (uint)new Random().Next(129, int.MaxValue);
+        powMemo[0] = 1;
+        for (int i = 1; i &lt; powMemo.Length; i++)
+            powMemo[i] = CalcMod(Mul(powMemo[i - 1], Base));
+    }
+    ulong[] hash;
+    public RollingHash(string s)
+    {
+        hash = new ulong[s.Length + 1];
+        for (int i = 0; i &lt; s.Length; i++)
+            hash[i + 1] = CalcMod(Mul(hash[i], Base) + s[i]);
+    }
+    public ulong Slice(int begin, int length)
+    {
+        return CalcMod(hash[begin + length] + POSITIVIZER - Mul(hash[begin], powMemo[length]));
+    }
+    private static ulong Mul(ulong l, ulong r)
+    {
+        var lu = l &gt;&gt; 31;
+        var ld = l &amp; MASK31;
+        var ru = r &gt;&gt; 31;
+        var rd = r &amp; MASK31;
+        var middleBit = ld * ru + lu * rd;
+        return ((lu * ru) &lt;&lt; 1) + ld * rd + ((middleBit &amp; MASK30) &lt;&lt; 31) + (middleBit &gt;&gt; 30);
+    }
+    private static ulong Mul(ulong l, uint r)
+    {
+        var lu = l &gt;&gt; 31;
+        var rd = r &amp; MASK31;
+        var middleBit = lu * rd;
+        return (l &amp; MASK31) * rd + ((middleBit &amp; MASK30) &lt;&lt; 31) + (middleBit &gt;&gt; 30);
+    }
+    private static ulong CalcMod(ulong val)
+    {
+        val = (val &amp; MOD) + (val &gt;&gt; 61);
+        if (val &gt;= MOD) val -= MOD;
+        return val;
+    }
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="zalgocs"><a class="header" href="#zalgocs">ZAlgo.cs</a></h1>
+<h2 id="impl-17"><a class="header" href="#impl-17">Impl</a></h2>
+<pre><code class="language-cs">using System;
+namespace Lib.ZAlgo
+{
+    static public partial class StringEx
+    {
+        /// &lt;summary&gt; Calculate &lt;c&gt;LCP(s,s[i,N])&lt;/c&gt; for all &lt;c&gt;i&lt;/c&gt;. Time complexity: &lt;c&gt;O(N)&lt;/c&gt;&lt;/summary&gt;
+        static public int[] ZAlgo&lt;T&gt;(T[] s)
+            where T : IEquatable&lt;T&gt;
+        {
+            var a = new int[s.Length];
+            a[0] = s.Length;
+            int i = 1, j = 0;
+            while (i &lt; s.Length)
+            {
+                while (i + j &lt; s.Length &amp;&amp; s[j].Equals(s[i + j])) ++j;
+                a[i] = j;
+                if (j == 0) { ++i; continue; }
+                int k = 1;
+                while (i + k &lt; s.Length &amp;&amp; k + a[k] &lt; j) { a[i + k] = a[k]; ++k; }
+                i += k; j -= k;
+            }
+            return a;
+        }
+    }
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><p>GitHub: <a href="https://github.com/nullputra/nlptr-lib/tree/master/lib/CSharp/Trees">lib/CSharp/Trees</a></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="rerootingcs"><a class="header" href="#rerootingcs">Rerooting.cs</a></h1>
+<h2 id="impl-18"><a class="header" href="#impl-18">Impl</a></h2>
+<pre><code class="language-cs">// Ref:
+//   https://qiita.com/keymoon/items/2a52f1b0fb7ef67fb89e
+//   https://github.com/key-moon/Library/blob/master/src/Algorithm/rerooting.csx
+using System.Collections.Generic;
+using System;
+
+class Rerooting&lt;T&gt;
+{
+    public int n { get; private set; }
+    int[][] edges;
+    int[][] edgeIndices;
+    public T[] res;
+    T[][] dp;
+    T id;
+    Func&lt;T, T, T&gt; merge;
+    Func&lt;T, int, T&gt; opNode;
+    public Rerooting(int n, int[][] edgePaths, T id, Func&lt;T, T, T&gt; merge, Func&lt;T, int, T&gt; opNode)
+    {
+        this.n = n;
+        this.id = id;
+        this.merge = merge;
+        this.opNode = opNode;
+        List&lt;int&gt;[] edges = new List&lt;int&gt;[n];
+        List&lt;int&gt;[] edgeIndices = new List&lt;int&gt;[n];
+        for (int i = 0; i &lt; n; i++)
+        {
+            edges[i] = new List&lt;int&gt;();
+            edgeIndices[i] = new List&lt;int&gt;();
+        }
+        for (int i = 0; i &lt; edgePaths.Length; i++)
+        {
+            var edge = edgePaths[i];
+            edgeIndices[edge[0]].Add(edges[edge[1]].Count);
+            edgeIndices[edge[1]].Add(edges[edge[0]].Count);
+            edges[edge[0]].Add(edge[1]);
+            edges[edge[1]].Add(edge[0]);
+        }
+        this.edges = new int[n][];
+        this.edgeIndices = new int[n][];
+        for (int i = 0; i &lt; n; i++)
+        {
+            this.edges[i] = edges[i].ToArray();
+            this.edgeIndices[i] = edgeIndices[i].ToArray();
+        }
+        dp = new T[edges.Length][];
+        res = new T[edges.Length];
+        for (int i = 0; i &lt; edges.Length; i++) dp[i] = new T[edges[i].Count];
+        if (n &gt; 1) Initialize();
+        else if (n == 1) res[0] = opNode(id, 0);
+    }
+    public T Query(int i) =&gt; res[i];
+    private void Initialize()
+    {
+        int[] parents = new int[n];
+        int[] order = new int[n];
+        // InitOrderedTree
+        var index = 0;
+        Stack&lt;int&gt; stack = new Stack&lt;int&gt;();
+        stack.Push(0);
+        parents[0] = -1;
+        while (stack.Count &gt; 0)
+        {
+            var node = stack.Pop();
+            order[index++] = node;
+            for (int i = 0; i &lt; edges[node].Length; i++)
+            {
+                var adjacent = edges[node][i];
+                if (adjacent == parents[node]) continue;
+                stack.Push(adjacent);
+                parents[adjacent] = node;
+            }
+        }
+        // fromLeaf
+        for (int i = order.Length - 1; i &gt;= 1; i--)
+        {
+            var node = order[i];
+            var parent = parents[node];
+            T accum = id;
+            int parentIndex = -1;
+            for (int j = 0; j &lt; edges[node].Length; j++)
+            {
+                if (edges[node][j] == parent)
+                {
+                    parentIndex = j;
+                    continue;
+                }
+                accum = merge(accum, dp[node][j]);
+            }
+            dp[parent][edgeIndices[node][parentIndex]] = opNode(accum, node);
+        }
+        // toLeaf
+        for (int i = 0; i &lt; order.Length; i++)
+        {
+            var node = order[i];
+            T accum = id;
+            T[] accumsFromTail = new T[edges[node].Length];
+            accumsFromTail[accumsFromTail.Length - 1] = id;
+            for (int j = accumsFromTail.Length - 1; j &gt;= 1; j--) accumsFromTail[j - 1] = merge(dp[node][j], accumsFromTail[j]);
+            for (int j = 0; j &lt; accumsFromTail.Length; j++)
+            {
+                dp[edges[node][j]][edgeIndices[node][j]] = opNode(merge(accum, accumsFromTail[j]), node);
+                accum = merge(accum, dp[node][j]);
+            }
+            res[node] = opNode(accum, node);
+        }
+    }
+}
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_line_numbers = true;
+        </script>
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="ace.js" type="text/javascript" charset="utf-8"></script>
+        <script src="editor.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mode-rust.js" type="text/javascript" charset="utf-8"></script>
+        <script src="theme-dawn.js" type="text/javascript" charset="utf-8"></script>
+        <script src="theme-tomorrow_night.js" type="text/javascript" charset="utf-8"></script>
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        <script type="text/javascript" src="theme/custom.js"></script>
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            MathJax.Hub.Register.StartupHook('End', function() {
+                window.setTimeout(window.print, 100);
+            });
+        });
+        </script>
+    </body>
+</html>

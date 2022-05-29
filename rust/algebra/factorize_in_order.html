@@ -1,0 +1,265 @@
+<!DOCTYPE HTML>
+<html lang="jp" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>factorize_in_order.rs - nlptr-lib (lib/rust/)</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../theme/custom.css">
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">README</a></li><li class="chapter-item expanded affix "><a href="../setup.html">setup</a></li><li class="chapter-item expanded affix "><li class="part-title">lib/rust/</li><li class="chapter-item expanded "><a href="../algebra.html"><strong aria-hidden="true">1.</strong> algebra</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../algebra/binary_search.html"><strong aria-hidden="true">1.1.</strong> binary_search.rs</a></li><li class="chapter-item expanded "><a href="../algebra/ext_gcd.html"><strong aria-hidden="true">1.2.</strong> ext_gcd.rs</a></li><li class="chapter-item expanded "><a href="../algebra/factorial.html"><strong aria-hidden="true">1.3.</strong> factorial.rs</a></li><li class="chapter-item expanded "><a href="../algebra/factorial_test.html"><strong aria-hidden="true">1.4.</strong> factorial_test.rs</a></li><li class="chapter-item expanded "><a href="../algebra/factorize_in_order.html" class="active"><strong aria-hidden="true">1.5.</strong> factorize_in_order.rs</a></li><li class="chapter-item expanded "><a href="../algebra/factors.html"><strong aria-hidden="true">1.6.</strong> factors.rs</a></li><li class="chapter-item expanded "><a href="../algebra/fft.html"><strong aria-hidden="true">1.7.</strong> fft.rs</a></li><li class="chapter-item expanded "><a href="../algebra/fft_test.html"><strong aria-hidden="true">1.8.</strong> fft_test.rs</a></li><li class="chapter-item expanded "><a href="../algebra/modint.html"><strong aria-hidden="true">1.9.</strong> modint.rs</a></li><li class="chapter-item expanded "><a href="../algebra/modint_test.html"><strong aria-hidden="true">1.10.</strong> modint_test.rs</a></li><li class="chapter-item expanded "><a href="../algebra/rational.html"><strong aria-hidden="true">1.11.</strong> rational.rs</a></li></ol></li><li class="chapter-item expanded "><a href="../data_structures.html"><strong aria-hidden="true">2.</strong> data_structures</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../data_structures/bitset.html"><strong aria-hidden="true">2.1.</strong> bitset.rs</a></li><li class="chapter-item expanded "><a href="../data_structures/fenwick_tree.html"><strong aria-hidden="true">2.2.</strong> fenwick_tree.rs</a></li><li class="chapter-item expanded "><a href="../data_structures/segment_tree.html"><strong aria-hidden="true">2.3.</strong> segment_tree.rs</a></li><li class="chapter-item expanded "><a href="../data_structures/swag.html"><strong aria-hidden="true">2.4.</strong> swag.rs</a></li><li class="chapter-item expanded "><a href="../data_structures/union_find.html"><strong aria-hidden="true">2.5.</strong> union_find.rs</a></li></ol></li><li class="chapter-item expanded "><a href="../graphs.html"><strong aria-hidden="true">3.</strong> graphs</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../graphs/dijkstra.html"><strong aria-hidden="true">3.1.</strong> dijkstra.rs</a></li><li class="chapter-item expanded "><a href="../graphs/dinic.html"><strong aria-hidden="true">3.2.</strong> dinic.rs</a></li></ol></li><li class="chapter-item expanded "><a href="../others.html"><strong aria-hidden="true">4.</strong> others</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../others/matmul.html"><strong aria-hidden="true">4.1.</strong> matmul.rs</a></li><li class="chapter-item expanded "><a href="../others/permiter.html"><strong aria-hidden="true">4.2.</strong> permiter.rs</a></li><li class="chapter-item expanded "><a href="../others/proconio.html"><strong aria-hidden="true">4.3.</strong> proconio.rs</a></li></ol></li><li class="chapter-item expanded "><a href="../trees.html"><strong aria-hidden="true">5.</strong> trees</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../trees/rerooting.html"><strong aria-hidden="true">5.1.</strong> rerooting.rs</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">nlptr-lib (lib/rust/)</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/nullputra/nlptr-lib" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="factorize_in_orderrs"><a class="header" href="#factorize_in_orderrs">factorize_in_order.rs</a></h1>
+<h2 id="impl"><a class="header" href="#impl">Impl</a></h2>
+<pre><code class="language-rs">struct FactorizeInOrder {
+    n: usize,
+    min_factors: Vec&lt;usize&gt;,
+}
+#[allow(dead_code)]
+impl FactorizeInOrder {
+    fn new(n: usize) -&gt; FactorizeInOrder {
+        let mut min_factors = (0..=n).collect::&lt;Vec&lt;usize&gt;&gt;();
+        for i in 2..=(n as f32).sqrt().ceil() as usize {
+            if min_factors[i] != i {
+                continue;
+            }
+            for j in i..=n / i {
+                if min_factors[i * j] == i * j {
+                    min_factors[i * j] = i;
+                }
+            }
+        }
+        FactorizeInOrder { n, min_factors }
+    }
+    fn factors(&amp;self, x: usize) -&gt; Vec&lt;(usize, usize)&gt; {
+        assert!(0 &lt; x &amp;&amp; x &lt;= self.n);
+        if x == 1 {
+            return vec![];
+        }
+        let mut x = x;
+        let mut facts = vec![];
+        let mut cur = self.min_factors[x];
+        let mut ex = 0;
+        loop {
+            if cur != self.min_factors[x] {
+                facts.push((cur, ex));
+                if x == 1 {
+                    break;
+                }
+                cur = self.min_factors[x];
+                ex = 0;
+            }
+            ex += 1;
+            x /= self.min_factors[x];
+        }
+        facts
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn factors_works() {
+        let sv = FactorizeInOrder::new(96500);
+        assert_eq!(sv.factors(1), []);
+        assert_eq!(sv.factors(57), [(3, 1), (19, 1)]);
+        assert_eq!(sv.factors(2022), [(2, 1), (3, 1), (337, 1)]);
+        assert_eq!(sv.factors(2357), [(2357, 1)]);
+        assert_eq!(sv.factors(96500), [(2, 2), (5, 3), (193, 1)]);
+    }
+    #[test]
+    fn min_factors_works() {
+        let sv = FactorizeInOrder::new(100);
+        assert_eq!(
+            sv.min_factors,
+            [
+                0, 1, 2, 3, 2, 5, 2, 7, 2, 3, 2, 11, 2, 13, 2, 3, 2, 17, 2, 19, 2, 3, 2, 23, 2, 5,
+                2, 3, 2, 29, 2, 31, 2, 3, 2, 5, 2, 37, 2, 3, 2, 41, 2, 43, 2, 3, 2, 47, 2, 7, 2, 3,
+                2, 53, 2, 5, 2, 3, 2, 59, 2, 61, 2, 3, 2, 5, 2, 67, 2, 3, 2, 71, 2, 73, 2, 3, 2, 7,
+                2, 79, 2, 3, 2, 83, 2, 5, 2, 3, 2, 89, 2, 7, 2, 3, 2, 5, 2, 97, 2, 3, 2
+            ]
+        );
+    }
+}
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../algebra/factorial_test.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../algebra/factors.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../algebra/factorial_test.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../algebra/factors.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_line_numbers = true;
+        </script>
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../ace.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../editor.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mode-rust.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../theme-dawn.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../theme-tomorrow_night.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        <script type="text/javascript" src="../theme/custom.js"></script>
+    </body>
+</html>
